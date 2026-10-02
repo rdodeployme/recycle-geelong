@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/img/logo.png">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Recycle Geelong</title>
+<meta name="description" content="Recycle Geelong: 20,000m² undercover transfer station at 116 Furner Avenue, North Geelong. Build your load, see the price, save 15% with a trade account.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: shed signage. Black bays, white type, JUNK green as the only signal colour.
+   Photo hero with a live "today" docket, then a working load builder as the centrepiece. */
+:root{
+  --ink:#050505;
+  --panel:#111111;
+  --panel-2:#1a1a1a;
+  --line:rgba(255,255,255,.10);
+  --line-2:rgba(255,255,255,.18);
+  --fg:#FFFFFF;
+  --mute:#a8a8a8;
+  --dim:#737373;
+  --green:#00ED00;
+  --green-ink:#050505;
+  --green-soft:transparent;
+  --paper:#FFFFFF;
+  --paper-ink:#050505;
+  --paper-mute:#5c5c5c;
+  --paper-line:#d6d6d6;
+  --stop:#FFFFFF;
+  --display:"Archivo","Arial Black","Helvetica Neue",Arial,sans-serif;
+  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:10px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{background:var(--ink);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;margin:0;-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+a{color:inherit}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:20px}
+section{padding-block:96px}
+@media (max-width:760px){section{padding-block:64px}}
+.band{background:var(--panel);border-block:1px solid var(--line)}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- type ---------- */
+.eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:0 0 14px}
+h1,h2,h3{font-family:var(--display);font-stretch:112%;text-transform:uppercase;margin:0;text-wrap:balance}
+h1{font-size:clamp(52px,9.5vw,128px);font-weight:900;line-height:.86;letter-spacing:-.025em}
+h2{font-size:clamp(32px,5vw,60px);font-weight:900;line-height:.93;letter-spacing:-.015em}
+h3{font-size:18px;font-weight:800;letter-spacing:.01em;line-height:1.15}
+.g{color:var(--green)}
+.lead{color:var(--mute);font-size:18px;max-width:60ch;margin:18px 0 0}
+.head{margin-bottom:44px;max-width:900px}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--display);font-stretch:105%;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:15px;padding:16px 26px;border-radius:6px;text-decoration:none;border:2px solid var(--green);background:var(--green);color:var(--ink);cursor:pointer;transition:transform .15s ease,background .15s ease,color .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--fg)}
+.btn.ghost:hover{background:var(--green);color:var(--ink)}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:var(--green)}
+.btn.sm{padding:10px 16px;font-size:12px}
+.arrow{font-family:var(--mono);font-weight:600}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(5,5,5,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.navrow{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand img{height:38px;width:auto}
+.links{display:flex;align-items:center;gap:22px}
+.links a.l{color:var(--mute);text-decoration:none;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.links a.l:hover{color:var(--green)}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:600;padding:7px 12px;border-radius:30px;border:1px solid var(--line-2);white-space:nowrap}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--dim);flex:none}
+.is-open .dot{background:var(--green);animation:pulse 2s infinite}
+.is-closed .dot{background:var(--stop)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,237,0,.55)}70%{box-shadow:0 0 0 9px rgba(0,237,0,0)}100%{box-shadow:0 0 0 0 rgba(0,237,0,0)}}
+@media (max-width:1060px){.links a.l{display:none}}
+@media (max-width:560px){.links .btn{display:none}.brand img{height:30px}.status{font-size:11px;padding:6px 10px}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding-block:0}
+.hero .bg{position:absolute;inset:0;background:url("../assets/img/hero.jpg") center 55%/cover no-repeat;transform:scale(1.04);animation:drift 22s ease-out forwards}
+@keyframes drift{to{transform:scale(1)}}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,5,5,.92) 0%,rgba(5,5,5,.7) 45%,rgba(5,5,5,.35) 100%),linear-gradient(180deg,rgba(5,5,5,0) 55%,rgba(5,5,5,1) 100%)}
+.hero .herogrid{position:relative;display:grid;grid-template-columns:1.35fr .65fr;gap:40px;align-items:end;padding-block:110px 56px}
+@media (max-width:960px){.hero .herogrid{grid-template-columns:1fr;padding-block:72px 40px}}
+.hero .herocopy{min-width:0}
+.hero .eyebrow{display:inline-block;background:rgba(5,5,5,.85);padding:7px 11px;border-radius:4px}
+.hero h1 .kick{display:block;font-stretch:62%;font-weight:700;font-size:.36em;letter-spacing:.01em;line-height:1.05;margin-bottom:12px}
+.hero .lead{color:#dcdcdc;font-size:clamp(17px,1.6vw,20px)}
+.hero .lead b{color:var(--fg)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+.today{background:rgba(5,5,5,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line-2);border-radius:12px;padding:22px;min-width:0}
+.today .lbl{margin-bottom:12px}
+.today .state{display:flex;align-items:center;gap:12px;font-family:var(--display);font-stretch:118%;font-weight:900;font-size:40px;line-height:1;text-transform:uppercase}
+.today .state .dot{width:14px;height:14px}
+.today .sub{font-family:var(--mono);font-size:13.5px;color:var(--mute);margin-top:8px}
+.today .rows{margin-top:16px;border-top:1px solid var(--line)}
+.today .row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.today .row span:first-child{color:var(--mute)}
+.today .row b{font-family:var(--mono);font-weight:600}
+.today .row b.g{color:var(--green)}
+
+.stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:8px}
+.stat{padding:22px 0 26px;border-right:1px solid var(--line);padding-inline:16px}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--display);font-stretch:118%;font-weight:900;font-size:clamp(24px,3vw,36px);line-height:1}
+.stat span{display:block;margin-top:6px;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+@media (max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.stat{border-right:0;padding-left:0}.stat:nth-child(odd){border-right:1px solid var(--line)}.stat:nth-child(even){padding-left:16px}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--green);color:var(--ink);overflow:hidden;white-space:nowrap;border-block:1px solid var(--green)}
+.ticker .track{display:inline-flex;animation:tick 48s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+.ticker span{font-family:var(--display);font-stretch:115%;font-weight:900;text-transform:uppercase;font-size:20px;padding:14px 0;letter-spacing:.01em}
+.ticker span::after{content:"";display:inline-block;width:8px;height:8px;background:currentColor;margin:0 22px;vertical-align:4px}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- sort chart ---------- */
+.sortgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+@media (max-width:900px){.sortgrid{grid-template-columns:1fr;gap:28px}}
+.sortgrid > div{min-width:0}
+.half{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:clamp(90px,14vw,190px);line-height:.8;letter-spacing:-.04em;color:var(--green)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--mute);margin-bottom:18px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+.legend .ls{background:var(--green)}
+.legend .lu{background:transparent;border:2px solid var(--fg)}
+.bars{display:grid;gap:18px}
+.bar-row{display:grid;grid-template-columns:170px 1fr 92px;gap:14px;align-items:center}
+@media (max-width:560px){.bar-row{grid-template-columns:1fr 78px}.bar-row .bn{grid-column:1/-1}}
+.bn b{display:block;font-size:14.5px}
+.bn small{font-family:var(--mono);font-size:11.5px;color:var(--mute)}
+.track2{display:grid;gap:5px;min-width:0}
+.b{height:16px;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:var(--mono);font-size:11px;font-weight:600;transform-origin:left;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.b.s{background:var(--green);color:var(--ink)}
+.b.u{border:2px solid var(--fg);color:var(--fg)}
+.bars.pre .b{transform:scaleX(.02)}
+.saveTag{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--green);text-align:right}
+
+/* ---------- builder ---------- */
+.builder{display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:start}
+@media (max-width:980px){.builder{grid-template-columns:1fr}}
+.pane{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);min-width:0;overflow:hidden}
+.btabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--line);scrollbar-width:none}
+.btabs::-webkit-scrollbar{display:none}
+.btab{flex:none;background:transparent;border:0;border-bottom:3px solid transparent;color:var(--mute);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.05em;padding:16px 18px 13px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.btab:hover{color:var(--fg)}
+.btab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--green)}
+.btab .ct{font-family:var(--mono);font-size:11px;background:var(--green);color:var(--ink);border-radius:10px;padding:1px 7px;min-width:20px;text-align:center}
+.btab .ct[data-z="1"]{display:none}
+.bbody{padding:24px}
+.lbl{display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+.seg{display:inline-flex;background:var(--ink);border:1px solid var(--line);border-radius:8px;padding:4px;gap:4px;flex-wrap:wrap}
+.seg button{background:transparent;border:0;border-radius:6px;padding:10px 16px;cursor:pointer;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mute)}
+.seg button[aria-pressed="true"]{background:var(--green);color:var(--ink)}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt label{display:flex;flex-direction:column;gap:3px;height:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel-2);cursor:pointer;transition:border-color .15s,background .15s}
+.opt label b{font-size:14px;font-weight:700;line-height:1.25}
+.opt label small{font-family:var(--mono);font-size:12px;color:var(--mute)}
+.opt input:checked + label{border-color:var(--green);background:var(--green-soft)}
+.opt input:checked + label small{color:var(--green)}
+.opt input:focus-visible + label{outline:3px solid var(--green);outline-offset:2px}
+.opt input:disabled + label{opacity:.38;cursor:not-allowed}
+.gap{height:24px}
+.range{display:flex;align-items:center;gap:16px}
+.range input{flex:1;accent-color:var(--green);min-width:0}
+.range output{font-family:var(--mono);font-weight:600;font-size:17px;min-width:80px;text-align:right}
+.steps{display:grid;gap:8px}
+.stp{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel-2)}
+.stp.on{border-color:var(--green);background:var(--green-soft)}
+.stp div{min-width:0}
+.stp b{display:block;font-size:14.5px;font-weight:700}
+.stp small{display:block;font-family:var(--mono);font-size:12px;color:var(--mute)}
+.ctrl{display:flex;align-items:center;gap:4px;flex:none}
+.ctrl button{width:36px;height:36px;border-radius:6px;border:1px solid var(--line-2);background:var(--ink);cursor:pointer;font-family:var(--mono);font-size:18px;font-weight:600;line-height:1;display:grid;place-items:center}
+.ctrl button:hover{border-color:var(--green);color:var(--green)}
+.ctrl output{min-width:54px;text-align:center;font-family:var(--mono);font-weight:600;font-size:15px}
+.note{font-size:13px;color:var(--mute);margin:14px 0 0}
+.note b{color:var(--fg)}
+
+.docket{position:sticky;top:84px;background:var(--paper);color:var(--paper-ink);border-radius:var(--r);padding:24px 24px 22px;min-width:0;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.docket::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:radial-gradient(circle at 8px 0,transparent 7px,var(--paper) 7.5px) 0 0/16px 10px repeat-x}
+.dhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:2px solid var(--paper-ink)}
+.dhead b{font-family:var(--display);font-stretch:115%;font-weight:900;text-transform:uppercase;font-size:17px;line-height:1.05}
+.dhead small{display:block;font-family:var(--mono);font-size:11px;color:var(--paper-mute);margin-top:4px}
+.clear{background:transparent;border:1px solid var(--paper-line);color:var(--paper-mute);font-family:var(--mono);font-size:11px;font-weight:600;border-radius:4px;padding:5px 8px;cursor:pointer;flex:none}
+.clear:hover{border-color:var(--paper-ink);color:var(--paper-ink)}
+.lines{max-height:300px;overflow:auto;margin:6px 0 0}
+.ln{display:grid;grid-template-columns:1fr auto;gap:12px;padding:9px 0;border-bottom:1px dashed var(--paper-line);font-family:var(--mono);font-size:13px;line-height:1.35}
+.ln span:first-child{min-width:0}
+.ln small{display:block;color:var(--paper-mute);font-size:11px}
+.ln .fr{background:var(--green);color:var(--ink);font-weight:600;padding:1px 6px;border-radius:3px;align-self:start}
+.ln.emp{color:var(--paper-mute);border-bottom:0}
+.sumrow{display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;padding:8px 0}
+.sumrow.disc{color:var(--paper-ink);font-weight:600}
+.acc{margin:12px 0 4px}
+.acc .seg{background:#f1f1f1;border-color:var(--paper-line);width:100%;display:grid;grid-template-columns:repeat(3,1fr)}
+.acc .seg button{color:var(--paper-mute);padding:9px 6px;font-size:11.5px}
+.acc .seg button[aria-pressed="true"]{background:var(--paper-ink);color:var(--green)}
+.tot{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;border-top:2px solid var(--paper-ink);padding-top:12px;margin-top:6px}
+.tot small{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.tot b{font-family:var(--display);font-stretch:118%;font-weight:900;font-size:clamp(44px,5vw,58px);line-height:.88;font-variant-numeric:tabular-nums}
+.nudge{margin-top:14px;background:var(--ink);color:var(--fg);border-radius:8px;padding:12px 14px;font-size:13.5px;line-height:1.45}
+.nudge b{color:var(--green)}
+.nudge[hidden]{display:none}
+.docket .btn{width:100%;margin-top:14px}
+.fine{font-size:11.5px;color:var(--paper-mute);margin:12px 0 0;line-height:1.45}
+.example{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:#f1f1f1;color:var(--paper-mute);border-radius:3px;padding:3px 6px;margin-top:6px}
+
+/* ---------- savings ---------- */
+.savegrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:900px){.savegrid{grid-template-columns:1fr}}
+.calc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:32px;min-width:0}
+.calc .range{margin-bottom:26px}
+.calc .range output{font-size:20px;min-width:96px}
+.useDocket{background:transparent;border:1px solid var(--green);color:var(--green);font-family:var(--mono);font-size:12px;font-weight:600;border-radius:4px;padding:7px 10px;cursor:pointer;margin:-12px 0 24px}
+.useDocket:hover{background:var(--green);color:var(--ink)}
+.yr{border-top:1px solid var(--line);padding-top:22px}
+.yr b{display:block;font-family:var(--display);font-stretch:120%;font-weight:900;font-size:clamp(56px,8vw,96px);line-height:.85;color:var(--green);font-variant-numeric:tabular-nums}
+.yr p{margin:10px 0 0;color:var(--mute);font-size:14.5px}
+.offer{border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.offer.trade{background:var(--green);color:var(--ink)}
+.offer .pct{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:clamp(80px,11vw,140px);line-height:.8;letter-spacing:-.03em}
+.offer h3{font-size:24px}
+.offer p{margin:0;font-size:15.5px;color:var(--green-ink);font-weight:600}
+.offer ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:15px;font-weight:600}
+.offer ul li::before{content:"";display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-2px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23050505' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.offer .btn{align-self:flex-start;margin-top:auto}
+.resline{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 24px}
+.resline p{margin:0;color:var(--mute)}
+.resline p b{color:var(--fg)}
+.resline .pc{font-family:var(--display);font-stretch:120%;font-weight:900;color:var(--green);font-size:34px;margin-right:12px;vertical-align:-4px}
+
+/* ---------- trade features ---------- */
+.tradegrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+@media (max-width:900px){.tradegrid{grid-template-columns:1fr}}
+.tphotos{display:grid;grid-template-columns:1fr 1fr;gap:10px;min-width:0}
+.tphotos figure{margin:0;border-radius:var(--r);overflow:hidden;position:relative;min-height:320px;background:var(--panel-2)}
+.tphotos img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.cap{position:absolute;left:10px;bottom:10px;background:var(--ink);color:var(--fg);font-family:var(--display);font-stretch:110%;font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.06em;padding:7px 10px;border-radius:4px}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-width:0}
+@media (max-width:560px){.feat{grid-template-columns:1fr}}
+.f{background:var(--ink);padding:24px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.f .k{font-family:var(--mono);font-size:11.5px;color:var(--green);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.f p{margin:0;color:var(--mute);font-size:14.5px}
+.f p b{color:var(--fg);font-weight:700}
+
+/* ---------- vehicle checker ---------- */
+.vgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:start}
+@media (max-width:900px){.vgrid{grid-template-columns:1fr}}
+.vres{border-radius:var(--r);padding:28px;min-width:0;border:1px solid var(--line);background:var(--panel);transition:background .2s,border-color .2s}
+.vres.ok{background:var(--green);color:var(--ink);border-color:var(--green)}
+.vres.no{border-style:dashed;border-color:var(--fg)}
+.vres.maybe{border-color:var(--fg)}
+.vres .big{font-family:var(--display);font-stretch:118%;font-weight:900;text-transform:uppercase;font-size:clamp(36px,4.5vw,52px);line-height:.9}
+
+.vres p{margin:12px 0 0;font-size:15px}
+.vres.ok p{color:var(--green-ink);font-weight:600}
+.vres:not(.ok) p{color:var(--mute)}
+.gvm{margin-top:22px}
+.gvm[hidden]{display:none}
+.gvm input{width:100%;max-width:240px;font:inherit;font-family:var(--mono);font-size:18px;font-weight:600;color:var(--fg);background:var(--ink);border:1px solid var(--line-2);border-radius:8px;padding:12px 14px}
+
+/* ---------- finder ---------- */
+.findgrid{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media (max-width:980px){.findgrid{grid-template-columns:1fr}}
+.findgrid > div{min-width:0}
+.finder{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.search{flex:1 1 260px;min-width:0;position:relative}
+.search input{width:100%;font:inherit;font-size:16px;color:var(--fg);background:var(--ink);border:1px solid var(--line-2);border-radius:8px;padding:14px 16px 14px 44px}
+.search input::placeholder{color:var(--dim)}
+.search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--mute)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.chipbtn{font-size:13px;font-weight:700;padding:10px 14px;border-radius:30px;border:1px solid var(--line-2);background:var(--ink);color:var(--mute);cursor:pointer}
+.chipbtn[aria-pressed="true"]{border-color:var(--green);color:var(--ink);background:var(--green)}
+.chipbtn .c{font-family:var(--mono);font-size:11px;opacity:.75;margin-left:4px}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.it{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 15px;background:var(--ink);border:1px solid var(--line);border-radius:8px;min-width:0}
+.it div{min-width:0}
+.it b{display:block;font-size:14.5px;font-weight:700;line-height:1.3}
+.it small{display:block;color:var(--mute);font-size:12.5px;line-height:1.35}
+.tag{flex:none;font-family:var(--mono);font-size:11.5px;font-weight:600;padding:5px 9px;border-radius:4px;white-space:nowrap}
+.tag.free{background:var(--green);color:var(--ink)}
+.tag.paid{background:var(--panel-2);color:var(--fg);border:1px solid var(--line-2)}
+.tag.no{background:transparent;color:var(--fg);border:1px dashed var(--fg)}
+.it.no{border-style:dashed}
+.empty{color:var(--mute);padding:18px 0}
+.signcard{background:var(--ink);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.signcard img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.signcard div{padding:16px 18px}
+.signcard p{margin:6px 0 0;color:var(--mute);font-size:14px}
+
+/* ---------- gallery ---------- */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:10px}
+.gal button{all:unset;cursor:zoom-in;position:relative;overflow:hidden;border-radius:8px;background:var(--panel-2)}
+.gal button:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gal button:hover img{transform:scale(1.05)}
+.gal .w3{grid-column:span 3}.gal .h2{grid-row:span 2}.gal .w4{grid-column:span 4}
+@media (max-width:860px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:190px}}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(5,5,5,.96);display:grid;grid-template-rows:auto 1fr auto;padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(14px + env(safe-area-inset-bottom,0px))}
+.lb[hidden]{display:none}
+.lb .bar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lb .bar span{font-family:var(--display);font-stretch:110%;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.lb .stage{display:grid;place-items:center;min-height:0;padding-block:14px}
+.lb .stage img{max-height:100%;max-width:100%;object-fit:contain;border-radius:6px}
+.lb .nav2{display:flex;justify-content:center;gap:10px}
+.lbb{background:var(--panel);border:1px solid var(--line-2);border-radius:6px;padding:10px 16px;cursor:pointer;font-family:var(--mono);font-weight:600}
+.lbb:hover{border-color:var(--green);color:var(--green)}
+
+/* ---------- hours ---------- */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:20px}
+@media (max-width:760px){.week{grid-template-columns:repeat(4,1fr)}}
+.wd{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 12px;min-width:0}
+.wd.today{border-color:var(--green);border-width:2px}
+.wd small{display:block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.wd.today small{color:var(--green)}
+.wd b{display:block;font-family:var(--display);font-stretch:110%;font-weight:900;font-size:17px;text-transform:uppercase;margin-top:4px}
+.wd span{display:block;font-family:var(--mono);font-size:12.5px;margin-top:4px}
+.wd.off span{color:var(--mute)}
+.hours{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.hours{grid-template-columns:1fr}}
+.season{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;position:relative;min-width:0}
+.season.now{border-color:var(--green)}
+.season .badge{position:absolute;top:20px;right:20px;font-family:var(--mono);font-size:11px;font-weight:600;background:var(--green);color:var(--ink);padding:4px 8px;border-radius:4px;letter-spacing:.06em;text-transform:uppercase}
+.season h3{font-size:22px}
+.season .months{font-family:var(--mono);font-size:13px;color:var(--mute);margin:4px 0 16px}
+.day{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-family:var(--mono);font-size:14px}
+.day.today{color:var(--green);font-weight:600}
+.day.off span:last-child{color:var(--mute)}
+
+/* ---------- corporate ---------- */
+.corp{display:grid;grid-template-columns:.95fr 1.05fr;gap:36px;align-items:center}
+@media (max-width:900px){.corp{grid-template-columns:1fr}}
+.corp > div{min-width:0}
+.corp .photo{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;max-width:100%;position:relative}
+.corp .photo img{width:100%;height:100%;object-fit:cover}
+.checks{display:grid;gap:10px;margin-top:24px}
+.check{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.check .n{flex:none;font-family:var(--mono);font-weight:600;font-size:12px;color:var(--ink);background:var(--green);border-radius:4px;padding:4px 7px}
+.check p{margin:0;color:var(--mute);font-size:15px}
+.check p b{color:var(--fg)}
+
+/* ---------- faq ---------- */
+.faq{display:grid;gap:8px;max-width:880px}
+details{background:var(--ink);border:1px solid var(--line);border-radius:8px}
+details[open]{border-color:var(--line-2)}
+summary{cursor:pointer;list-style:none;padding:18px 20px;font-weight:700;font-size:16.5px;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--green);font-size:20px;line-height:1;flex:none}
+details[open] summary::after{content:"–"}
+details p{margin:0;padding:0 20px 18px;color:var(--mute);max-width:70ch}
+
+/* ---------- contact ---------- */
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+.cc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.cc .big{font-family:var(--display);font-stretch:110%;font-weight:900;font-size:26px;line-height:1.05;text-transform:uppercase;overflow-wrap:anywhere;user-select:all}
+.cc p{margin:0;color:var(--mute);font-size:14.5px}
+.copy{font-family:var(--mono);font-size:12px;font-weight:600;align-self:flex-start;margin-top:6px;background:transparent;color:var(--green);border:1px solid var(--green);border-radius:4px;padding:7px 10px;cursor:pointer}
+.copy:hover{background:var(--green);color:var(--ink)}
+.cc a.out{color:var(--green);font-weight:700;font-size:14px;text-decoration:none;margin-top:6px}
+.certs{display:flex;flex-wrap:wrap;gap:8px;margin-top:36px}
+.certs span{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--mute);border:1px solid var(--line);border-radius:4px;padding:7px 10px}
+.closing{margin-top:72px;padding-top:56px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.closing h2{font-size:clamp(40px,7vw,96px)}
+footer{border-top:1px solid var(--line);padding-block:26px 120px;color:var(--dim);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer img{height:28px;width:auto}
+@media (min-width:761px){footer{padding-block:26px}}
+
+/* ---------- mobile bar ---------- */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:8px;align-items:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(5,5,5,.96);border-top:1px solid var(--line-2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.mbar a.mt{flex:1;text-decoration:none;display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.mbar a.mt small{font-family:var(--mono);font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.mbar a.mt b{font-family:var(--display);font-stretch:115%;font-weight:900;font-size:22px}
+.mbar .btn{padding:13px 16px;font-size:13px}
+@media (max-width:760px){.mbar{display:flex}}
+
+.ar{width:.95em;height:.95em;flex:none;display:inline-block;vertical-align:-.12em;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mk{position:relative;display:inline-block;flex:none;width:30px;height:30px;border-radius:50%;background:var(--green)}
+.mk.yes::after{content:"";position:absolute;left:11px;top:7px;width:7px;height:13px;border:solid #050505;border-width:0 3px 3px 0;transform:rotate(45deg)}
+.mk.no{background:#050505}
+.mk.no::before,.mk.no::after{content:"";position:absolute;left:8px;top:13.5px;width:14px;height:3px;border-radius:2px;background:#FFFFFF;transform:rotate(45deg)}
+.mk.no::after{transform:rotate(-45deg)}
+.is-closed .dot{background:transparent!important;box-shadow:inset 0 0 0 2px currentColor}
+.tile span{flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap navrow">
+    <a class="brand" href="#top" aria-label="Recycle Geelong home"><img src="../assets/img/logo.png" alt="Recycle North Geelong"></a>
+    <div class="links">
+      <a class="l" href="#builder">Build a load</a>
+      <a class="l" href="#savings">Trade savings</a>
+      <a class="l" href="#hours">Hours</a>
+      <a class="l" href="#faq">FAQ</a>
+      <span class="status" id="navStatus" role="status"><span class="dot"></span><span id="navStatusText">Checking hours</span></span>
+      <a class="btn sm" href="https://recycle.net.au/trade-commercial-register/" target="_blank" rel="noopener">Get 15% off</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="bg" role="img" aria-label="Inside the Recycle North Geelong undercover transfer station"></div>
+  <div class="wrap herogrid">
+    <div class="herocopy">
+      <p class="eyebrow">116 Furner Ave · North Geelong transfer station</p>
+      <h1><span class="kick">Tip undercover. Pay half for sorted.</span>Recycle <span class="g">Geelong</span></h1>
+      <p class="lead"><b>Don't trash it, recycle it.</b> 20,000&nbsp;m² of undercover concrete hardstand, 60+ waste streams and a 100% landfill-free commitment. Build your load below and see the price before you hitch the trailer.</p>
+      <div class="ctas">
+        <a class="btn" href="#builder">Build my load <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+        <a class="btn ghost" href="https://recycle.net.au/trade-commercial-register/" target="_blank" rel="noopener">Register for 15% off</a>
+      </div>
+    </div>
+    <aside class="today" aria-label="Today at the station">
+      <span class="lbl" id="todayLbl">Today</span>
+      <div class="state" id="todayState"><span class="dot"></span><span id="todayWord">Checking</span></div>
+      <div class="sub" id="todaySub">&nbsp;</div>
+      <div class="rows">
+        <div class="row"><span>Today's hours</span><b id="todayHours">–</b></div>
+        <div class="row"><span>Season</span><b id="todaySeason">–</b></div>
+        <div class="row"><span>Sorted ute load</span><b>$99</b></div>
+        <div class="row"><span>With trade account</span><b class="g">$84.15</b></div>
+      </div>
+    </aside>
+  </div>
+  <div class="wrap" style="position:relative">
+    <div class="stats">
+      <div class="stat"><b>20,000m²</b><span>Undercover</span></div>
+      <div class="stat"><b>60+</b><span>Waste streams</span></div>
+      <div class="stat"><b>15%</b><span>Trade discount</span></div>
+      <div class="stat"><b>7 days</b><span>Sep – Mar</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
+
+<!-- SORT = HALF -->
+<section id="sort">
+  <div class="wrap sortgrid">
+    <div>
+      <p class="eyebrow">Sorted vs unsorted</p>
+      <div class="half">½</div>
+      <h2 style="margin-top:18px">Sort it. <span class="g">Pay half.</span></h2>
+      <p class="lead">Every sorted load on the price list costs about half the unsorted rate. Separate it at the job and keep the difference.</p>
+    </div>
+    <div>
+      <div class="legend"><span><i class="ls"></i>Sorted</span><span><i class="lu"></i>Unsorted</span></div>
+      <div class="bars pre" id="bars"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDER -->
+<section class="band" id="builder">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Load builder</p>
+      <h2>Build your load. <span class="g">Get the price.</span></h2>
+      <p class="lead">Add the main load, then tyres, mattresses, gas bottles and anything else in the tray. Prices come straight from the published price list.</p>
+    </div>
+    <div class="builder">
+      <div class="pane">
+        <div class="btabs" role="tablist" aria-label="Load categories" id="btabs"></div>
+        <div class="bbody" id="bbody"></div>
+      </div>
+      <aside class="docket" id="docket" aria-live="polite">
+        <div class="dhead">
+          <div><b>Recycle North Geelong</b><small id="dDate">Load docket</small><span class="example" id="dExample">Example load · change anything</span></div>
+          <button class="clear" id="dClear">Clear</button>
+        </div>
+        <div class="lines" id="dLines"></div>
+        <div class="sumrow"><span>Subtotal</span><span id="dSub" class="num">$0.00</span></div>
+        <div class="acc">
+          <span class="lbl" style="color:var(--paper-mute)">Account</span>
+          <div class="seg" id="dAcc" role="group" aria-label="Account type">
+            <button data-acc="none">None</button>
+            <button data-acc="res">Resident 10%</button>
+            <button data-acc="trade">Trade 15%</button>
+          </div>
+        </div>
+        <div class="sumrow disc" id="dDiscRow"><span id="dDiscLbl">Trade discount</span><span id="dDisc" class="num">−$0.00</span></div>
+        <div class="tot"><small>Total</small><b id="dTotal">$0.00</b></div>
+        <div class="nudge" id="dNudge" hidden></div>
+        <a class="btn dark" href="https://recycle.net.au/book-now" target="_blank" rel="noopener">Book this drop-off <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+        <p class="fine">Indicative only, from the published price list. Discount shown across the whole docket. Final price is confirmed on site.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- SAVINGS -->
+<section id="savings">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Trade savings</p>
+      <h2>What 15% is worth <span class="g">to your business</span></h2>
+      <p class="lead">Set how often you tip and what a typical load costs. The account is free, so this is money back from day one.</p>
+    </div>
+    <div class="savegrid">
+      <div class="calc">
+        <label class="lbl" for="loads">Loads per week</label>
+        <div class="range"><input type="range" id="loads" min="1" max="40" step="1" value="5"><output id="loadsOut" for="loads" class="num">5</output></div>
+        <label class="lbl" for="spend">Average spend per load</label>
+        <div class="range"><input type="range" id="spend" min="19" max="1500" step="1" value="149"><output id="spendOut" for="spend" class="num">$149</output></div>
+        <button class="useDocket" id="useDocket">Use my docket subtotal</button>
+        <div class="yr">
+          <span class="lbl">You'd save per year</span>
+          <b id="yrSave">$5,811</b>
+          <p id="yrNote">5 loads a week at $149, across 52 weeks.</p>
+        </div>
+      </div>
+      <div class="offer trade">
+        <span class="pct">15%</span>
+        <h3>Trade &amp; commercial account</h3>
+        <p>For builders, landscapers, cleaners, property managers, removalists and any business with an ABN.</p>
+        <ul>
+          <li>15% off every load</li>
+          <li>Priority service options</li>
+          <li>Commercial recycling updates</li>
+          <li>Register in minutes: name, business, ABN, contact</li>
+        </ul>
+        <a class="btn dark" href="https://recycle.net.au/trade-commercial-register/" target="_blank" rel="noopener">Register your business <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+      </div>
+    </div>
+    <div class="resline">
+      <p><span class="pc">10%</span><b>Local residents</b> in Greater Geelong, Queenscliff, the Surf Coast, Golden Plains, Wyndham and Colac Otway save 10%.</p>
+      <a class="btn ghost sm" href="https://recycle.net.au/residence-register-now/" target="_blank" rel="noopener">Register as a resident <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Inside the shed</p>
+      <h2>Every stream <span class="g">has its bay</span></h2>
+      <p class="lead">20,000 m² under one roof, with a signed bay for each material. Tap a photo to look closer.</p>
+    </div>
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="bar"><span id="lbCap"></span><button class="lbb" id="lbClose">Close</button></div>
+  <div class="stage"><img id="lbImg" alt=""></div>
+  <div class="nav2"><button class="lbb" id="lbPrev"><svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5"/></svg> Prev</button><button class="lbb" id="lbNext">Next <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button></div>
+</div>
+
+<!-- HOURS -->
+<section class="band" id="hours">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Opening hours</p>
+      <h2>Six days in winter. <span class="g">Seven in summer.</span></h2>
+      <p class="lead">Sundays open 9am–1pm from 1 September to 31 March.</p>
+    </div>
+    <span class="lbl">This week</span>
+    <div class="week" id="week"></div>
+    <div class="hours">
+      <div class="season" id="sSummer"><h3>Summer season</h3><p class="months">1 September – 31 March · 7 days</p><div id="dSummer"></div></div>
+      <div class="season" id="sWinter"><h3>Winter season</h3><p class="months">1 April – 31 August · 6 days</p><div id="dWinter"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="head"><p class="eyebrow">Before you come</p><h2>Quick <span class="g">answers</span></h2></div>
+    <div class="faq">
+      <details open><summary>Do I need to sort my load?</summary><p>You'll pay about half if you do. A sorted ute load is $99; the same load unsorted is $199. Vans, trailers and trucks are $99 per m³ sorted and $199 per m³ unsorted. Mixed construction and demolition waste isn't accepted at all.</p></details>
+      <details><summary>What can go in an unsorted load?</summary><p>Mixed household junk: mattresses, whitegoods, clothing and homewares, general household rubbish, furniture and books. Green waste is accepted in utes, trailers and tip trucks.</p></details>
+      <details><summary>How do I get the 15% trade discount?</summary><p>Register a free trade and commercial account online with your name, business name, ABN and contact details. Residents in the local council areas can register for 10% off.</p></details>
+      <details><summary>Are you open on Sundays?</summary><p>From 1 September to 31 March, Sundays are 9am–1pm. From 1 April to 31 August the site is closed on Sundays and open Monday to Saturday, 7:30am–4pm.</p></details>
+      <details><summary>Can I tip in my truck?</summary><p>Yes, if it's 4,500kg GVM or under. Cars, wagons, utes, single and dual-axle trailers, tipping trailers, vans, and tip or box trucks up to 4,500kg GVM are all accepted. Trucks over 4,500kg GVM, skip bin trucks and garbage trucks can't tip here. Semi-trailers and B-Doubles are for corporate deliveries only, so call Nigel Taylor on 0427 888 222 first.</p></details>
+      <details><summary>What's free to drop off?</summary><p>Whitegoods, clean scrap metal, car batteries, printer cartridges, phones, TVs and LED screens, plus clean cardboard and EPS polystyrene up to 0.5 m³ each and up to 100 litres of architectural paint through PaintBack.</p></details>
+      <details><summary>Do you take asbestos or chemicals?</summary><p>No. Asbestos, hazardous chemicals, solvents, fuels, pesticides and herbicides, contaminated soil, medical and radioactive waste, unlabelled chemicals, weapons and mercury switches are not accepted. Neither are mixed construction and demolition loads.</p></details>
+      <details><summary>Do you handle corporate e-waste?</summary><p>Yes. E-waste is processed to AS 5377, hard drives are destroyed or sanitised to NIST 800-88, and Certificates of Destruction are supplied. Palletised loads are unloaded by forklift. Call Nigel Taylor on 0427 888 222.</p></details>
+      <details><summary>What happens to what I drop off?</summary><p>It's sorted into dedicated streams for recycling under a 100% landfill-free commitment. Reusable items go to local charities and housing services through the Freecycle program.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="head"><p class="eyebrow">Find us</p><h2>116 Furner Ave, <span class="g">North Geelong</span></h2></div>
+    <div class="contact">
+      <div class="cc">
+        <span class="lbl">Address</span>
+        <span class="big">116 Furner Avenue</span>
+        <p>North Geelong VIC 3215</p>
+        <a class="out" href="https://www.google.com/maps/search/?api=1&amp;query=116+Furner+Avenue+North+Geelong+VIC+3215" target="_blank" rel="noopener">Get directions <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+      </div>
+      <div class="cc">
+        <span class="lbl">Trade &amp; corporate</span>
+        <span class="big">0427 888 222</span>
+        <p>Nigel Taylor, Director, Corporate &amp; Trade Recycling</p>
+        <button class="copy" data-copy="0427 888 222">Copy number</button>
+      </div>
+      <div class="cc">
+        <span class="lbl">General &amp; bookings</span>
+        <span class="big">0460 555 222</span>
+        <p>Book a drop-off online at recycle.net.au</p>
+        <button class="copy" data-copy="0460 555 222">Copy number</button>
+      </div>
+    </div>
+    <div class="certs"><span>ISO 9001</span><span>ISO 14001</span><span>ISO 45001</span><span>AS/NZS 5377</span><span>EPA VIC R000312600</span><span>PaintBack partner</span></div>
+    <div class="closing">
+      <h2>Don't trash it.<br><span class="g">Recycle it.</span></h2>
+      <a class="btn" href="https://recycle.net.au/trade-commercial-register/" target="_blank" rel="noopener">Register for 15% off <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="../assets/img/logo.png" alt="Recycle North Geelong">
+    <span>116 Furner Avenue, North Geelong VIC 3215 · <a href="https://recycle.net.au" target="_blank" rel="noopener">recycle.net.au</a></span>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="mt" href="#docket"><small>Your docket</small><b id="mTotal">$0.00</b></a>
+  <a class="btn" href="https://recycle.net.au/trade-commercial-register/" target="_blank" rel="noopener">Get 15% off</a>
+</div>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+function money(n){return "$"+n.toLocaleString("en-AU",{minimumFractionDigits:2,maximumFractionDigits:2})}
+function money0(n){return "$"+Math.round(n).toLocaleString("en-AU")}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+
+/* ================= PRICE LIST (recycle.net.au/price-list) ================= */
+var VEH=[
+  {id:"none",n:"No main load",v:"Items only",s:0,u:0},
+  {id:"b120",n:"Wheelie bin 120L",v:"0.125 m³",s:19,u:null},
+  {id:"b240",n:"Wheelie bin 240L",v:"0.25 m³",s:29,u:null},
+  {id:"boot",n:"Car boot",v:"0.5 m³",s:49,u:null},
+  {id:"wag",n:"Station wagon boot",v:"0.75 m³",s:69,u:null},
+  {id:"ute",n:"Ute / small trailer",v:"1 m³",s:99,u:199},
+  {id:"uteh",n:"Ute / small trailer, caged or heaped",v:"1.5 m³",s:149,u:299},
+  {id:"lt",n:"Large trailer",v:"1.5 m³",s:149,u:299},
+  {id:"lth",n:"Large trailer, caged or heaped",v:"2.5 m³",s:249,u:499},
+  {id:"m3",n:"Van, trailer or truck",v:"per m³",s:99,u:199}
+];
+var GROUPS=[
+  {id:"matt",n:"Mattresses",items:[["m_cot","Cot mattress",10],["m_sgl","Single mattress",29],["m_dq","Double / queen mattress",39],["m_king","King mattress",49],["m_latex","Latex mattress",69]]},
+  {id:"tyre",n:"Tyres",items:[["t_moto","Motorbike tyre",12],["t_off","Car tyre, off rim",19],["t_on","Car tyre, on rim",25],["t_lt","Light truck tyre",44],["t_ht","Heavy truck tyre",59]],note:"Tractor tyres are priced on application."},
+  {id:"gas",n:"Gas & pressurised",items:[["g_s","Gas bottle, under 9kg",15],["g_l","Gas bottle, over 9kg",25],["e_s","Fire extinguisher, under 3kg",10],["e_l","Fire extinguisher, over 3kg",15],["n_s","Nitrous canister, under 0.5kg/2L",10],["n_l","Nitrous canister, over 0.5kg/2L",20]]},
+  {id:"liq",n:"Oils & liquids",items:[["l_paint","Paint, architectural (litres)",1,10,"L","paint"],["l_motor","Motor oil (litres)",1,5,"L"],["l_cook","Cooking oil (litres)",1,5,"L"],["l_cool","Coolant (litres)",3.5,5,"L"],["l_aero","Aerosol cans",1,1,""]],note:"First 100 litres of architectural or decorative paint are free through PaintBack. $1 per litre over that."},
+  {id:"oth",n:"Other items",items:[["o_rag","Oily rags, 34L bag",30],["o_fs","Oil filter, small",2],["o_fl","Oil filter, large",3],["o_sol","Solar panel",39]]},
+  {id:"free",n:"Free items",items:[["f_wg","Whitegoods",0],["f_sm","Scrap metal, clean",0],["f_cb","Cardboard, up to 0.5 m³",0],["f_ps","Polystyrene EPS, up to 0.5 m³",0],["f_cbat","Car battery",0],["f_pc","Printer cartridge",0],["f_ew","Phone, TV or LED screen",0]],note:"Free within the published limits. Clean and separated."}
+];
+var ITEM={};GROUPS.forEach(function(g){g.items.forEach(function(i){ITEM[i[0]]={id:i[0],n:i[1],p:i[2],step:i[3]||1,unit:i[4]||"",kind:i[5]||"",g:g.id}})});
+var ACC={none:{n:"No account",d:0},res:{n:"Resident discount 10%",d:.10},trade:{n:"Trade discount 15%",d:.15}};
+
+/* ================= STATE ================= */
+var DEFAULT={sorted:true,veh:"uteh",m3:3,green:0,build:0,q:{t_on:2,m_dq:1,f_wg:1,g_s:1},acc:"trade",tab:"load",example:true,loads:5,spend:149};
+var st=JSON.parse(JSON.stringify(DEFAULT));
+try{var sv=JSON.parse(localStorage.getItem("rg-docket-v2")||"null");if(sv&&typeof sv==="object"){for(var k in DEFAULT){if(k in sv)st[k]=sv[k]}}}catch(e){}
+function save(){try{localStorage.setItem("rg-docket-v2",JSON.stringify(st))}catch(e){}}
+function touch(){st.example=false}
+
+/* ================= SORTED vs UNSORTED BARS ================= */
+(function(){
+  var rows=VEH.filter(function(v){return v.u});var max=499;
+  $("bars").innerHTML=rows.map(function(v){
+    return '<div class="bar-row"><div class="bn"><b>'+esc(v.n)+'</b><small>'+esc(v.v)+'</small></div>'+
+      '<div class="track2"><div class="b s" style="width:'+(v.s/max*100)+'%">$'+v.s+'</div><div class="b u" style="width:'+(v.u/max*100)+'%">$'+v.u+'</div></div>'+
+      '<div class="saveTag">Save $'+(v.u-v.s)+'</div></div>';
+  }).join("");
+  var bars=$("bars");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){bars.classList.remove("pre");io.disconnect()}})},{threshold:.3});
+    io.observe(bars);
+    setTimeout(function(){bars.classList.remove("pre")},2500);
+  }else bars.classList.remove("pre");
+})();
+
+/* ================= TICKER ================= */
+(function(){
+  var w=["Timber & pallets","Green waste","Scrap metal","Cardboard","Whitegoods","Mattresses","Tyres","E-waste","Paint","Gas bottles","Solar panels","Office furniture","Polystyrene","Motor oil","Car batteries","Glass, bottles & cans","Sorted building materials","Plastics"];
+  var h=w.map(function(x){return "<span>"+esc(x)+"</span>"}).join("");
+  $("ticker").innerHTML=h+h;
+})();
+
+/* ================= BUILDER ================= */
+var TABS=[{id:"load",n:"Main load"}].concat(GROUPS.map(function(g){return {id:g.id,n:g.n}}));
+function tabCount(id){
+  if(id==="load")return (st.veh!=="none"?1:0)+(st.green>0?1:0)+(st.build>0?1:0);
+  var c=0;GROUPS.forEach(function(g){if(g.id===id)g.items.forEach(function(i){if((st.q[i[0]]||0)>0)c++})});return c;
+}
+function renderTabs(){
+  $("btabs").innerHTML=TABS.map(function(t){
+    var c=tabCount(t.id);
+    return '<button class="btab" role="tab" aria-selected="'+(st.tab===t.id)+'" data-tab="'+t.id+'">'+esc(t.n)+'<span class="ct" data-z="'+(c?0:1)+'">'+c+'</span></button>';
+  }).join("");
+}
+$("btabs").addEventListener("click",function(e){var b=e.target.closest(".btab");if(!b)return;st.tab=b.dataset.tab;renderTabs();renderBody();save()});
+
+function stepper(id,label,sub,val,on){
+  return '<div class="stp'+(on?" on":"")+'"><div><b>'+esc(label)+'</b><small>'+sub+'</small></div><div class="ctrl"><button type="button" data-dec="'+id+'" aria-label="Remove one '+esc(label)+'">−</button><output id="o_'+id+'">'+val+'</output><button type="button" data-inc="'+id+'" aria-label="Add one '+esc(label)+'">+</button></div></div>';
+}
+function renderBody(){
+  var h="";
+  if(st.tab==="load"){
+    h+='<span class="lbl">Load type</span><div class="seg" id="sortSeg" role="group" aria-label="Sorted or unsorted"><button data-sorted="1" aria-pressed="'+st.sorted+'">Sorted</button><button data-sorted="0" aria-pressed="'+(!st.sorted)+'">Unsorted</button></div><div class="gap"></div>';
+    h+='<span class="lbl">Vehicle</span><div class="opts" id="vehOpts">'+VEH.map(function(v){
+      var price=v.id==="none"?"Items only":(st.sorted?v.s:v.u);
+      var dis=!st.sorted&&v.u===null;
+      var sub=v.id==="none"?"Add items in the other tabs":(dis?"Sorted price only":v.v+" · $"+price+(v.id==="m3"?"/m³":""));
+      return '<div class="opt"><input type="radio" name="veh" id="veh-'+v.id+'" value="'+v.id+'"'+(st.veh===v.id?" checked":"")+(dis?" disabled":"")+'><label for="veh-'+v.id+'"><b>'+esc(v.n)+'</b><small>'+sub+'</small></label></div>';
+    }).join("")+'</div>';
+    h+='<div id="m3Wrap"'+(st.veh==="m3"?"":" hidden")+'><div class="gap"></div><label class="lbl" for="m3">Volume</label><div class="range"><input type="range" id="m3" min="0.5" max="30" step="0.5" value="'+st.m3+'"><output id="m3Out" for="m3">'+Number(st.m3).toFixed(1)+' m³</output></div></div>';
+    h+='<div class="gap"></div><span class="lbl">Add by the cubic metre</span><div class="steps">'+
+      stepper("green","Green waste","$79 per m³ · step 0.5 m³",st.green.toFixed(1)+" m³",st.green>0)+
+      stepper("build","Sorted building materials","$199 per m³ · bricks, timber, tiles, carpet, roof tiles",st.build.toFixed(1)+" m³",st.build>0)+'</div>';
+    h+='<p class="note"><b>Mixed construction and demolition waste is not accepted.</b> Sort bricks, concrete, soil and plaster before you arrive.</p>';
+  }else{
+    var g=GROUPS.filter(function(x){return x.id===st.tab})[0];
+    h+='<div class="steps">'+g.items.map(function(i){
+      var it=ITEM[i[0]],q=st.q[it.id]||0;
+      var sub=it.p===0?"Free":(it.unit==="L"?"$"+it.p.toFixed(2).replace(".00","")+" per litre":"$"+it.p+" each");
+      if(it.kind==="paint")sub="First 100 L free · $1 per litre after";
+      return stepper(it.id,it.n,sub,q+(it.unit?" "+it.unit:""),q>0);
+    }).join("")+'</div>';
+    if(g.note)h+='<p class="note">'+esc(g.note)+'</p>';
+  }
+  $("bbody").innerHTML=h;
+}
+$("bbody").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  if(b.dataset.sorted!==undefined){
+    st.sorted=b.dataset.sorted==="1";
+    var cur=VEH.filter(function(v){return v.id===st.veh})[0];
+    if(!st.sorted&&cur&&cur.u===null)st.veh="ute";
+    touch();renderBody();update();return;
+  }
+  var id=b.dataset.inc||b.dataset.dec;if(!id)return;
+  var dir=b.dataset.inc?1:-1;
+  if(id==="green"||id==="build"){st[id]=Math.max(0,Math.round((st[id]+dir*0.5)*2)/2)}
+  else{var it=ITEM[id];st.q[id]=Math.max(0,(st.q[id]||0)+dir*it.step)}
+  touch();renderBody();update();
+});
+$("bbody").addEventListener("change",function(e){
+  if(e.target.name==="veh"){st.veh=e.target.value;touch();renderBody();update()}
+});
+$("bbody").addEventListener("input",function(e){
+  if(e.target.id==="m3"){st.m3=parseFloat(e.target.value);$("m3Out").textContent=st.m3.toFixed(1)+" m³";touch();update()}
+});
+
+function compute(){
+  var lines=[],sub=0,sortedAlt=null;
+  var v=VEH.filter(function(x){return x.id===st.veh})[0]||VEH[0];
+  if(v.id!=="none"){
+    var unit=st.sorted?v.s:v.u,price,label;
+    if(v.id==="m3"){price=unit*st.m3;label=(st.sorted?"Sorted":"Unsorted")+" load · "+v.n;lines.push({n:label,d:st.m3.toFixed(1)+" m³ × $"+unit,p:price});
+      if(!st.sorted)sortedAlt=price-v.s*st.m3;}
+    else{price=unit;lines.push({n:v.n,d:(st.sorted?"Sorted":"Unsorted")+" · "+v.v,p:price});if(!st.sorted)sortedAlt=v.u-v.s;}
+    sub+=price;
+  }
+  if(st.green>0){var gp=st.green*79;lines.push({n:"Green waste",d:st.green.toFixed(1)+" m³ × $79",p:gp});sub+=gp}
+  if(st.build>0){var bp=st.build*199;lines.push({n:"Sorted building materials",d:st.build.toFixed(1)+" m³ × $199",p:bp});sub+=bp}
+  GROUPS.forEach(function(g){g.items.forEach(function(i){
+    var it=ITEM[i[0]],q=st.q[it.id]||0;if(!q)return;
+    var p,d;
+    if(it.kind==="paint"){var over=Math.max(0,q-100);p=over*1;d=q+" L"+(q>100?" · 100 L free, "+over+" L × $1":" · free via PaintBack")}
+    else if(it.p===0){p=0;d="Qty "+q}
+    else{p=q*it.p;d=(it.unit==="L"?q+" L × $"+it.p:q+" × $"+it.p)}
+    lines.push({n:it.n,d:d,p:p,free:p===0});sub+=p;
+  })});
+  var acc=ACC[st.acc]||ACC.none,disc=sub*acc.d;
+  return {lines:lines,sub:sub,disc:disc,total:sub-disc,acc:acc,sortedAlt:sortedAlt};
+}
+function update(){
+  var r=compute();
+  $("dLines").innerHTML=r.lines.length?r.lines.map(function(l){
+    return '<div class="ln"><span>'+esc(l.n)+'<small>'+esc(l.d)+'</small></span><span class="'+(l.free?"fr":"num")+'">'+(l.free?"FREE":money(l.p))+'</span></div>';
+  }).join(""):'<div class="ln emp"><span>Nothing on the docket yet. Pick a vehicle or add items.</span><span></span></div>';
+  $("dSub").textContent=money(r.sub);
+  document.querySelectorAll("#dAcc button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.acc===st.acc?"true":"false")});
+  $("dDiscRow").hidden=r.acc.d===0;
+  $("dDiscLbl").textContent=r.acc.n;
+  $("dDisc").textContent="−"+money(r.disc);
+  $("dTotal").textContent=money(r.total);
+  $("mTotal").textContent=money(r.total);
+  $("dExample").hidden=!st.example;
+  var n=[];
+  if(r.sortedAlt){n.push("<b>Sort it first and save "+money(r.sortedAlt*(1-r.acc.d))+".</b> Same load, sorted rate.")}
+  if(r.acc.d===0&&r.sub>0){n.push("<b>A free trade account takes "+money(r.sub*.15)+" off this docket.</b>")}
+  else if(st.acc==="res"&&r.sub>0){n.push("Trade rate would save another "+money(r.sub*.05)+".")}
+  var freeN=r.lines.filter(function(l){return l.free}).length;
+  if(freeN&&!n.length){n.push("<b>"+freeN+" free item"+(freeN>1?"s":"")+" on this docket.</b> Separate them on arrival.")}
+  $("dNudge").hidden=!n.length;$("dNudge").innerHTML=n.join(" ");
+  renderTabs();save();
+}
+$("dAcc").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;st.acc=b.dataset.acc;touch();update()});
+$("dClear").addEventListener("click",function(){st.veh="none";st.green=0;st.build=0;st.q={};st.example=false;st.tab="load";renderBody();update()});
+(function(){try{$("dDate").textContent="Load docket · "+new Intl.DateTimeFormat("en-AU",{timeZone:"Australia/Melbourne",weekday:"short",day:"numeric",month:"short",year:"numeric"}).format(new Date())}catch(e){}})();
+renderTabs();renderBody();update();
+
+/* ================= SAVINGS ================= */
+var loads=$("loads"),spend=$("spend");
+loads.value=st.loads;spend.value=st.spend;
+function sav(){
+  st.loads=parseInt(loads.value,10);st.spend=parseInt(spend.value,10);
+  $("loadsOut").textContent=st.loads;$("spendOut").textContent=money0(st.spend);
+  var yr=st.loads*52*st.spend*.15;
+  $("yrSave").textContent=money0(yr);
+  $("yrNote").textContent=st.loads+" load"+(st.loads>1?"s":"")+" a week at "+money0(st.spend)+", across 52 weeks. That's "+money0(yr/12)+" a month.";
+  save();
+}
+loads.addEventListener("input",sav);spend.addEventListener("input",sav);
+$("useDocket").addEventListener("click",function(){var s=Math.round(compute().sub);if(s<19)s=19;if(s>1500){spend.max=Math.ceil(s/100)*100}spend.value=s;sav()});
+sav();
+
+/* ================= GALLERY ================= */
+var GAL=[
+  ["../assets/img/hall.jpg","Tipping floor",""],["../assets/img/tradies.jpg","Trade unloading",""],["../assets/img/trailer.jpg","Trailer at the cardboard bay",""],
+  ["../assets/img/greenw.jpg","Green waste",""],["../assets/img/white.jpg","Whitegoods · free",""],["../assets/img/tyres.jpg","Tyres",""]
+];
+$("gal").innerHTML=GAL.map(function(g,i){return '<button class="'+g[2]+'" data-i="'+i+'" aria-label="View photo: '+esc(g[1])+'"><img src="'+g[0]+'" alt="'+esc(g[1])+'"><span class="cap">'+esc(g[1])+'</span></button>'}).join("");
+var lb=$("lb"),li=0,lastFocus=null;
+function show(i){li=(i+GAL.length)%GAL.length;$("lbImg").src=GAL[li][0];$("lbImg").alt=GAL[li][1];$("lbCap").textContent=GAL[li][1]+"  ·  "+(li+1)+" / "+GAL.length}
+$("gal").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;lastFocus=b;show(+b.dataset.i);lb.hidden=false;$("lbClose").focus()});
+function closeLb(){lb.hidden=true;if(lastFocus)lastFocus.focus()}
+$("lbClose").addEventListener("click",closeLb);
+$("lbPrev").addEventListener("click",function(){show(li-1)});
+$("lbNext").addEventListener("click",function(){show(li+1)});
+lb.addEventListener("click",function(e){if(e.target===lb||e.target.classList.contains("stage"))closeLb()});
+document.addEventListener("keydown",function(e){if(lb.hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")show(li-1);if(e.key==="ArrowRight")show(li+1)});
+
+/* ================= HOURS (Geelong time) ================= */
+var DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var SUMMER={0:[540,780],1:[450,1020],2:[450,1020],3:[450,1020],4:[450,1020],5:[450,1020],6:[450,1020]};
+var WINTER={0:null,1:[450,960],2:[450,960],3:[450,960],4:[450,960],5:[450,960],6:[450,960]};
+function fmt(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?"pm":"am",h12=h%12||12;return h12+(mm?":"+String(mm).padStart(2,"0"):"")+ap}
+function geelong(offsetDays){
+  var d=new Date(Date.now()+(offsetDays||0)*864e5);
+  try{
+    var o={};new Intl.DateTimeFormat("en-AU",{timeZone:"Australia/Melbourne",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric",hourCycle:"h23",weekday:"short"}).formatToParts(d).forEach(function(p){o[p.type]=p.value});
+    return {month:+o.month,day:+o.day,dow:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday],min:(+o.hour%24)*60+(+o.minute)};
+  }catch(e){return {month:d.getMonth()+1,day:d.getDate(),dow:d.getDay(),min:d.getHours()*60+d.getMinutes()}}
+}
+function isSummer(m){return m>=9||m<=3}
+function hoursFor(g){return (isSummer(g.month)?SUMMER:WINTER)[g.dow]}
+function table(id,S,today){
+  $(id).innerHTML=[1,2,3,4,5,6,0].map(function(d){var h=S[d];return '<div class="day'+(d===today?" today":"")+(h?"":" off")+'"><span>'+DAYS[d]+(d===today?" · today":"")+'</span><span>'+(h?fmt(h[0])+" – "+fmt(h[1]):"Closed")+'</span></div>'}).join("");
+}
+function hoursUpdate(){
+  var n=geelong(0),summer=isSummer(n.month),h=hoursFor(n);
+  table("dSummer",SUMMER,summer?n.dow:-1);table("dWinter",WINTER,summer?-1:n.dow);
+  var cur=$(summer?"sSummer":"sWinter"),oth=$(summer?"sWinter":"sSummer");
+  cur.classList.add("now");oth.classList.remove("now");
+  var ob=oth.querySelector(".badge");if(ob)ob.remove();
+  if(!cur.querySelector(".badge")){var s=document.createElement("span");s.className="badge";s.textContent="Current";cur.appendChild(s)}
+  var wk="";
+  for(var i=0;i<7;i++){var g=geelong(i),hh=hoursFor(g);wk+='<div class="wd'+(i===0?" today":"")+(hh?"":" off")+'"><small>'+(i===0?"Today":i===1?"Tomorrow":g.day+"/"+g.month)+'</small><b>'+DAYS[g.dow].slice(0,3)+'</b><span>'+(hh?fmt(hh[0])+"–"+fmt(hh[1]):"Closed")+'</span></div>'}
+  $("week").innerHTML=wk;
+  var open=!!(h&&n.min>=h[0]&&n.min<h[1]),next="";
+  if(!open){
+    if(h&&n.min<h[0])next="Opens "+fmt(h[0])+" today";
+    else for(var j=1;j<=7;j++){var gj=geelong(j),hj=hoursFor(gj);if(hj){next="Opens "+(j===1?"tomorrow":DAYS[gj.dow])+" at "+fmt(hj[0]);break}}
+  }
+  ["navStatus","todayState"].forEach(function(id){var el=$(id);el.classList.toggle("is-open",open);el.classList.toggle("is-closed",!open)});
+  $("navStatusText").textContent=open?"Open now · until "+fmt(h[1]):"Closed · "+next.replace("Opens ","opens ");
+  $("todayLbl").textContent="Today · "+DAYS[n.dow];
+  $("todayWord").textContent=open?"Open now":"Closed";
+  $("todaySub").textContent=open?"Gates close at "+fmt(h[1]):next;
+  $("todayHours").textContent=h?fmt(h[0])+" – "+fmt(h[1]):"Closed";
+  $("todaySeason").textContent=summer?"Summer · 7 days":"Winter · 6 days";
+}
+hoursUpdate();setInterval(hoursUpdate,60000);
+
+/* ================= COPY ================= */
+document.querySelectorAll(".copy").forEach(function(b){
+  b.addEventListener("click",function(){
+    var t=b.dataset.copy,orig=b.textContent;
+    function done(){b.textContent="Copied";setTimeout(function(){b.textContent=orig},1600)}
+    function fallback(){var big=b.parentNode.querySelector(".big");var r=document.createRange();r.selectNodeContents(big);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected, now copy"}
+    try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+  });
+});
+})();
+</script>
+
+</body>
+</html>
