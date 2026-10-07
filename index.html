@@ -1,932 +1,475 @@
 <!doctype html>
-<html lang="en-AU">
+<html lang="en-AU" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Recycle North Geelong | Transfer station and recycling centre, Geelong</title>
+<meta name="description" content="Recycle North Geelong: Geelong's undercover public transfer station and recycling centre. Free drop-off for whitegoods, scrap metal, cardboard and more. Open Monday to Saturday, 7:30am to 5pm.">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="assets/img/logo.png">
-<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Recycle Geelong Site</title>
-<meta name="description" content="Phase 1 prototype of the Recycle North Geelong website: home, prices, what we take, trade, and hours and location.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500;600&display=swap">
-<style>
-/* Layout: one system across five pages. White pages for reading, black signage boards for prices
-   and tools, JUNK green only as a highlighter and signal. Condensed display type like the bay signs. */
-:root{
-  --paper:#FFFFFF;
-  --ink:#050505;
-  --board:#111111;
-  --board-2:#1b1b1b;
-  --grey:#f4f4f4;
-  --rule:#e4e4e4;
-  --mute:#5c5c5c;
-  --bmute:#a3a3a3;
-  --bline:rgba(255,255,255,.12);
-  --green:#00ED00;
-  --green-ink:#050505;
-  --green-soft:transparent;
-  --stop:#050505;
-  --stop-2:#FFFFFF;
-  --display:"Archivo","Arial Narrow","Helvetica Neue",Arial,sans-serif;
-  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  color-scheme:light;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--paper)}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
-img{max-width:100%;display:block}
-a{color:inherit}
-button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:3px}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
-section{padding-block:72px}
-@media (max-width:700px){section{padding-block:52px}}
-.grey{background:var(--grey);border-block:1px solid var(--rule)}
-.dark{background:var(--ink);color:#fff}
-
-/* type */
-.label{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
-.label.g{color:var(--green)}
-.hl{background:var(--green);color:var(--ink);padding:0 .1em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-h1,h2,h3{font-family:var(--display);font-stretch:68%;font-weight:900;text-transform:uppercase;margin:0;text-wrap:balance}
-h1{font-size:clamp(56px,10vw,128px);line-height:.86}
-h2{font-size:clamp(38px,6vw,72px);line-height:.9}
-h3{font-size:25px;line-height:.98}
-.lead{font-size:clamp(17px,1.6vw,19px);color:var(--mute);max-width:58ch;margin:18px 0 0}
-.lead b{color:var(--ink)}
-.dark .lead{color:#cccccc}.dark .lead b{color:#fff}
-.sh{margin-bottom:34px;max-width:880px}
-.sh .label{display:block;margin-bottom:10px}
-.num{font-variant-numeric:tabular-nums}
-.fine{font-size:12.5px;color:var(--mute);margin:14px 0 0}
-
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--ink);color:var(--green);border:2px solid var(--ink);font-family:var(--display);font-stretch:90%;font-weight:900;text-transform:uppercase;letter-spacing:.03em;font-size:16px;padding:15px 24px;border-radius:4px;text-decoration:none;cursor:pointer;transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}
-.btn.g{background:var(--green);color:var(--ink);border-color:var(--green)}
-.btn.line{background:transparent;color:var(--ink)}
-.dark .btn.line{color:#fff;border-color:#fff}
-.btn.sm{padding:9px 14px;font-size:13px}
-.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-
-/* nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--ink);color:#fff}
-.navrow{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
-.brand img{height:34px;width:auto}
-.links{display:flex;align-items:center;gap:4px}
-.links a.l{color:#d0d0d0;text-decoration:none;font-family:var(--display);font-stretch:85%;font-weight:800;text-transform:uppercase;font-size:15px;letter-spacing:.02em;padding:9px 12px;border-radius:4px}
-.links a.l:hover{color:#fff}
-.links a.l[aria-current="page"]{color:var(--ink);background:var(--green)}
-.nr{display:flex;align-items:center;gap:12px}
-.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:600;padding:7px 11px;border-radius:30px;border:1px solid var(--bline);white-space:nowrap}
-.dot{width:9px;height:9px;border-radius:50%;background:#777777;flex:none}
-.is-open .dot{background:var(--green);animation:pulse 2s infinite}
-.is-closed .dot{background:var(--stop-2)}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,237,0,.6)}70%{box-shadow:0 0 0 8px rgba(0,237,0,0)}100%{box-shadow:0 0 0 0 rgba(0,237,0,0)}}
-.menuBtn{display:none;background:transparent;border:1px solid var(--bline);color:#fff;border-radius:4px;padding:8px 12px;font-family:var(--mono);font-size:12px;font-weight:600;cursor:pointer}
-.mmenu{display:none;border-top:1px solid var(--bline);padding-block:8px 16px}
-.mmenu a{display:block;padding:12px 0;border-bottom:1px solid var(--bline);text-decoration:none;font-family:var(--display);font-stretch:80%;font-weight:900;text-transform:uppercase;font-size:24px}
-.mmenu a[aria-current="page"]{color:var(--green)}
-@media (max-width:1020px){.links{display:none}.menuBtn{display:inline-block}.mmenu.open{display:block}}
-@media (max-width:520px){.nr .btn{display:none}.brand img{height:28px}.status{font-size:11px;padding:6px 9px}}
-
-.page[hidden]{display:none!important}
-
-/* ---------- HOME ---------- */
-.hhero{position:relative;overflow:hidden;color:#fff;background:var(--ink)}
-.hhero .bg{position:absolute;inset:0;background:url("assets/img/hero.jpg") center 55%/cover no-repeat}
-.hhero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,5,5,.93) 0%,rgba(5,5,5,.72) 50%,rgba(5,5,5,.35) 100%),linear-gradient(180deg,rgba(5,5,5,0) 60%,rgba(5,5,5,.95) 100%)}
-.hgrid{position:relative;display:grid;grid-template-columns:1.35fr .65fr;gap:40px;align-items:end;padding-block:96px 56px}
-@media (max-width:940px){.hgrid{grid-template-columns:1fr;padding-block:64px 40px}}
-.hgrid > div{min-width:0}
-.hhero .kick{display:block;font-stretch:68%;font-weight:800;font-size:.34em;line-height:1.05;margin-bottom:10px;color:#fff}
-.today{background:rgba(5,5,5,.86);border:1px solid var(--bline);border-radius:12px;padding:22px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.today .state{display:flex;align-items:center;gap:12px;font-family:var(--display);font-stretch:68%;font-weight:900;font-size:52px;line-height:.9;text-transform:uppercase;margin-top:10px}
-.today .state .dot{width:14px;height:14px}
-.today .sub{font-family:var(--mono);font-size:13px;color:var(--bmute);margin-top:6px}
-.today .row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--bline);font-size:14px}
-.today .row:first-of-type{margin-top:14px}
-.today .row span{color:var(--bmute)}
-.today .row b{font-family:var(--mono);font-weight:600}
-.today .row b.g{color:var(--green)}
-
-.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media (max-width:860px){.paths{grid-template-columns:1fr}}
-.path{display:flex;flex-direction:column;gap:10px;padding:26px;border:2px solid var(--ink);border-radius:10px;text-decoration:none;min-width:0;transition:transform .15s,background .15s}
-.path:hover{transform:translateY(-3px)}
-.path.trade{background:var(--green);border-color:var(--green)}
-.path .big{font-family:var(--display);font-stretch:68%;font-weight:900;font-size:64px;line-height:.85}
-.path p{margin:0;color:var(--mute);font-size:15px}
-.path.trade p{color:var(--green-ink);font-weight:600}
-.path .go{margin-top:auto;font-family:var(--display);font-stretch:85%;font-weight:900;text-transform:uppercase;font-size:16px}
-
-.sortgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center}
-@media (max-width:900px){.sortgrid{grid-template-columns:1fr;gap:26px}}
-.sortgrid > div{min-width:0}
-.half{font-family:var(--display);font-stretch:70%;font-weight:900;font-size:clamp(110px,16vw,200px);line-height:.78}
-.legend{display:flex;gap:18px;font-family:var(--mono);font-size:12px;color:var(--mute);margin-bottom:16px}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:7px;vertical-align:-1px}
-.ls{background:var(--green)}.lu{border:2px solid var(--ink)}
-.bars{display:grid;gap:16px}
-.brow{display:grid;grid-template-columns:170px 1fr 80px;gap:14px;align-items:center}
-@media (max-width:560px){.brow{grid-template-columns:1fr 70px}.brow .bn{grid-column:1/-1}}
-.bn b{display:block;font-size:14.5px}.bn small{font-family:var(--mono);font-size:11.5px;color:var(--mute)}
-.bt{display:grid;gap:5px;min-width:0}
-.b{height:17px;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-family:var(--mono);font-size:11px;font-weight:600}
-.b.s{background:var(--green)}.b.u{border:2px solid var(--ink)}
-.stag{font-family:var(--mono);font-size:12.5px;font-weight:600;text-align:right}
-
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-@media (max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
-.tile{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/3;max-width:100%;background:var(--grey);border:0;padding:0;cursor:pointer;text-align:left}
-.tile img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.tile:hover img{transform:scale(1.05)}
-.tile span{position:absolute;left:10px;bottom:10px;right:10px;display:flex;justify-content:space-between;gap:8px;align-items:flex-end}
-.tile b{background:var(--ink);color:#fff;font-family:var(--display);font-stretch:80%;font-weight:900;text-transform:uppercase;font-size:17px;padding:6px 9px;border-radius:3px}
-.tile em{font-style:normal;background:var(--green);color:var(--ink);font-family:var(--mono);font-size:11.5px;font-weight:600;padding:4px 7px;border-radius:3px;white-space:nowrap}
-
-.band{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-
-/* ---------- boards (dark tools) ---------- */
-.seg{display:inline-flex;border:2px solid var(--ink);border-radius:6px;overflow:hidden;flex-wrap:wrap}
-.seg button{background:var(--paper);border:0;padding:11px 15px;font-family:var(--display);font-stretch:85%;font-weight:900;text-transform:uppercase;font-size:15px;cursor:pointer}
-.seg button + button{border-left:2px solid var(--ink)}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--green)}
-.bhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:24px}
-.bhead > div{min-width:0}
-.board{background:var(--board);color:#fff;border-radius:12px;padding:28px;display:grid;grid-template-columns:1.25fr 1fr;gap:28px}
-@media (max-width:900px){.board{grid-template-columns:1fr;padding:20px}}
-.board > div{min-width:0}
-.bsec + .bsec{margin-top:26px}
-.bsec h3{color:#fff;font-size:23px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:10px;border-bottom:2px solid var(--green)}
-.bsec h3 small{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--bmute)}
-.tbl{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.board th{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--bmute);text-align:right;padding:10px 0 6px 12px}
-.board th:first-child{text-align:left;padding-left:0}
-.board td{padding:9px 0 9px 12px;border-bottom:1px solid var(--bline);text-align:right;white-space:nowrap}
-.board td:first-child{text-align:left;padding-left:0;white-space:normal}
-.board td:first-child small{display:block;font-family:var(--mono);font-size:11px;color:var(--bmute)}
-.p{font-family:var(--display);font-stretch:75%;font-weight:900;font-size:22px;line-height:1}
-.p.disc{color:var(--green)}
-.was{display:block;font-family:var(--mono);font-size:11px;color:var(--bmute);text-decoration:line-through;margin-top:2px}
-.onsite{font-family:var(--mono);font-size:11px;color:var(--bmute)}
-.bnote{font-size:13px;color:var(--bmute);margin:12px 0 0}.bnote b{color:#fff}
-.freechips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.freechips span{font-size:13px;font-weight:700;background:var(--green);color:var(--ink);border-radius:3px;padding:5px 9px}
-
-/* builder */
-.builder{display:grid;grid-template-columns:1.3fr .7fr;gap:18px;align-items:start}
-@media (max-width:980px){.builder{grid-template-columns:1fr}}
-.pane{background:var(--board);color:#fff;border-radius:12px;overflow:hidden;min-width:0}
-.btabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--bline);scrollbar-width:none}
-.btabs::-webkit-scrollbar{display:none}
-.btab{flex:none;background:transparent;border:0;border-bottom:3px solid transparent;color:var(--bmute);font-family:var(--display);font-stretch:85%;font-weight:900;font-size:15px;text-transform:uppercase;padding:15px 16px 12px;cursor:pointer;display:flex;align-items:center;gap:8px}
-.btab:hover{color:#fff}
-.btab[aria-selected="true"]{color:#fff;border-bottom-color:var(--green)}
-.ct{font-family:var(--mono);font-size:11px;background:var(--green);color:var(--ink);border-radius:10px;padding:1px 7px}
-.ct[data-z="1"]{display:none}
-.bbody{padding:22px}
-.blbl{display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--bmute);margin:0 0 10px}
-.dseg{display:inline-flex;background:var(--ink);border:1px solid var(--bline);border-radius:8px;padding:4px;gap:4px}
-.dseg button{background:transparent;border:0;border-radius:6px;padding:9px 15px;cursor:pointer;font-family:var(--display);font-stretch:85%;font-weight:900;font-size:14px;text-transform:uppercase;color:var(--bmute)}
-.dseg button[aria-pressed="true"]{background:var(--green);color:var(--ink)}
-.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px}
-.opt{position:relative}
-.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
-.opt label{display:flex;flex-direction:column;gap:3px;height:100%;padding:11px 13px;border:1px solid var(--bline);border-radius:8px;background:var(--board-2);cursor:pointer}
-.opt label b{font-size:14px;font-weight:700;line-height:1.25}
-.opt label small{font-family:var(--mono);font-size:12px;color:var(--bmute)}
-.opt input:checked + label{border-color:var(--green);background:var(--green-soft)}
-.opt input:checked + label small{color:var(--green)}
-.opt input:focus-visible + label{outline:3px solid var(--green);outline-offset:2px}
-.opt input:disabled + label{opacity:.38;cursor:not-allowed}
-.gap{height:22px}
-.range{display:flex;align-items:center;gap:16px}
-.range input{flex:1;accent-color:var(--green);min-width:0}
-.range output{font-family:var(--mono);font-weight:600;font-size:17px;min-width:80px;text-align:right}
-.steps2{display:grid;gap:8px}
-.stp{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 13px;border:1px solid var(--bline);border-radius:8px;background:var(--board-2)}
-.stp.on{border-color:var(--green);background:var(--green-soft)}
-.stp div{min-width:0}
-.stp b{display:block;font-size:14.5px;font-weight:700}
-.stp small{display:block;font-family:var(--mono);font-size:12px;color:var(--bmute)}
-.ctrl{display:flex;align-items:center;gap:4px;flex:none}
-.ctrl button{width:36px;height:36px;border-radius:6px;border:1px solid rgba(255,255,255,.22);background:var(--ink);cursor:pointer;font-family:var(--mono);font-size:18px;font-weight:600;display:grid;place-items:center;color:#fff}
-.ctrl button:hover{border-color:var(--green);color:var(--green)}
-.ctrl output{min-width:54px;text-align:center;font-family:var(--mono);font-weight:600;font-size:15px}
-.bnote2{font-size:13px;color:var(--bmute);margin:14px 0 0}.bnote2 b{color:#fff}
-.docket{position:sticky;top:76px;background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:22px;min-width:0}
-.dhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-bottom:12px;border-bottom:2px solid var(--ink)}
-.dhead b{font-family:var(--display);font-stretch:80%;font-weight:900;text-transform:uppercase;font-size:21px;line-height:1}
-.dhead small{display:block;font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:5px}
-.ex{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--grey);color:var(--mute);border-radius:3px;padding:3px 6px;margin-top:6px}
-.clear{background:transparent;border:1px solid var(--rule);color:var(--mute);font-family:var(--mono);font-size:11px;font-weight:600;border-radius:4px;padding:5px 8px;cursor:pointer;flex:none}
-.lines{max-height:290px;overflow:auto}
-.ln{display:grid;grid-template-columns:1fr auto;gap:12px;padding:9px 0;border-bottom:1px dashed var(--rule);font-family:var(--mono);font-size:13px;line-height:1.35}
-.ln span:first-child{min-width:0}
-.ln small{display:block;color:var(--mute);font-size:11px}
-.ln .fr{background:var(--green);color:var(--ink);font-weight:600;padding:1px 6px;border-radius:3px;align-self:start}
-.ln.emp{color:var(--mute);border-bottom:0}
-.sum{display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;padding:8px 0}
-.sum.disc{color:var(--ink);font-weight:600}
-.dacc{margin:10px 0 4px}
-.dacc .seg{display:grid;grid-template-columns:repeat(3,1fr);width:100%}
-.dacc .seg button{font-size:12.5px;padding:9px 4px}
-.tot{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;border-top:2px solid var(--ink);padding-top:12px;margin-top:6px}
-.tot small{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
-.tot b{font-family:var(--display);font-stretch:75%;font-weight:900;font-size:clamp(48px,5vw,62px);line-height:.85}
-.nudge{margin-top:12px;background:var(--ink);color:#fff;border-radius:8px;padding:11px 13px;font-size:13.5px}
-.nudge b{color:var(--green)}
-.docket .btn{width:100%;margin-top:12px}
-
-/* ---------- WHAT WE TAKE ---------- */
-.finder{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
-.search{flex:1 1 260px;min-width:0;position:relative}
-.search input{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:2px solid var(--ink);border-radius:6px;padding:14px 16px 14px 44px}
-.search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--ink)}
-.chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{font-family:var(--display);font-stretch:85%;font-weight:900;text-transform:uppercase;font-size:14px;padding:10px 14px;border-radius:30px;border:2px solid var(--ink);background:var(--paper);cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--green)}
-.chip .c{font-family:var(--mono);font-size:11px;font-weight:600;margin-left:5px;opacity:.7}
-.cats{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.cat{font-size:13px;font-weight:700;padding:7px 11px;border-radius:4px;border:1px solid var(--rule);background:var(--grey);cursor:pointer}
-.cat[aria-pressed="true"]{background:var(--green);border-color:var(--green)}
-.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
-.it{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--rule);border-radius:8px;min-width:0;background:var(--paper)}
-.it div{min-width:0}
-.it b{display:block;font-size:15px;font-weight:700;line-height:1.3}
-.it small{display:block;color:var(--mute);font-size:12.5px;line-height:1.35}
-.tag{flex:none;font-family:var(--mono);font-size:11.5px;font-weight:600;padding:5px 9px;border-radius:4px;white-space:nowrap}
-.tag.free{background:var(--green)}
-.tag.paid{background:var(--ink);color:#fff}
-.tag.no{background:var(--paper);color:var(--ink);border:2px solid var(--ink)}
-.it.no{border-style:dashed;border-color:#8a8a8a}
-.empty{color:var(--mute);padding:18px 0}
-.yn{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media (max-width:800px){.yn{grid-template-columns:1fr}}
-.ynbox{border:2px solid var(--ink);border-radius:10px;padding:24px;min-width:0;background:var(--paper)}
-.ynbox.no{border-style:dashed}
-.ynbox h3{display:flex;align-items:center;gap:12px}
-
-
-.ynbox ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
-.ynbox li{padding-left:16px;position:relative;font-size:15.5px}
-.ynbox li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;background:var(--ink)}
-.ynbox.no li::before{background:transparent;box-shadow:inset 0 0 0 2px var(--ink)}
-
-/* ---------- TRADE ---------- */
-.tgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:end}
-@media (max-width:900px){.tgrid{grid-template-columns:1fr;gap:30px}}
-.tgrid > div{min-width:0}
-.card{background:var(--ink);color:#fff;border-radius:14px;padding:24px;position:relative;overflow:hidden;aspect-ratio:1.586;max-width:440px;width:100%;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 30px 60px -20px rgba(5,5,5,.45);transform:rotate(-2.5deg)}
-@media (max-width:900px){.card{transform:none}}
-.card::before{content:"";position:absolute;right:-70px;bottom:-90px;width:220px;height:220px;border-radius:50%;border:30px solid var(--green)}
-.card .top{display:flex;justify-content:space-between;align-items:flex-start;position:relative}
-.card .top img{height:32px;width:auto}
-.card .pct{font-family:var(--display);font-stretch:68%;font-weight:900;font-size:clamp(72px,14vw,112px);line-height:.8;color:var(--green);position:relative}
-.card .pct small{display:block;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;color:#fff;margin-top:10px}
-.card .bot{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#d0d0d0;position:relative}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
-@media (max-width:800px){.steps{grid-template-columns:1fr}}
-.step{padding:22px 22px 6px 0;min-width:0}
-.step + .step{padding-left:22px;border-left:1px solid var(--rule)}
-@media (max-width:800px){.step + .step{padding-left:0;border-left:0;border-top:1px solid var(--rule)}}
-.step .n{font-family:var(--display);font-stretch:68%;font-weight:900;font-size:72px;line-height:.8}
-.step h3{margin-top:12px}
-.step p{color:var(--mute);margin:8px 0 0;font-size:15.5px;max-width:36ch}
-.save2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media (max-width:900px){.save2{grid-template-columns:1fr}}
-.calc{background:var(--board);color:#fff;border-radius:12px;padding:28px;min-width:0}
-.calc .range{margin-bottom:24px}
-.calc .range output{font-size:20px;min-width:96px}
-.yr{border-top:1px solid var(--bline);padding-top:20px}
-.yr b{display:block;font-family:var(--display);font-stretch:70%;font-weight:900;font-size:clamp(64px,9vw,110px);line-height:.82;color:var(--green)}
-.yr p{margin:10px 0 0;color:var(--bmute);font-size:14.5px}
-.perks{border:2px solid var(--ink);border-radius:12px;padding:28px;min-width:0;display:flex;flex-direction:column;gap:14px}
-.perks ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
-.perks li{display:flex;gap:12px;font-size:16px;font-weight:600}
-.perks li::before{content:"";flex:none;width:24px;height:24px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23050505' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
-.perks .btn{margin-top:auto;align-self:flex-start}
-.photos{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px}
-@media (max-width:800px){.photos{grid-template-columns:1fr 1fr}.photos figure:first-child{grid-column:span 2}}
-.photos figure{margin:0;position:relative;border-radius:8px;overflow:hidden;aspect-ratio:3/4;max-width:100%;background:var(--grey)}
-.photos figure:first-child{aspect-ratio:auto;min-height:280px}
-.photos img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.photos figcaption{position:absolute;left:10px;bottom:10px;background:var(--ink);color:#fff;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:3px}
-.nigel{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:end}
-@media (max-width:860px){.nigel{grid-template-columns:1fr}}
-.nigel > div{min-width:0}
-
-/* ---------- VISIT ---------- */
-.vgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start}
-@media (max-width:880px){.vgrid{grid-template-columns:1fr}}
-.vgrid > div{min-width:0}
-.now{border:2px solid var(--ink);border-radius:12px;padding:24px;background:var(--paper)}
-.now .big{font-family:var(--display);font-stretch:68%;font-weight:900;text-transform:uppercase;font-size:clamp(46px,11vw,68px);line-height:.85;display:flex;align-items:center;gap:14px}
-.now .big .dot{width:16px;height:16px}
-.now p{margin:10px 0 0;font-family:var(--mono);font-size:14px;color:var(--mute)}
-.addr{margin-top:18px;padding-top:16px;border-top:1px solid var(--rule)}
-.addr b{display:block;font-family:var(--display);font-stretch:75%;font-weight:900;font-size:30px;text-transform:uppercase;line-height:1}
-.addr span{font-family:var(--mono);font-size:13px;color:var(--mute)}
-.addr a{display:inline-block;margin-top:10px;font-weight:700;font-size:14.5px}
-.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:18px}
-@media (max-width:600px){.week{grid-template-columns:repeat(4,1fr)}}
-.wd{border:1px solid var(--rule);border-radius:6px;padding:10px;background:var(--paper);min-width:0}
-.wd.today{background:var(--green);border-color:var(--green)}
-.wd small{display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-.wd.today small{color:var(--ink)}
-.wd b{display:block;font-family:var(--display);font-stretch:75%;font-weight:900;font-size:19px;text-transform:uppercase}
-.wd span{display:block;font-family:var(--mono);font-size:11.5px}
-.wd.off span{color:var(--mute)}
-.htable{width:100%;border-collapse:collapse}
-.htable th{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:right;padding:0 0 8px;border-bottom:2px solid var(--ink)}
-.htable th:first-child{text-align:left}
-.htable td{border-bottom:1px solid var(--rule);padding:10px 0;font-family:var(--mono);font-size:14px;text-align:right}
-.htable td:first-child{text-align:left;font-family:var(--body);font-weight:700}
-.htable tr.today td{background:var(--green)}
-.htable tr.today td:first-child{padding-left:8px}.htable tr.today td:last-child{padding-right:8px}
-.cur{background:var(--ink);color:var(--green);padding:2px 6px;border-radius:3px;margin-left:6px;font-size:10px}
-.off{color:var(--mute)!important;font-weight:600}
-.areas{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media (max-width:800px){.areas{grid-template-columns:1fr}}
-.area{border-radius:12px;overflow:hidden;background:var(--board);color:#fff;min-width:0}
-.area img{width:100%;aspect-ratio:16/10;object-fit:cover}
-.area div{padding:20px 22px}
-.area h3{color:#fff}
-.area p{margin:8px 0 0;color:var(--bmute);font-size:15px}
-.vcheck{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start}
-@media (max-width:900px){.vcheck{grid-template-columns:1fr}}
-.vcheck > div{min-width:0}
-.vopts{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
-.vopt{position:relative}
-.vopt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
-.vopt label{display:flex;flex-direction:column;gap:2px;padding:11px 13px;border:2px solid var(--rule);border-radius:8px;cursor:pointer;background:var(--paper)}
-.vopt label b{font-size:14.5px}
-.vopt label small{font-family:var(--mono);font-size:11.5px;color:var(--mute)}
-.vopt input:checked + label{border-color:var(--ink);background:var(--green)}
-.vopt input:focus-visible + label{outline:3px solid var(--green);outline-offset:2px}
-.vres{border-radius:12px;padding:26px;border:2px solid var(--ink);background:var(--paper)}
-.vres.ok{background:var(--green);border-color:var(--green)}
-.vres.no{border-style:dashed}
-.vres .big{font-family:var(--display);font-stretch:70%;font-weight:900;text-transform:uppercase;font-size:clamp(40px,5vw,58px);line-height:.88}
-
-.vres p{margin:10px 0 0;font-size:15px}
-.gvm{margin-top:18px}
-.gvm input{width:100%;max-width:240px;font:inherit;font-family:var(--mono);font-size:18px;font-weight:600;border:2px solid var(--ink);border-radius:6px;padding:11px 13px;background:var(--paper)}
-.faq{display:grid;gap:8px;max-width:880px}
-details{border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
-details[open]{border-color:var(--ink)}
-summary{cursor:pointer;list-style:none;padding:17px 20px;font-weight:700;font-size:16.5px;display:flex;justify-content:space-between;gap:16px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:var(--mono);font-size:20px;line-height:1;flex:none}
-details[open] summary::after{content:"–"}
-details p{margin:0;padding:0 20px 18px;color:var(--mute);max-width:70ch}
-
-/* contact + footer */
-.contact{display:grid;gap:10px}
-.cline{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--bline);border-radius:8px;padding:14px 16px}
-.cline div{min-width:0}
-.cline small{display:block;font-family:var(--mono);font-size:11px;color:var(--bmute);letter-spacing:.08em;text-transform:uppercase}
-.cline b{display:block;font-family:var(--display);font-stretch:80%;font-weight:900;font-size:26px;line-height:1.05;user-select:all}
-.copy{flex:none;background:transparent;border:1px solid var(--green);color:var(--green);font-family:var(--mono);font-size:12px;font-weight:600;border-radius:4px;padding:7px 10px;cursor:pointer}
-.copy:hover{background:var(--green);color:var(--ink)}
-footer{background:var(--ink);color:var(--bmute);font-size:13px}
-.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px;padding-block:44px 30px}
-@media (max-width:860px){.fgrid{grid-template-columns:1fr 1fr}}
-.fgrid > div{min-width:0}
-.fgrid h4{margin:0 0 10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
-.fgrid a{display:block;color:#e8e8e8;text-decoration:none;padding:3px 0}
-.fgrid a:hover{color:var(--green)}
-.fgrid img{height:32px;width:auto;margin-bottom:12px}
-.fbot{border-top:1px solid var(--bline);padding-block:16px 100px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px}
-@media (min-width:701px){.fbot{padding-block:16px}}
-.proto{display:inline-block;background:var(--green);color:var(--ink);font-weight:600;padding:2px 6px;border-radius:3px}
-.mbar{position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;gap:8px;align-items:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:2px solid var(--ink)}
-.mbar .btn{flex:1;padding:13px 10px;font-size:14px}
-@media (max-width:700px){.mbar{display:flex}}
-
-.ar{width:.95em;height:.95em;flex:none;display:inline-block;vertical-align:-.12em;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.mk{position:relative;display:inline-block;flex:none;width:30px;height:30px;border-radius:50%;background:var(--green)}
-.mk.yes::after{content:"";position:absolute;left:11px;top:7px;width:7px;height:13px;border:solid #050505;border-width:0 3px 3px 0;transform:rotate(45deg)}
-.mk.no{background:#050505}
-.mk.no::before,.mk.no::after{content:"";position:absolute;left:8px;top:13.5px;width:14px;height:3px;border-radius:2px;background:#FFFFFF;transform:rotate(45deg)}
-.mk.no::after{transform:rotate(-45deg)}
-.is-closed .dot{background:transparent!important;box-shadow:inset 0 0 0 2px currentColor}
-.tile span{flex-wrap:wrap}
-.hhero .btn.line,.today .btn.line{color:#FFFFFF;border-color:#FFFFFF}
-.hhero .btn.line:hover,.today .btn.line:hover{background:#FFFFFF;color:var(--ink)}
-.wd.today.off span,.htable tr.today .off{color:var(--ink)!important}
-.hhero .lead{color:#d0d0d0}.hhero .lead b{color:#FFFFFF}
-</style>
+<link rel="canonical" href="https://recycle.net.au/">
+<meta name="theme-color" content="#050505">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Recycle North Geelong | Transfer station and recycling centre, Geelong">
+<meta property="og:description" content="Recycle North Geelong: Geelong's undercover public transfer station and recycling centre. Free drop-off for whitegoods, scrap metal, cardboard and more. Open Monday to Saturday, 7:30am to 5pm.">
+<meta property="og:image" content="https://recycle.net.au/img/hall-hero-1280.webp">
+<meta property="og:locale" content="en_AU">
+<link rel="icon" href="/recycle-geelong/img/favicon.png" type="image/png">
+<link rel="preload" href="/recycle-geelong/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/recycle-geelong/assets/main.css">
+<script>document.documentElement.classList.replace('no-js','js');window.__BASE="/recycle-geelong/";</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"RecyclingCenter","name":"Recycle North Geelong","url":"https://recycle.net.au","telephone":"+61460555222","email":"info@recycle.net.au","image":"https://recycle.net.au/img/hall-hero-1280.webp","address":{"@type":"PostalAddress","streetAddress":"116 Furner Avenue","addressLocality":"North Geelong","addressRegion":"VIC","postalCode":"3215","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:30","closes":"17:00"}],"sameAs":["https://www.facebook.com/recyclenorthgeelong","https://www.instagram.com/recyclenorthgeelong/","https://www.tiktok.com/@recyclenorthgeelong"]}</script>
 </head>
-<body>
+<body class="home">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-bin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1.2 13H7.2z"/><path d="M5 7h14"/><path d="M9 4h6l1 3H8z"/><circle cx="8.5" cy="20.5" r="1.3"/></symbol><symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v-3l2-5h11l3 5h2v3z"/><path d="M5.5 12h13"/><circle cx="7" cy="16.5" r="1.8"/><circle cx="17" cy="16.5" r="1.8"/></symbol><symbol id="i-wagon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 15v-3.5L5 7h14l2.5 4.5V15z"/><path d="M5 11.5h16"/><path d="M12 7v4.5"/><circle cx="7" cy="16.5" r="1.8"/><circle cx="17" cy="16.5" r="1.8"/></symbol><symbol id="i-ute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 15v-3l2-4h6v4h11v3z"/><path d="M10.5 12V8"/><circle cx="6.5" cy="16.5" r="1.8"/><circle cx="17.5" cy="16.5" r="1.8"/></symbol><symbol id="i-trailer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v6H4z"/><path d="M17 13h4"/><path d="M6 9V6.5h9V9"/><circle cx="10.5" cy="17" r="2"/></symbol><symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6h11v10h-11z"/><path d="M13.5 9h4l3 3.5V16h-7"/><circle cx="6.5" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></symbol><symbol id="i-sofa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 12a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5H3z"/><path d="M5 17v2M19 17v2"/></symbol><symbol id="i-mattress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="2"/><path d="M3 12h18"/><path d="M7.5 8v8M12 8v8M16.5 8v8" stroke-dasharray="1.6 1.6"/></symbol><symbol id="i-fridge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="1.5"/><path d="M6 10h12"/><path d="M9 6v2M9 13v3"/></symbol><symbol id="i-washer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="3" width="15" height="18" rx="1.5"/><path d="M4.5 7h15"/><circle cx="12" cy="14" r="4"/><circle cx="7.5" cy="5" r=".4"/></symbol><symbol id="i-tv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="1"/><path d="M9 21h6M12 17v4"/></symbol><symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></symbol><symbol id="i-tyre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 3.5v4.5M12 16v4.5M3.5 12H8M16 12h4.5"/></symbol><symbol id="i-gas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8a4 4 0 0 1 8 0v12H8z"/><path d="M10 4h4M12 2.5V4"/><path d="M8 12h8"/></symbol><symbol id="i-paint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M5 7c0-2 3.1-3 7-3s7 1 7 3"/><path d="M9 4.5C9 3 13 2 15 4"/><path d="M12 7v4"/></symbol><symbol id="i-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="16" height="10" rx="1.5"/><path d="M19 10h2v4h-2"/><path d="M7 12h4M9 10v4"/><path d="M14 12h2"/></symbol><symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-4 9 4v9l-9 4-9-4z"/><path d="M3 8l9 4 9-4M12 12v9"/><path d="M7.5 6l9 4"/></symbol><symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19l8-8"/></symbol><symbol id="i-brick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14"/><path d="M3 9.7h18M3 14.3h18M9 5v4.7M15 9.7v4.6M9 14.3V19"/></symbol><symbol id="i-metal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l4-10h10l4 10z"/><path d="M7 7l2 10M17 7l-2 10"/></symbol><symbol id="i-poly" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/><circle cx="8" cy="11.5" r=".6"/><circle cx="16" cy="11.5" r=".6"/><circle cx="12" cy="7.5" r=".6"/></symbol><symbol id="i-oil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4.5 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-6.5 6-11z"/><path d="M9.5 15a2.5 2.5 0 0 0 2.5 2.5"/></symbol><symbol id="i-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l-5 3 2 4 2-1v12h10V9l2 1 2-4-5-3c-.5 1.5-2 2.5-4 2.5S8.5 4.5 8 3z"/></symbol><symbol id="i-solar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16l-2 10H6z"/><path d="M4.8 11h14.4M9.3 6l-.8 10M14.7 6l.8 10"/><path d="M12 16v4M9 20h6"/></symbol><symbol id="i-ban" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol><symbol id="i-call" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l1.5 4-2 1.5a10 10 0 0 0 6 6l1.5-2 4 1.5v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></symbol><symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 13l6 6 6-6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l4.5 4.5 10.5-10.5"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></symbol><symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></symbol><symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></symbol><symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l14 14M19 5L5 19"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5v15l12-7.5z"/></symbol><symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h3l4 2h4a1.5 1.5 0 0 0 0-3h-3"/><path d="M7 21H4v-7"/><path d="M15 13l4-2a1.5 1.5 0 0 1 1.5 2.5L14 18.5 7 18"/><path d="M14.5 4.5a2.3 2.3 0 0 1 3.3 0 2.3 2.3 0 0 1 3.2 3.2L17.8 11l-3.3-3.3a2.3 2.3 0 0 1 0-3.2z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l6-3v15M9 21V3h12v18M3 21h18"/><path d="M13 7h4M13 11h4M13 15h4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v6M12 7.5v.5"/></symbol><symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5"/></symbol><symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol><symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol><symbol id="i-sort" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10M4 12h7M4 18h4"/><path d="M17 5v14M14 16l3 3 3-3"/></symbol></svg>
+<a class="sr-only" href="#main">Skip to content</a>
 
-
-<nav class="nav" aria-label="Main">
-  <div class="wrap navrow">
-    <a class="brand" href="#home" aria-label="Recycle Geelong home"><img src="assets/img/logo.png" alt="Recycle North Geelong"></a>
-    <div class="links" id="links">
-      <a class="l" href="#prices">Prices</a>
-      <a class="l" href="#take">What we take</a>
-      <a class="l" href="#trade">Trade</a>
-      <a class="l" href="#visit">Hours &amp; location</a>
-    </div>
-    <div class="nr">
-      <span class="status" id="navSt"><span class="dot"></span><span id="navStT">Checking hours</span></span>
-      <a class="btn g sm" href="https://recycle.net.au/book-now" target="_blank" rel="noopener">Book</a>
-      <button class="menuBtn" id="menuBtn" aria-expanded="false" aria-controls="mmenu">Menu</button>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/recycle-geelong/" aria-label="Recycle North Geelong home"><img src="/recycle-geelong/img/logo.webp" width="561" height="313" alt="Recycle North Geelong"></a>
+    <nav class="nav" aria-label="Main"><a href="/recycle-geelong/price-list/">Prices</a><a href="/recycle-geelong/what-we-take/">What we take</a><a href="/recycle-geelong/our-location/">Hours & location</a><a href="/recycle-geelong/recycling-matters/">After you tip</a><a href="/recycle-geelong/recycle-corporate-services/">Trade</a><a href="/recycle-geelong/community/">Community</a><a href="/recycle-geelong/about-us/">About</a></nav>
+    <div class="head-right">
+      <span class="status" data-status><i></i><span data-status-text>Mon–Sat 7:30am–5pm</span></span>
+      <a class="btn sm" href="https://www.google.com/maps/dir/?api=1&destination=116+Furner+Avenue+North+Geelong+VIC+3215" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Directions</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg></button>
     </div>
   </div>
-  <div class="wrap mmenu" id="mmenu">
-    <a href="#home">Home</a><a href="#prices">Prices</a><a href="#take">What we take</a><a href="#trade">Trade</a><a href="#visit">Hours &amp; location</a>
-    <a href="https://recycle.net.au/book-now" target="_blank" rel="noopener" style="color:var(--green)">Book a drop-off <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" data-open="false">
+  <a class="m" href="/recycle-geelong/price-list/">Prices<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="m" href="/recycle-geelong/what-we-take/">What we take<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="m" href="/recycle-geelong/our-location/">Hours & location<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="m" href="/recycle-geelong/recycling-matters/">After you tip<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="m" href="/recycle-geelong/recycle-corporate-services/">Trade<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="m" href="/recycle-geelong/community/">Community<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="m" href="/recycle-geelong/about-us/">About<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <div class="m-foot">
+    <span class="status" data-status><i></i><span data-status-text>Mon–Sat 7:30am–5pm</span></span>
+    <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=116+Furner+Avenue+North+Geelong+VIC+3215" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Get directions</a>
+    <a class="btn ghost" href="tel:0460555222"><svg class="ic" aria-hidden="true"><use href="#i-call"/></svg>0460 555 222</a>
   </div>
 </nav>
+<main id="main">
 
-<!-- ===================== HOME ===================== -->
-<div class="page" data-page="home">
-  <header class="hhero">
-    <div class="bg" role="img" aria-label="Inside the undercover tipping floor at Recycle North Geelong"></div>
-    <div class="wrap hgrid">
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-media" data-slides><figure class="on" style="--dx:-2%;--dy:-1%;--ox:60%;--oy:40%"><img src="/recycle-geelong/img/hall-hero-2400.webp" srcset="/recycle-geelong/img/hall-hero-1280.webp 1280w, /recycle-geelong/img/hall-hero-2400.webp 2400w" sizes="100vw" width="2400" height="1800" alt="The undercover hall at Recycle North Geelong, with the gas bottle, fire extinguisher and car battery cages under hanging signs" fetchpriority="high"></figure><figure class="" style="--dx:1.5%;--dy:-1%;--ox:40%;--oy:55%"><img src="/recycle-geelong/img/skips-row-1821.webp" srcset="/recycle-geelong/img/skips-row-960.webp 960w, /recycle-geelong/img/skips-row-1821.webp 1821w" sizes="100vw" width="1821" height="1366" alt="" loading="lazy" decoding="async"></figure><figure class="" style="--dx:-1.5%;--dy:1%;--ox:55%;--oy:50%"><img src="/recycle-geelong/img/green-bins-1821.webp" srcset="/recycle-geelong/img/green-bins-960.webp 960w, /recycle-geelong/img/green-bins-1821.webp 1821w" sizes="100vw" width="1821" height="1366" alt="" loading="lazy" decoding="async"></figure></div>
+  <div class="wrap">
+    <div class="hero-grid">
       <div>
-        <span class="label g">116 Furner Ave · North Geelong transfer station</span>
-        <h1 style="margin-top:16px"><span class="kick">Tip undercover. Pay half for sorted.</span>Recycle <span class="hl">Geelong</span></h1>
-        <p class="lead"><b>Don't trash it, recycle it.</b> 20,000&nbsp;m² undercover, 60+ waste streams and a 100% landfill-free commitment. See the price before you hitch the trailer.</p>
-        <div class="ctas">
-          <a class="btn g" href="#prices">See prices <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
-          <a class="btn line" href="https://recycle.net.au/book-now" target="_blank" rel="noopener">Book a drop-off</a>
+        <span class="sign">Public transfer station · North Geelong</span>
+        <h1 id="hero-h" class="lines fit-lines" style="--w:7.91"><span class="ln">Drive in.</span><span class="ln">Drop off.</span><span class="ln"><span class="g">We sort it.</span></span></h1>
+        <p class="lede">Geelong's undercover transfer station and recycling centre. 20,000 m² under one roof, 90+ material streams, open six days a week.</p>
+        <div class="hero-ctas">
+          <a class="btn" href="#finder">What can I bring?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></a>
+          <a class="btn ghost" href="#cost">Price my load</a>
+        </div>
+        <div class="hero-facts">
+          <div><b>20,000 m²</b><span>under cover</span></div>
+          <div><b>90+</b><span>material streams</span></div>
+          <div><b>8</b><span>items free to drop off</span></div>
+          <div><b>10%</b><span>off for locals</span></div>
         </div>
       </div>
-      <aside class="today" aria-label="Today at the station">
-        <span class="label" style="color:var(--bmute)" id="tdLbl">Today</span>
-        <div class="state" id="tdSt"><span class="dot"></span><span id="tdW">Checking</span></div>
-        <div class="sub" id="tdSub">&nbsp;</div>
-        <div class="row"><span>Today's hours</span><b id="tdH">–</b></div>
-        <div class="row"><span>Sorted ute load</span><b>$99</b></div>
-        <div class="row"><span>With trade account</span><b class="g">$84.15</b></div>
-        <a class="btn line sm" href="#visit" style="margin-top:14px;width:100%">Hours &amp; directions</a>
+      <aside class="today" aria-label="Opening hours today">
+        <h3>Today</h3>
+        <div class="big" data-status-big>Open Mon–Sat</div>
+        <div class="sub" data-status-sub>Monday to Saturday, 7:30am – 5:00pm</div>
+        <dl>
+          <dt>Address</dt><dd>116 Furner Avenue, North Geelong<br><span class="small">Behind Coates Hire</span></dd>
+          <dt>Phone</dt><dd><a href="tel:0460555222">0460 555 222</a></dd>
+          <dt>Sunday</dt><dd>Closed</dd>
+        </dl>
+        <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=116+Furner+Avenue+North+Geelong+VIC+3215" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Get directions</a>
       </aside>
     </div>
-  </header>
+  </div>
+</section>
 
-  <section>
-    <div class="wrap">
-      <div class="sh"><span class="label">Who's tipping today?</span><h2>Pick your <span class="hl">path</span></h2></div>
-      <div class="paths">
-        <a class="path trade" href="#trade"><span class="big">15% off</span><h3>Trade &amp; business</h3><p>Free account for anyone with an ABN. Priority service and 15% off every load.</p><span class="go">Trade account <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></a>
-        <a class="path" href="https://recycle.net.au/residence-register-now/" target="_blank" rel="noopener"><span class="big">10% off</span><h3>Local residents</h3><p>Households in Greater Geelong, Queenscliff, the Surf Coast, Golden Plains, Wyndham and Colac Otway.</p><span class="go">Register as a resident <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></a>
-        <a class="path" href="https://recycle.net.au/recycle-corporate-services/" target="_blank" rel="noopener"><span class="big">AS 5377</span><h3>Corporate &amp; e-waste</h3><p>IT disposal with data destruction and Certificates of Destruction. Palletised loads by forklift.</p><span class="go">Corporate services <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></a>
+<section class="sec on-paper" id="finder" aria-labelledby="finder-h">
+  <div class="wrap">
+    <div class="bay" aria-hidden="true"><b>01</b><span></span></div>
+    <div class="sec-head split">
+      <div><span class="kicker">Can I bring it?</span><h2 id="finder-h" style="margin-top:18px;--w:8.02" class="fit-two">What have you got?</h2></div>
+      <p class="lede">Type anything: a couch, a fridge, paint, tyres. You'll see if we take it, what it costs and what happens to it after you drop it off.</p>
+    </div>
+    <div class="finder-box" data-finder>
+      <div class="finder-input">
+        <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+        <input type="search" placeholder="Try ‘mattress’ or ‘paint’" autocomplete="off" spellcheck="false"
+          role="combobox" aria-expanded="false" aria-controls="finder-list" aria-autocomplete="list" aria-label="Search for an item">
+        <ul class="suggest" id="finder-list" role="listbox" hidden></ul>
+      </div>
+      <div class="chips" aria-label="Popular items"><button type="button" class="chip" data-q="Mattress">Mattress</button><button type="button" class="chip" data-q="Couch or sofa">Couch or sofa</button><button type="button" class="chip" data-q="Fridge">Fridge</button><button type="button" class="chip" data-q="TV">TV</button><button type="button" class="chip" data-q="Green waste">Green waste</button><button type="button" class="chip" data-q="Tyres">Tyres</button><button type="button" class="chip" data-q="Paint">Paint</button><button type="button" class="chip" data-q="Polystyrene">Polystyrene</button><button type="button" class="chip" data-q="Gas bottle">Gas bottle</button><button type="button" class="chip" data-q="Asbestos">Asbestos</button></div>
+      <div class="result" aria-live="polite" hidden></div>
+      <div class="no-match" hidden>
+        <p style="margin:0"><b>Not sure about that one.</b> Call us on <a href="tel:0460555222">0460 555 222</a> and we'll tell you before you load up, or see the <a href="/recycle-geelong/what-we-take/">full list of what we take</a>.</p>
       </div>
     </div>
-  </section>
-
-  <section class="grey">
-    <div class="wrap sortgrid">
+  </div>
+</section>
+<section class="sec" id="cost" aria-labelledby="cost-h">
+  <div class="wrap">
+    <div class="bay" aria-hidden="true"><b>02</b><span></span></div>
+    <div class="sec-head split">
+      <div><span class="kicker">What will it cost?</span><h2 id="cost-h" style="margin-top:18px;--w:12.00" class="fit-two">Price your load in <span class="g nw">10 seconds</span></h2></div>
+      <p class="lede">Pick how you're bringing it in. Sorting your load at home halves the rate, and locals who register get 10% off.</p>
+    </div>
+    <div class="est" data-estimator>
       <div>
-        <span class="label">Sorted vs unsorted</span>
-        <div class="half" style="margin-top:12px">½</div>
-        <h2 style="margin-top:14px">Sort it. <span class="hl">Pay half.</span></h2>
-        <p class="lead">Every sorted load on the price list costs about half the unsorted rate.</p>
-        <div class="ctas"><a class="btn" href="#prices">Build my load <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></div>
-      </div>
-      <div>
-        <div class="legend"><span><i class="ls"></i>Sorted</span><span><i class="lu"></i>Unsorted</span></div>
-        <div class="bars" id="bars"></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="bhead"><div><span class="label">Most asked about</span><h2 style="margin-top:10px">Will you <span class="hl">take it?</span></h2></div><a class="btn line" href="#take">Search all 60+ <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></div>
-      <div class="tiles">
-        <button class="tile" data-q="green waste"><img src="assets/img/greenw.jpg" alt="Green waste skip"><span><b>Green waste</b><em>$79/m³</em></span></button>
-        <button class="tile" data-q="tyre"><img src="assets/img/tyres.jpg" alt="Tyres bay"><span><b>Tyres</b><em>from $12</em></span></button>
-        <button class="tile" data-q="mattress"><img src="assets/img/matt.jpg" alt="Mattresses bay"><span><b>Mattresses</b><em>from $10</em></span></button>
-        <button class="tile" data-q="whitegoods"><img src="assets/img/white.jpg" alt="Whitegoods bay"><span><b>Whitegoods</b><em>Free</em></span></button>
-        <button class="tile" data-q="paint"><img src="assets/img/paint.jpg" alt="Paint drop-off"><span><b>Paint</b><em>Free</em></span></button>
-        <button class="tile" data-q="gas"><img src="assets/img/gas.jpg" alt="Gas bottles and aerosols"><span><b>Gas bottles</b><em>from $15</em></span></button>
-        <button class="tile" data-q="building"><img src="assets/img/tradies.jpg" alt="Workers unloading a ute"><span><b>Building materials</b><em>$199/m³</em></span></button>
-        <button class="tile" data-q="cardboard"><img src="assets/img/trailer.jpg" alt="Cardboard bay"><span><b>Cardboard</b><em>Free</em></span></button>
-      </div>
-    </div>
-  </section>
-
-  <section class="dark">
-    <div class="wrap band">
-      <div style="min-width:0"><span class="label g">For trades</span><h2 style="margin-top:10px;color:#fff">15% off <span class="hl">every load.</span></h2><p class="lead">Free trade account. Name, business, ABN, done.</p></div>
-      <a class="btn g" href="#trade">Get my trade account <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
-    </div>
-  </section>
-</div>
-
-<!-- ===================== PRICES ===================== -->
-<div class="page" data-page="prices" hidden>
-  <section>
-    <div class="wrap">
-      <div class="bhead">
-        <div><span class="label">Price list</span><h1 style="margin-top:12px;font-size:clamp(52px,9vw,112px)">What you pay <span class="hl">at the gate</span></h1></div>
-        <div class="seg" id="pAcc" role="group" aria-label="Show prices for">
-          <button data-d="0">Standard</button><button data-d="0.10">Resident −10%</button><button data-d="0.15" aria-pressed="true">Trade −15%</button>
-        </div>
-      </div>
-      <div class="board">
-        <div>
-          <div class="bsec"><h3>Loads <small id="pTag">TRADE PRICES</small></h3><div class="tbl"><table id="tLoads"></table></div><p class="bnote"><b>Sorted costs about half.</b> Separate timber, metal, green waste and cardboard at the job.</p></div>
-          <div class="bsec"><h3>By the cubic metre</h3><div class="tbl"><table id="tM3"></table></div></div>
-          <div class="bsec"><h3>Oils &amp; liquids</h3><div class="tbl"><table id="tLiq"></table></div><p class="bnote">First 100 L of architectural or decorative paint is free through PaintBack.</p></div>
-        </div>
-        <div>
-          <div class="bsec"><h3>Tyres</h3><div class="tbl"><table id="tTy"></table></div><p class="bnote">Tractor tyres priced on application.</p></div>
-          <div class="bsec"><h3>Mattresses</h3><div class="tbl"><table id="tMa"></table></div></div>
-          <div class="bsec"><h3>Gas &amp; other</h3><div class="tbl"><table id="tOt"></table></div></div>
-          <div class="bsec"><h3>Free drop-off</h3><div class="freechips"><span>Whitegoods</span><span>Scrap metal</span><span>Car batteries</span><span>Cardboard up to 0.5m³</span><span>EPS up to 0.5m³</span><span>Paint up to 100L</span><span>Phones, TVs, LED screens</span><span>Printer cartridges</span></div></div>
-        </div>
-      </div>
-      <p class="fine">Standard prices from the Recycle North Geelong price list. Discounted prices are calculated from it for registered accounts. Final price confirmed on site.</p>
-    </div>
-  </section>
-  <section class="grey" id="builderSec">
-    <div class="wrap">
-      <div class="sh"><span class="label">Load builder</span><h2>Price your <span class="hl">whole load</span></h2><p class="lead">Main load, then tyres, mattresses, gas bottles and anything else in the tray.</p></div>
-      <div class="builder">
-        <div class="pane"><div class="btabs" role="tablist" aria-label="Load categories" id="btabs"></div><div class="bbody" id="bbody"></div></div>
-        <aside class="docket" id="docket" aria-live="polite">
-          <div class="dhead"><div><b>Load docket</b><small id="dDate">Recycle North Geelong</small><span class="ex" id="dEx">Example load · change anything</span></div><button class="clear" id="dClear">Clear</button></div>
-          <div class="lines" id="dLines"></div>
-          <div class="sum"><span>Subtotal</span><span id="dSub" class="num">$0.00</span></div>
-          <div class="dacc"><div class="seg" id="dAcc" role="group" aria-label="Account type"><button data-acc="none">None</button><button data-acc="res">Resident</button><button data-acc="trade">Trade</button></div></div>
-          <div class="sum disc" id="dDiscRow"><span id="dDiscLbl">Trade discount 15%</span><span id="dDisc" class="num">−$0.00</span></div>
-          <div class="tot"><small>Total</small><b id="dTot" class="num">$0.00</b></div>
-          <div class="nudge" id="dNudge" hidden></div>
-          <a class="btn" href="https://recycle.net.au/book-now" target="_blank" rel="noopener">Book this drop-off <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
-          <p class="fine">Indicative, from the published price list. Discount shown across the whole docket.</p>
-        </aside>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- ===================== WHAT WE TAKE ===================== -->
-<div class="page" data-page="take" hidden>
-  <section>
-    <div class="wrap">
-      <div class="sh"><span class="label">What we take</span><h1 style="margin-top:12px;font-size:clamp(52px,9vw,112px)">Free, paid <span class="hl">or not here</span></h1><p class="lead">Search before you load up. Free items have limits. Mixed construction and demolition loads are not accepted.</p></div>
-      <div class="finder">
-        <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Try: tyres, fridge, plaster, asbestos" aria-label="Search materials"></div>
-        <div class="chips" id="chips" role="group" aria-label="Filter by price"></div>
-      </div>
-      <div class="cats" id="cats" role="group" aria-label="Filter by category"></div>
-      <div class="items" id="items"></div>
-      <p class="empty" id="empty" hidden>No match. Call 0460 555 222 and the team will tell you where it goes.</p>
-    </div>
-  </section>
-  <section class="grey">
-    <div class="wrap">
-      <div class="sh"><span class="label">Before you load the ute</span><h2>Bring it. <span class="hl">Leave it.</span></h2></div>
-      <div class="yn">
-        <div class="ynbox"><h3><i class="mk yes" aria-hidden="true"></i>Bring it</h3><ul><li>Sorted loads: timber, metal, green waste and cardboard kept separate</li><li>Mixed household junk: furniture, clothing, homewares, books, mattresses</li><li>Sorted building materials: bricks, timber, tiles, carpet, roof tiles</li><li>Corporate e-waste, processed to AS 5377</li></ul></div>
-        <div class="ynbox no"><h3><i class="mk no" aria-hidden="true"></i>Leave it</h3><ul><li>Asbestos in any form</li><li>Mixed construction and demolition loads</li><li>Hazardous chemicals, solvents, fuels, pesticides</li><li>Contaminated soil, medical waste, unlabelled liquids</li><li>Weapons, ammunition, explosives, mercury switches</li></ul></div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- ===================== TRADE ===================== -->
-<div class="page" data-page="trade" hidden>
-  <section style="border-bottom:1px solid var(--rule)">
-    <div class="wrap tgrid">
-      <div>
-        <span class="label">Trade account</span>
-        <h1 style="margin-top:14px">15% off<br><span class="hl">every load.</span></h1>
-        <p class="lead"><b>Free for anyone with an ABN.</b> Builders, landscapers, cleaners, property managers and removalists tip undercover at 116 Furner Ave and pay less on every load.</p>
-        <div class="ctas"><a class="btn g" href="https://recycle.net.au/trade-commercial-register/" target="_blank" rel="noopener">Get my trade account <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a><a class="btn line" href="#prices">See trade prices</a></div>
-      </div>
-      <div>
-        <div class="card" aria-label="Illustration of the trade account"><div class="top"><img src="assets/img/logo.png" alt=""><span class="label" style="color:#d0d0d0">Trade</span></div><div class="pct">15%<small>OFF EVERY LOAD</small></div><div class="bot">Free account · Priority service</div></div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="wrap">
-      <div class="sh"><span class="label">How it works</span><h2>Register once. <span class="hl">Save every load.</span></h2></div>
-      <div class="steps">
-        <div class="step"><div class="n">1</div><h3>Register free</h3><p>Name, business name, ABN and contact details. A couple of minutes online.</p></div>
-        <div class="step"><div class="n">2</div><h3>Sort at the job</h3><p>Keep timber, metal, green waste and cardboard separate. Sorted loads cost about half.</p></div>
-        <div class="step"><div class="n">3</div><h3>Tip and save</h3><p>Drive in at 116 Furner Ave, tip undercover at the signed bays and pay 15% less.</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="grey">
-    <div class="wrap">
-      <div class="sh"><span class="label">Your savings</span><h2>What 15% is worth <span class="hl">a year</span></h2></div>
-      <div class="save2">
-        <div class="calc">
-          <label class="blbl" for="loads">Loads per week</label>
-          <div class="range"><input type="range" id="loads" min="1" max="40" step="1" value="5"><output id="loadsO" for="loads" class="num">5</output></div>
-          <label class="blbl" for="spend">Average spend per load</label>
-          <div class="range"><input type="range" id="spend" min="19" max="1500" step="1" value="149"><output id="spendO" for="spend" class="num">$149</output></div>
-          <div class="yr"><span class="blbl">You'd save per year</span><b id="yr" class="num">$5,811</b><p id="yrN"></p></div>
-        </div>
-        <div class="perks">
-          <h3>What you get</h3>
-          <ul><li>15% off every load</li><li>Priority service options</li><li>Updates on commercial recycling</li><li>Undercover tipping, 7 days in summer</li><li>Trucks up to 4,500kg GVM</li></ul>
-          <a class="btn g" href="https://recycle.net.au/trade-commercial-register/" target="_blank" rel="noopener">Register your business <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="wrap">
-      <div class="photos">
-        <figure><img src="assets/img/tradies.jpg" alt="Two workers unloading a ute into a skip"><figcaption>Ute straight to skip</figcaption></figure>
-        <figure><img src="assets/img/trailer.jpg" alt="Trailer unloading at the cardboard bay"><figcaption>Cardboard bay</figcaption></figure>
-        <figure><img src="assets/img/greenw.jpg" alt="Green waste unloading"><figcaption>Green waste</figcaption></figure>
-      </div>
-    </div>
-  </section>
-  <section class="dark">
-    <div class="wrap nigel">
-      <div><span class="label g">Trade &amp; corporate</span><h2 style="margin-top:10px;color:#fff">Talk to <span class="hl">Nigel.</span></h2><p class="lead"><b>Nigel Taylor runs corporate and trade recycling.</b> Regular loads, palletised deliveries, e-waste with Certificates of Destruction, or a semi-trailer drop-off: call him first.</p></div>
-      <div class="contact">
-        <div class="cline"><div><small>Nigel Taylor · trade &amp; corporate</small><b>0427 888 222</b></div><button class="copy" data-copy="0427 888 222">Copy</button></div>
-        <div class="cline"><div><small>General enquiries &amp; bookings</small><b>0460 555 222</b></div><button class="copy" data-copy="0460 555 222">Copy</button></div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- ===================== VISIT ===================== -->
-<div class="page" data-page="visit" hidden>
-  <section>
-    <div class="wrap">
-      <div class="sh"><span class="label">Hours &amp; location</span><h1 style="margin-top:12px;font-size:clamp(52px,9vw,112px)">Six days in winter. <span class="hl">Seven in summer.</span></h1></div>
-      <div class="vgrid">
-        <div>
-          <div class="now">
-            <div class="big" id="vSt"><span class="dot"></span><span id="vStT">Checking</span></div>
-            <p id="vStS">&nbsp;</p>
-            <div class="addr"><b>116 Furner Avenue</b><span>North Geelong VIC 3215</span><br><a href="https://www.google.com/maps/search/?api=1&amp;query=116+Furner+Avenue+North+Geelong+VIC+3215" target="_blank" rel="noopener">Get directions <svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></div>
+        <div class="est-step">
+          <div class="lab"><b>A</b> How are you bringing it in?</div>
+          <div class="loads"><button type="button" class="load" data-load="bin120" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-bin"/></svg><span class="n">Wheelie bin</span><span class="s">120 litre</span><span class="v">0.125 m³ · from $19</span>
+    </button><button type="button" class="load" data-load="bin240" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-bin"/></svg><span class="n">Wheelie bin</span><span class="s">240 litre</span><span class="v">0.25 m³ · from $29</span>
+    </button><button type="button" class="load" data-load="boot" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-car"/></svg><span class="n">Car boot</span><span class="s">Standard boot</span><span class="v">0.5 m³ · from $49</span>
+    </button><button type="button" class="load" data-load="wagon" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-wagon"/></svg><span class="n">Station wagon</span><span class="s">Wagon boot</span><span class="v">0.75 m³ · from $69</span>
+    </button><button type="button" class="load" data-load="ute" aria-pressed="true">
+      <svg class="ic" aria-hidden="true"><use href="#i-ute"/></svg><span class="n">Ute or 6×4 trailer</span><span class="s">Level load</span><span class="v">1 m³ · from $99</span>
+    </button><button type="button" class="load" data-load="uteHeaped" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-trailer"/></svg><span class="n">Ute or 6×4 trailer</span><span class="s">Caged or heaped</span><span class="v">1.5 m³ · from $149</span>
+    </button><button type="button" class="load" data-load="large" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-trailer"/></svg><span class="n">8×5 trailer</span><span class="s">Level load</span><span class="v">1.5 m³ · from $149</span>
+    </button><button type="button" class="load" data-load="largeHeaped" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-trailer"/></svg><span class="n">8×5 trailer</span><span class="s">Caged or heaped</span><span class="v">2.5 m³ · from $249</span>
+    </button><button type="button" class="load" data-load="m3" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg><span class="n">Van, truck or bigger</span><span class="s">Charged per m³</span><span class="v">$99 per m³ sorted</span>
+    </button></div>
+          <div class="m3-row" hidden>
+            <span class="small">How many cubic metres?</span>
+            <span class="stepper"><button type="button" data-m3="-0.5" aria-label="Less"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-m3-out>2</output><button type="button" data-m3="0.5" aria-label="More"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+            <span class="small">m³</span>
           </div>
         </div>
-        <div>
-          <span class="label" style="display:block;margin-bottom:10px">Next 7 days</span>
-          <div class="week" id="week"></div>
-          <div class="tbl"><table class="htable" id="htable"></table></div>
-          <p class="fine">Summer runs 1 September to 31 March. Winter runs 1 April to 31 August.</p>
+        <div class="est-step">
+          <div class="lab"><b>B</b> Is it sorted?</div>
+          <div class="seg" role="group" aria-label="Sorted or unsorted">
+            <button type="button" data-sort="sorted" aria-pressed="true">Sorted</button>
+            <button type="button" data-sort="unsorted" aria-pressed="false">Mixed / unsorted</button>
+          </div>
+          <p class="small" style="margin-top:10px">Sorted means grouped by material before you arrive: green waste, metal, e-waste and general rubbish kept apart. <a href="/recycle-geelong/unsorted-loads/">How to sort</a></p>
+        </div>
+        <div class="est-step">
+          <details class="more">
+            <summary><span class="lab" style="margin:0"><b>C</b> Mattresses, tyres and more</span><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="extras"><div class="extra">
+      <span>Cot mattress<small>$10</small></span>
+      <span class="stepper"><button type="button" data-extra="mCot" data-d="-1" aria-label="Remove one Cot mattress"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="mCot">0</output><button type="button" data-extra="mCot" data-d="1" aria-label="Add one Cot mattress"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Single mattress<small>$29</small></span>
+      <span class="stepper"><button type="button" data-extra="mSingle" data-d="-1" aria-label="Remove one Single mattress"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="mSingle">0</output><button type="button" data-extra="mSingle" data-d="1" aria-label="Add one Single mattress"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Double or queen mattress<small>$39</small></span>
+      <span class="stepper"><button type="button" data-extra="mQueen" data-d="-1" aria-label="Remove one Double or queen mattress"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="mQueen">0</output><button type="button" data-extra="mQueen" data-d="1" aria-label="Add one Double or queen mattress"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>King mattress<small>$49</small></span>
+      <span class="stepper"><button type="button" data-extra="mKing" data-d="-1" aria-label="Remove one King mattress"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="mKing">0</output><button type="button" data-extra="mKing" data-d="1" aria-label="Add one King mattress"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Latex mattress<small>$69</small></span>
+      <span class="stepper"><button type="button" data-extra="mLatex" data-d="-1" aria-label="Remove one Latex mattress"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="mLatex">0</output><button type="button" data-extra="mLatex" data-d="1" aria-label="Add one Latex mattress"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Motorbike tyre<small>$12</small></span>
+      <span class="stepper"><button type="button" data-extra="tMoto" data-d="-1" aria-label="Remove one Motorbike tyre"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="tMoto">0</output><button type="button" data-extra="tMoto" data-d="1" aria-label="Add one Motorbike tyre"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Car tyre, off rim<small>$19</small></span>
+      <span class="stepper"><button type="button" data-extra="tOff" data-d="-1" aria-label="Remove one Car tyre, off rim"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="tOff">0</output><button type="button" data-extra="tOff" data-d="1" aria-label="Add one Car tyre, off rim"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Car tyre, on rim<small>$25</small></span>
+      <span class="stepper"><button type="button" data-extra="tOn" data-d="-1" aria-label="Remove one Car tyre, on rim"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="tOn">0</output><button type="button" data-extra="tOn" data-d="1" aria-label="Add one Car tyre, on rim"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Light truck tyre<small>$44</small></span>
+      <span class="stepper"><button type="button" data-extra="tLt" data-d="-1" aria-label="Remove one Light truck tyre"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="tLt">0</output><button type="button" data-extra="tLt" data-d="1" aria-label="Add one Light truck tyre"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Gas bottle, under 9 kg<small>$15</small></span>
+      <span class="stepper"><button type="button" data-extra="gSmall" data-d="-1" aria-label="Remove one Gas bottle, under 9 kg"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="gSmall">0</output><button type="button" data-extra="gSmall" data-d="1" aria-label="Add one Gas bottle, under 9 kg"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Fire extinguisher, under 3 kg<small>$10</small></span>
+      <span class="stepper"><button type="button" data-extra="fSmall" data-d="-1" aria-label="Remove one Fire extinguisher, under 3 kg"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="fSmall">0</output><button type="button" data-extra="fSmall" data-d="1" aria-label="Add one Fire extinguisher, under 3 kg"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Solar panel<small>$39</small></span>
+      <span class="stepper"><button type="button" data-extra="solar" data-d="-1" aria-label="Remove one Solar panel"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="solar">0</output><button type="button" data-extra="solar" data-d="1" aria-label="Add one Solar panel"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div></div>
+          </details>
+        </div>
+        <div class="est-step">
+          <label class="toggle"><input type="checkbox" data-discount><span class="sw"></span><span>I'm registered for the <b>10% local discount</b></span></label>
         </div>
       </div>
+      <aside class="receipt" aria-live="polite">
+        <h3>Your estimate</h3>
+        <ul data-lines></ul>
+        <div class="tot"><span>Total</span><b data-total>$99</b></div>
+        <div class="disc" data-disc></div>
+        <div class="save" data-save hidden><svg class="ic" aria-hidden="true"><use href="#i-sort"/></svg><span data-save-text></span></div>
+        <p class="fine">Estimate only, based on our published prices. Your final price is set at the gate from what you actually bring. Free items like whitegoods, scrap metal and car batteries cost nothing. <a href="/recycle-geelong/price-list/">Full price list</a></p>
+      </aside>
     </div>
-  </section>
-  <section class="grey">
-    <div class="wrap">
-      <div class="sh"><span class="label">On arrival</span><h2>Follow the <span class="hl">overhead signs</span></h2><p class="lead">The floor has signed unloading areas for cars and for trucks and trailers, and a signed bay for each material.</p></div>
-      <div class="areas">
-        <div class="area"><img src="assets/img/ute.jpg" alt="Car and sedan unloading area with general rubbish bay"><div><h3>Car / sedan unloading area</h3><p>Pull into a marked bay and unload into the signed bins for each stream.</p></div></div>
-        <div class="area"><img src="assets/img/tradies.jpg" alt="Tipping truck and trailer area with skips"><div><h3>Tipping truck &amp; trailer area</h3><p>Utes, trailers and tippers unload into skips on the floor. Forklift on hand for pallets.</p></div></div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="wrap">
-      <div class="sh"><span class="label">Vehicle check</span><h2>Can I tip <span class="hl">in this?</span></h2></div>
-      <div class="vcheck">
-        <div><div class="vopts" id="vopts"></div><div class="gvm" id="gvmW" hidden><label class="label" for="gvm" style="display:block;margin-bottom:8px">Truck GVM (kg)</label><input id="gvm" type="number" inputmode="numeric" min="0" step="100" value="4500"></div></div>
-        <div class="vres" id="vres" aria-live="polite"><div class="big" id="vBig">Yes</div><p id="vTxt"></p></div>
-      </div>
-    </div>
-  </section>
-  <section class="grey">
-    <div class="wrap">
-      <div class="sh"><span class="label">Before you come</span><h2>Quick <span class="hl">answers</span></h2></div>
-      <div class="faq">
-        <details open><summary>Do I need to sort my load?</summary><p>You'll pay about half if you do. A sorted ute load is $99; the same load unsorted is $199. Mixed construction and demolition waste isn't accepted at all.</p></details>
-        <details><summary>What can go in an unsorted load?</summary><p>Mixed household junk: mattresses, whitegoods, clothing and homewares, general household rubbish, furniture and books. Green waste is accepted in utes, trailers and tip trucks.</p></details>
-        <details><summary>Are you open on Sundays?</summary><p>From 1 September to 31 March, Sundays are 9am–1pm. From 1 April to 31 August the site is closed on Sundays.</p></details>
-        <details><summary>Do you take asbestos or chemicals?</summary><p>No. Asbestos, hazardous chemicals, solvents, fuels, pesticides, contaminated soil, medical waste and unlabelled chemicals are not accepted.</p></details>
-        <details><summary>What happens to what I drop off?</summary><p>It's sorted into dedicated streams for recycling under a 100% landfill-free commitment. Reusable items go to local charities and housing services through the Freecycle program.</p></details>
-      </div>
-    </div>
-  </section>
-</div>
-
-<footer>
-  <div class="wrap fgrid">
-    <div><img src="assets/img/logo.png" alt="Recycle North Geelong"><p style="margin:0">116 Furner Avenue, North Geelong VIC 3215<br>Don't trash it, recycle it.</p></div>
-    <div><h4>Site</h4><a href="#prices">Prices</a><a href="#take">What we take</a><a href="#trade">Trade account</a><a href="#visit">Hours &amp; location</a></div>
-    <div><h4>Register</h4><a href="https://recycle.net.au/trade-commercial-register/" target="_blank" rel="noopener">Trade &amp; commercial</a><a href="https://recycle.net.au/residence-register-now/" target="_blank" rel="noopener">Residents</a><a href="https://recycle.net.au/book-now" target="_blank" rel="noopener">Book a drop-off</a></div>
-    <div><h4>Call</h4><p style="margin:0;color:#e8e8e8">Trade: 0427 888 222<br>General: 0460 555 222</p></div>
   </div>
-  <div class="wrap fbot"><span>ISO 9001 · ISO 14001 · ISO 45001 · AS/NZS 5377 · EPA VIC R000312600</span><span class="proto">Phase 1 prototype</span></div>
+</section>
+<section class="sec on-green" aria-labelledby="free-h">
+  <div class="wrap">
+    <div class="bay" aria-hidden="true"><b>03</b><span></span></div>
+    <div class="sec-head split">
+      <div><h2 id="free-h" class="fit-two" style="--w:13.42">Eight things you can drop off free</h2></div>
+      <p class="lede" style="color:var(--ink)">Recyclables shouldn't cost you money to do the right thing. Bring these in on their own, or with a paid load.</p>
+    </div>
+    <div class="free-grid">
+      <div class="free-card rv"><span class="tag">FREE</span><svg class="ic" aria-hidden="true"><use href="#i-fridge"/></svg><h3>Whitegoods</h3><p>Fridges, washing machines, ovens and more.</p></div><div class="free-card rv"><span class="tag">FREE</span><svg class="ic" aria-hidden="true"><use href="#i-metal"/></svg><h3>Scrap metal</h3><p>All types, as long as it is clean.</p></div><div class="free-card rv"><span class="tag">FREE</span><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg><h3>Cardboard</h3><p>Up to 0.5 m³, clean, dry, no polystyrene.</p></div><div class="free-card rv"><span class="tag">FREE</span><svg class="ic" aria-hidden="true"><use href="#i-poly"/></svg><h3>Polystyrene</h3><p>Up to 0.5 m³ of clean EPS packaging.</p></div><div class="free-card rv"><span class="tag">FREE</span><svg class="ic" aria-hidden="true"><use href="#i-tv"/></svg><h3>TVs and screens</h3><p>Plus mobile phones.</p></div><div class="free-card rv"><span class="tag">FREE</span><svg class="ic" aria-hidden="true"><use href="#i-paint"/></svg><h3>Paint</h3><p>Up to 100 L of decorative paint, through Paintback.</p></div><div class="free-card rv"><span class="tag">FREE</span><svg class="ic" aria-hidden="true"><use href="#i-battery"/></svg><h3>Car batteries</h3><p>Straight to the battery station.</p></div><div class="free-card rv"><span class="tag">FREE</span><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg><h3>Ink cartridges</h3><p>Printer cartridges, household and office sized.</p></div>
+    </div>
+  </div>
+</section>
+<section class="sec floor" id="tour" aria-labelledby="tour-h" style="padding-bottom:calc(var(--sec) * .7)">
+  <div class="wrap">
+    <div class="bay" aria-hidden="true"><b>04</b><span></span></div>
+    <div class="sec-head split">
+      <div><span class="kicker">Walk the floor</span><h2 id="tour-h" class="lines fit-lines" style="margin-top:18px;--w:7.22"><span class="ln">20,000&nbsp;m².</span><span class="ln">One roof.</span></h2></div>
+      <div>
+        <p class="lede">20,000 m² of undercover concrete with a bay for every material. Rain or shine, you never unload in the mud.</p>
+        <div class="floor-nav" style="margin-top:20px"><button type="button" data-floor="-1" aria-label="Previous photo"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button><button type="button" data-floor="1" aria-label="Next photo"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="floor-track" tabindex="0" aria-label="Photos of the drop-off areas">
+    <figure class="floor-card wide">
+      <div class="ph"><img src="/recycle-geelong/img/car-sedan-bays-1821.webp" srcset="/recycle-geelong/img/car-sedan-bays-960.webp 960w, /recycle-geelong/img/car-sedan-bays-1821.webp 1821w" sizes="(max-width: 700px) 90vw, 52vw" width="1821" height="1366" alt="Marked car and sedan unloading bays beside a row of general rubbish skips" loading="lazy" decoding="async"><span class="no">01</span></div>
+      <figcaption><b>Car / sedan unloading area</b>Pull into a marked bay. Every drop-off is under cover, on concrete.</figcaption>
+    </figure><figure class="floor-card">
+      <div class="ph"><img src="/recycle-geelong/img/cardboard-cage-1200.webp" srcset="/recycle-geelong/img/cardboard-cage-600.webp 600w, /recycle-geelong/img/cardboard-cage-1200.webp 1200w" sizes="(max-width: 700px) 80vw, 34vw" width="1200" height="1600" alt="Flattened cardboard in a cage under a cardboard sign" loading="lazy" decoding="async"><span class="no">02</span></div>
+      <figcaption><b>Cardboard</b>Flattened boxes go in the cages, then to the baler.</figcaption>
+    </figure><figure class="floor-card">
+      <div class="ph"><img src="/recycle-geelong/img/polystyrene-cages-1200.webp" srcset="/recycle-geelong/img/polystyrene-cages-600.webp 600w, /recycle-geelong/img/polystyrene-cages-1200.webp 1200w" sizes="(max-width: 700px) 80vw, 34vw" width="1200" height="1600" alt="Cages of clean polystyrene packaging" loading="lazy" decoding="async"><span class="no">03</span></div>
+      <figcaption><b>Polystyrene</b>Clean foam packaging, kept apart from everything else.</figcaption>
+    </figure><figure class="floor-card">
+      <div class="ph"><img src="/recycle-geelong/img/ewaste-cages-480.webp" srcset="/recycle-geelong/img/ewaste-cages-480.webp 480w" sizes="(max-width: 700px) 80vw, 34vw" width="480" height="640" alt="E-waste and TV cages along the unloading area" loading="lazy" decoding="async"><span class="no">04</span></div>
+      <figcaption><b>E-waste</b>TVs, screens and computers, caged and kept dry.</figcaption>
+    </figure><figure class="floor-card">
+      <div class="ph"><img src="/recycle-geelong/img/whitegoods-1200.webp" srcset="/recycle-geelong/img/whitegoods-600.webp 600w, /recycle-geelong/img/whitegoods-1200.webp 1200w" sizes="(max-width: 700px) 80vw, 34vw" width="1200" height="1604" alt="Fridges and washing machines lined up under the whitegoods sign" loading="lazy" decoding="async"><span class="no">05</span></div>
+      <figcaption><b>Whitegoods</b>Fridges, washers and dryers, free.</figcaption>
+    </figure><figure class="floor-card mid">
+      <div class="ph"><img src="/recycle-geelong/img/metals-area-640.webp" srcset="/recycle-geelong/img/metals-area-640.webp 640w" sizes="(max-width: 700px) 80vw, 34vw" width="640" height="480" alt="The recycled metals area, with bins for scrap steel" loading="lazy" decoding="async"><span class="no">06</span></div>
+      <figcaption><b>Recycled metals area</b>Scrap steel and car parts each have their own bins.</figcaption>
+    </figure><figure class="floor-card">
+      <div class="ph"><img src="/recycle-geelong/img/mattresses-1200.webp" srcset="/recycle-geelong/img/mattresses-600.webp 600w, /recycle-geelong/img/mattresses-1200.webp 1200w" sizes="(max-width: 700px) 80vw, 34vw" width="1200" height="1604" alt="Mattresses stacked at the mattress recycling area" loading="lazy" decoding="async"><span class="no">07</span></div>
+      <figcaption><b>Mattresses</b>Dismantled on site so the steel can be recovered.</figcaption>
+    </figure><figure class="floor-card wide">
+      <div class="ph"><img src="/recycle-geelong/img/waste-oil-station-1920.webp" srcset="/recycle-geelong/img/waste-oil-station-960.webp 960w, /recycle-geelong/img/waste-oil-station-1920.webp 1920w" sizes="(max-width: 700px) 90vw, 52vw" width="1920" height="1440" alt="The waste oil station with bays for paint, motor oil, hydraulic oil and engine oils" loading="lazy" decoding="async"><span class="no">08</span></div>
+      <figcaption><b>Waste oil station</b>Engine oil, hydraulic oil and paint, each with its own tank or cage.</figcaption>
+    </figure><figure class="floor-card mid">
+      <div class="ph"><img src="/recycle-geelong/img/building-materials-640.webp" srcset="/recycle-geelong/img/building-materials-640.webp 640w" sizes="(max-width: 700px) 80vw, 34vw" width="640" height="480" alt="Skips for sorted building materials" loading="lazy" decoding="async"><span class="no">09</span></div>
+      <figcaption><b>Building materials</b>Sorted building materials go in their own skips.</figcaption>
+    </figure><figure class="floor-card">
+      <div class="ph"><img src="/recycle-geelong/img/fabric-clothing-1200.webp" srcset="/recycle-geelong/img/fabric-clothing-600.webp 600w, /recycle-geelong/img/fabric-clothing-1200.webp 1200w" sizes="(max-width: 700px) 80vw, 34vw" width="1200" height="1600" alt="Fabric cage and clothing donation bin in the car and sedan unloading area" loading="lazy" decoding="async"><span class="no">10</span></div>
+      <figcaption><b>Fabric and clothing</b>A clothing bin and a fabric cage in the unloading area.</figcaption>
+    </figure><figure class="floor-card wide">
+      <div class="ph"><img src="/recycle-geelong/img/tyres-bay-1821.webp" srcset="/recycle-geelong/img/tyres-bay-960.webp 960w, /recycle-geelong/img/tyres-bay-1821.webp 1821w" sizes="(max-width: 700px) 90vw, 52vw" width="1821" height="1366" alt="The tyres bay inside the hall" loading="lazy" decoding="async"><span class="no">11</span></div>
+      <figcaption><b>Tyres</b>Car, motorbike and truck tyres, priced each.</figcaption>
+    </figure><figure class="floor-card">
+      <div class="ph"><img src="/recycle-geelong/img/aerosols-paint-480.webp" srcset="/recycle-geelong/img/aerosols-paint-480.webp 480w" sizes="(max-width: 700px) 80vw, 34vw" width="480" height="640" alt="The aerosols, paint cans and hazards area, with paint cages" loading="lazy" decoding="async"><span class="no">12</span></div>
+      <figcaption><b>Aerosols, paint cans, hazards</b>Paint, aerosol cans and other hazards each go in their own cage.</figcaption>
+    </figure><figure class="floor-card mid">
+      <div class="ph"><img src="/recycle-geelong/img/gas-cages-640.webp" srcset="/recycle-geelong/img/gas-cages-640.webp 640w" sizes="(max-width: 700px) 80vw, 34vw" width="640" height="480" alt="Gas bottle and gas canister cages beside a sign asking that pets stay in the vehicle" loading="lazy" decoding="async"><span class="no">13</span></div>
+      <figcaption><b>Gas bottles</b>Gas bottles and canisters are caged apart, away from everything else.</figcaption>
+    </figure><figure class="floor-card mid">
+      <div class="ph"><img src="/recycle-geelong/img/trailer-area-640.webp" srcset="/recycle-geelong/img/trailer-area-640.webp 640w" sizes="(max-width: 700px) 80vw, 34vw" width="640" height="480" alt="The tipping truck and trailer area, with its own lane for commercial vehicles" loading="lazy" decoding="async"><span class="no">14</span></div>
+      <figcaption><b>Tipping truck and trailer area</b>Its own lane for commercial vehicles and tipping trailers.</figcaption>
+    </figure><figure class="floor-card wide">
+      <div class="ph"><img src="/recycle-geelong/img/forklift-cardboard-1920.webp" srcset="/recycle-geelong/img/forklift-cardboard-960.webp 960w, /recycle-geelong/img/forklift-cardboard-1920.webp 1920w" sizes="(max-width: 700px) 90vw, 52vw" width="1920" height="1440" alt="A forklift carrying a bale of cardboard past the cardboard and polystyrene bays" loading="lazy" decoding="async"><span class="no">15</span></div>
+      <figcaption><b>Baled on site</b>Finished cardboard bales are moved out by forklift.</figcaption>
+    </figure>
+  </div>
+</section>
+<section class="journey" id="after-you-tip" data-journey data-mode="3d" aria-labelledby="journey-h">
+  <div class="journey-pin">
+    <canvas aria-hidden="true"></canvas>
+    <div class="journey-shade"></div>
+    <div class="journey-intro">
+      <div class="bay" aria-hidden="true"><b>05</b><span></span></div>
+      <span class="kicker">After you tip</span>
+      <h2 id="journey-h" class="lines fit-lines" style="margin:18px 0 20px;--w:13.47"><span class="ln">Landfill buries it.</span><span class="ln"><span class="g">We take it apart.</span></span></h2>
+      <p class="lede">Scroll to follow five things that come through the gate every day.</p>
+    </div>
+    <div class="journey-steps"><div class="jstep" data-step="0">
+      <div class="from"><svg class="ic" aria-hidden="true"><use href="#i-mattress"/></svg>You drop off a mattress</div>
+      <h3 class="h2l fit-two" style="--w:8.90">It leaves as baled steel</h3>
+      <p>Every mattress is dismantled on site, in about 38 seconds on average. The springs are pulled out, compressed and baled.</p>
+      <div class="stat"><b>99%</b><span>of the steel recovered. About 30% of a mattress is steel.</span></div>
+    </div><div class="jstep" data-step="1">
+      <div class="from"><svg class="ic" aria-hidden="true"><use href="#i-poly"/></svg>You drop off polystyrene</div>
+      <h3 class="h2l fit-two" style="--w:10.06">It leaves as a dense block</h3>
+      <p>Polystyrene is up to 98% air. Our densifier presses it out, so three shipping containers of foam become one block about the size of a washing machine.</p>
+      <div class="stat"><b>98%</b><span>air, pressed out on site</span></div>
+    </div><div class="jstep" data-step="2">
+      <div class="from"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>You drop off cardboard</div>
+      <h3 class="h2l fit-two" style="--w:6.80">It leaves as a bale</h3>
+      <p>Clean, dry cardboard is flattened and baled on site, then sent for paper-making.</p>
+      <div class="stat"><b>Free</b><span>for up to 0.5 m³ of clean cardboard</span></div>
+    </div><div class="jstep" data-step="3">
+      <div class="from"><svg class="ic" aria-hidden="true"><use href="#i-sofa"/></svg>You drop off a good couch</div>
+      <h3 class="h2l fit-two" style="--w:14.39">It goes to someone who needs it</h3>
+      <p>Furniture in good condition goes to charity and community partners through our Freecycle program, helping people set up a home again.</p>
+      <div class="stat"><b>45+</b><span>charity and community organisations we supply</span></div>
+    </div><div class="jstep" data-step="4">
+      <div class="from"><svg class="ic" aria-hidden="true"><use href="#i-bin"/></svg>What can't be saved</div>
+      <h3 class="h2l fit-two" style="--w:10.10">Landfill last</h3>
+      <p>Whatever is left after sorting is shredded to about a quarter of its volume before it goes to landfill. Less space taken, better compaction.</p>
+      <div class="stat"><b>25%</b><span>of its original volume</span></div>
+    </div></div>
+    <div class="journey-progress" aria-label="Chapters"><button type="button" data-goto="0" aria-label="You drop off a mattress"></button><button type="button" data-goto="1" aria-label="You drop off polystyrene"></button><button type="button" data-goto="2" aria-label="You drop off cardboard"></button><button type="button" data-goto="3" aria-label="You drop off a good couch"></button><button type="button" data-goto="4" aria-label="What can't be saved"></button></div>
+    <div class="journey-label" data-journey-label>Loading 3D…</div>
+  </div>
+  <div class="journey-scroll" aria-hidden="true"></div>
+  <div class="journey-static"><div class="wrap">
+    <span class="kicker">After you tip</span><h2 style="margin:18px 0 36px;--w:7.66" class="fit-two">Where it goes next</h2>
+    <div class="jcards"><article class="jcard"><img src="/recycle-geelong/img/mattresses-1200.webp" srcset="/recycle-geelong/img/mattresses-600.webp 600w, /recycle-geelong/img/mattresses-1200.webp 1200w" sizes="(max-width: 700px) 90vw, 25vw" width="1200" height="1604" alt="Mattresses stacked at the mattress recycling area" loading="lazy" decoding="async"><div><span class="small">You drop off a mattress</span><h3>It leaves as baled steel</h3><p>Every mattress is dismantled on site, in about 38 seconds on average. The springs are pulled out, compressed and baled.</p></div></article><article class="jcard"><img src="/recycle-geelong/img/polystyrene-cages-1200.webp" srcset="/recycle-geelong/img/polystyrene-cages-600.webp 600w, /recycle-geelong/img/polystyrene-cages-1200.webp 1200w" sizes="(max-width: 700px) 90vw, 25vw" width="1200" height="1600" alt="Cages of clean polystyrene packaging" loading="lazy" decoding="async"><div><span class="small">You drop off polystyrene</span><h3>It leaves as a dense block</h3><p>Polystyrene is up to 98% air. Our densifier presses it out, so three shipping containers of foam become one block about the size of a washing machine.</p></div></article><article class="jcard"><img src="/recycle-geelong/img/cardboard-cage-1200.webp" srcset="/recycle-geelong/img/cardboard-cage-600.webp 600w, /recycle-geelong/img/cardboard-cage-1200.webp 1200w" sizes="(max-width: 700px) 90vw, 25vw" width="1200" height="1600" alt="Flattened cardboard in a cage under a cardboard sign" loading="lazy" decoding="async"><div><span class="small">You drop off cardboard</span><h3>It leaves as a bale</h3><p>Clean, dry cardboard is flattened and baled on site, then sent for paper-making.</p></div></article><article class="jcard"><img src="/recycle-geelong/img/fabric-clothing-1200.webp" srcset="/recycle-geelong/img/fabric-clothing-600.webp 600w, /recycle-geelong/img/fabric-clothing-1200.webp 1200w" sizes="(max-width: 700px) 90vw, 25vw" width="1200" height="1600" alt="Fabric cage and clothing donation bin in the car and sedan unloading area" loading="lazy" decoding="async"><div><span class="small">You drop off a good couch</span><h3>It goes to someone who needs it</h3><p>Furniture in good condition goes to charity and community partners through our Freecycle program, helping people set up a home again.</p></div></article><article class="jcard"><img src="/recycle-geelong/img/skips-row-1821.webp" srcset="/recycle-geelong/img/skips-row-960.webp 960w, /recycle-geelong/img/skips-row-1821.webp 1821w" sizes="(max-width: 700px) 90vw, 25vw" width="1821" height="1366" alt="A long row of skips and cages under cover along the hall" loading="lazy" decoding="async"><div><span class="small">What can't be saved</span><h3>Landfill last</h3><p>Whatever is left after sorting is shredded to about a quarter of its volume before it goes to landfill. Less space taken, better compaction.</p></div></article></div>
+  </div></div>
+</section>
+<section class="sec on-paper" aria-labelledby="visit-h">
+  <div class="wrap">
+    <div class="bay" aria-hidden="true"><b>06</b><span></span></div>
+    <div class="sec-head split">
+      <div><span class="kicker">How a visit works</span><h2 id="visit-h" class="lines fit-lines" style="margin-top:18px;--w:8.66"><span class="ln">Four steps.</span><span class="ln">That's it.</span></h2></div>
+      <p class="lede">Come in any time we're open: Monday to Saturday, 7:30am – 5:00pm. Rain or shine, it's all under cover.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="num">01</span><h3>Sort it at home</h3><p>Keep green waste, metal, e-waste and general rubbish apart as you load. It's quicker at the bays and halves the rate.</p><div class="step-photo"><img src="/recycle-geelong/img/bins-small-items-480.webp" srcset="/recycle-geelong/img/bins-small-items-480.webp 480w" sizes="(max-width: 900px) 90vw, 22vw" width="480" height="640" alt="Wheelie bins for food waste, aerosol cans and e-waste" loading="lazy" decoding="async"></div></div><div class="step rv"><span class="num">02</span><h3>Drive in under cover</h3><p>Head to 116 Furner Avenue, behind Coates Hire. Follow the hanging signs to the right bay.</p><div class="step-photo"><img src="/recycle-geelong/img/drive-in-480.webp" srcset="/recycle-geelong/img/drive-in-480.webp 480w" sizes="(max-width: 900px) 90vw, 22vw" width="480" height="640" alt="A car towing a trailer and a van driving into the hall" loading="lazy" decoding="async"></div></div><div class="step rv"><span class="num">03</span><h3>Unload by material</h3><p>Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.</p><div class="step-photo"><img src="/recycle-geelong/img/trailer-cardboard-480.webp" srcset="/recycle-geelong/img/trailer-cardboard-480.webp 480w" sizes="(max-width: 900px) 90vw, 22vw" width="480" height="640" alt="A customer unloading cardboard from a trailer at the cardboard cages" loading="lazy" decoding="async"></div></div><div class="step rv"><span class="num">04</span><h3>We take it from there</h3><p>90+ material streams, each with somewhere to go that isn't landfill.</p><div class="step-photo"><img src="/recycle-geelong/img/rubbish-bays-arrow-640.webp" srcset="/recycle-geelong/img/rubbish-bays-arrow-640.webp 640w" sizes="(max-width: 900px) 90vw, 22vw" width="640" height="480" alt="General rubbish bays, with a floor arrow showing the way through" loading="lazy" decoding="async"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="num-h">
+  <div class="wrap">
+    <div class="bay" aria-hidden="true"><b>07</b><span></span></div>
+    <div class="sec-head split">
+      <div><span class="kicker">Built for it</span><h2 id="num-h" class="lines fit-lines" style="margin-top:18px;--w:14.65"><span class="ln">Not a tip.</span><span class="ln">A recovery centre.</span></h2></div>
+      <p class="lede">The same site runs a mattress recycling plant, polystyrene densifying and cardboard baling, so what you drop off has somewhere to go.</p>
+    </div>
+    <div class="numbers">
+      <div class="rv"><b>20,000</b><span>square metres under one roof, on concrete hardstand</span></div>
+      <div class="rv"><b>90+</b><span>material streams separated on site</span></div>
+      <div class="rv"><b>12–30<em>k</em></b><span>mattresses recycled on site every month</span></div>
+      <div class="rv"><b>50<em>%+</em></b><span>of Victoria's discarded mattresses are recycled by our group</span></div>
+    </div>
+    <div class="accred"><div><b>EPA</b><span>EPA Victoria registered · R000312600</span></div><div><b>ISO 9001</b><span>Quality management</span></div><div><b>ISO 14001</b><span>Environmental management</span></div><div><b>ISO 45001</b><span>Health and safety</span></div><div><b>AS/NZS 5377</b><span>E-waste handling</span></div><div><b>NIST 800-88</b><span>Data sanitisation</span></div></div>
+  </div>
+</section>
+
+<section class="sec on-ink2" aria-labelledby="doors-h">
+  <div class="wrap">
+    <div class="bay" aria-hidden="true"><b>08</b><span></span></div>
+    <h2 id="doors-h" class="sr-only">Trade and collection services</h2>
+    <div class="doors">
+      <a class="door" href="/recycle-geelong/recycle-corporate-services/">
+        <img src="/recycle-geelong/img/forklift-bale-1200.webp" srcset="/recycle-geelong/img/forklift-bale-600.webp 600w, /recycle-geelong/img/forklift-bale-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 58vw" width="1200" height="1600" alt="A forklift moving a baled block of cardboard down the hall" loading="lazy" decoding="async">
+        <span class="kicker">Trade and corporate</span>
+        <h3 class="h2l fit-two" style="--w:17.76">Recycling for business</h3>
+        <p>Bins and scheduled collections, or bring it in on a semi or B-double. E-waste handled to AS/NZS 5377, with certificates of destruction for data.</p>
+        <ul><li>Cardboard</li><li>E-waste</li><li>Mattresses</li><li>Scrap metal</li><li>Pallets</li><li>Gas bottles</li></ul>
+        <span class="link">Trade services<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+      <div class="door plain">
+        <span class="kicker">Can't bring it in?</span>
+        <h3 class="h2l fit-two" style="--w:8.15">We'll come to you</h3>
+        <p>For bigger clean-outs or heavy items, book a collection and the crew does the lifting.</p>
+        <div class="pickups">
+    <a class="pickup" href="https://recycle.net.au/book-now/"><span><b>Rubbish or junk collection</b><span>We come to you and load it.</span></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="pickup" href="https://themattressrecyclingcompany.com.au/" target="_blank" rel="noopener"><span><b>Mattress or bed base pickup</b><span>Through The Mattress Recycling Company.</span></span><svg class="ic" aria-hidden="true"><use href="#i-external"/></svg></a>
+  </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec on-paper" aria-labelledby="com-h">
+  <div class="wrap">
+    <div class="bay" aria-hidden="true"><b>09</b><span></span></div>
+    <div class="split">
+      <div>
+        <span class="kicker">Freecycle</span>
+        <h2 id="com-h" style="margin:18px 0 22px;--w:14.70" class="fit-two">If it helps someone, it isn't waste</h2>
+        <p class="lede">Every week our team sets aside furniture, mattresses and homewares in good condition and passes them to charities, crisis services and transitional housing, for people starting again.</p>
+        <div class="partners"><span>The Orange Door</span><span>St Vincent de Paul Society Victoria</span><span>Uniting Vic.Tas</span><span>Wintringham</span><span>Meli</span><span>Give Where You Live Foundation</span><span>Wathaurong Aboriginal Co-operative</span><span>MOSS</span><span>Wellways</span><span>Mind Australia</span><span>headspace</span><span>The Power In You Project</span><span>Feed Me</span><span>Neami National</span><span>The Salvation Army</span><span>and more</span></div>
+        <p style="margin-top:26px"><a class="link" href="/recycle-geelong/community/">More about Freecycle<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+      <div class="ph-stack">
+        <figure><img src="/recycle-geelong/img/furniture-dropoff-480.webp" srcset="/recycle-geelong/img/furniture-dropoff-480.webp 480w" sizes="(max-width: 900px) 50vw, 25vw" width="480" height="640" alt="Furniture set down at the furniture drop-off sign" loading="lazy" decoding="async"><figcaption class="cap">Furniture set down at the furniture drop-off sign.</figcaption></figure>
+        <figure><img src="/recycle-geelong/img/bedding-1200.webp" srcset="/recycle-geelong/img/bedding-600.webp 600w, /recycle-geelong/img/bedding-1200.webp 1200w" sizes="(max-width: 900px) 50vw, 25vw" width="1200" height="1604" alt="A cage of bedding and pillows" loading="lazy" decoding="async"><figcaption class="cap">A cage of bedding and pillows.</figcaption></figure>
+      </div>
+    </div>
+    <div class="give" style="margin-top:56px">
+      <div class="rv"><h3>A home again</h3><p>Furniture and homewares for people moving on from crisis, homelessness or hardship.</p></div>
+      <div class="rv"><h3>Warmth in winter</h3><p>Free untreated pallets for locals to use as kindling and firewood.</p></div>
+      <div class="rv"><h3>Schools and aged care</h3><p>Offcuts for craft and learning, and books, puzzles and games for aged care homes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec on-green" id="register" aria-labelledby="reg-h">
+  <div class="wrap register">
+    <div><h2 id="reg-h" class="lines fit-lines" style="--w:8.59"><span class="ln">10% off.</span><span class="ln">Every visit.</span></h2></div>
+    <div>
+      <p style="font-size:19px;font-weight:600;margin:0">Residents and businesses in these council areas can register once and save 10%:</p>
+      <div class="councils"><span>Greater Geelong</span><span>Queenscliff</span><span>Surf Coast</span><span>Golden Plains</span><span>Wyndham</span><span>Colac Otway</span></div>
+      <div class="btns">
+        <a class="btn black" href="https://recycle.net.au/residence-register-now/">Register as a resident<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn ghost" style="--fg:var(--ink);border-color:var(--ink)" href="https://recycle.net.au/trade-commercial-register/">Trade or business<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sec" aria-labelledby="news-h">
+  <div class="wrap">
+    <div class="bay" aria-hidden="true"><b>10</b><span></span></div>
+    <div class="sec-head split">
+      <div><span class="kicker">From the floor</span><h2 id="news-h" style="margin-top:18px;--w:3.94" class="fit-two">News</h2></div>
+      <p><a class="link" href="/recycle-geelong/news/">All news<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    </div>
+    <div class="news">
+      <a href="/recycle-geelong/how-recycle-north-geelong-turns-cardboard-waste-into-agricultural-gold/"><time datetime="2025-08-06">6 August 2025</time><h3>How Recycle North Geelong Turns Cardboard Waste into Agricultural Gold</h3><p>At Recycle North Geelong , we believe in giving materials a second life — and cardboard is no exception. Every day, tonnes of cardboard arrive at our…</p></a><a href="/recycle-geelong/recycle-your-paint-the-right-way-at-recycle-north-geelong/"><time datetime="2025-08-04">4 August 2025</time><h3>Recycle Your Paint the Right Way at Recycle North Geelong</h3><p>Got leftover paint sitting in your shed? Recycle North Geelong now accepts household and decorative paints for recycling — and we’ll take up to 100…</p></a><a href="/recycle-geelong/recycle-north-geelong-responsible-recycling-for-gas-bottles-canisters-fire-extinguishers/"><time datetime="2025-08-04">4 August 2025</time><h3>Recycle North Geelong: Responsible Recycling for Gas Bottles, Canisters &amp; Fire Extinguishers</h3><p>Have you got old gas bottles, fire extinguishers, or canisters lying around and don’t know what to do with them? Recycle North Geelong is here to…</p></a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="/recycle-geelong/img/logo.webp" width="561" height="313" alt="Recycle North Geelong" loading="lazy">
+        <p>A public transfer station and recycling centre in North Geelong. Drive in under cover, drop off by material, and we take it from there.</p>
+        <div class="foot-epa"><img src="/recycle-geelong/img/epa.webp" width="400" height="236" alt="EPA Victoria registration R000312600" loading="lazy"></div>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>116 Furner Avenue<br>North Geelong VIC 3215</li>
+          <li class="small">Behind Coates Hire</li>
+          <li>Mon–Sat 7:30am–5pm</li>
+          <li><a href="https://www.google.com/maps/dir/?api=1&destination=116+Furner+Avenue+North+Geelong+VIC+3215" target="_blank" rel="noopener">Get directions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/recycle-geelong/price-list/">Prices</a></li><li><a href="/recycle-geelong/what-we-take/">What we take</a></li><li><a href="/recycle-geelong/our-location/">Hours & location</a></li><li><a href="/recycle-geelong/recycling-matters/">After you tip</a></li><li><a href="/recycle-geelong/recycle-corporate-services/">Trade</a></li><li><a href="/recycle-geelong/community/">Community</a></li><li><a href="/recycle-geelong/about-us/">About</a></li>
+          <li><a href="/recycle-geelong/unsorted-loads/">Sorted vs unsorted</a></li>
+          <li><a href="/recycle-geelong/news/">News</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:0460555222">0460 555 222</a></li>
+          <li><a href="mailto:info@recycle.net.au">info@recycle.net.au</a></li>
+          <li><a href="https://recycle.net.au/book-now/">Book a collection</a></li>
+          <li><a href="https://recycle.net.au/residence-register-now/">Register for 10% off</a></li>
+          <li><a href="https://www.facebook.com/recyclenorthgeelong" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/recyclenorthgeelong/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@recyclenorthgeelong" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="giant" aria-hidden="true">Love <span>not</span> landfill</div>
+    <div class="foot-base">
+      <span>© 2026 Recycle North Geelong · EPA Victoria registration R000312600</span>
+      <span><a href="https://recycle.net.au/tc">Terms and conditions</a></span>
+    </div>
+  </div>
 </footer>
-
-<div class="mbar"><a class="btn line" href="#prices">Prices</a><a class="btn g" href="#trade">15% trade</a></div>
-
-<script>
-(function(){
-"use strict";
-var $=function(i){return document.getElementById(i)};
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
-function money(n){return "$"+n.toLocaleString("en-AU",{minimumFractionDigits:2,maximumFractionDigits:2})}
-function m0(n){var r=Math.round(n*100)/100;return "$"+(r%1===0?r.toLocaleString("en-AU"):r.toFixed(2))}
-
-/* ========== ROUTER ========== */
-var PAGES=["home","prices","take","trade","visit"];
-var menu=$("mmenu"),menuBtn=$("menuBtn");
-function route(){
-  var h=(location.hash||"").replace("#","");var p=PAGES.indexOf(h)>-1?h:"home";
-  document.querySelectorAll(".page").forEach(function(el){el.hidden=el.dataset.page!==p});
-  document.querySelectorAll('.links a.l, .mmenu a').forEach(function(a){if(a.getAttribute("href")==="#"+p)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
-  menu.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");
-  window.scrollTo(0,0);
-}
-window.addEventListener("hashchange",route);
-menuBtn.addEventListener("click",function(){var o=menu.classList.toggle("open");menuBtn.setAttribute("aria-expanded",o?"true":"false")});
-
-/* ========== PRICE DATA (recycle.net.au/price-list) ========== */
-var VEH=[
-  {id:"none",n:"No main load",v:"Items only",s:0,u:0},
-  {id:"b120",n:"Wheelie bin 120L",v:"0.125 m³",s:19,u:null},
-  {id:"b240",n:"Wheelie bin 240L",v:"0.25 m³",s:29,u:null},
-  {id:"boot",n:"Car boot",v:"0.5 m³",s:49,u:null},
-  {id:"wag",n:"Station wagon",v:"0.75 m³",s:69,u:null},
-  {id:"ute",n:"Ute / small trailer",v:"1 m³",s:99,u:199},
-  {id:"uteh",n:"Ute / small trailer, caged or heaped",v:"1.5 m³",s:149,u:299},
-  {id:"lt",n:"Large trailer",v:"1.5 m³",s:149,u:299},
-  {id:"lth",n:"Large trailer, caged or heaped",v:"2.5 m³",s:249,u:499},
-  {id:"m3",n:"Van, trailer or truck",v:"per m³",s:99,u:199}
-];
-var M3=[["Sorted waste","Vans, trailers, trucks",99],["Unsorted waste","Vans, trailers, trucks",199],["Green waste","",79],["Sorted building materials","Bricks, timber, tiles, carpet",199]];
-var TY=[["Motorbike",12],["Car, off rim",19],["Car, on rim",25],["Light truck",44],["Heavy truck",59]];
-var MA=[["Cot",10],["Single",29],["Double / queen",39],["King",49],["Latex",69]];
-var OT=[["Gas bottle, under 9kg",15],["Gas bottle, over 9kg",25],["Fire extinguisher, under 3kg",10],["Fire extinguisher, over 3kg",15],["Nitrous canister, under 0.5kg",10],["Nitrous canister, over 0.5kg",20],["Solar panel",39],["Oily rags, 34L bag",30],["Oil filter, small",2],["Oil filter, large",3]];
-var LQ=[["Paint, over 100 L","per litre",1],["Motor oil","per litre",1],["Cooking oil","per litre",1],["Coolant","per litre",3.5],["Aerosol cans","each",1]];
-
-/* ========== HOME BARS ========== */
-$("bars").innerHTML=VEH.filter(function(v){return v.u}).map(function(v){
-  return '<div class="brow"><div class="bn"><b>'+esc(v.n)+'</b><small>'+esc(v.v)+'</small></div><div class="bt"><div class="b s" style="width:'+(v.s/499*100)+'%">$'+v.s+'</div><div class="b u" style="width:'+(v.u/499*100)+'%">$'+v.u+'</div></div><div class="stag">Save $'+(v.u-v.s)+'</div></div>';
-}).join("");
-
-/* ========== PRICE BOARD ========== */
-var pd=.15;
-function cell(p){if(p==null)return '<td><span class="onsite">On site</span></td>';var np=p*(1-pd);return '<td><span class="p'+(pd?" disc":"")+'">'+(pd?money(np):m0(p))+'</span>'+(pd?'<span class="was">'+m0(p)+'</span>':'')+'</td>'}
-function simple(id,rows,h,col){$(id).innerHTML='<tr><th>'+h+'</th><th>'+col+'</th></tr>'+rows.map(function(r){return '<tr><td>'+esc(r[0])+(r.length>2&&r[1]?'<small>'+esc(r[1])+'</small>':'')+'</td>'+cell(r[r.length-1])+'</tr>'}).join("")}
-function board(){
-  $("tLoads").innerHTML='<tr><th>Load</th><th>Sorted</th><th>Unsorted</th></tr>'+VEH.filter(function(v){return v.id!=="none"&&v.id!=="m3"}).map(function(v){return '<tr><td>'+esc(v.n)+'<small>'+v.v+'</small></td>'+cell(v.s)+cell(v.u)+'</tr>'}).join("");
-  simple("tM3",M3,"Material","Per m³");simple("tTy",TY,"Tyre","Each");simple("tMa",MA,"Size","Each");simple("tOt",OT,"Item","Each");simple("tLiq",LQ,"Item","Price");
-  $("pTag").textContent=pd===0?"STANDARD PRICES":pd===.1?"RESIDENT PRICES":"TRADE PRICES";
-}
-$("pAcc").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;pd=parseFloat(b.dataset.d);this.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});board()});
-board();
-
-/* ========== LOAD BUILDER ========== */
-var GROUPS=[
-  {id:"matt",n:"Mattresses",items:[["m_cot","Cot mattress",10],["m_sgl","Single mattress",29],["m_dq","Double / queen mattress",39],["m_king","King mattress",49],["m_latex","Latex mattress",69]]},
-  {id:"tyre",n:"Tyres",items:[["t_moto","Motorbike tyre",12],["t_off","Car tyre, off rim",19],["t_on","Car tyre, on rim",25],["t_lt","Light truck tyre",44],["t_ht","Heavy truck tyre",59]]},
-  {id:"gas",n:"Gas",items:[["g_s","Gas bottle, under 9kg",15],["g_l","Gas bottle, over 9kg",25],["e_s","Fire extinguisher, under 3kg",10],["e_l","Fire extinguisher, over 3kg",15]]},
-  {id:"liq",n:"Liquids",items:[["l_paint","Paint, architectural (litres)",1,10,"L","paint"],["l_motor","Motor oil (litres)",1,5,"L"],["l_cool","Coolant (litres)",3.5,5,"L"]]},
-  {id:"oth",n:"Other",items:[["o_rag","Oily rags, 34L bag",30],["o_fs","Oil filter, small",2],["o_fl","Oil filter, large",3],["o_sol","Solar panel",39]]},
-  {id:"free",n:"Free",items:[["f_wg","Whitegoods",0],["f_sm","Scrap metal, clean",0],["f_cb","Cardboard, up to 0.5 m³",0],["f_cbat","Car battery",0],["f_ew","Phone, TV or LED screen",0]]}
-];
-var ITEM={};GROUPS.forEach(function(g){g.items.forEach(function(i){ITEM[i[0]]={id:i[0],n:i[1],p:i[2],step:i[3]||1,unit:i[4]||"",kind:i[5]||""}})});
-var ACC={none:{n:"No account",d:0},res:{n:"Resident discount 10%",d:.10},trade:{n:"Trade discount 15%",d:.15}};
-var DEF={sorted:true,veh:"uteh",m3:3,green:0,build:0,q:{t_on:2,m_dq:1,f_wg:1,g_s:1},acc:"trade",tab:"load",ex:true};
-var st=JSON.parse(JSON.stringify(DEF));
-try{var sv=JSON.parse(localStorage.getItem("rg-site-docket")||"null");if(sv)for(var k in DEF)if(k in sv)st[k]=sv[k]}catch(e){}
-function save(){try{localStorage.setItem("rg-site-docket",JSON.stringify(st))}catch(e){}}
-var TABS=[{id:"load",n:"Main load"}].concat(GROUPS.map(function(g){return {id:g.id,n:g.n}}));
-function cnt(id){if(id==="load")return (st.veh!=="none"?1:0)+(st.green>0?1:0)+(st.build>0?1:0);var c=0;GROUPS.forEach(function(g){if(g.id===id)g.items.forEach(function(i){if((st.q[i[0]]||0)>0)c++})});return c}
-function tabs(){$("btabs").innerHTML=TABS.map(function(t){var c=cnt(t.id);return '<button class="btab" role="tab" aria-selected="'+(st.tab===t.id)+'" data-tab="'+t.id+'">'+t.n+'<span class="ct" data-z="'+(c?0:1)+'">'+c+'</span></button>'}).join("")}
-$("btabs").addEventListener("click",function(e){var b=e.target.closest(".btab");if(!b)return;st.tab=b.dataset.tab;tabs();body();save()});
-function stepper(id,l,sub,val,on){return '<div class="stp'+(on?" on":"")+'"><div><b>'+esc(l)+'</b><small>'+sub+'</small></div><div class="ctrl"><button type="button" data-dec="'+id+'" aria-label="Remove one '+esc(l)+'">−</button><output>'+val+'</output><button type="button" data-inc="'+id+'" aria-label="Add one '+esc(l)+'">+</button></div></div>'}
-function body(){
-  var h="";
-  if(st.tab==="load"){
-    h+='<span class="blbl">Load type</span><div class="dseg"><button data-sorted="1" aria-pressed="'+st.sorted+'">Sorted</button><button data-sorted="0" aria-pressed="'+(!st.sorted)+'">Unsorted</button></div><div class="gap"></div>';
-    h+='<span class="blbl">Vehicle</span><div class="opts">'+VEH.map(function(v){var dis=!st.sorted&&v.u===null;var pr=st.sorted?v.s:v.u;var sub=v.id==="none"?"Add items in the other tabs":(dis?"Sorted price only":v.v+" · $"+pr+(v.id==="m3"?"/m³":""));return '<div class="opt"><input type="radio" name="veh" id="veh-'+v.id+'" value="'+v.id+'"'+(st.veh===v.id?" checked":"")+(dis?" disabled":"")+'><label for="veh-'+v.id+'"><b>'+esc(v.n)+'</b><small>'+sub+'</small></label></div>'}).join("")+'</div>';
-    if(st.veh==="m3")h+='<div class="gap"></div><label class="blbl" for="m3">Volume</label><div class="range"><input type="range" id="m3" min="0.5" max="30" step="0.5" value="'+st.m3+'"><output id="m3O">'+Number(st.m3).toFixed(1)+' m³</output></div>';
-    h+='<div class="gap"></div><span class="blbl">Add by the cubic metre</span><div class="steps2">'+stepper("green","Green waste","$79 per m³",st.green.toFixed(1)+" m³",st.green>0)+stepper("build","Sorted building materials","$199 per m³",st.build.toFixed(1)+" m³",st.build>0)+'</div>';
-    h+='<p class="bnote2"><b>Mixed construction and demolition waste is not accepted.</b></p>';
-  }else{
-    var g=GROUPS.filter(function(x){return x.id===st.tab})[0];
-    h+='<div class="steps2">'+g.items.map(function(i){var it=ITEM[i[0]],q=st.q[it.id]||0;var sub=it.p===0?"Free":(it.unit==="L"?"$"+it.p+" per litre":"$"+it.p+" each");if(it.kind==="paint")sub="First 100 L free · $1 per litre after";return stepper(it.id,it.n,sub,q+(it.unit?" "+it.unit:""),q>0)}).join("")+'</div>';
-  }
-  $("bbody").innerHTML=h;
-}
-$("bbody").addEventListener("click",function(e){
-  var b=e.target.closest("button");if(!b)return;
-  if(b.dataset.sorted!==undefined){st.sorted=b.dataset.sorted==="1";var c=VEH.filter(function(v){return v.id===st.veh})[0];if(!st.sorted&&c&&c.u===null)st.veh="ute";st.ex=false;body();upd();return}
-  var id=b.dataset.inc||b.dataset.dec;if(!id)return;var dir=b.dataset.inc?1:-1;
-  if(id==="green"||id==="build")st[id]=Math.max(0,Math.round((st[id]+dir*.5)*2)/2);else st.q[id]=Math.max(0,(st.q[id]||0)+dir*ITEM[id].step);
-  st.ex=false;body();upd();
-});
-$("bbody").addEventListener("change",function(e){if(e.target.name==="veh"){st.veh=e.target.value;st.ex=false;body();upd()}});
-$("bbody").addEventListener("input",function(e){if(e.target.id==="m3"){st.m3=parseFloat(e.target.value);$("m3O").textContent=st.m3.toFixed(1)+" m³";st.ex=false;upd()}});
-function compute(){
-  var L=[],sub=0,alt=null,v=VEH.filter(function(x){return x.id===st.veh})[0]||VEH[0];
-  if(v.id!=="none"){var u=st.sorted?v.s:v.u,p;if(v.id==="m3"){p=u*st.m3;L.push({n:(st.sorted?"Sorted":"Unsorted")+" load · "+v.n,d:st.m3.toFixed(1)+" m³ × $"+u,p:p});if(!st.sorted)alt=p-v.s*st.m3}else{p=u;L.push({n:v.n,d:(st.sorted?"Sorted":"Unsorted")+" · "+v.v,p:p});if(!st.sorted)alt=v.u-v.s}sub+=p}
-  if(st.green>0){L.push({n:"Green waste",d:st.green.toFixed(1)+" m³ × $79",p:st.green*79});sub+=st.green*79}
-  if(st.build>0){L.push({n:"Sorted building materials",d:st.build.toFixed(1)+" m³ × $199",p:st.build*199});sub+=st.build*199}
-  GROUPS.forEach(function(g){g.items.forEach(function(i){var it=ITEM[i[0]],q=st.q[it.id]||0;if(!q)return;var p,d;if(it.kind==="paint"){var o=Math.max(0,q-100);p=o;d=q+" L"+(q>100?" · 100 L free":" · free via PaintBack")}else if(it.p===0){p=0;d="Qty "+q}else{p=q*it.p;d=(it.unit==="L"?q+" L × $":q+" × $")+it.p}L.push({n:it.n,d:d,p:p,free:p===0});sub+=p})});
-  var a=ACC[st.acc]||ACC.none,disc=sub*a.d;return {L:L,sub:sub,disc:disc,tot:sub-disc,a:a,alt:alt};
-}
-function upd(){
-  var r=compute();
-  $("dLines").innerHTML=r.L.length?r.L.map(function(l){return '<div class="ln"><span>'+esc(l.n)+'<small>'+esc(l.d)+'</small></span><span class="'+(l.free?"fr":"num")+'">'+(l.free?"FREE":money(l.p))+'</span></div>'}).join(""):'<div class="ln emp"><span>Nothing on the docket yet.</span><span></span></div>';
-  $("dSub").textContent=money(r.sub);
-  $("dAcc").querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.acc===st.acc?"true":"false")});
-  $("dDiscRow").hidden=r.a.d===0;$("dDiscLbl").textContent=r.a.n;$("dDisc").textContent="−"+money(r.disc);$("dTot").textContent=money(r.tot);
-  $("dEx").hidden=!st.ex;
-  var n=[];if(r.alt)n.push("<b>Sort it first and save "+money(r.alt*(1-r.a.d))+".</b>");
-  if(r.a.d===0&&r.sub>0)n.push("<b>A free trade account takes "+money(r.sub*.15)+" off.</b>");
-  else if(st.acc==="res"&&r.sub>0)n.push("Trade rate would save another "+money(r.sub*.05)+".");
-  $("dNudge").hidden=!n.length;$("dNudge").innerHTML=n.join(" ");
-  tabs();save();
-}
-$("dAcc").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;st.acc=b.dataset.acc;st.ex=false;upd()});
-$("dClear").addEventListener("click",function(){st.veh="none";st.green=0;st.build=0;st.q={};st.ex=false;st.tab="load";body();upd()});
-try{$("dDate").textContent="Recycle North Geelong · "+new Intl.DateTimeFormat("en-AU",{timeZone:"Australia/Melbourne",day:"numeric",month:"short",year:"numeric"}).format(new Date())}catch(e){}
-tabs();body();upd();
-
-/* ========== WHAT WE TAKE ========== */
-var TAKE=[
-  ["Whitegoods","Fridges, washing machines, ovens","free","Free","Household"],["Scrap metal","All types, clean","free","Free","Metals"],["Cardboard","Clean and dry, up to 0.5 m³","free","Free","Packaging"],["Polystyrene","Clean EPS only, up to 0.5 m³","free","Free","Packaging"],["Car batteries","","free","Free","Automotive"],["Printer cartridges","Household and office size","free","Free","E-waste"],["Phones, TVs & LED screens","Selected e-waste","free","Free","E-waste"],["Paint","Architectural and decorative, up to 100 L","free","Free","Liquids"],
-  ["Cot mattress","","paid","$10","Mattresses"],["Single mattress","","paid","$29","Mattresses"],["Double / queen mattress","","paid","$39","Mattresses"],["King mattress","","paid","$49","Mattresses"],["Latex mattress","","paid","$69","Mattresses"],
-  ["Motorbike tyre","","paid","$12","Automotive"],["Car tyre, off rim","","paid","$19","Automotive"],["Car tyre, on rim","","paid","$25","Automotive"],["Light truck tyre","","paid","$44","Automotive"],["Heavy truck tyre","","paid","$59","Automotive"],["Tractor tyre","","paid","POA","Automotive"],
-  ["Gas bottle, under 9kg","","paid","$15","Gas"],["Gas bottle, over 9kg","","paid","$25","Gas"],["Fire extinguisher, under 3kg","","paid","$10","Gas"],["Fire extinguisher, over 3kg","","paid","$15","Gas"],["Nitrous canisters","Under / over 0.5kg (2L)","paid","$10 / $20","Gas"],
-  ["Paint over 100 L","Per litre","paid","$1/L","Liquids"],["Motor oil","Per litre","paid","$1/L","Liquids"],["Cooking oil","Per litre","paid","$1/L","Liquids"],["Coolant","Per litre","paid","$3.50/L","Liquids"],["Aerosol cans","","paid","$1","Liquids"],["Oily rags","Per 34 L bag","paid","$30","Automotive"],["Oil filters","Small / large","paid","$2 / $3","Automotive"],
-  ["Solar panels","Each","paid","$39","E-waste"],["Computers, servers & IT","AS 5377 processing, data destruction","paid","Ask us","E-waste"],
-  ["Green waste","Utes, trailers and tip trucks","paid","$79/m³","Garden"],["Sorted building materials","Bricks, timber, tiles, carpet, treated wood, roof tiles","paid","$199/m³","Building"],["Timber & pallets","Untreated","paid","By load","Building"],
-  ["Sorted general waste","Vans, trailers and trucks","paid","$99/m³","Household"],["Unsorted household junk","Furniture, clothing, homewares, books","paid","$199/m³","Household"],["Office furniture & fit-outs","","paid","By load","Household"],["Glass, bottles & cans","","paid","By load","Packaging"],
-  ["Asbestos","Any form","no","Not accepted","Not accepted"],["Mixed construction & demolition","Unsorted bricks, concrete, soil, plaster","no","Not accepted","Not accepted"],["Hazardous chemicals & solvents","Including fuels","no","Not accepted","Not accepted"],["Pesticides & herbicides","Including rodenticides","no","Not accepted","Not accepted"],["Contaminated soil","","no","Not accepted","Not accepted"],["Unlabelled chemicals","Unsealed or unidentified liquids","no","Not accepted","Not accepted"],["Medical & radioactive waste","","no","Not accepted","Not accepted"],["Weapons, ammunition & explosives","","no","Not accepted","Not accepted"],["Mercury switches","","no","Not accepted","Not accepted"]
-];
-var tf="all",tc="All";
-var CH=[["all","All"],["free","Free"],["paid","Paid"],["no","Not accepted"]];
-$("chips").innerHTML=CH.map(function(c){var n=c[0]==="all"?TAKE.length:TAKE.filter(function(r){return r[2]===c[0]}).length;return '<button class="chip" aria-pressed="'+(c[0]==="all")+'" data-f="'+c[0]+'">'+c[1]+'<span class="c">'+n+'</span></button>'}).join("");
-var CATS=["All"];TAKE.forEach(function(r){if(CATS.indexOf(r[4])<0)CATS.push(r[4])});
-$("cats").innerHTML=CATS.map(function(c){return '<button class="cat" aria-pressed="'+(c==="All")+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join("");
-function take(){
-  var t=$("q").value.trim().toLowerCase();
-  var rows=TAKE.filter(function(r){if(tf!=="all"&&r[2]!==tf)return false;if(tc!=="All"&&r[4]!==tc)return false;return !t||(r[0]+" "+r[1]+" "+r[4]).toLowerCase().indexOf(t)>-1});
-  $("items").innerHTML=rows.map(function(r){return '<div class="it '+r[2]+'"><div><b>'+esc(r[0])+'</b>'+(r[1]?'<small>'+esc(r[1])+'</small>':'')+'</div><span class="tag '+r[2]+'">'+esc(r[3])+'</span></div>'}).join("");
-  $("empty").hidden=rows.length>0;
-}
-$("q").addEventListener("input",take);
-$("chips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;tf=b.dataset.f;this.querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});take()});
-$("cats").addEventListener("click",function(e){var b=e.target.closest(".cat");if(!b)return;tc=b.dataset.c;this.querySelectorAll(".cat").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});take()});
-take();
-document.querySelectorAll(".tile").forEach(function(b){b.addEventListener("click",function(){$("q").value=b.dataset.q;tf="all";tc="All";
-  $("chips").querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed",x.dataset.f==="all"?"true":"false")});
-  $("cats").querySelectorAll(".cat").forEach(function(x){x.setAttribute("aria-pressed",x.dataset.c==="All"?"true":"false")});
-  take();location.hash="take"})});
-
-/* ========== SAVINGS ========== */
-function sv2(){var l=+$("loads").value,s=+$("spend").value,y=l*52*s*.15;$("loadsO").textContent=l;$("spendO").textContent=m0(s);$("yr").textContent=m0(Math.round(y));$("yrN").textContent=l+" load"+(l>1?"s":"")+" a week at "+m0(s)+", across 52 weeks. About "+m0(Math.round(y/12))+" a month."}
-$("loads").addEventListener("input",sv2);$("spend").addEventListener("input",sv2);sv2();
-
-/* ========== VEHICLE CHECK ========== */
-var VC=[["car","Car","ok","Car boot loads start at $49 sorted."],["wag","Station wagon","ok","Station wagon loads are $69 sorted."],["ute","Ute","ok","Ute loads are $99 sorted, $149 caged or heaped."],["tr1","Single-axle trailer","ok","Small trailers are $99 sorted, $149 caged or heaped."],["tr2","Dual-axle trailer","ok","Large trailers are $149 sorted, $249 caged or heaped."],["tip","Tipping trailer","ok","Tipping trailers are accepted. Larger loads are charged per m³."],["van","Van","ok","Vans are $99 per m³ sorted, $199 per m³ unsorted."],["tt","Tip truck","gvm",""],["bt","Box truck","gvm",""],["skip","Skip bin truck","no","Skip bin trucks can't tip at this site."],["garb","Garbage truck","no","Garbage trucks can't tip at this site."],["semi","Semi / B-Double","corp","Accepted for corporate deliveries. Call Nigel Taylor on 0427 888 222 to arrange it first."]];
-var vc="ute";
-$("vopts").innerHTML=VC.map(function(v){return '<div class="vopt"><input type="radio" name="vc" id="vc-'+v[0]+'" value="'+v[0]+'"'+(v[0]===vc?" checked":"")+'><label for="vc-'+v[0]+'"><b>'+v[1]+'</b><small>'+(v[2]==="gvm"?"Up to 4,500kg GVM":v[2]==="no"?"Not accepted":v[2]==="corp"?"Corporate only":"Accepted")+'</small></label></div>'}).join("");
-function vck(){var v=VC.filter(function(x){return x[0]===vc})[0],r=$("vres"),B=$("vBig"),T=$("vTxt");$("gvmW").hidden=v[2]!=="gvm";r.className="vres";
-  if(v[2]==="ok"){r.classList.add("ok");B.textContent="Yes, tip away";T.textContent=v[3]}
-  else if(v[2]==="no"){r.classList.add("no");B.textContent="Not here";T.textContent=v[3]}
-  else if(v[2]==="corp"){B.textContent="Call first";T.textContent=v[3]}
-  else{var kg=parseFloat($("gvm").value);if(isNaN(kg)){B.textContent="Enter GVM";T.textContent="Check the compliance plate for the gross vehicle mass."}else if(kg<=4500){r.classList.add("ok");B.textContent="Yes, tip away";T.textContent=v[1]+"s up to 4,500kg GVM are accepted. Sorted loads are $99 per m³."}else{r.classList.add("no");B.textContent="Too heavy";T.textContent=v[1]+"s over 4,500kg GVM can't tip at this site."}}}
-$("vopts").addEventListener("change",function(e){vc=e.target.value;vck()});$("gvm").addEventListener("input",vck);vck();
-
-/* ========== HOURS (Geelong time) ========== */
-var DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-var SUM={0:[540,780],1:[450,1020],2:[450,1020],3:[450,1020],4:[450,1020],5:[450,1020],6:[450,1020]};
-var WIN={0:null,1:[450,960],2:[450,960],3:[450,960],4:[450,960],5:[450,960],6:[450,960]};
-function f(x){var h=Math.floor(x/60),mm=x%60;return (h%12||12)+(mm?":"+String(mm).padStart(2,"0"):"")+(h>=12?"pm":"am")}
-function g(off){var dt=new Date(Date.now()+(off||0)*864e5);try{var o={};new Intl.DateTimeFormat("en-AU",{timeZone:"Australia/Melbourne",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric",hourCycle:"h23",weekday:"short"}).formatToParts(dt).forEach(function(p){o[p.type]=p.value});return {mo:+o.month,day:+o.day,dow:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday],min:(+o.hour%24)*60+(+o.minute)}}catch(e){return {mo:dt.getMonth()+1,day:dt.getDate(),dow:dt.getDay(),min:dt.getHours()*60+dt.getMinutes()}}}
-function summer(mo){return mo>=9||mo<=3}
-function hrs(x){return (summer(x.mo)?SUM:WIN)[x.dow]}
-function tick(){
-  var n=g(0),s=summer(n.mo),h=hrs(n),open=!!(h&&n.min>=h[0]&&n.min<h[1]),next="";
-  if(!open){if(h&&n.min<h[0])next="Opens "+f(h[0])+" today";else for(var i=1;i<=7;i++){var x=g(i),hx=hrs(x);if(hx){next="Opens "+(i===1?"tomorrow":DAYS[x.dow])+" at "+f(hx[0]);break}}}
-  ["navSt","tdSt","vSt"].forEach(function(id){$(id).classList.toggle("is-open",open);$(id).classList.toggle("is-closed",!open)});
-  $("navStT").textContent=open?"Open · until "+f(h[1]):"Closed · "+next.replace("Opens","opens");
-  $("tdLbl").textContent="Today · "+DAYS[n.dow];$("tdW").textContent=open?"Open now":"Closed";$("tdSub").textContent=open?"Gates close at "+f(h[1]):next;$("tdH").textContent=h?f(h[0])+" – "+f(h[1]):"Closed";
-  $("vStT").textContent=open?"Open now":"Closed";$("vStS").textContent=open?DAYS[n.dow]+" · gates close at "+f(h[1]):next;
-  var w="";for(var j=0;j<7;j++){var gj=g(j),hj=hrs(gj);w+='<div class="wd'+(j===0?" today":"")+(hj?"":" off")+'"><small>'+(j===0?"Today":j===1?"Tomorrow":gj.day+"/"+gj.mo)+'</small><b>'+DAYS[gj.dow].slice(0,3)+'</b><span>'+(hj?f(hj[0])+"–"+f(hj[1]):"Closed")+'</span></div>'}
-  $("week").innerHTML=w;
-  $("htable").innerHTML='<tr><th>Day</th><th>Summer'+(s?'<span class="cur">NOW</span>':'')+'</th><th>Winter'+(!s?'<span class="cur">NOW</span>':'')+'</th></tr>'+[1,2,3,4,5,6,0].map(function(d){var a=SUM[d],b=WIN[d];return '<tr'+(d===n.dow?' class="today"':'')+'><td>'+DAYS[d]+(d===n.dow?" · today":"")+'</td><td>'+(a?f(a[0])+"–"+f(a[1]):'<span class="off">Closed</span>')+'</td><td>'+(b?f(b[0])+"–"+f(b[1]):'<span class="off">Closed</span>')+'</td></tr>'}).join("");
-}
-tick();setInterval(tick,60000);
-
-/* ========== COPY ========== */
-document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){var t=b.dataset.copy,o=b.textContent;function ok(){b.textContent="Copied";setTimeout(function(){b.textContent=o},1500)}function fb(){var el=b.parentNode.querySelector("b");var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected"}try{navigator.clipboard.writeText(t).then(ok,fb)}catch(e){fb()}})});
-
-route();
-})();
-</script>
+<script type="module" src="/recycle-geelong/assets/main.js"></script>
 
 </body>
 </html>

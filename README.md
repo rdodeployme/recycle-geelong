@@ -1,18 +1,14 @@
-# Recycle Geelong website prototype
+# Recycle North Geelong website
 
-Static site for the Recycle North Geelong transfer station (116 Furner Avenue, North Geelong).
+Live (staging, noindex): https://rdodeployme.github.io/recycle-geelong/
 
 | Path | What it is |
 |---|---|
-| `/` | Phase 1 site: Home, Prices, What we take, Trade, Hours & location (hash routes: `#prices`, `#take`, `#trade`, `#visit`) |
-| `/trade/` | Trade landing page built around the price board (for ad traffic) |
-| `/one-pager/` | Single-page version with the load builder |
+| `/` | New site (Oct 2026): home with item finder, load estimator and 3D "after you tip" journey; prices, what we take, sorted vs unsorted, hours & location, trade, community, about, news |
+| `/trade/` | Trade landing page (earlier prototype, kept for ad links) |
+| `/one-pager/` | Single-page version with the load builder (earlier prototype) |
+| `/v1/` | The earlier Phase 1 prototype home page |
 
-No build step. Every page is plain HTML, CSS and JS; images are in `assets/img/`.
-
-## Before going public
-
-- Pages carry `noindex` and `robots.txt` blocks all crawlers. Remove both once the numbers below are confirmed.
-- Confirm: trade discount (15%) and whether it applies to per-item charges, summer Mon–Sat hours (shown as 7:30am–5pm), facility size to quote.
-- Prices come from recycle.net.au/price-list. Update the arrays at the top of each page's script if prices change.
-- Photos are from the Recycle North Geelong gallery; four were upscaled (tradies, trailer, greenw, ute).
+This branch (`main`) is the built site served by GitHub Pages. The source (build script, page templates,
+Blender model script, photos) is on the `source` branch: `npm install && BASE=/recycle-geelong/ node build.mjs`,
+then copy `dist/` here.
