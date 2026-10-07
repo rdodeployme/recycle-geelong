@@ -28,7 +28,7 @@ with sync_playwright() as p:
     for path in PAGES:
         pg.goto(f'http://127.0.0.1:8780/{path}', wait_until='networkidle')
         pg.add_style_tag(content='html{scroll-behavior:auto!important}.journey-scroll{height:0!important}.journey-pin{position:relative!important}*{animation-duration:0s!important}')
-        pg.evaluate("document.querySelectorAll('.rv').forEach(e=>e.classList.add('in'));document.querySelectorAll('img[loading=lazy]').forEach(i=>i.loading='eager')")
+        pg.evaluate("document.querySelectorAll('.rv,.hang').forEach(e=>e.classList.add('in'));document.querySelectorAll('img[loading=lazy]').forEach(i=>i.loading='eager')")
         pg.wait_for_timeout(1500)
         total = pg.evaluate('document.documentElement.scrollHeight')
         shots = []

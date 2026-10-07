@@ -282,10 +282,52 @@ function forms() {
 
 // ---------------------------------------------------------------- reveal
 function reveal() {
-  const els = $$('.rv');
+  const els = $$('.rv, .hang');
   if (!els.length || reduced || !('IntersectionObserver' in window)) { els.forEach((e) => e.classList.add('in')); return; }
   const io = new IntersectionObserver((ents) => ents.forEach((en) => { if (en.isIntersecting || en.boundingClientRect.top < 0) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -8% 0px' });
   els.forEach((e, i) => { e.style.transitionDelay = `${(i % 4) * 70}ms`; io.observe(e); });
+}
+
+// ---------------------------------------------------------------- video hero
+function heroVideo() {
+  const v = $('[data-hero-video] video');
+  if (!v) return;
+  const port = matchMedia('(orientation: portrait)').matches;
+  v.poster = port ? v.dataset.portPoster : v.dataset.landPoster;
+  const btn = $('[data-hv-pause]');
+  const setBtn = (playing) => { btn.innerHTML = ic(playing ? 'pause' : 'play'); btn.setAttribute('aria-label', playing ? 'Pause the background video' : 'Play the background video'); };
+  if (reduced || (navigator.connection && navigator.connection.saveData)) { setBtn(false); btn.addEventListener('click', () => { if (!v.src) v.src = port ? v.dataset.port : v.dataset.land; v.play(); setBtn(true); }, { once: true }); return; }
+  v.src = port ? v.dataset.port : v.dataset.land;
+  v.play().then(() => setBtn(true)).catch(() => setBtn(false));
+  btn.addEventListener('click', () => { if (v.paused) { v.play(); setBtn(true); } else { v.pause(); setBtn(false); } });
+  // pause when scrolled away to save battery
+  new IntersectionObserver((ents) => ents.forEach((e) => { if (!e.isIntersecting) v.pause(); else if (btn.getAttribute('aria-label').startsWith('Pause')) v.play().catch(() => {}); })).observe(v);
+}
+
+// ---------------------------------------------------------------- count-up numbers
+function counters() {
+  const els = $$('[data-count]');
+  if (!els.length) return;
+  const fmt = (n) => n.toLocaleString('en-AU');
+  if (reduced || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((ents) => ents.forEach((en) => {
+    if (!en.isIntersecting) return;
+    io.unobserve(en.target);
+    const el = en.target, end = Number(el.dataset.count), t0 = performance.now(), dur = 1400;
+    const keep = el.innerHTML.replace(/^[\d,]+/, '');
+    const step = (t) => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3); el.innerHTML = fmt(Math.round(end * e)) + keep; if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }), { threshold: 0.4 });
+  els.forEach((e) => io.observe(e));
+}
+
+// ---------------------------------------------------------------- banners speed up with scroll
+function marqueeSpeed() {
+  const anims = $$('[data-mq]').map((t) => t.getAnimations()[0]).filter(Boolean);
+  if (!anims.length || reduced) return;
+  let last = scrollY, v = 0;
+  const tick = () => { const d = Math.abs(scrollY - last); last = scrollY; v = v * 0.9 + d * 0.1; anims.forEach((a) => { a.playbackRate = 1 + Math.min(v / 6, 5); }); requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
 }
 
 // ---------------------------------------------------------------- 3D journey
@@ -316,6 +358,9 @@ function header() {
 status();
 setInterval(status, 60000);
 header();
+heroVideo();
+counters();
+marqueeSpeed();
 menu();
 slides();
 $$('[data-finder]').forEach(finder);

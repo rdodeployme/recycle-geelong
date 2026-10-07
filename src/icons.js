@@ -38,6 +38,7 @@ const I = {
   menu: '<path d="M3.5 7h17M3.5 12h17M3.5 17h17"/>',
   close: '<path d="M5 5l14 14M19 5L5 19"/>',
   play: '<path d="M7 4.5v15l12-7.5z"/>',
+  pause: '<path d="M8 5v14M16 5v14"/>',
   hand: '<path d="M4 14h3l4 2h4a1.5 1.5 0 0 0 0-3h-3"/><path d="M7 21H4v-7"/><path d="M15 13l4-2a1.5 1.5 0 0 1 1.5 2.5L14 18.5 7 18"/><path d="M14.5 4.5a2.3 2.3 0 0 1 3.3 0 2.3 2.3 0 0 1 3.2 3.2L17.8 11l-3.3-3.3a2.3 2.3 0 0 1 0-3.2z"/>',
   building: '<path d="M3 21V9l6-3v15M9 21V3h12v18M3 21h18"/><path d="M13 7h4M13 11h4M13 15h4"/>',
   info: '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v6M12 7.5v.5"/>',

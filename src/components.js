@@ -7,8 +7,8 @@ export function finder({ id = 'finder', heading = true, n = '01' } = {}) {
   <div class="wrap">
     ${bay(n)}
     ${heading ? `<div class="sec-head split">
-      <div><span class="kicker">Can I bring it?</span><h2 id="${id}-h" style="margin-top:18px">What have you got?</h2></div>
-      <p class="lede">Type anything: a couch, a fridge, paint, tyres. You'll see if we take it, what it costs and what happens to it after you drop it off.</p>
+      <div class="hang"><h2 id="${id}-h">What have you got?</h2></div>
+      <p class="lede">Type anything. See if we take it, what it costs and where it goes next.</p>
     </div>` : `<h2 id="${id}-h" class="sr-only">Search what we take</h2>`}
     <div class="finder-box" data-finder>
       <div class="finder-input">
@@ -41,8 +41,8 @@ export function estimator({ id = 'cost', n = '02' } = {}) {
   <div class="wrap">
     ${bay(n)}
     <div class="sec-head split">
-      <div><span class="kicker">What will it cost?</span><h2 id="${id}-h" style="margin-top:18px">Price your load in <span class="g nw">10 seconds</span></h2></div>
-      <p class="lede">Pick how you're bringing it in. Sorting your load at home halves the rate, and locals who register get 10% off.</p>
+      <div class="hang"><h2 id="${id}-h">Price your load in <span class="g nw">10 seconds</span></h2></div>
+      <p class="lede">Sort it at home and pay half. Locals get another 10% off.</p>
     </div>
     <div class="est" data-estimator>
       <div>
@@ -103,8 +103,8 @@ export function freeGrid({ n = '03' } = {}) {
   <div class="wrap">
     ${bay(n)}
     <div class="sec-head split">
-      <div><h2 id="free-h">Eight things you can drop off free</h2></div>
-      <p class="lede" style="color:var(--ink)">Recyclables shouldn't cost you money to do the right thing. Bring these in on their own, or with a paid load.</p>
+      <div class="hang"><h2 id="free-h">Eight things, free</h2></div>
+      <p class="lede" style="color:var(--ink)">Doing the right thing shouldn't cost you. Bring these on their own or with a paid load.</p>
     </div>
     <div class="free-grid">
       ${FREE.map(([ic, t, d]) => `<div class="free-card rv"><span class="tag">FREE</span>${icon(ic)}<h3>${t}</h3><p>${d}</p></div>`).join('')}
@@ -218,7 +218,7 @@ export function visitSteps({ n = '06' } = {}) {
   <div class="wrap">
     ${bay(n)}
     <div class="sec-head split">
-      <div><span class="kicker">How a visit works</span><h2 id="visit-h" class="lines" style="margin-top:18px"><span class="ln">Four steps.</span><span class="ln">That's it.</span></h2></div>
+      <div class="hang"><h2 id="visit-h" class="lines"><span class="ln">Four steps.</span><span class="ln">That's it.</span></h2></div>
       <p class="lede">Come in any time we're open: ${HOURS.label}. Rain or shine, it's all under cover.</p>
     </div>
     <div class="steps">
@@ -256,7 +256,7 @@ export function partnersList() {
   return `<div class="partners">${FREECYCLE.partners.map((p) => `<span>${p}</span>`).join('')}<span>and more</span></div>`;
 }
 
-export function pageHero({ crumbs, kicker, title, lede, image, extra = '' }) {
+export function pageHero({ crumbs, kicker, title, lede, image, extra = '', band = true }) {
   return `<section class="page-hero${image ? ' has-img' : ''}">
   ${image ? img(image, { eager: true, alt: '' }) : ''}
   <div class="wrap">
@@ -265,6 +265,110 @@ export function pageHero({ crumbs, kicker, title, lede, image, extra = '' }) {
     <h1>${title}</h1>
     ${lede ? `<p class="lede" style="color:#deded9;max-width:52ch">${lede}</p>` : ''}
     ${extra}
+  </div>
+</section>
+${band ? marquee({ tone: 'green', small: true }) : ''}`;
+}
+
+// ================================================================ v2: loud and kinetic
+
+// Full-screen video hero with a kinetic headline.
+export function heroVideo() {
+  const free = ['Whitegoods', 'Scrap metal', 'Cardboard', 'Polystyrene', 'TVs and screens', 'Paint', 'Car batteries', 'Ink cartridges'];
+  const tick = free.map((f) => `<span>${f}</span><i>Free</i>`).join('');
+  return `<section class="hv" aria-labelledby="hero-h" data-hero-video>
+  <video class="hv-vid" muted loop playsinline autoplay preload="auto"
+    poster="${u('video/hero-16x9-poster.jpg')}"
+    data-land="${u('video/hero-16x9.mp4')}" data-land-poster="${u('video/hero-16x9-poster.jpg')}"
+    data-port="${u('video/hero-9x16.mp4')}" data-port-poster="${u('video/hero-9x16-poster.jpg')}"
+    aria-hidden="true"></video>
+  <div class="hv-shade"></div>
+  <div class="wrap hv-in">
+    <div class="hv-top">
+      <span class="status" data-status><i></i><span data-status-text>${HOURS.short}</span></span>
+      <span class="hv-where">${SITE.address.line1}, North Geelong</span>
+    </div>
+    <h1 id="hero-h" class="lines kin"><span class="ln"><span class="w">Drive in.</span></span><span class="ln"><span class="w">Drop off.</span></span><span class="ln"><span class="w g">We sort it.</span></span></h1>
+    <p class="hv-lede">Geelong's undercover tip and recycling centre. Open six days.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="#finder">What can I bring?${icon('down')}</a>
+      <a class="btn ghost" href="#cost">Price my load</a>
+      <a class="btn ghost" href="${SITE.address.directions}" target="_blank" rel="noopener">${icon('pin')}Directions</a>
+    </div>
+  </div>
+  <button class="hv-pause" type="button" aria-label="Pause the background video" data-hv-pause>${icon('play')}</button>
+  <div class="ticker" aria-label="Free to drop off: ${free.join(', ')}"><div class="ticker-track"><div class="ticker-run">${tick}</div><div class="ticker-run" aria-hidden="true">${tick}</div></div></div>
+</section>`;
+}
+
+// Scrolling banner, like the Love Not Landfill banners that run along the hall.
+export function marquee({ tone = 'black', text = ['Love', '<b>not</b>', 'landfill.'], small = false } = {}) {
+  const unit = `<span class="mq-unit">${text.join(' ')}</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-unit">Recycle <b>North Geelong</b></span><span class="mq-dot" aria-hidden="true"></span>`;
+  return `<div class="mq mq-${tone}${small ? ' mq-sm' : ''}" aria-hidden="true"><div class="mq-track" data-mq><div class="mq-run">${unit.repeat(3)}</div><div class="mq-run">${unit.repeat(3)}</div></div></div>`;
+}
+
+// Two rows of real photos sliding past in opposite directions.
+export const RUN_A = [
+  ['car-sedan-bays', 'Car / sedan unloading'], ['cardboard-cage', 'Cardboard'], ['whitegoods', 'Whitegoods'], ['waste-oil-station', 'Waste oil station'],
+  ['polystyrene-cages', 'Polystyrene'], ['tyres-bay', 'Tyres'], ['mattresses', 'Mattresses'], ['forklift-cardboard', 'Baled on site'],
+];
+export const RUN_B = [
+  ['trailer-cardboard', 'Unload by material'], ['metals-area', 'Recycled metals'], ['gas-cages', 'Gas bottles'], ['aerosols-paint', 'Aerosols, paint, hazards'],
+  ['furniture-dropoff', 'Furniture drop-off'], ['ewaste-cages', 'E-waste'], ['building-materials', 'Building materials'], ['excavator-bin', 'Hook bins'],
+];
+export function photoRun({ n = '04' } = {}) {
+  const row = (list, dir) => {
+    const items = list.map(([im, label]) => `<figure class="pr-item">${img(im, { sizes: '420px', alt: label })}<figcaption><span class="pr-sign">${label}</span></figcaption></figure>`).join('');
+    return `<div class="pr-row pr-${dir}"><div class="pr-track">${items}${items.replace(/<img /g, '<img aria-hidden="true" ')}</div></div>`;
+  };
+  return `<section class="sec pr" id="tour" aria-labelledby="tour-h">
+  <div class="wrap">
+    ${bay(n)}
+    <div class="sec-head split">
+      <div class="hang"><h2 id="tour-h" class="lines"><span class="ln">20,000&nbsp;m².</span><span class="ln">One roof.</span></h2></div>
+      <p class="lede">A bay for every material, all on undercover concrete. You never unload in the rain.</p>
+    </div>
+  </div>
+  ${row(RUN_A, 'l')}
+  ${row(RUN_B, 'r')}
+</section>`;
+}
+
+// Big numbers set against things people know.
+export function scale({ n = '07' } = {}) {
+  const ovals = Array.from({ length: 23 }, (_, i) => `<ellipse cx="200" cy="${178 - i * 5.2}" rx="170" ry="62" />`).join('');
+  return `<section class="sec on-green sc" aria-labelledby="sc-h">
+  <div class="wrap">
+    ${bay(n)}
+    <div class="sec-head split">
+      <div class="hang"><h2 id="sc-h" class="lines"><span class="ln">Not a tip.</span><span class="ln">A recovery centre.</span></h2></div>
+      <p class="lede" style="color:var(--ink)">The same site recycles mattresses, densifies polystyrene and bales cardboard. Here's the scale.</p>
+    </div>
+    <div class="sc-grid">
+      <article class="sc-card sc-big rv">
+        <div class="sc-num" style="--w:6.4"><span data-count="20000">20,000</span><small>m²</small></div>
+        <p class="sc-what">under one roof</p>
+        <p class="sc-like">About the size of the <b>MCG playing surface</b>, all of it undercover concrete.</p>
+        <svg class="sc-mcg" viewBox="0 0 400 240" aria-hidden="true"><ellipse cx="200" cy="120" rx="185" ry="105" /><ellipse cx="200" cy="120" rx="40" ry="14" class="pitch"/></svg>
+      </article>
+      <article class="sc-card rv">
+        <div class="sc-num" style="--w:10.6"><span data-count="12000">12,000</span>–<span data-count="30000">30,000</span></div>
+        <p class="sc-what">mattresses recycled by our group every month</p>
+        <p class="sc-like">A year's worth would cover the <b>MCG 23 to 57 times over</b>.</p>
+        <svg class="sc-stack" viewBox="0 0 400 260" aria-hidden="true">${ovals}</svg>
+      </article>
+      <article class="sc-card rv">
+        <div class="sc-num" style="--w:9.4"><span data-count="3800">3,800</span>–<span data-count="9600">9,600</span><small>t</small></div>
+        <p class="sc-what">of mattress steel recovered a year</p>
+        <p class="sc-like">Enough for a new <b>Sydney Harbour Bridge</b> every 6 to 14 years.</p>
+      </article>
+      <article class="sc-card rv">
+        <div class="sc-num" style="--w:3"><span data-count="90">90</span>+</div>
+        <p class="sc-what">material streams sorted on site</p>
+        <p class="sc-like">Each with somewhere to go that isn't landfill.</p>
+      </article>
+    </div>
+    <div class="accred" style="margin-top:36px">${SITE.accreditations.map((a) => `<div><b>${a.code}</b><span>${a.label}</span></div>`).join('')}</div>
   </div>
 </section>`;
 }

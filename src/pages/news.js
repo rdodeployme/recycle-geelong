@@ -53,7 +53,7 @@ export function newsPosts() {
       else html.push(`<p>${esc(text)}</p>`);
     }
     if (inList) html.push('</ul>');
-    const body = `${pageHero({ crumbs: `<a href="${u('news/')}">News</a>`, kicker: fmt(p.date), title: esc(p.title) })}
+    const body = `${pageHero({ crumbs: `<a href="${u('news/')}">News</a>`, kicker: fmt(p.date), title: esc(p.title), band: false })}
 <section class="sec" style="padding-top:56px"><div class="wrap"><article class="article">${html.join('\n')}
 <p style="margin-top:48px"><a class="link" href="${u('news/')}">${icon('arrow')}All news</a></p></article></div></section>`;
     return { path: p.slug + '/', title: p.title, desc: trim(firstPara(p), 155), body, current: '' };

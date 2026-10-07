@@ -39,7 +39,7 @@ ${estimator({ id: 'cost', n: '02' })}
 <section class="sec on-paper" aria-labelledby="all-h">
   <div class="wrap">
     ${bay('03')}
-    <div class="sec-head split"><div><h2 id="all-h">The full price list</h2></div><p class="lede">If something isn't listed, call ${SITE.phone} before you come and we'll price it for you.</p></div>
+    <div class="sec-head split"><div class="hang"><h2 id="all-h">The full price list</h2></div><p class="lede">If something isn't listed, call ${SITE.phone} before you come and we'll price it for you.</p></div>
     <div class="price-groups">${groups}</div>
   </div>
 </section>
@@ -82,8 +82,7 @@ export function whatWeTake() {
     ${bay('02')}
     <div class="split">
       <div>
-        <span class="kicker">Never accepted</span>
-        <h2 id="never-h" style="margin:18px 0 22px">Please leave these at home</h2>
+        <div class="hang" style="margin-bottom:22px"><h2 id="never-h">Please leave these at home</h2></div>
         <p class="lede">For the safety of our team and everyone on site, these can't come through the gate, sorted or not.</p>
         <ul class="ticks no" style="margin-top:24px">
           ${['Asbestos or anything that might be asbestos', 'Chemicals, solvents and fuels, including pesticides and pool chemicals', 'Unlabelled or unidentified liquids, and drums with hazardous residue', 'Medical and biological waste, including sharps', 'Explosives, flares, firearms and ammunition', 'Soil, including contaminated or untested soil', 'Animal carcasses', 'Radioactive material and mercury switches', 'Electric vehicle batteries', 'Mixed construction and demolition loads (take these to Sycle at Fyansford)']
@@ -103,7 +102,7 @@ function vehicles(n) {
   return `<section class="sec on-ink2" aria-labelledby="veh-h">
   <div class="wrap">
     ${bay(n)}
-    <div class="sec-head split"><div><span class="kicker">Vehicles</span><h2 id="veh-h" style="margin-top:18px">What you can drive in</h2></div><p class="lede">Cars, utes, vans, trailers and trucks up to 4,500 kg GVM. Larger trade vehicles can be arranged through our trade service.</p></div>
+    <div class="sec-head split"><div class="hang"><h2 id="veh-h">What you can drive in</h2></div><p class="lede">Cars, utes, vans, trailers and trucks up to 4,500 kg GVM. Larger trade vehicles can be arranged through our trade service.</p></div>
     <div class="two">
       <div class="box"><h3>Welcome</h3><ul class="ticks">${VEHICLES.yes.map((v) => `<li>${icon('check')}<span>${v}</span></li>`).join('')}</ul></div>
       <div class="box"><h3>Not through the public gate</h3><ul class="ticks no">${VEHICLES.no.map((v) => `<li>${icon('ban')}<span>${v}</span></li>`).join('')}</ul>
@@ -139,7 +138,7 @@ export function unsorted() {
 <section class="sec" aria-labelledby="how-h">
   <div class="wrap">
     ${bay('02')}
-    <div class="sec-head split"><div><span class="kicker">How to sort</span><h2 id="how-h" class="lines" style="margin-top:18px"><span class="ln">Six piles.</span><span class="ln">That's sorted.</span></h2></div><p class="lede">Load each group together so it comes off in one go. Bags of mixed rubbish count as general rubbish.</p></div>
+    <div class="sec-head split"><div class="hang"><h2 id="how-h" class="lines"><span class="ln">Six piles.</span><span class="ln">That's sorted.</span></h2></div><p class="lede">Load each group together so it comes off in one go. Bags of mixed rubbish count as general rubbish.</p></div>
     <div class="free-grid three">
       ${groups.map(([ic, t, d], i) => `<div class="free-card" style="background:var(--ink-3);color:var(--white)"><span class="tag">${String(i + 1).padStart(2, '0')}</span>${icon(ic)}<h3>${t}</h3><p style="color:var(--mute)">${d}</p></div>`).join('')}
     </div>
@@ -150,8 +149,7 @@ export function unsorted() {
     ${bay('03')}
     <div class="split">
       <div>
-        <span class="kicker">Mixed loads</span>
-        <h2 id="mixed-h" style="margin:18px 0 22px">No time to sort? We'll still take it</h2>
+        <div class="hang" style="margin-bottom:22px"><h2 id="mixed-h">No time to sort? We'll still take it</h2></div>
         <p class="lede">We accept mixed car and truck loads of household junk at the unsorted rate, and it gets sorted on site.</p>
         <div class="two" style="margin-top:28px">
           <div class="box"><h3>Household clean-outs</h3><p class="small">Mattresses, whitegoods, clothing, homewares and general household waste.</p></div>
@@ -191,7 +189,7 @@ export function location() {
     <div class="split" style="align-items:start">
       <div>
         <span class="status" data-status style="margin-bottom:18px"><i></i><span data-status-text>${HOURS.short}</span></span>
-        <h2 id="hrs-h" style="margin:8px 0 26px">Opening hours</h2>
+        <div class="hang" style="margin-bottom:22px"><h2 id="hrs-h">Opening hours</h2></div>
         <table class="hours-table" data-hours><tbody>
           ${days.map(([d, n]) => `<tr data-day="${n}"><td>${d}</td><td>${HOURS.days[n] ? '7:30am – 5:00pm' : 'Closed'}</td></tr>`).join('')}
         </tbody></table>
@@ -208,7 +206,7 @@ export function location() {
 <section class="sec on-paper" aria-labelledby="rules-h">
   <div class="wrap">
     ${bay('02')}
-    <div class="sec-head split"><div><span class="kicker">On site</span><h2 id="rules-h" style="margin-top:18px">Before you drive in</h2></div><p class="lede">The signs on the floor and overhead tell you where to go. A few rules keep everyone safe.</p></div>
+    <div class="sec-head split"><div class="hang"><h2 id="rules-h">Before you drive in</h2></div><p class="lede">The signs on the floor and overhead tell you where to go. A few rules keep everyone safe.</p></div>
     <div class="steps">${rules.map(([ic, t, d]) => `<div class="step"><span style="display:block;margin-bottom:16px">${icon(ic, 'ic')}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
     <div class="ph-stack" style="grid-template-columns:repeat(3,1fr);margin-top:40px">
       ${['drive-in', 'gas-cages', 'trailer-area'].map((n) => `<figure>${img(n, { sizes: '33vw' })}<figcaption class="cap">${IMAGES[n].alt}.</figcaption></figure>`).join('')}
@@ -232,7 +230,7 @@ export function trade() {
 <section class="sec" aria-labelledby="t1-h">
   <div class="wrap">
     ${bay('01')}
-    <div class="sec-head split"><div><span class="kicker">What we take from business</span><h2 id="t1-h" class="lines" style="margin-top:18px"><span class="ln">One partner.</span><span class="ln">Every stream.</span></h2></div><p class="lede">If it's a hard-to-recycle by-product we haven't listed, ask. We'll come back with options.</p></div>
+    <div class="sec-head split"><div class="hang"><h2 id="t1-h" class="lines"><span class="ln">One partner.</span><span class="ln">Every stream.</span></h2></div><p class="lede">If it's a hard-to-recycle by-product we haven't listed, ask. We'll come back with options.</p></div>
     <div class="two">
       <div class="box"><h3>Materials</h3><ul class="ticks">${materials.map((m) => `<li>${icon('check')}<span>${m}</span></li>`).join('')}</ul></div>
       <div class="box"><h3>How it works for you</h3><ul class="ticks">
@@ -251,8 +249,7 @@ export function trade() {
     ${bay('02')}
     <div class="split">
       <div>
-        <span class="kicker">E-waste and data</span>
-        <h2 id="t2-h" style="margin:18px 0 22px">Compliant, secure, certified</h2>
+        <div class="hang" style="margin-bottom:22px"><h2 id="t2-h">Compliant, secure, certified</h2></div>
         <p class="lede">Electronic waste is handled to AS/NZS 5377. Hard drives are destroyed or sanitised to NIST 800-88, with certificates of destruction.</p>
         <div class="accred" style="margin-top:24px">${SITE.accreditations.map((a) => `<div style="border-color:rgba(0,0,0,.2);background:#fff"><b>${a.code}</b><span style="color:var(--mute-ink)">${a.label}</span></div>`).join('')}</div>
       </div>
@@ -263,7 +260,7 @@ export function trade() {
 <section class="sec" aria-labelledby="t3-h">
   <div class="wrap">
     ${bay('03')}
-    <div class="sec-head"><span class="kicker">Who we work with</span><h2 id="t3-h" style="margin-top:18px">Sectors</h2></div>
+    <div class="sec-head"><div class="hang"><h2 id="t3-h">Sectors</h2></div></div>
     <div class="partners" style="margin:0">${sectors.map((s) => `<span style="background:transparent;border-color:var(--line-2);color:var(--white)">${s}</span>`).join('')}</div>
   </div>
 </section>
@@ -272,8 +269,7 @@ export function trade() {
     ${bay('04')}
     <div class="split" style="align-items:start">
       <div>
-        <span class="kicker">Industry recycling enquiry</span>
-        <h2 id="t4-h" style="margin:18px 0 22px">Tell us what you've got</h2>
+        <div class="hang" style="margin-bottom:22px"><h2 id="t4-h">Tell us what you've got</h2></div>
         <p class="lede">Windscreens, specialty plastics, bulky electronics or anything hard to recycle. Send the materials and rough quantities and our team will come back with a pick-up or drop-off option. No obligation.</p>
         <div class="box" style="margin-top:28px"><h3>${SITE.trade.contact}</h3><p class="small" style="margin:0 0 12px">${SITE.trade.title}</p><p style="margin:0"><a href="${SITE.trade.phoneHref}">${SITE.trade.phone}</a> · <a href="mailto:${SITE.email}">${SITE.email}</a></p></div>
       </div>
@@ -303,7 +299,7 @@ export function community() {
     ${bay('01')}
     <div class="split" style="align-items:start">
       <div>
-        <h2 id="c1-h" style="margin-bottom:22px">How Freecycle works</h2>
+        <div class="hang" style="margin-bottom:22px"><h2 id="c1-h">How Freecycle works</h2></div>
         <p class="lede">Every week our team picks out furniture, mattresses and homewares that are still in good condition. They go straight to local charities, crisis centres and transitional housing services.</p>
         <p>For someone moving on from family violence, homelessness or hardship, a bed and a table are a fresh start. We supply more than 45 charity and community organisations, large and small.</p>
       </div>
@@ -323,7 +319,7 @@ export function community() {
 <section class="sec" aria-labelledby="c2-h">
   <div class="wrap">
     ${bay('02')}
-    <div class="sec-head split"><div><span class="kicker">Partners</span><h2 id="c2-h" style="margin-top:18px">Who we supply</h2></div><p class="lede">Some of the organisations that receive goods through Freecycle.</p></div>
+    <div class="sec-head split"><div class="hang"><h2 id="c2-h">Who we supply</h2></div><p class="lede">Some of the organisations that receive goods through Freecycle.</p></div>
     <div class="partners" style="margin:0">${FREECYCLE.partners.map((p) => `<span style="background:transparent;border-color:var(--line-2);color:var(--white)">${p}</span>`).join('')}<span style="background:transparent;border-color:var(--line-2);color:var(--white)">and more</span></div>
     <div class="box" style="margin-top:40px;max-width:760px"><h3>Are you a charity or community group?</h3><p>If you support people who need furniture or household goods, we'd like to hear from you.</p><p style="margin:0"><a class="link" href="mailto:${SITE.email}?subject=Freecycle%20partner%20enquiry">Email us${icon('arrow')}</a> <span class="small" style="margin-left:12px">or call ${SITE.phone}</span></p></div>
   </div>
@@ -342,7 +338,7 @@ export function about() {
     ${bay('01')}
     <div class="split" style="align-items:start">
       <div>
-        <h2 id="a1-h" style="margin-bottom:22px">Why we built it</h2>
+        <div class="hang" style="margin-bottom:22px"><h2 id="a1-h">Why we built it</h2></div>
         <p class="lede">Geelong is Victoria's second-largest city, but for years residents had few places to take rubbish and recycling that were close, open six days a week and affordable.</p>
         <p>When disposal is hard or expensive, more of it ends up dumped on roadsides. Recycle North Geelong opened to fix that: a large, undercover site where households and businesses can drop off almost anything, sorted into ${SITE.facility.streams} material streams so it can be recovered.</p>
         <p>Up to ten categories of recyclables are free to drop off, and locals across six council areas get 10% off everything else.</p>
@@ -354,7 +350,7 @@ export function about() {
 <section class="sec on-paper" aria-labelledby="a2-h">
   <div class="wrap">
     ${bay('02')}
-    <div class="sec-head split"><div><span class="kicker">Part of Recycle Group</span><h2 id="a2-h" style="margin-top:18px">One group, end to end</h2></div><p class="lede">We collect it, process it and find it somewhere to go. Our target is for 60% of what we collect to be redistributed or recycled.</p></div>
+    <div class="sec-head split"><div class="hang"><h2 id="a2-h">One group, end to end</h2></div><p class="lede">We collect it, process it and find it somewhere to go. Our target is for 60% of what we collect to be redistributed or recycled.</p></div>
     <div class="give" style="margin-top:0">
       <div><h3>Recycle North Geelong</h3><p>The public transfer station and resource recovery centre at 116 Furner Avenue.</p></div>
       <div><h3>The Mattress Recycling Company</h3><p>Recycles more than half of Victoria's discarded mattresses, dismantling them into steel, foam and fabric.</p></div>
@@ -365,7 +361,7 @@ export function about() {
 <section class="sec" aria-labelledby="a3-h">
   <div class="wrap">
     ${bay('03')}
-    <div class="sec-head"><span class="kicker">Standards</span><h2 id="a3-h" style="margin-top:18px">Registered and certified</h2></div>
+    <div class="sec-head"><div class="hang"><h2 id="a3-h">Registered and certified</h2></div></div>
     <div class="accred" style="margin-top:0">${SITE.accreditations.map((a) => `<div><b>${a.code}</b><span>${a.label} · ${a.detail}</span></div>`).join('')}</div>
   </div>
 </section>
@@ -397,14 +393,14 @@ ${journey({ n: '01', intro: false })}
 <section class="sec on-paper" aria-labelledby="r1-h">
   <div class="wrap">
     ${bay('02')}
-    <div class="sec-head split"><div><span class="kicker">Stream by stream</span><h2 id="r1-h" style="margin-top:18px">Where it goes</h2></div><p class="lede">${SITE.facility.streams} streams are separated on site. These are the ones people bring in most.</p></div>
+    <div class="sec-head split"><div class="hang"><h2 id="r1-h">Where it goes</h2></div><p class="lede">${SITE.facility.streams} streams are separated on site. These are the ones people bring in most.</p></div>
     <div class="az">${streams.map(([k, t]) => `<article class="az-item"><div class="t"><h3>${t}</h3></div><p style="color:var(--ink)">${STREAMS[k]}</p></article>`).join('')}</div>
   </div>
 </section>
 <section class="sec" aria-labelledby="r2-h">
   <div class="wrap">
     ${bay('03')}
-    <div class="sec-head"><span class="kicker">Why it matters</span><h2 id="r2-h" style="margin-top:18px">Six reasons for landfill last</h2></div>
+    <div class="sec-head"><div class="hang"><h2 id="r2-h">Six reasons for landfill last</h2></div></div>
     <div class="steps" style="border-color:var(--white)">${reasons.map(([t, d], i) => `<div class="step" style="border-color:var(--line)"><span class="num" style="-webkit-text-stroke-color:var(--green)">${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p style="color:var(--mute)">${d}</p></div>`).join('')}</div>
     <div class="box" style="margin-top:48px"><h3>Downstream partners</h3><p class="small" style="margin:0">Paintback · Australian Paper Recovery · Apparel Recyclers · Resource (Laverton)</p></div>
   </div>
