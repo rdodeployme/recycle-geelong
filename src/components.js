@@ -99,12 +99,12 @@ export const FREE = [
 ];
 
 export function freeGrid({ n = '03' } = {}) {
-  return `<section class="sec on-green" aria-labelledby="free-h">
+  return `<section class="sec free-sec" aria-labelledby="free-h">
   <div class="wrap">
     ${bay(n)}
     <div class="sec-head split">
       <div class="hang"><h2 id="free-h">Eight things, free</h2></div>
-      <p class="lede" style="color:var(--ink)">Doing the right thing shouldn't cost you. Bring these on their own or with a paid load.</p>
+      <p class="lede">Doing the right thing shouldn't cost you. Bring these on their own or with a paid load.</p>
     </div>
     <div class="free-grid">
       ${FREE.map(([ic, t, d]) => `<div class="free-card rv"><span class="tag">FREE</span>${icon(ic)}<h3>${t}</h3><p>${d}</p></div>`).join('')}

@@ -985,3 +985,11 @@ h1.fit-two, h2.fit-two, h3.fit-two { font-size: clamp(var(--fs-min, 22px), calc(
 .hv-where { color: #fff; }
 /* footer banner: readable, like the hall banners (white words, green NOT) */
 .giant { color: #fff; }
+/* free items: dark section, easier on the eyes than full-bleed green */
+.free-sec { background: var(--ink-2); }
+.free-sec .free-grid { background: var(--line-2); border-color: var(--line-2); gap: 1px; border-width: 1px; }
+.free-sec .free-card { background: var(--ink-3); color: var(--white); }
+.free-sec .free-card .ic { color: var(--green); }
+.free-sec .free-card p { color: #c9c9c4; }
+.free-sec .free-card .tag { background: var(--green); color: var(--ink); }
+@media (max-width: 560px) { .free-card p { padding-right: 62px; } }
