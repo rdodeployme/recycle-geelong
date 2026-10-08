@@ -211,7 +211,7 @@ export function visitSteps({ n = '06' } = {}) {
   const S = [
     ['Sort it at home', `Keep green waste, metal, e-waste and general rubbish apart as you load. It's quicker at the bays and halves the rate.`, 'bins-small-items'],
     ['Drive in under cover', `Head to ${SITE.address.line1}, behind Coates Hire. Follow the hanging signs to the right bay.`, 'drive-in'],
-    ['Unload by material', 'Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.', 'trailer-cardboard'],
+    ['Unload by material', 'Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.', 'aerosols-paint'],
     ['We take it from there', `${SITE.facility.streams} material streams, each with somewhere to go that isn't landfill.`, 'rubbish-bays-arrow'],
   ];
   return `<section class="sec on-paper" aria-labelledby="visit-h">
@@ -316,7 +316,7 @@ export const RUN_B = [
 ];
 const PR_PICK = [
   ['car-sedan-bays', 'Car / sedan unloading'], ['cardboard-cage', 'Cardboard'], ['whitegoods', 'Whitegoods'], ['tyres-bay', 'Tyres'],
-  ['trailer-cardboard', 'Unload by material'], ['metals-area', 'Recycled metals'], ['mattresses', 'Mattresses'], ['furniture-dropoff', 'Furniture drop-off'],
+  ['polystyrene-cages', 'Polystyrene'], ['metals-area', 'Recycled metals'], ['mattresses', 'Mattresses'], ['furniture-dropoff', 'Furniture drop-off'],
 ];
 export function photoRun({ n = '04' } = {}) {
   const row = (list, dir) => {
