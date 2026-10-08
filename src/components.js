@@ -275,12 +275,8 @@ ${band ? marquee({ tone: 'green', small: true }) : ''}`;
 // Full-screen video hero with a kinetic headline.
 export function heroVideo() {
   const free = ['Whitegoods', 'Scrap metal', 'Cardboard', 'Polystyrene', 'TVs and screens', 'Paint', 'Car batteries', 'Ink cartridges'];
-  return `<section class="hv" aria-labelledby="hero-h" data-hero-video>
-  <video class="hv-vid" muted loop playsinline autoplay preload="auto"
-    poster="${u('video/hero-16x9-poster.jpg')}"
-    data-land="${u('video/hero-16x9.mp4')}" data-land-poster="${u('video/hero-16x9-poster.jpg')}"
-    data-port="${u('video/hero-9x16.mp4')}" data-port-poster="${u('video/hero-9x16-poster.jpg')}"
-    aria-hidden="true"></video>
+  return `<section class="hv" aria-labelledby="hero-h">
+  ${img('hall-hero', { eager: true, cls: 'hv-vid hv-img', alt: '', sizes: '100vw' })}
   <div class="hv-shade"></div>
   <div class="wrap hv-in">
     <div class="hv-top">
@@ -295,7 +291,6 @@ export function heroVideo() {
       <a class="btn ghost" href="${SITE.address.directions}" target="_blank" rel="noopener">${icon('pin')}Directions</a>
     </div>
   </div>
-  <button class="hv-pause" type="button" aria-label="Pause the background video" data-hv-pause>${icon('play')}</button>
 </section>`;
 }
 

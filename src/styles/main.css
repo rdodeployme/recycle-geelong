@@ -936,3 +936,7 @@ h1.fit-two, h2.fit-two, h3.fit-two { font-size: clamp(var(--fs-min, 22px), calc(
 .js .page-hero h1, .js .page-hero .lede, .js .page-hero .jump, .js .page-hero .hero-ctas { animation-name: fadeUp; animation-duration: 1s; }
 @media (prefers-reduced-motion: reduce) { .js .calm, .js .hv .hv-lede, .js .hv .hero-ctas { animation: none; } .js .hang h2 { opacity: 1; transform: none; } }
 @media (max-width: 760px) { .hv-shade { background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.1) 22%, rgba(0,0,0,.55) 42%, rgba(0,0,0,.8) 100%) !important; } }
+.hv-img { object-position: 60% 40%; animation: heroDrift 24s ease-in-out infinite alternate; }
+@media (max-width: 760px) { .hv-img { object-position: 68% 50%; } }
+@keyframes heroDrift { from { transform: scale(1.0); } to { transform: scale(1.05); } }
+@media (prefers-reduced-motion: reduce) { .hv-img { animation: none; } }
