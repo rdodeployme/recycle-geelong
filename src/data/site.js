@@ -249,7 +249,7 @@ export const ITEMS = [
   { n: 'Household batteries', aka: ['batteries', 'aa', 'lithium battery', 'power tool battery'], s: 'cond', p: 'Ask at the gate', note: 'Call ahead to check before bringing household or lithium batteries. Never put them in your general load.', st: 'battery', c: 'Batteries' },
   { n: 'Electric vehicle battery', aka: ['ev battery'], s: 'no', p: 'Not accepted', st: 'none', c: 'Batteries' },
   // furniture + household
-  { n: 'Couch or sofa', aka: ['lounge', 'couch', 'sofa bed', 'recliner', 'armchair'], s: 'paid', p: 'By load size', note: 'Priced with your load. Sort your load and pay half the unsorted rate.', st: 'furniture', c: 'Furniture' },
+  { n: 'Couches', aka: ['sofa', 'lounge', 'couch', 'sofa bed', 'recliner', 'armchair'], s: 'paid', p: 'By load size', note: 'Priced with your load. Sort your load and pay half the unsorted rate.', st: 'furniture', c: 'Furniture' },
   { n: 'Table and chairs', aka: ['dining table', 'chair', 'desk', 'outdoor furniture'], s: 'paid', p: 'By load size', st: 'furniture', c: 'Furniture' },
   { n: 'Wardrobe or drawers', aka: ['cupboard', 'chest of drawers', 'cabinet', 'bookshelf'], s: 'paid', p: 'By load size', st: 'furniture', c: 'Furniture' },
   { n: 'Office furniture', aka: ['filing cabinet', 'office chair', 'office desk'], s: 'paid', p: 'By load size', st: 'furniture', c: 'Furniture' },
@@ -298,7 +298,7 @@ export const ITEMS = [
   { n: 'Mercury switches', aka: ['mercury'], s: 'no', p: 'Not accepted', st: 'none', c: 'Not accepted' },
 ];
 
-export const POPULAR = ['Mattress', 'Couch or sofa', 'Fridge', 'TV', 'Green waste', 'Tyres', 'Paint', 'Polystyrene', 'Gas bottle', 'Asbestos'];
+export const POPULAR = ['Mattress', 'Couches', 'Fridge', 'TV', 'Green waste', 'Tyres', 'Paint', 'Polystyrene', 'Gas bottle', 'Asbestos'];
 
 export const VEHICLES = {
   yes: ['Car boots', 'Station wagons', 'Utes', 'Single axle trailers', 'Dual axle trailers', 'Vans of all sizes', 'Tip trucks up to 4,500 kg GVM', 'Box trucks up to 4,500 kg GVM', 'Tipping trailers of all types'],
