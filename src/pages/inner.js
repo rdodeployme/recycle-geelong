@@ -1,7 +1,7 @@
 import { SITE, HOURS, PRICE_GROUPS, ITEMS, STREAMS, VEHICLES, FREECYCLE } from '../data/site.js';
 import { u, img, icon, bay, esc, IMAGES } from '../lib.js';
 import { CAT_ICON } from '../icons.js';
-import { finder, estimator, registerBand, pageHero, journey, pickupList, partnersList, JOURNEY } from '../components.js';
+import { finder, estimator, registerBand, pageHero, journey, pickupList, partnersList, JOURNEY, scale, photoRun } from '../components.js';
 
 const BADGE = {
   free: ['free', 'Free'],
@@ -358,13 +358,8 @@ export function about() {
     </div>
   </div>
 </section>
-<section class="sec" aria-labelledby="a3-h">
-  <div class="wrap">
-    ${bay('03')}
-    <div class="sec-head"><div class="hang"><h2 id="a3-h">Registered and certified</h2></div></div>
-    <div class="accred" style="margin-top:0">${SITE.accreditations.map((a) => `<div><b>${a.code}</b><span>${a.label} · ${a.detail}</span></div>`).join('')}</div>
-  </div>
-</section>
+${photoRun({ n: '03' })}
+${scale({ n: '04' })}
 ${registerBand()}`;
   return { path: 'about-us/', title: 'About us', desc: 'Recycle North Geelong is a public transfer station and resource recovery centre in North Geelong, part of Recycle Group.', body, current: 'about-us/' };
 }
