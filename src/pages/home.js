@@ -6,7 +6,6 @@ export function home() {
   const body = `
 ${heroVideo()}
 ${finder({ n: '01' })}
-${marquee({ tone: 'green' })}
 ${estimator({ n: '02' })}
 ${freeGrid({ n: '03' })}
 ${photoRun({ n: '04' })}
@@ -36,8 +35,6 @@ ${scale({ n: '07' })}
     </div>
   </div>
 </section>
-
-${marquee({ tone: 'black' })}
 
 <section class="sec on-paper" aria-labelledby="com-h">
   <div class="wrap">

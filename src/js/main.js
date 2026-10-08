@@ -359,8 +359,6 @@ status();
 setInterval(status, 60000);
 header();
 heroVideo();
-counters();
-marqueeSpeed();
 menu();
 slides();
 $$('[data-finder]').forEach(finder);

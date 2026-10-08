@@ -256,7 +256,7 @@ export function partnersList() {
   return `<div class="partners">${FREECYCLE.partners.map((p) => `<span>${p}</span>`).join('')}<span>and more</span></div>`;
 }
 
-export function pageHero({ crumbs, kicker, title, lede, image, extra = '', band = true }) {
+export function pageHero({ crumbs, kicker, title, lede, image, extra = '', band = false }) {
   return `<section class="page-hero${image ? ' has-img' : ''}">
   ${image ? img(image, { eager: true, alt: '' }) : ''}
   <div class="wrap">
@@ -275,7 +275,6 @@ ${band ? marquee({ tone: 'green', small: true }) : ''}`;
 // Full-screen video hero with a kinetic headline.
 export function heroVideo() {
   const free = ['Whitegoods', 'Scrap metal', 'Cardboard', 'Polystyrene', 'TVs and screens', 'Paint', 'Car batteries', 'Ink cartridges'];
-  const tick = free.map((f) => `<span>${f}</span><i>Free</i>`).join('');
   return `<section class="hv" aria-labelledby="hero-h" data-hero-video>
   <video class="hv-vid" muted loop playsinline autoplay preload="auto"
     poster="${u('video/hero-16x9-poster.jpg')}"
@@ -288,7 +287,7 @@ export function heroVideo() {
       <span class="status" data-status><i></i><span data-status-text>${HOURS.short}</span></span>
       <span class="hv-where">${SITE.address.line1}, North Geelong</span>
     </div>
-    <h1 id="hero-h" class="lines kin"><span class="ln"><span class="w">Drive in.</span></span><span class="ln"><span class="w">Drop off.</span></span><span class="ln"><span class="w g">We sort it.</span></span></h1>
+    <h1 id="hero-h" class="lines calm"><span class="ln"><span class="w">Drive in.</span></span><span class="ln"><span class="w">Drop off.</span></span><span class="ln"><span class="w g">We sort it.</span></span></h1>
     <p class="hv-lede">Geelong's undercover tip and recycling centre. Open six days.</p>
     <div class="hero-ctas">
       <a class="btn" href="#finder">What can I bring?${icon('down')}</a>
@@ -297,7 +296,6 @@ export function heroVideo() {
     </div>
   </div>
   <button class="hv-pause" type="button" aria-label="Pause the background video" data-hv-pause>${icon('play')}</button>
-  <div class="ticker" aria-label="Free to drop off: ${free.join(', ')}"><div class="ticker-track"><div class="ticker-run">${tick}</div><div class="ticker-run" aria-hidden="true">${tick}</div></div></div>
 </section>`;
 }
 
@@ -316,10 +314,14 @@ export const RUN_B = [
   ['trailer-cardboard', 'Unload by material'], ['metals-area', 'Recycled metals'], ['gas-cages', 'Gas bottles'], ['aerosols-paint', 'Aerosols, paint, hazards'],
   ['furniture-dropoff', 'Furniture drop-off'], ['ewaste-cages', 'E-waste'], ['building-materials', 'Building materials'], ['excavator-bin', 'Hook bins'],
 ];
+const PR_PICK = [
+  ['car-sedan-bays', 'Car / sedan unloading'], ['cardboard-cage', 'Cardboard'], ['whitegoods', 'Whitegoods'], ['tyres-bay', 'Tyres'],
+  ['trailer-cardboard', 'Unload by material'], ['metals-area', 'Recycled metals'], ['mattresses', 'Mattresses'], ['furniture-dropoff', 'Furniture drop-off'],
+];
 export function photoRun({ n = '04' } = {}) {
   const row = (list, dir) => {
     const items = list.map(([im, label]) => `<figure class="pr-item">${img(im, { sizes: '420px', alt: label })}<figcaption><span class="pr-sign">${label}</span></figcaption></figure>`).join('');
-    return `<div class="pr-row pr-${dir}"><div class="pr-track">${items}${items.replace(/<img /g, '<img aria-hidden="true" ')}</div></div>`;
+    return `<div class="pr-grid">${items}</div>`;
   };
   return `<section class="sec pr" id="tour" aria-labelledby="tour-h">
   <div class="wrap">
@@ -329,15 +331,14 @@ export function photoRun({ n = '04' } = {}) {
       <p class="lede">A bay for every material, all on undercover concrete. You never unload in the rain.</p>
     </div>
   </div>
-  ${row(RUN_A, 'l')}
-  ${row(RUN_B, 'r')}
+  <div class="wrap">${row(PR_PICK, 'l')}</div>
 </section>`;
 }
 
 // Big numbers set against things people know.
 export function scale({ n = '07' } = {}) {
   const ovals = Array.from({ length: 23 }, (_, i) => `<ellipse cx="200" cy="${178 - i * 5.2}" rx="170" ry="62" />`).join('');
-  return `<section class="sec on-green sc" aria-labelledby="sc-h">
+  return `<section class="sec on-paper sc" aria-labelledby="sc-h">
   <div class="wrap">
     ${bay(n)}
     <div class="sec-head split">
@@ -354,13 +355,13 @@ export function scale({ n = '07' } = {}) {
       <article class="sc-card rv">
         <div class="sc-num" style="--w:10.6"><span data-count="12000">12,000</span>–<span data-count="30000">30,000</span></div>
         <p class="sc-what">mattresses recycled by our group every month</p>
-        <p class="sc-like">A year's worth would cover the <b>MCG 23 to 57 times over</b>.</p>
+        <p class="sc-like">A year's worth would cover the <b>MCG 23&nbsp;to&nbsp;57 times over</b>.</p>
         <svg class="sc-stack" viewBox="0 0 400 260" aria-hidden="true">${ovals}</svg>
       </article>
       <article class="sc-card rv">
         <div class="sc-num" style="--w:9.4"><span data-count="3800">3,800</span>–<span data-count="9600">9,600</span><small>t</small></div>
         <p class="sc-what">of mattress steel recovered a year</p>
-        <p class="sc-like">Enough for a new <b>Sydney Harbour Bridge</b> every 6 to 14 years.</p>
+        <p class="sc-like">Enough for a new <b>Sydney Harbour Bridge</b> every 6&nbsp;to&nbsp;14&nbsp;years.</p>
       </article>
       <article class="sc-card rv">
         <div class="sc-num" style="--w:3"><span data-count="90">90</span>+</div>
