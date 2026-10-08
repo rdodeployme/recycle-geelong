@@ -31,7 +31,6 @@ export const SITE = {
     bookCollection: 'https://recycle.net.au/book-now/',
     registerResident: 'https://recycle.net.au/residence-register-now/',
     registerTrade: 'https://recycle.net.au/trade-commercial-register/',
-    terms: 'https://recycle.net.au/tc',
     mattressPickup: 'https://themattressrecyclingcompany.com.au/',
     tourVideo: 'https://youtu.be/FOliqELWvxU',
   },

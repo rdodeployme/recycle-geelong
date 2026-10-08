@@ -40,7 +40,7 @@ function jsonLd() {
   };
 }
 
-export function layout({ path: p, title, desc, body, current = '', ogImage = 'img/hall-hero-1280.webp', journey = false }) {
+export function layout({ path: p, title, desc, body, current = '', ogImage = 'img/og-default.jpg', journey = false, ld = null }) {
   const fullTitle = p === '' ? `${SITE.name} | Transfer station and recycling centre, Geelong` : `${title} | ${SITE.name}`;
   const navLinks = NAV.map(([href, label]) => `<a href="${u(href)}"${current === href ? ' aria-current="page"' : ''}>${label}</a>`).join('');
   const mobile = NAV.map(([href, label]) => `<a class="m" href="${u(href)}">${label}${icon('arrow')}</a>`).join('');
@@ -59,12 +59,16 @@ ${INDEX ? '' : '<meta name="robots" content="noindex, nofollow">'}
 <meta property="og:title" content="${esc(fullTitle)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${SITE.url}/${ogImage}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${u('img/favicon.png')}" type="image/png">
 <link rel="preload" href="${u('fonts/archivo.woff2')}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${u('assets/main.css')}">
 <script>document.documentElement.classList.replace('no-js','js');window.__BASE=${JSON.stringify(u(''))};</script>
 <script type="application/ld+json">${JSON.stringify(jsonLd())}</script>
+${ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : ''}
 </head>
 <body class="${p === '' ? 'home' : 'inner'}">
 ${sprite}
@@ -122,6 +126,8 @@ function footer() {
         <ul>
           ${NAV.map(([href, label]) => `<li><a href="${u(href)}">${label}</a></li>`).join('')}
           <li><a href="${u('unsorted-loads/')}">Sorted vs unsorted</a></li>
+          <li><a href="${u('faq/')}">Questions</a></li>
+          <li><a href="${u('tip/')}">Areas we serve</a></li>
           <li><a href="${u('news/')}">News</a></li>
         </ul>
       </div>
@@ -139,7 +145,7 @@ function footer() {
     <div class="giant" aria-hidden="true">Love <span>not</span> landfill</div>
     <div class="foot-base">
       <span>© ${new Date().getFullYear()} ${SITE.name} · EPA Victoria registration ${SITE.epa}</span>
-      <span><a href="${SITE.links.terms}">Terms and conditions</a></span>
+      <span><a href="${u('terms-and-conditions/')}">Terms and conditions</a> · <a href="${u('privacy/')}">Privacy</a></span>
     </div>
   </div>
 </footer>`;

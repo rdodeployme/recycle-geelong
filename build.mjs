@@ -9,6 +9,7 @@ import { layout } from './src/layout.js';
 import { home } from './src/pages/home.js';
 import { priceList, whatWeTake, unsorted, location, trade, community, about, recyclingMatters, notFound } from './src/pages/inner.js';
 import { newsIndex, newsPosts } from './src/pages/news.js';
+import { faq, terms, privacy, areasIndex, suburbPages } from './src/pages/extra.js';
 import { SITE } from './src/data/site.js';
 import { typo } from './src/typo.js';
 
@@ -17,7 +18,7 @@ fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 fs.cpSync('public', OUT, { recursive: true });
 
-const pages = [home(), priceList(), whatWeTake(), unsorted(), location(), trade(), community(), about(), recyclingMatters(), newsIndex(), ...newsPosts(), notFound()];
+const pages = [home(), priceList(), whatWeTake(), unsorted(), location(), trade(), community(), about(), recyclingMatters(), faq(), terms(), privacy(), areasIndex(), ...suburbPages(), newsIndex(), ...newsPosts(), notFound()];
 for (const p of pages) {
   const file = p.file ? path.join(OUT, p.file) : path.join(OUT, p.path, 'index.html');
   fs.mkdirSync(path.dirname(file), { recursive: true });

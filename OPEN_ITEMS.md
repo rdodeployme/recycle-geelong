@@ -1,6 +1,8 @@
 # Recycle North Geelong site: open items
 
-Staging: https://recycle-north-geelong.netlify.app (noindex; the live WordPress site is untouched)
+Live (GitHub Pages, noindex): https://rdodeployme.github.io/recycle-geelong/ — repo rdodeployme/recycle-geelong (built site on `main`, source on `source`).
+The earlier Netlify staging link (recycle-north-geelong.netlify.app) shows the first version only.
+The live WordPress site at recycle.net.au is untouched.
 
 ## Fix on the live WordPress site now (independent of the rebuild)
 - Every page on recycle.net.au carries `noindex, nofollow`, so Google is told to drop the site.
@@ -24,16 +26,25 @@ I picked the reading below for the new site. Confirm or correct.
 ## Still on WordPress (linked from the new site until moved)
 - Book a collection: /book-now/
 - Resident and trade registration for the 10% discount
-- Terms and conditions
 Decide whether these move into the new site or point at JUNK / Trash. booking.
 
 ## Content to supply
 - Full-resolution originals of the 34 floor photos (the copies received are 640 px, so they are used small).
-- The walkthrough video from the other chat: drop the MP4 into `public/video/` and set `tourVideoSrc` in `src/data/site.js`.
+- The home hero is now a still photo of the hall (8 Oct). The AI-assisted hero videos are still in public/video but unused. Real footage of the site (no customers) could replace the photo later.
 - Public holiday hours, if they differ.
 - Trade enquiry form: confirm where submissions should go (Netlify Forms is on; set the notification email).
+
+## Added 8 Oct, needs sign-off
+- Privacy policy (/privacy/) is a DRAFT written from what the site and terms of entry say is collected (registration and booking details, vehicle registrations, CCTV, card payments). It shows a "Draft for review" label; remove the `draft-note` paragraph in src/pages/extra.js once approved.
+- Terms and conditions (/terms-and-conditions/) ported word for word from recycle.net.au/tc, with obvious typos fixed ("and damage" to "any damage", "incorrect are" to "an incorrect area", "advised at by" to "advised by", "until attendant" to "until an attendant", "abidance with" to "compliance with", "per the Payment Policy" to "per the payment terms below"). /tc redirects to it.
+- Terms item 9 says "no throwing of waste or unloading of trailers is allowed", but the site invites trailer loads. Confirm the intended wording (tipping trailers?).
+- Payment: card only (debit, EFTPOS, credit), no cash, paid in full at the gate before unloading. Taken from the terms of entry and now used in the FAQ and suburb pages.
+- FAQ (/faq/) with FAQPage structured data. Public holiday answer points to Facebook or a phone call until hours are confirmed.
+- Suburb pages (/tip/ and /tip/<suburb>/) for Lara, Corio, Norlane, Bell Park, Geelong, Belmont, Grovedale, Leopold, Ocean Grove, Torquay, Bannockburn, Werribee. Each says which council area the suburb is in (10% discount eligibility) and links directions from that suburb. Add a genuinely local detail to each over time.
+- Share image: public/img/og-default.jpg (1200 x 630) from the real hall photo.
+- Still unknown: what proof of residence the discount needs at the gate; public holiday hours; who posts closure notices (SITE.notices in src/data/site.js).
 
 ## Go-live
 - Point recycle.net.au at the new site, then build with `INDEX=1 node build.mjs` so pages are indexable.
 - Old URLs are kept (/price-list/, /what-we-take/, /unsorted-loads/, /our-location/, /recycling-matters/, /recycle-corporate-services/, /about-us/, and the six news posts).
-- Not yet built: /gallery/, /book-now/, registration pages, /tc. Add redirects or pages before cutover.
+- Not yet built: /gallery/, /book-now/, registration pages. Add redirects or pages before cutover. (/tc now redirects to /terms-and-conditions/.)
