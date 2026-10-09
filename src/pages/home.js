@@ -32,7 +32,7 @@ ${visitSteps({ n: '05' })}
     <div class="collect">
       <div>
         <span class="kicker">At-home collection</span>
-        <h2 id="col-h" class="lines"><span class="ln">Can't bring it in?</span><span class="ln g">We'll come to you.</span></h2>
+        <h2 id="col-h" class="col-h">Can't bring&nbsp;it&nbsp;in?<br><span class="g">We'll come to you.</span></h2>
         <p class="lede">Recycle North Geelong collects from your home. Bigger clean-out or heavy items? Book a collection and our crew does the lifting and loading.</p>
         <div class="btns"><a class="btn" href="${SITE.links.bookCollection}">Book a collection${icon('arrow')}</a></div>
       </div>

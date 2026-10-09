@@ -100,7 +100,7 @@ export function estimator({ id = 'cost', n = '02' } = {}) {
 // ---------------------------------------------------------------- free items
 export const FREE = [
   ['fridge', 'Whitegoods', 'Fridges, washing machines, ovens and more.'],
-  ['heater', 'Hot&nbsp;water services', 'Old units, dropped off free.'],
+  ['heater', 'Hot water<br>services', 'Old units, dropped off free.'],
   ['metal', 'Scrap metal', 'All types, as long as it is clean.'],
   ['can', 'Aluminium', 'Clean and separated from other metals.'],
   ['laptop', 'Computers and iPads', 'Desktops, laptops and iPads.'],
@@ -320,13 +320,13 @@ export function whyStrip() {
 </section>`;
 }
 
-export function dealsSection({ n = '07' } = {}) {
+export function dealsSection({ n = '07', tt = true } = {}) {
   const D = SITE.discount;
   return `<section class="sec on-paper" id="discounts" aria-labelledby="deals-h">
   <div class="wrap">
     ${bay(n)}
     <div class="sec-head split"><div class="hang"><h2 id="deals-h" class="lines"><span class="ln">More ways</span><span class="ln">to save.</span></h2></div><p class="lede">As a rule, we're half the price of landfill. These discounts take it further. Ask at the gate; ID may be required.</p></div>
-    ${tradieTuesday()}
+    ${tt ? tradieTuesday() : ''}
     <div class="lg">
       <div class="lg-head"><b class="lg-pc">${D.trade}%</b><div><h3>Front line</h3><p>Nurses, police, fire, ambulance and SES.</p></div></div>
       <div class="lt-grid">${SITE.frontline.map(logoTile).join('')}</div>

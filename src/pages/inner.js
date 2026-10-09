@@ -194,6 +194,7 @@ export function location() {
         <table class="hours-table" data-hours><tbody>
           ${days.map(([d, n]) => `<tr data-day="${n}"><td>${d}</td><td>${HOURS.days[n] ? '7:30am – 4:00pm' : 'Closed'}</td></tr>`).join('')}
         </tbody></table>
+        <p class="small" style="margin-top:18px"><b>Trades:</b> early access from ${SITE.tradeHours.early} and late drop-offs by appointment up to ${SITE.tradeHours.lateBy}, Monday to Saturday. Never closed for weather.</p>
         <p class="small" style="margin-top:18px">${HOURS.sunday}</p>
         <p class="small">Public holiday hours can change. Check our <a href="${SITE.social.facebook}" target="_blank" rel="noopener">Facebook page</a> or call ${SITE.phone} before you come.</p>
       </div>
@@ -304,7 +305,7 @@ export function trade() {
     <ol class="sector-grid">${sectors.map((x, i) => `<li><span>${String(i + 1).padStart(2, '0')}</span>${x}</li>`).join('')}</ol>
   </div>
 </section>
-${dealsSection({ n: '05' })}
+${dealsSection({ n: '05', tt: false })}
 <section class="sec on-ink2" id="enquire" aria-labelledby="t6-h">
   <div class="wrap">
     ${bay('06')}

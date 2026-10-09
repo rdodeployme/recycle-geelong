@@ -1198,3 +1198,36 @@ h1.fit-two, h2.fit-two, h3.fit-two { font-size: clamp(var(--fs-min, 22px), calc(
 
 .sortcmp.sc-big .sc-tag { top: 18px; font-size: clamp(13px, 1.4vw, 18px); padding: 8px 14px; }
 .sortcmp.sc-big .sc-tag.bad { left: 18px; } .sortcmp.sc-big .sc-tag.good { right: 18px; }
+
+/* visual pass 9 Oct: let grids shrink below content width */
+.loads { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 560px) { .loads { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.load { min-width: 0; }
+.trade-disc { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+@media (max-width: 900px) { .trade-disc { grid-template-columns: minmax(0, 1fr); } }
+.trade-disc .tt { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.trade-disc .tt-pc { font-size: clamp(48px, 5.5vw, 80px); }
+@media (max-width: 760px) { .jims { grid-template-columns: minmax(0, 1fr); } }
+.jims > * { min-width: 0; }
+@media (max-width: 900px) { .sector-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sector-grid li { min-width: 0; overflow-wrap: break-word; }
+.ways > *, .mat-grid > *, .collect > *, .tt > * { min-width: 0; }
+@media (max-width: 980px) { .est { grid-template-columns: minmax(0, 1fr); } }
+.seg[aria-label="Registered discount"] { flex-wrap: wrap; }
+.jims .kicker { white-space: normal; flex-wrap: wrap; }
+.seg[aria-label="Registered discount"] { display: grid; grid-auto-flow: row; grid-template-columns: repeat(3, auto); width: max-content; max-width: 100%; }
+@media (max-width: 560px) { .seg[aria-label="Registered discount"] { grid-template-columns: minmax(0, 1fr); width: 100%; } .seg[aria-label="Registered discount"] button { text-align: left; } }
+@media (max-width: 560px) { .register .btn, .btns .btn { white-space: normal; max-width: 100%; } }
+.free-card { min-width: 0; }
+.free-card h3 { text-wrap: wrap; }
+@media (min-width: 521px) { .free-card h3 { text-wrap: balance; } }
+.m-only { display: none; }
+@media (max-width: 520px) { .d-only { display: none; } .m-only { display: inline; } }
+.collect h2.fit-lines, .collect h2 { font-size: clamp(32px, 4.4vw, 60px) !important; text-wrap: wrap; }
+@media (max-width: 560px) { .collect h2.fit-lines, .collect h2 { font-size: clamp(28px, 8.4vw, 40px) !important; } }
+@media (max-width: 560px) { .jims-h { font-size: clamp(22px, 6.6vw, 30px) !important; } }
+.col-h { font-stretch: 125%; font-weight: 900; text-transform: uppercase; line-height: .95; font-size: clamp(30px, 3.6vw, 52px) !important; }
+.col-h .g { color: var(--green); }
+@media (max-width: 560px) { .col-h { font-size: clamp(24px, 7.2vw, 34px) !important; } }
+.jims-h { font-size: clamp(24px, 2.5vw, 38px) !important; font-stretch: 112%; }
+@media (max-width: 560px) { .jims-h { font-size: clamp(20px, 6vw, 26px) !important; } }
