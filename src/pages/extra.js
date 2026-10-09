@@ -38,7 +38,7 @@ export const FAQ = [
   ]],
   ['After you tip', [
     ['What happens to my rubbish?', `It's separated by material and sent for recovery: mattresses are dismantled, polystyrene is densified, cardboard is baled. What's left is shredded before it goes to landfill. <a href="${u('recycling-matters/')}">Follow it through</a>.`],
-    ['Can you pick it up instead?', `Yes. <a href="${SITE.links.bookCollection}">Book a collection</a> and the crew does the lifting. For a single mattress or bed base, use <a href="${SITE.links.mattressPickup}" target="_blank" rel="noopener">The Mattress Recycling Company</a>.`],
+    ['Can you pick it up instead?', `Yes. Recycle North Geelong has an at-home collection service. <a href="${SITE.links.bookCollection}">Book a collection</a> and our crew does the lifting and loading.`],
     ['I have a business. Can you help?', `Yes: scheduled collections, on-site bins and bulk drop-offs. Call ${SITE.trade.contact} on <a href="${SITE.trade.phoneHref}">${SITE.trade.phone}</a> or see <a href="${u('recycle-corporate-services/')}">trade services</a>.`],
   ]],
 ];
