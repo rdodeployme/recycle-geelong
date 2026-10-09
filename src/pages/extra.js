@@ -19,7 +19,7 @@ export const FAQ = [
     ['What can I bring?', `Most household, garden and trade waste, sorted into ${SITE.facility.streams} material streams. Type any item into the <a href="${u('#finder')}">item finder</a> to see if we take it, what it costs and where it goes, or see the <a href="${u('what-we-take/')}">full A to Z</a>.`],
     ['What do you not accept?', `Asbestos (or anything that might be asbestos), household and garden chemicals, fuels and solvents, medical waste, explosives and ammunition, unlabelled liquids, soil, fertilisers, unsorted mixed loads, and mixed construction and demolition waste. Unsorted building loads can go to Sycle at Fyansford. For asbestos, use a licensed asbestos removalist.`],
     ['What vehicles can I bring in?', `${VEHICLES.yes.join(', ')}. We can't take ${VEHICLES.no.map((v) => v.toLowerCase()).join(', ')}.`],
-    ['Is it undercover?', `Yes. The whole drop-off area is undercover concrete, about ${SITE.facility.area}, so you never unload in the rain.`],
+    ['Is it undercover?', `Yes. The whole drop-off area is undercover concrete, about ${SITE.facility.area}, so we're never closed for bad weather. No rain, no mess, no fuss.`],
   ]],
   ['Prices and paying', [
     ['How much will it cost?', `Loads are priced by size and by type of waste. General waste starts at $${loadPrice('bins', '30', 0)} for a 30 litre bag, and a level ute or small trailer is $${loadPrice('small', 'level', 0)}. Green waste costs less and building waste costs more. Some items such as mattresses, tyres and gas bottles are priced each. Use <a href="${u('#cost')}">Price my load</a> for an estimate, or see the <a href="${u('price-list/')}">full price list</a>. Prices include GST.`],
@@ -32,7 +32,7 @@ export const FAQ = [
   ['On site', [
     ['What should I wear?', 'Enclosed shoes are a must. Bare feet, thongs and sandals are not allowed. Staff may ask you to wear a high-visibility vest in some areas.'],
     ['Can my kids or dog get out of the car?', 'No. Children must be supervised and stay in the vehicle, and animals must be secured in the vehicle at all times.'],
-    ['Will someone help me unload?', `You unload your own vehicle into the right bays, on level ground. Not sure where something goes? Ask the team on the floor. If you can't lift it, <a href="${SITE.links.bookCollection}">book a collection</a> instead.`],
+    ['Will someone help me unload?', `Yes. Our staff help you unload, and we're Victoria's only transfer station and recycling centre that does. Not sure where something goes? Ask the team on the floor. For a bigger job, <a href="${SITE.links.bookCollection}">book a collection</a> and our crew does the lifting and loading.`],
     ['Can I take things home from the tip?', 'No. Scavenging is not allowed. Good furniture and homewares go to charity partners through our <a href="' + u('community/') + '">Freecycle program</a>.'],
     ['Do you record my number plate?', `Yes. Vehicle registrations are recorded for compliance and operational reasons, and security cameras operate across the site. See our <a href="${u('privacy/')}">privacy policy</a>.`],
   ]],
@@ -206,6 +206,7 @@ export function suburbPages() {
           <li>${icon('check')}<span>Open ${HOURS.label}. Closed Sundays.</span></li>
           <li>${icon('check')}<span>Pay by card at the gate. No cash.</span></li>
           <li>${icon('check')}<span>Sort your load by material before you come.</span></li>
+          <li>${icon('check')}<span>Our staff help you unload. Fully undercover, never closed for weather.</span></li>
           <li>${icon('check')}<span>Enclosed shoes. Kids and pets stay in the car.</span></li>
           <li>${icon('check')}<span>No asbestos, chemicals or mixed building waste.</span></li>
         </ul>
