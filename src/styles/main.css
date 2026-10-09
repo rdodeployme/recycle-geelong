@@ -1124,3 +1124,26 @@ h1.fit-two, h2.fit-two, h3.fit-two { font-size: clamp(var(--fs-min, 22px), calc(
 .sector-grid li span { color: var(--green); font-stretch: 120%; font-weight: 900; font-size: 14px; letter-spacing: .06em; }
 @media (max-width: 900px) { .sector-grid { grid-template-columns: 1fr 1fr; } .sector-grid li { min-height: 110px; } }
 .mat-ph img[src*="metals-area"] { object-position: 70% 50%; }
+
+/* business door, collection, Jim's, sort compare */
+.biz-door { min-height: 520px; }
+.biz-door h2 { font-size: clamp(32px, 4vw, 60px); font-stretch: 125%; font-weight: 900; line-height: .95; margin: 10px 0 14px; }
+.biz-door .kicker { color: var(--green); }
+.collect { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+.collect h2 { margin: 12px 0 18px; }
+.collect .kicker { color: var(--green); }
+.collect .pickups { margin-top: 0; }
+@media (max-width: 900px) { .collect { grid-template-columns: 1fr; } }
+.jims { margin-top: 16px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 4vw, 64px); align-items: center; background: var(--ink-3); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 4vw, 56px); }
+.jims-logo { background: var(--white); border-radius: calc(var(--radius) - 2px); padding: clamp(24px, 4vw, 48px); display: grid; place-items: center; }
+.jims-logo img { width: 100%; max-width: 420px; height: auto; }
+.jims .kicker { color: var(--green); }
+.jims-h { font-size: clamp(32px, 3.6vw, 54px); overflow-wrap: anywhere; font-stretch: 125%; font-weight: 900; line-height: .92; margin: 12px 0 18px; text-transform: uppercase; }
+.jims p { font-size: clamp(17px, 1.5vw, 21px); color: #d6d6d1; max-width: 44ch; margin: 0; }
+@media (max-width: 760px) { .jims { grid-template-columns: 1fr; } }
+.sortcmp { position: relative; margin: 0; }
+.sortcmp > img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
+.step-photo.sortcmp > img { height: 100%; object-fit: cover; }
+.sc-tag { position: absolute; top: 10px; font-stretch: 112%; font-weight: 900; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 5px 9px; border-radius: 4px; }
+.sc-tag.bad { left: 10px; background: var(--ink); color: var(--white); }
+.sc-tag.good { right: 10px; background: var(--green); color: var(--ink); }

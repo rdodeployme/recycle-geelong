@@ -152,7 +152,7 @@ export function unsorted() {
         <div class="two" style="margin-top:28px">
           <div class="box"><h3>General waste</h3><p class="small">From $10 for a 30 litre bag. A level ute or small trailer is $99.</p></div>
           <div class="box"><h3>Green waste</h3><p class="small">Clippings, branches, leaves and weeds. From $5 for a 30 litre bag. A level ute or small trailer is $79.</p></div>
-          <div class="box"><h3>Building waste</h3><p class="small">Sorted building materials only. From $24 for a 30 litre bag. A level ute or small trailer is $199. Mixed C&amp;D loads go to Sycle at Fyansford.</p></div>
+          <div class="box"><h3>Building waste</h3><p class="small">Sorted building materials only. From $29 for a 30 litre bin. A level ute is $299 and a small trailer, level, is $399. Mixed C&amp;D loads go to Sycle at Fyansford.</p></div>
           <div class="box"><h3>No time to sort?</h3><p class="small">For a big clean-out or a deceased estate, book a collection and the crew does the lifting.</p></div>
         </div>
         <p style="margin-top:22px"><a class="link" href="${u('price-list/#loads')}">Every load price${icon('arrow')}</a></p>

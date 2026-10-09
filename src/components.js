@@ -47,7 +47,7 @@ export function estimator({ id = 'cost', n = '02' } = {}) {
     ${bay(n)}
     <div class="sec-head split">
       <div class="hang"><h2 id="${id}-h">Price your load in <span class="g nw">10 seconds</span></h2></div>
-      <p class="lede">Pick your vehicle, how full it is and what's in it. Registered locals save ${SITE.discount.resident}%, trades and businesses ${SITE.discount.trade}%.</p>
+      <p class="lede">As a rule, we're half the price of landfill. Pick your vehicle, how full it is and what's in it. Registered locals save ${SITE.discount.resident}%, trades and businesses ${SITE.discount.trade}%.</p>
     </div>
     <div class="est" data-estimator>
       <div>
@@ -225,7 +225,7 @@ export function journey({ n = '05', intro = true } = {}) {
 export function visitSteps({ n = '06' } = {}) {
   // [title, text, photo, short silent loop of the same spot (public/video), photo focus to match the loop's framing]
   const S = [
-    ['Sort it at home', `Keep green waste, metal, e-waste and general rubbish apart as you load. Everything comes off at its own bay, so you're in and out.`, 'unload-trailer', null, '30% 60%'],
+    ['Sort it at home', `Keep green waste, metal, e-waste and general rubbish apart as you load. Everything comes off at its own bay, so you're in and out.`, 'sort-compare', null, '50% 50%'],
     ['Drive in under cover', `Head to ${SITE.address.line1}, behind Coates Hire. Follow the hanging signs to the right bay.`, 'drive-in', 'step-2-drive', '50% 36%'],
     ['Unload by material', 'Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.', 'unload-car-cardboard', null, '45% 55%'],
     ['We take it from there', `${SITE.facility.streams} material streams, each with somewhere to go that isn't landfill.`, 'forklift-bale', null, '50% 55%'],
@@ -241,7 +241,7 @@ export function visitSteps({ n = '06' } = {}) {
       </div>
     </div>
     <div class="steps">
-      ${S.map(([t, d, ph, vid, pos], i) => `<div class="step rv"><span class="num">${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p><div class="step-photo">${img(ph, { sizes: '(max-width: 900px) 90vw, 22vw', style: `object-position:${pos}` })}${vid ? `<video class="step-vid" data-src="${u(`video/${vid}.mp4`)}" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>` : ''}</div></div>`).join('')}
+      ${S.map(([t, d, ph, vid, pos], i) => `<div class="step rv"><span class="num">${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p><div class="step-photo${ph === 'sort-compare' ? ' sortcmp' : ''}">${img(ph, { sizes: '(max-width: 900px) 90vw, 22vw', style: `object-position:${pos}` })}${ph === 'sort-compare' ? '<span class="sc-tag bad">Unsorted</span><span class="sc-tag good">Sorted</span>' : ''}${vid ? `<video class="step-vid" data-src="${u(`video/${vid}.mp4`)}" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>` : ''}</div></div>`).join('')}
     </div>
   </div>
 </section>`;
@@ -282,6 +282,21 @@ export function registerBand() {
     </div>
   </div>
 </section>`;
+}
+
+export function jimsPanel({ cls = '' } = {}) {
+  return `<div class="jims ${cls}">
+    <div class="jims-logo"><img src="${u('partners/jims-mowing.png')}" alt="Jim's Mowing" width="420" height="322" loading="lazy"></div>
+    <div class="jims-copy">
+      <span class="kicker">Trade partner</span>
+      <h3 class="jims-h">Jim's Mowing</h3>
+      <p>Jim's Mowing has a deal with Recycle North Geelong for special rates. Ask for the Jim's Mowing rate at the gate.</p>
+    </div>
+  </div>`;
+}
+
+export function sortCompare({ sizes = '100vw', cls = '' } = {}) {
+  return `<figure class="sortcmp ${cls}">${img('sort-compare', { sizes })}<span class="sc-tag bad">Unsorted</span><span class="sc-tag good">Sorted</span></figure>`;
 }
 
 export function pickupList() {

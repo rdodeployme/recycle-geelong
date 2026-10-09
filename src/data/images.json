@@ -592,5 +592,14 @@
    "640": "img/rubbish-panorama-640.webp"
   },
   "small": true
+ },
+ "sort-compare": {
+  "w": 2048,
+  "h": 1360,
+  "alt": "Two trailers side by side on a driveway: on the left an unsorted, mixed-up load; on the right the same kinds of rubbish sorted into cardboard, green waste, metal and bagged rubbish",
+  "sizes": {
+   "1920": "img/sort-compare-1920.webp",
+   "960": "img/sort-compare-960.webp"
+  }
  }
 }

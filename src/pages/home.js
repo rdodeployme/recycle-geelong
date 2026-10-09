@@ -1,6 +1,6 @@
 import { SITE } from '../data/site.js';
 import { u, img, icon, bay, alt } from '../lib.js';
-import { finder, estimator, freeGrid, journey, visitSteps, registerBand, pickupList, partnersList, heroVideo, marquee, photoRun, scale, tourDialog } from '../components.js';
+import { finder, estimator, freeGrid, journey, visitSteps, registerBand, partnersList, jimsPanel, heroVideo, marquee, photoRun, scale, tourDialog } from '../components.js';
 
 export function home() {
   const body = `
@@ -8,38 +8,40 @@ ${heroVideo()}
 ${finder({ n: '01' })}
 ${estimator({ n: '02' })}
 ${freeGrid({ n: '03' })}
-<section class="sec on-ink2" aria-labelledby="doors-h">
+<section class="sec on-ink2" aria-labelledby="biz-h">
   <div class="wrap">
     ${bay('04')}
-    <h2 id="doors-h" class="sr-only">Trade and collection services</h2>
-    <div class="doors">
-      <a class="door" href="${u('recycle-corporate-services/')}">
-        ${img('forklift-bale', { sizes: '(max-width: 900px) 100vw, 58vw' })}
-        <span class="kicker">Trade and corporate</span>
-        <h3 class="h2l">Recycling for business</h3>
-        <p>Scheduled collections and on-site bins, or bring it in on a semi. E-waste to AS/NZS 5377.</p>
-        <ul><li>Cardboard</li><li>E-waste</li><li>Mattresses</li><li>Scrap metal</li><li>Pallets</li><li>Gas bottles</li></ul>
-        <span class="link">Trade services${icon('arrow')}</span>
-      </a>
-      <div class="door plain">
-        <span class="kicker">Can't bring it in?</span>
-        <h3 class="h2l">We'll come to you</h3>
-        <p>Bigger clean-out or heavy items? Book a collection and the crew does the lifting.</p>
-        ${pickupList()}
-      </div>
-    </div>
-    <div class="partner-deal">
-      <div class="partner-logo"><img src="${u('partners/jims-mowing.png')}" alt="Jim's Mowing" width="420" height="322" loading="lazy"></div>
-      <div>
-        <span class="kicker">Trade partner</span>
-        <h3 class="partner-h">Jim's Mowing</h3>
-        <p>Jim's Mowing has a deal with Recycle North Geelong for special rates. Ask for the Jim's Mowing rate at the gate.</p>
-      </div>
-    </div>
+    <a class="door biz-door" href="${u('recycle-corporate-services/')}">
+      ${img('forklift-bale', { sizes: '100vw' })}
+      <span class="kicker">Trade and corporate</span>
+      <h2 id="biz-h" class="h2l">Recycling for business</h2>
+      <p>Scheduled collections and on-site bins, or bring it in on a semi. E-waste to AS/NZS 5377. All trades and businesses save ${SITE.discount.trade}% on every waste type.</p>
+      <ul><li>Cardboard</li><li>E-waste</li><li>Mattresses</li><li>Scrap metal</li><li>Pallets</li><li>Gas bottles</li></ul>
+      <span class="link">Trade services${icon('arrow')}</span>
+    </a>
+    ${jimsPanel()}
   </div>
 </section>
 
 ${visitSteps({ n: '05' })}
+
+<section class="sec on-ink2" aria-labelledby="col-h">
+  <div class="wrap">
+    ${bay('06')}
+    <div class="collect">
+      <div>
+        <span class="kicker">At-home collection</span>
+        <h2 id="col-h" class="lines"><span class="ln">Can't bring it in?</span><span class="ln g">We'll come to you.</span></h2>
+        <p class="lede">Recycle North Geelong collects from your home. Bigger clean-out or heavy items? Book a collection and our crew does the lifting.</p>
+        <div class="btns"><a class="btn" href="${SITE.links.bookCollection}">Book a collection${icon('arrow')}</a></div>
+      </div>
+      <div class="pickups">
+        <a class="pickup" href="${SITE.links.bookCollection}"><span><b>Rubbish and junk collection</b><span>We come to you and load it.</span></span>${icon('arrow')}</a>
+        <a class="pickup" href="${SITE.links.mattressPickup}" target="_blank" rel="noopener"><span><b>Mattress or bed base pickup</b><span>Through The Mattress Recycling Company.</span></span>${icon('external')}</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 ${registerBand()}
 ${tourDialog()}

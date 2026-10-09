@@ -74,7 +74,7 @@ export const HOURS = {
 };
 
 // ---------------------------------------------------------------- prices
-// Source: "Recycle North Geelong Fees and charges", July 2026.
+// Source: "Recycle North Geelong Fees and charges", July 2026. Building waste column updated 9 Oct 2026.
 // Loads are priced by size and by waste type. Unsorted mixed loads are not accepted.
 export const WASTE = [
   { id: 'general', name: 'General waste', short: 'General', hint: 'Household rubbish, unloaded at the general rubbish bays.' },
@@ -84,32 +84,32 @@ export const WASTE = [
 // p = [general, building, green]
 export const LOADS = [
   { id: 'bins', name: 'Bins or bags', sub: '30 to 240 litres', icon: 'bin', unit: 'bin', sizes: [
-    { id: '30', name: '30 L', p: [10, 24, 5] },
-    { id: '60', name: '60 L', p: [15, 30, 10] },
-    { id: '100', name: '100 L', p: [19, 39, 15] },
-    { id: '160', name: '160 L', p: [29, 49, 19] },
-    { id: '240', name: '240 L', p: [39, 59, 29] },
+    { id: '30', name: '30 L', p: [10, 29, 5] },
+    { id: '60', name: '60 L', p: [15, 39, 10] },
+    { id: '100', name: '100 L', p: [19, 49, 15] },
+    { id: '160', name: '160 L', p: [29, 69, 19] },
+    { id: '240', name: '240 L', p: [39, 89, 29] },
   ] },
   { id: 'car', name: 'Car, SUV or ute', sub: 'Boot to heaped tray', icon: 'ute', sizes: [
-    { id: 'boot', name: 'Car boot', p: [49, 99, 39] },
-    { id: 'wagon', name: 'SUV boot or station wagon, level', p: [69, 149, 59] },
-    { id: 'uteLevel', name: 'SUV full or ute, level', p: [99, 199, 79] },
-    { id: 'uteHeaped', name: 'Ute, heaped', p: [149, 249, 129] },
+    { id: 'boot', name: 'Car boot', p: [49, 129, 39] },
+    { id: 'wagon', name: 'SUV boot or station wagon, level', p: [69, 229, 59] },
+    { id: 'uteLevel', name: 'SUV full or ute, level', p: [99, 299, 79] },
+    { id: 'uteHeaped', name: 'Ute, heaped', p: [149, 299, 129] },
   ] },
   { id: 'small', name: 'Small trailer', sub: '6×4 ft · 1.8 × 1.2 m', icon: 'trailer', sizes: [
-    { id: 'level', name: 'Level', p: [99, 199, 79] },
-    { id: 'heaped', name: 'Caged, heaped', p: [149, 249, 129] },
-    { id: 'full', name: 'Caged, full', p: [199, 299, 169] },
+    { id: 'level', name: 'Level', p: [99, 399, 79] },
+    { id: 'heaped', name: 'Caged, heaped', p: [149, 399, 129] },
+    { id: 'full', name: 'Caged, full', p: [199, 449, 169] },
   ] },
   { id: 'medium', name: 'Medium trailer', sub: '7×5 ft · 2.4 × 1.5 m', icon: 'trailer', sizes: [
-    { id: 'level', name: 'Level', p: [129, 229, 109] },
-    { id: 'heaped', name: 'Caged, heaped', p: [199, 349, 169] },
-    { id: 'full', name: 'Caged, full', p: [249, 449, 199] },
+    { id: 'level', name: 'Level', p: [129, 399, 109] },
+    { id: 'heaped', name: 'Caged, heaped', p: [199, 499, 169] },
+    { id: 'full', name: 'Caged, full', p: [249, 499, 199] },
   ] },
   { id: 'large', name: 'Large trailer', sub: '10×6 ft · 3 × 1.8 m', icon: 'trailer', sizes: [
-    { id: 'level', name: 'Level', p: [169, 249, 139] },
-    { id: 'heaped', name: 'Caged, heaped', p: [269, 499, 199] },
-    { id: 'full', name: 'Caged, full', p: [369, 649, 299] },
+    { id: 'level', name: 'Level', p: [169, 599, 139] },
+    { id: 'heaped', name: 'Caged, heaped', p: [269, 699, 199] },
+    { id: 'full', name: 'Caged, full', p: [369, 799, 299] },
   ] },
   { id: 'truck', name: 'Van or truck', sub: 'Priced at the gate', icon: 'truck', sizes: null },
 ];
