@@ -1,6 +1,6 @@
 import { SITE, HOURS, PRICE_GROUPS, ITEMS, STREAMS, VEHICLES, FREECYCLE, LOADS, WASTE } from '../data/site.js';
 import { u, img, icon, bay, esc, IMAGES } from '../lib.js';
-import { jimsPanel, dealsSection, tradieTuesday } from '../components.js';
+import { jimsPanel, dealsSection, tradieTuesday, sortCompare } from '../components.js';
 import { CAT_ICON } from '../icons.js';
 import { finder, estimator, registerBand, pageHero, journey, pickupList, partnersList, JOURNEY, scale, photoRun } from '../components.js';
 
@@ -138,7 +138,8 @@ export function unsorted() {
   <div class="wrap">
     ${bay('01')}
     <div class="sec-head split"><div class="hang"><h2 id="how-h" class="lines"><span class="ln">Six piles.</span><span class="ln">That's sorted.</span></h2></div><p class="lede">Load each group together so it comes off in one go at its bay.</p></div>
-    <div class="free-grid three">
+    ${sortCompare({ sizes: '(max-width: 1340px) 100vw, 1220px', cls: 'sc-big' })}
+    <div class="free-grid three" style="margin-top:28px">
       ${groups.map(([ic, t, d], i) => `<div class="free-card" style="background:var(--ink-3);color:var(--white)"><span class="tag">${String(i + 1).padStart(2, '0')}</span>${icon(ic)}<h3>${t}</h3><p style="color:var(--mute)">${d}</p></div>`).join('')}
     </div>
   </div>

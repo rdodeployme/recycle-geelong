@@ -291,10 +291,10 @@ export function jimsPanel({ cls = '' } = {}) {
     <div class="jims-logo"><img src="${u('partners/jims-mowing.png')}" alt="Jim's Mowing" width="420" height="322" loading="lazy"></div>
     <div class="jims-copy">
       <span class="kicker">Exclusive Jim's franchise benefits</span>
-      <h3 class="jims-h">Better than ${SITE.discount.trade}% for Jim's franchisees</h3>
+      <h3 class="jims-h">Beyond ${SITE.discount.trade}% for Jim's franchisees</h3>
       <p>Participating Jim's Group franchisees get exclusive preferential disposal and recycling rates, arranged directly through Jim's Head Office. Savings go well beyond our standard ${SITE.discount.trade}% trade and service business discount, with a convenient, undercover recycling facility.</p>
     </div>
-    <div class="jims-more"><span>Jim's teams that use the site</span><div class="lt-row">${SITE.jims.map(logoTile).join('')}</div></div>
+    <div class="jims-more"><span>Jim's Group services</span><div class="lt-row">${SITE.jims.map(logoTile).join('')}</div></div>
   </div>`;
 }
 
@@ -384,7 +384,7 @@ export function heroVideo() {
       <h1 id="hero-h" class="lines calm"><span class="ln"><span class="w">Drive in.</span></span><span class="ln"><span class="w">Drop off.</span></span><span class="ln"><span class="w g">Drive out.</span></span></h1>
       <div class="assist" role="note"><span class="assist-ic">${icon('hand')}</span><b>Assisted unloading</b><span>Our staff help you unload. Victoria's only transfer station and recycling centre that does.</span></div>
     </div>
-    <p class="hv-lede"><span class="nw">Geelong's only undercover transfer station.</span> <span class="nw">Open 6 days a week, 7:30am – 4pm.</span></p>
+    <p class="hv-lede"><span class="nw">Geelong's only undercover transfer station.</span> <span class="nw">Open Monday to Saturday, 7:30am – 4pm.</span></p>
     <div class="hero-ctas">
       <a class="btn" href="#finder">What can I bring?${icon('down')}</a>
       <a class="btn ghost" href="#cost">Price my load</a>
