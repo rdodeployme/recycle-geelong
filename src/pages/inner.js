@@ -1,4 +1,4 @@
-import { SITE, HOURS, PRICE_GROUPS, ITEMS, STREAMS, VEHICLES, FREECYCLE } from '../data/site.js';
+import { SITE, HOURS, PRICE_GROUPS, ITEMS, STREAMS, VEHICLES, FREECYCLE, LOADS, WASTE } from '../data/site.js';
 import { u, img, icon, bay, esc, IMAGES } from '../lib.js';
 import { CAT_ICON } from '../icons.js';
 import { finder, estimator, registerBand, pageHero, journey, pickupList, partnersList, JOURNEY, scale, photoRun } from '../components.js';
@@ -15,6 +15,16 @@ export const badge = (s, label) => {
 };
 
 // ---------------------------------------------------------------- price list
+// Price per load: every vehicle and bin size against general, building and green waste.
+export function loadTable() {
+  const head = `<thead><tr><th scope="col"><span class="sr-only">Load</span></th>${WASTE.map((w) => `<th scope="col" class="w-${w.id}">${w.short}<span> waste</span></th>`).join('')}</tr></thead>`;
+  const body = LOADS.map((g) => g.sizes
+    ? `<tr class="grp"><th colspan="4" scope="colgroup">${g.name}${g.unit === 'bin' ? '' : `<span>${g.sub}</span>`}</th></tr>`
+      + g.sizes.map((z) => `<tr><th scope="row">${z.name}</th>${z.p.map((v) => `<td>$${v}</td>`).join('')}</tr>`).join('')
+    : `<tr class="grp"><th colspan="4" scope="colgroup">${g.name}</th></tr><tr><th scope="row">Vans and trucks up to 4,500 kg GVM</th><td colspan="3" class="gate">Priced at the gate. Call ${SITE.phone}</td></tr>`).join('');
+  return `<div class="ppl"><table>${head}<tbody>${body}</tbody></table></div>`;
+}
+
 export function priceList() {
   const groups = PRICE_GROUPS.map((g) => `<article class="pg ${g.id}${g.id === 'building' ? ' span' : ''}" id="${g.id}">
     <header><h3>${g.title}</h3>${g.note ? `<p>${g.note}</p>` : ''}</header>
@@ -22,29 +32,26 @@ export function priceList() {
   </article>`).join('');
   const body = `${pageHero({
     crumbs: 'Prices', kicker: 'Price list', title: 'Know the price before you load up', image: 'skips-row',
-    lede: 'Every price we charge, in one place. Sorted loads pay half the unsorted rate, and locals who register save another 10%.',
-    extra: `<div class="jump">${PRICE_GROUPS.map((g) => `<a href="#${g.id}">${g.title}</a>`).join('')}</div>`,
+    lede: 'Every price we charge, in one place. Loads are priced by size and by type of waste, and locals who register save another 10%.',
+    extra: `<div class="jump"><a href="#loads">Price per load</a>${PRICE_GROUPS.map((g) => `<a href="#${g.id}">${g.title}</a>`).join('')}</div>`,
   })}
-<section class="sec on-paper" style="padding-bottom:calc(var(--sec) * .6)">
+<section class="sec on-paper" id="loads" aria-labelledby="loads-h">
   <div class="wrap">
     ${bay('01')}
-    <div class="compare">
-      <div class="s"><span class="kicker" style="color:var(--ink)">Sorted ute or 6×4 trailer</span><b class="big">$99</b><p>Grouped by material before you arrive.</p></div>
-      <div class="u"><span class="kicker">Unsorted ute or 6×4 trailer</span><b class="big">$199</b><p>Everything mixed together. We sort it for you.</p></div>
-    </div>
-    <p style="margin-top:18px"><a class="link" href="${u('unsorted-loads/')}">How to sort your load${icon('arrow')}</a></p>
+    <div class="sec-head split"><div class="hang"><h2 id="loads-h">Price per load</h2></div><p class="lede">Find your vehicle and how full it is, then read across to what's in it. Everything is unloaded by material at its own bay, and unsorted mixed loads aren't accepted. <a href="${u('unsorted-loads/')}">How to sort your load</a></p></div>
+    ${loadTable()}
   </div>
 </section>
 ${estimator({ id: 'cost', n: '02' })}
 <section class="sec on-paper" aria-labelledby="all-h">
   <div class="wrap">
     ${bay('03')}
-    <div class="sec-head split"><div class="hang"><h2 id="all-h">The full price list</h2></div><p class="lede">If something isn't listed, call ${SITE.phone} before you come and we'll price it for you.</p></div>
+    <div class="sec-head split"><div class="hang"><h2 id="all-h">Items priced each, and what's free</h2></div><p class="lede">If something isn't listed, call ${SITE.phone} before you come and we'll price it for you.</p></div>
     <div class="price-groups">${groups}</div>
   </div>
 </section>
 ${registerBand()}`;
-  return { path: 'price-list/', title: 'Price list', desc: 'Recycle North Geelong prices: free drop-off for whitegoods, scrap metal, cardboard and more; sorted loads from $19; mattresses, tyres, gas bottles and green waste.', body, current: 'price-list/' };
+  return { path: 'price-list/', title: 'Price list', desc: 'Recycle North Geelong prices: free drop-off for whitegoods, scrap metal, cardboard and more; general, building and green waste priced by load from $5; mattresses, tyres and gas bottles priced each.', body, current: 'price-list/' };
 }
 
 // ---------------------------------------------------------------- what we take
@@ -85,7 +92,7 @@ export function whatWeTake() {
         <div class="hang" style="margin-bottom:22px"><h2 id="never-h">Please leave these at home</h2></div>
         <p class="lede">For the safety of our team and everyone on site, these can't come through the gate, sorted or not.</p>
         <ul class="ticks no" style="margin-top:24px">
-          ${['Asbestos or anything that might be asbestos', 'Chemicals, solvents and fuels, including pesticides and pool chemicals', 'Unlabelled or unidentified liquids, and drums with hazardous residue', 'Medical and biological waste, including sharps', 'Explosives, flares, firearms and ammunition', 'Soil, including contaminated or untested soil', 'Animal carcasses', 'Radioactive material and mercury switches', 'Electric vehicle batteries', 'Mixed construction and demolition loads (take these to Sycle at Fyansford)']
+          ${['Asbestos or anything that might be asbestos', 'Chemicals, solvents and fuels, including pesticides, herbicides, fertilisers and pool chemicals', 'Unlabelled or unidentified liquids, and drums with hazardous residue', 'Medical and biological waste, including sharps', 'Explosives, flares, firearms and ammunition', 'Soil, including contaminated or untested soil', 'Animal carcasses', 'Radioactive material and mercury switches', 'Electric vehicle batteries', 'Unsorted mixed loads', 'Mixed construction and demolition loads (take these to Sycle at Fyansford)']
             .map((t) => `<li>${icon('ban')}<span>${t}</span></li>`).join('')}
         </ul>
       </div>
@@ -112,33 +119,24 @@ function vehicles(n) {
 </section>`;
 }
 
-// ---------------------------------------------------------------- sorted vs unsorted
+// ---------------------------------------------------------------- sorting your load (old URL /unsorted-loads/ kept)
 export function unsorted() {
   const groups = [
     ['leaf', 'Green waste', 'Branches, leaves, clippings and weeds.'],
-    ['metal', 'Metal', 'Scrap steel, aluminium, copper and whitegoods.'],
+    ['metal', 'Metal', 'Scrap steel, aluminium, copper and whitegoods. Free.'],
     ['tv', 'E-waste', 'TVs, screens, computers, phones and cables.'],
     ['box', 'Cardboard and polystyrene', 'Flattened, clean and dry, kept apart from each other.'],
-    ['mattress', 'Mattresses', 'Priced each, so keep them separate.'],
-    ['bin', 'General rubbish', 'Whatever is left over.'],
+    ['mattress', 'Mattresses and tyres', 'Priced each, so keep them separate.'],
+    ['bin', 'General rubbish', 'Whatever is left over. Bagged household rubbish counts here.'],
   ];
   const body = `${pageHero({
-    crumbs: 'Sorted vs unsorted', kicker: 'Sort and save', title: 'Sort it. Pay half.', image: 'paint-wide',
-    lede: "Loads sorted by material before you arrive cost half as much as mixed loads. It's easy to do as you pack.",
+    crumbs: 'Sorting your load', kicker: 'Before you come', title: 'Sort it as you load', image: 'paint-wide',
+    lede: "Everything here is unloaded by material at its own bay, and unsorted mixed loads can't be accepted. Pack it in groups and you're in and out.",
   })}
-<section class="sec on-paper">
-  <div class="wrap">
-    ${bay('01')}
-    <div class="compare">
-      <div class="s"><span class="kicker" style="color:var(--ink)">Sorted</span><b class="big">$99<small style="font-size:.3em"> /m³</small></b><p>Vans, trailers and trucks, grouped by material.</p></div>
-      <div class="u"><span class="kicker">Unsorted</span><b class="big">$199<small style="font-size:.3em"> /m³</small></b><p>Everything mixed together.</p></div>
-    </div>
-  </div>
-</section>
 <section class="sec" aria-labelledby="how-h">
   <div class="wrap">
-    ${bay('02')}
-    <div class="sec-head split"><div class="hang"><h2 id="how-h" class="lines"><span class="ln">Six piles.</span><span class="ln">That's sorted.</span></h2></div><p class="lede">Load each group together so it comes off in one go. Bags of mixed rubbish count as general rubbish.</p></div>
+    ${bay('01')}
+    <div class="sec-head split"><div class="hang"><h2 id="how-h" class="lines"><span class="ln">Six piles.</span><span class="ln">That's sorted.</span></h2></div><p class="lede">Load each group together so it comes off in one go at its bay.</p></div>
     <div class="free-grid three">
       ${groups.map(([ic, t, d], i) => `<div class="free-card" style="background:var(--ink-3);color:var(--white)"><span class="tag">${String(i + 1).padStart(2, '0')}</span>${icon(ic)}<h3>${t}</h3><p style="color:var(--mute)">${d}</p></div>`).join('')}
     </div>
@@ -146,17 +144,18 @@ export function unsorted() {
 </section>
 <section class="sec on-paper" aria-labelledby="mixed-h">
   <div class="wrap">
-    ${bay('03')}
+    ${bay('02')}
     <div class="split">
       <div>
-        <div class="hang" style="margin-bottom:22px"><h2 id="mixed-h">No time to sort? We'll still take it</h2></div>
-        <p class="lede">We accept mixed car and truck loads of household junk at the unsorted rate, and it gets sorted on site.</p>
+        <div class="hang" style="margin-bottom:22px"><h2 id="mixed-h">Three rates, by what's in it</h2></div>
+        <p class="lede">General, building and green waste each have their own price per load. Free items cost nothing, whatever you bring them in.</p>
         <div class="two" style="margin-top:28px">
-          <div class="box"><h3>Household clean-outs</h3><p class="small">Mattresses, whitegoods, clothing, homewares and general household waste.</p></div>
-          <div class="box"><h3>Deceased estates</h3><p class="small">Mixed loads of furniture, whitegoods, mattresses, books and homewares, handled with care.</p></div>
-          <div class="box"><h3>Green waste</h3><p class="small">Ute, trailer and tip truck loads: clippings, branches, leaves, trimmings and small logs. $79 per m³.</p></div>
-          <div class="box"><h3>Building waste</h3><p class="small">Sorted building materials only, $199 per m³. Mixed C&amp;D loads go to Sycle at Fyansford.</p></div>
+          <div class="box"><h3>General waste</h3><p class="small">From $10 for a 30 litre bag. A level ute or small trailer is $99.</p></div>
+          <div class="box"><h3>Green waste</h3><p class="small">Clippings, branches, leaves and weeds. From $5 for a 30 litre bag. A level ute or small trailer is $79.</p></div>
+          <div class="box"><h3>Building waste</h3><p class="small">Sorted building materials only. From $24 for a 30 litre bag. A level ute or small trailer is $199. Mixed C&amp;D loads go to Sycle at Fyansford.</p></div>
+          <div class="box"><h3>No time to sort?</h3><p class="small">For a big clean-out or a deceased estate, book a collection and the crew does the lifting.</p></div>
         </div>
+        <p style="margin-top:22px"><a class="link" href="${u('price-list/#loads')}">Every load price${icon('arrow')}</a></p>
       </div>
       <div class="ph-stack">
         <figure>${img('building-materials', { sizes: '(max-width: 900px) 50vw, 25vw' })}<figcaption class="cap">${IMAGES['building-materials'].alt}.</figcaption></figure>
@@ -165,8 +164,8 @@ export function unsorted() {
     </div>
   </div>
 </section>
-${estimator({ id: 'cost', n: '04' })}`;
-  return { path: 'unsorted-loads/', title: 'Sorted vs unsorted loads', desc: 'Sorted loads cost half the unsorted rate at Recycle North Geelong. How to sort your load, and what mixed loads we accept.', body, current: '' };
+${estimator({ id: 'cost', n: '03' })}`;
+  return { path: 'unsorted-loads/', title: 'Sorting your load', desc: 'Everything at Recycle North Geelong is unloaded by material at its own bay, and unsorted mixed loads are not accepted. How to sort your load, and what general, building and green waste cost.', body, current: '' };
 }
 
 // ---------------------------------------------------------------- location

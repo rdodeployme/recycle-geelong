@@ -2,7 +2,7 @@
 // Facts come from data/site.js and the business's own published terms of entry
 // (recycle.net.au/tc, Oct 2026). Nothing here is invented: where a fact is not
 // known, the answer points people to the gate or the phone instead.
-import { SITE, HOURS, LOADS, VEHICLES } from '../data/site.js';
+import { SITE, HOURS, VEHICLES, loadPrice } from '../data/site.js';
 import { u, icon, bay, esc } from '../lib.js';
 import { pageHero, registerBand } from '../components.js';
 
@@ -17,13 +17,13 @@ export const FAQ = [
     ['When are you open?', `${HOURS.label}. Closed on Sundays. ${HOURS.sunday.replace(/^Closed Sundays\. /, '')}`],
     ['Do you open on public holidays?', `Public holiday hours can change. Check our <a href="${SITE.social.facebook}" target="_blank" rel="noopener">Facebook page</a> or call <a href="${SITE.phoneHref}">${SITE.phone}</a> before you head out.`],
     ['What can I bring?', `Most household, garden and trade waste, sorted into ${SITE.facility.streams} material streams. Type any item into the <a href="${u('#finder')}">item finder</a> to see if we take it, what it costs and where it goes, or see the <a href="${u('what-we-take/')}">full A to Z</a>.`],
-    ['What do you not accept?', `Asbestos (or anything that might be asbestos), household and garden chemicals, fuels and solvents, medical waste, explosives and ammunition, unlabelled liquids, soil, and mixed construction and demolition waste. Unsorted building loads can go to Sycle at Fyansford. For asbestos, use a licensed asbestos removalist.`],
+    ['What do you not accept?', `Asbestos (or anything that might be asbestos), household and garden chemicals, fuels and solvents, medical waste, explosives and ammunition, unlabelled liquids, soil, fertilisers, unsorted mixed loads, and mixed construction and demolition waste. Unsorted building loads can go to Sycle at Fyansford. For asbestos, use a licensed asbestos removalist.`],
     ['What vehicles can I bring in?', `${VEHICLES.yes.join(', ')}. We can't take ${VEHICLES.no.map((v) => v.toLowerCase()).join(', ')}.`],
     ['Is it undercover?', `Yes. The whole drop-off area is undercover concrete, about ${SITE.facility.area}, so you never unload in the rain.`],
   ]],
   ['Prices and paying', [
-    ['How much will it cost?', `Loads are priced by size, from $${LOADS[0].sorted} for a 120 litre wheelie bin to $${LOADS.find((l) => l.id === 'ute').sorted} for a level ute or 6×4 trailer, sorted. Some items such as mattresses, tyres and gas bottles are priced each. Use <a href="${u('#cost')}">Price my load</a> for an estimate, or see the <a href="${u('price-list/')}">full price list</a>. Prices include GST.`],
-    ['Why is a sorted load cheaper?', `Sorted loads are half the unsorted rate, because we don't have to separate them for you. Group green waste, metal, e-waste, cardboard, mattresses and general rubbish as you pack. <a href="${u('unsorted-loads/')}">How to sort a load</a>.`],
+    ['How much will it cost?', `Loads are priced by size and by type of waste. General waste starts at $${loadPrice('bins', '30', 0)} for a 30 litre bag, and a level ute or small trailer is $${loadPrice('small', 'level', 0)}. Green waste costs less and building waste costs more. Some items such as mattresses, tyres and gas bottles are priced each. Use <a href="${u('#cost')}">Price my load</a> for an estimate, or see the <a href="${u('price-list/')}">full price list</a>. Prices include GST.`],
+    ['Do I have to sort my load?', `Yes. Everything is unloaded by material at its own bay, and unsorted mixed loads aren't accepted. Keep green waste, metal, e-waste, cardboard, mattresses and general rubbish apart as you pack. <a href="${u('unsorted-loads/')}">How to sort a load</a>.`],
     ['What is free?', `${FREE.map((f, i) => (i === 0 ? f[0].toUpperCase() + f.slice(1) : f)).join(', ').replace(/, ([^,]*)$/, ' and $1')}. Conditions apply to some items.`],
     ['How do I pay?', 'By card only: debit, EFTPOS or credit. We don\'t accept cash. Payment is made in full at the gate, before you unload.'],
     ['How is my load checked?', 'An attendant looks over your load at the gate, confirms the price and takes payment before you unload. Declare every item that is priced separately, such as tyres, mattresses and gas bottles.'],
@@ -205,7 +205,7 @@ export function suburbPages() {
         <ul class="ticks">
           <li>${icon('check')}<span>Open ${HOURS.label}. Closed Sundays.</span></li>
           <li>${icon('check')}<span>Pay by card at the gate. No cash.</span></li>
-          <li>${icon('check')}<span>Sort your load by material and pay half.</span></li>
+          <li>${icon('check')}<span>Sort your load by material before you come.</span></li>
           <li>${icon('check')}<span>Enclosed shoes. Kids and pets stay in the car.</span></li>
           <li>${icon('check')}<span>No asbestos, chemicals or mixed building waste.</span></li>
         </ul>

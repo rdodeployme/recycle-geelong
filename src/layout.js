@@ -125,7 +125,7 @@ function footer() {
         <h4>Explore</h4>
         <ul>
           ${NAV.map(([href, label]) => `<li><a href="${u(href)}">${label}</a></li>`).join('')}
-          <li><a href="${u('unsorted-loads/')}">Sorted vs unsorted</a></li>
+          <li><a href="${u('unsorted-loads/')}">How to sort your load</a></li>
           <li><a href="${u('faq/')}">Questions</a></li>
           <li><a href="${u('tip/')}">Areas we serve</a></li>
           <li><a href="${u('news/')}">News</a></li>

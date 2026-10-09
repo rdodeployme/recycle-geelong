@@ -1035,3 +1035,37 @@ h1.fit-two, h2.fit-two, h3.fit-two { font-size: clamp(var(--fs-min, 22px), calc(
 .tour-x { position: absolute; top: 0; right: 0; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .5); background: rgba(0, 0, 0, .5); color: #fff; display: grid; place-items: center; cursor: pointer; }
 .tour-x:hover { border-color: #fff; }
 .tour-cap { margin: 12px 0 0; font-size: 14px; color: #cfcfca; }
+
+/* ---------------------------------------------------------------- price per load (July 2026 price list) */
+.sizes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.sizes[hidden] { display: none; }
+.size { border: 1.5px solid var(--line-2); background: transparent; color: var(--white); border-radius: 99px; padding: 9px 15px; font-weight: 700; font-size: 14px; cursor: pointer; }
+.size:hover { border-color: var(--white); }
+.size[aria-pressed='true'] { background: var(--green); border-color: var(--green); color: var(--ink); }
+.truck-note { margin-top: 12px; }
+.truck-note[hidden] { display: none; }
+.est .seg { max-width: 100%; }
+@media (max-width: 420px) { .est .seg button { padding: 11px 12px; } }
+
+.ppl { border: 2px solid var(--ink); border-radius: var(--radius); background: var(--white); overflow: hidden; }
+.ppl table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.ppl thead th { position: sticky; top: 0; background: var(--ink); color: var(--white); text-align: right; padding: 14px 20px; font-stretch: 110%; font-weight: 800; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.ppl thead th.w-green { color: var(--green); }
+.ppl tbody th { text-align: left; font-weight: 700; padding: 11px 20px; }
+.ppl td { text-align: right; padding: 11px 20px; font-stretch: 112%; font-weight: 900; font-size: 17px; white-space: nowrap; }
+.ppl td.gate { text-align: left; font-stretch: 100%; font-weight: 600; font-size: 15px; white-space: normal; color: var(--mute-ink); }
+.ppl tbody tr { border-bottom: 1px solid rgba(0, 0, 0, .1); }
+.ppl tbody tr:last-child { border-bottom: 0; }
+.ppl tr.grp th { background: var(--paper); padding-top: 18px; font-stretch: 110%; font-weight: 800; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; border-top: 2px solid var(--ink); }
+.ppl tr.grp:first-child th { border-top: 0; }
+.ppl tr.grp th span { margin-left: 10px; font-weight: 600; letter-spacing: .02em; text-transform: none; color: var(--mute-ink); font-size: 13px; }
+@media (max-width: 640px) {
+  .ppl table { font-size: 14px; }
+  .ppl thead th, .ppl tbody th, .ppl td { padding: 10px 8px; }
+  .ppl tbody th { width: 46%; padding-left: 12px; }
+  .ppl thead th { font-size: 12px; letter-spacing: .03em; }
+  .ppl thead th:first-child { padding: 0; }
+  .ppl thead th span { display: none; }
+  .ppl td { font-size: 15px; }
+  .ppl tr.grp th span { display: block; margin: 2px 0 0; }
+}

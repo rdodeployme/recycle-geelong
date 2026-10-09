@@ -1,6 +1,6 @@
 // Recycle North Geelong — site behaviour. No framework; each feature is
 // a small function that only runs when its markup is on the page.
-import { ITEMS, STREAMS, LOADS, EXTRAS, HOURS, SITE } from '../data/site.js';
+import { ITEMS, STREAMS, LOADS, WASTE, EXTRAS, HOURS, SITE } from '../data/site.js';
 import { CAT_ICON } from '../icons.js';
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -159,22 +159,26 @@ function finder(box) {
 // ---------------------------------------------------------------- estimator
 const money = (n) => '$' + (Math.round(n * 100) % 100 ? n.toFixed(2) : String(Math.round(n)));
 
+// Loads are priced by vehicle, how full it is, and waste type (general, building, green).
 function estimator(root) {
-  const st = { load: 'ute', sorted: true, m3: 2, extras: {}, discount: false };
+  const st = { load: 'car', size: { car: 'uteLevel' }, waste: 0, extras: {}, discount: false };
   const L = Object.fromEntries(LOADS.map((l) => [l.id, l]));
   const E = Object.fromEntries(EXTRAS.map((e) => [e.id, e]));
   const lines = $('[data-lines]', root), tot = $('[data-total]', root), disc = $('[data-disc]', root);
-  const save = $('[data-save]', root), saveT = $('[data-save-text]', root), m3row = $('.m3-row', root), m3out = $('[data-m3-out]', root);
+  const hint = $('[data-waste-hint]', root), truckNote = $('[data-truck-note]', root);
+  LOADS.forEach((l) => { if (l.sizes && !st.size[l.id]) st.size[l.id] = l.sizes[0].id; });
 
-  function loadPrice(l, sorted) {
-    const rate = sorted ? l.sorted : l.unsorted;
-    if (rate == null) return null;
-    return l.perM3 ? rate * st.m3 : rate;
+  function current() {
+    const l = L[st.load];
+    if (!l.sizes) return { l, s: null, p: null };
+    const s = l.sizes.find((x) => x.id === st.size[l.id]);
+    return { l, s, p: s.p[st.waste] };
   }
   function draw() {
-    const l = L[st.load];
-    const p = loadPrice(l, st.sorted);
-    const name = `${st.sorted ? 'Sorted' : 'Unsorted'} · ${l.name}${l.perM3 ? `, ${st.m3}\u00a0m³` : (/heaped/i.test(l.sub) ? ', heaped' : '')}`.replace(/(\d×\d) /, '$1\u00a0').replace(/ (\S+)$/, '\u00a0$1');
+    const { l, s, p } = current();
+    const what = WASTE[st.waste].name;
+    const where = !s ? l.name : l.unit === 'bin' ? `${s.name} bin or bag` : l.id === 'car' ? s.name : `${l.name}, ${s.name.toLowerCase()}`;
+    const name = `${s ? `${what} · ` : ''}${where}`.replace(/ (\S+)$/, ' $1');
     const rows = [[name, p == null ? 'At the gate' : money(p)]];
     let sum = p || 0;
     for (const [id, n] of Object.entries(st.extras)) {
@@ -193,26 +197,25 @@ function estimator(root) {
       tot.classList.remove('gate');
       disc.textContent = st.discount ? `Includes 10% local discount (−${money(sum * 0.1)})` : `Registered locals pay ${money(sum * 0.9)}`;
     }
-    const ps = loadPrice(l, true), pu = loadPrice(l, false);
-    if (st.sorted && pu != null) { save.hidden = false; saveT.innerHTML = `Sorting saves you <b>${money(pu - ps)}</b> on this load compared with unsorted.`; }
-    else if (!st.sorted && pu != null) { save.hidden = false; saveT.innerHTML = `Sort it at home and this load is <b>${money(ps)}</b> instead of ${money(pu)}.`; }
-    else if (!st.sorted && pu == null) { save.hidden = false; saveT.innerHTML = `Unsorted loads this size are priced at the gate. Sorted, it's <b>${money(ps)}</b>.`; }
-    else save.hidden = true;
+    hint.textContent = WASTE[st.waste].hint;
   }
   $$('[data-load]', root).forEach((b) => b.addEventListener('click', () => {
     st.load = b.dataset.load;
     $$('[data-load]', root).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    m3row.hidden = !L[st.load].perM3;
+    $$('[data-sizes]', root).forEach((g) => { g.hidden = g.dataset.sizes !== st.load; });
+    truckNote.hidden = !!L[st.load].sizes;
     draw();
   }));
-  $$('[data-sort]', root).forEach((b) => b.addEventListener('click', () => {
-    st.sorted = b.dataset.sort === 'sorted';
-    $$('[data-sort]', root).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  $$('[data-sizes]', root).forEach((g) => $$('[data-size]', g).forEach((b) => b.addEventListener('click', () => {
+    st.size[g.dataset.sizes] = b.dataset.size;
+    $$('[data-size]', g).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
     draw();
-  }));
-  $$('[data-m3]', root).forEach((b) => b.addEventListener('click', () => {
-    st.m3 = Math.min(40, Math.max(0.5, st.m3 + Number(b.dataset.m3)));
-    m3out.textContent = st.m3;
+  })));
+  // first size in each group starts selected (the default group's choice is set in the markup)
+  $$('[data-sizes]', root).forEach((g) => { if (!$('[aria-pressed="true"]', g)) $('[data-size]', g).setAttribute('aria-pressed', 'true'); });
+  $$('[data-waste]', root).forEach((b) => b.addEventListener('click', () => {
+    st.waste = Number(b.dataset.waste);
+    $$('[data-waste]', root).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
     draw();
   }));
   $$('[data-extra]', root).forEach((b) => b.addEventListener('click', () => {

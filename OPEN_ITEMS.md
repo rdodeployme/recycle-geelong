@@ -12,16 +12,27 @@ The live WordPress site at recycle.net.au is untouched.
 I picked the reading below for the new site. Confirm or correct.
 | Topic | Current site says | New site uses |
 |---|---|---|
-| Closing time | 4pm and 5pm | 5pm (confirmed by Andy, 7 Oct) |
+| Closing time | 4pm and 5pm; July 2026 price list says 4pm | 5pm (confirmed by Andy, 7 Oct) |
 | Floor area | "3 acres", "4.5 acres", "20,000 m²" | 20,000 m² |
 | Streams | "60 categories" | 90+ (group figure) |
-| Gas bottles over 9 kg | $25 on price list; "not accepted" on What we take | $25, "call ahead" |
+| Gas bottles over 9 kg | $25 on price list; "not accepted" on What we take | $25 (confirmed by July 2026 price list) |
 | Household / lithium batteries | Not accepted (except car/truck); there is a Battery Station sign | "Check first, call ahead" |
-| Pool chemicals, pesticides, herbicides | Both accepted (small, labelled) and not accepted | Not accepted |
+| Pool chemicals, pesticides, herbicides | Both accepted (small, labelled) and not accepted | Not accepted (July 2026 list: pesticides, herbicides, fertilisers not accepted) |
 | Varnish | Both accepted (sealed) and not accepted | Not accepted |
-| Paint over 100 L | $1/L and $2/L | Decorative over 100 L $1/L; industrial and automotive $2/L any volume |
+| Paint over 100 L | $1/L and $2/L | $1/L over 100 L (July 2026 list); industrial and automotive $2/L kept, not on the list |
 | "100% landfill-free commitment" | Hero badge | Removed. Site says "landfill last" |
 | Steel per mattress | "1.5 kg" | ~30% of a mattress; 99% of that steel recovered |
+
+## Prices: July 2026 price list applied (9 Oct)
+Source: "Recycle North Geelong Fees and charges", July 2026 (supplied by Andy). Every price on the list is now on the site.
+- Loads are priced by size and by waste type (general, building, green): bins/bags 30–240 L, car boot to heaped ute, and small (6×4), medium (7×5) and large (10×6) trailers at level, caged heaped and caged full. Data: LOADS and WASTE in src/data/site.js.
+- The list has no unsorted rate and lists "unsorted mixed loads" as not accepted, so "sort it and pay half" is gone everywhere. /unsorted-loads/ is now "Sort it as you load" (URL kept).
+- New prices added: clothing $29 and glass $39 per 240 L wheelie bin.
+- Needs confirming:
+  - Hours: the list says Mon–Sat 7:30am–4:00pm; the site keeps 5pm as confirmed by Andy on 7 Oct.
+  - Vans and trucks: no price on the list, so the site says "priced at the gate, call ahead" (was $99/$199 per m³).
+  - Not on the list, kept as before: cardboard and polystyrene over 0.5 m³ at $69 per m³; industrial and automotive paint $2/L; tractor tyres on application; plasterboard, PVC pipe and ducting at $199 per m³; hydraulic oil "ask at the gate".
+  - "Aerosol paint $1.00" sits under the list's "price per litre" heading; the site shows $1 per can.
 
 ## Still on WordPress (linked from the new site until moved)
 - Book a collection: /book-now/

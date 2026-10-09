@@ -72,17 +72,47 @@ export const HOURS = {
 };
 
 // ---------------------------------------------------------------- prices
-export const LOADS = [
-  { id: 'bin120', name: 'Wheelie bin', sub: '120 litre', m3: 0.125, sorted: 19, unsorted: null, icon: 'bin' },
-  { id: 'bin240', name: 'Wheelie bin', sub: '240 litre', m3: 0.25, sorted: 29, unsorted: null, icon: 'bin' },
-  { id: 'boot', name: 'Car boot', sub: 'Standard boot', m3: 0.5, sorted: 49, unsorted: null, icon: 'car' },
-  { id: 'wagon', name: 'Station wagon', sub: 'Wagon boot', m3: 0.75, sorted: 69, unsorted: null, icon: 'wagon' },
-  { id: 'ute', name: 'Ute or 6×4 trailer', sub: 'Level load', m3: 1, sorted: 99, unsorted: 199, icon: 'ute' },
-  { id: 'uteHeaped', name: 'Ute or 6×4 trailer', sub: 'Caged or heaped', m3: 1.5, sorted: 149, unsorted: 299, icon: 'trailer' },
-  { id: 'large', name: '8×5 trailer', sub: 'Level load', m3: 1.5, sorted: 149, unsorted: 299, icon: 'trailer' },
-  { id: 'largeHeaped', name: '8×5 trailer', sub: 'Caged or heaped', m3: 2.5, sorted: 249, unsorted: 499, icon: 'trailer' },
-  { id: 'm3', name: 'Van, truck or bigger', sub: 'Charged per m³', m3: null, sorted: 99, unsorted: 199, perM3: true, icon: 'truck' },
+// Source: "Recycle North Geelong Fees and charges", July 2026.
+// Loads are priced by size and by waste type. Unsorted mixed loads are not accepted.
+export const WASTE = [
+  { id: 'general', name: 'General waste', short: 'General', hint: 'Household rubbish, unloaded at the general rubbish bays.' },
+  { id: 'building', name: 'Building waste', short: 'Building', hint: 'Sorted building materials: clean bricks, concrete, timber, tiles, carpet and underlay.' },
+  { id: 'green', name: 'Green waste', short: 'Green', hint: 'Branches, leaves, clippings and weeds.' },
 ];
+// p = [general, building, green]
+export const LOADS = [
+  { id: 'bins', name: 'Bins or bags', sub: '30 to 240 litres', icon: 'bin', unit: 'bin', sizes: [
+    { id: '30', name: '30 L', p: [10, 24, 5] },
+    { id: '60', name: '60 L', p: [15, 30, 10] },
+    { id: '100', name: '100 L', p: [19, 39, 15] },
+    { id: '160', name: '160 L', p: [29, 49, 19] },
+    { id: '240', name: '240 L', p: [39, 59, 29] },
+  ] },
+  { id: 'car', name: 'Car, SUV or ute', sub: 'Boot to heaped tray', icon: 'ute', sizes: [
+    { id: 'boot', name: 'Car boot', p: [49, 99, 39] },
+    { id: 'wagon', name: 'SUV boot or station wagon, level', p: [69, 149, 59] },
+    { id: 'uteLevel', name: 'SUV full or ute, level', p: [99, 199, 79] },
+    { id: 'uteHeaped', name: 'Ute, heaped', p: [149, 249, 129] },
+  ] },
+  { id: 'small', name: 'Small trailer', sub: '6×4 ft · 1.8 × 1.2 m', icon: 'trailer', sizes: [
+    { id: 'level', name: 'Level', p: [99, 199, 79] },
+    { id: 'heaped', name: 'Caged, heaped', p: [149, 249, 129] },
+    { id: 'full', name: 'Caged, full', p: [199, 299, 169] },
+  ] },
+  { id: 'medium', name: 'Medium trailer', sub: '7×5 ft · 2.4 × 1.5 m', icon: 'trailer', sizes: [
+    { id: 'level', name: 'Level', p: [129, 229, 109] },
+    { id: 'heaped', name: 'Caged, heaped', p: [199, 349, 169] },
+    { id: 'full', name: 'Caged, full', p: [249, 449, 199] },
+  ] },
+  { id: 'large', name: 'Large trailer', sub: '10×6 ft · 3 × 1.8 m', icon: 'trailer', sizes: [
+    { id: 'level', name: 'Level', p: [169, 249, 139] },
+    { id: 'heaped', name: 'Caged, heaped', p: [269, 499, 199] },
+    { id: 'full', name: 'Caged, full', p: [369, 649, 299] },
+  ] },
+  { id: 'truck', name: 'Van or truck', sub: 'Priced at the gate', icon: 'truck', sizes: null },
+];
+export const loadFrom = (g) => (g.sizes ? Math.min(...g.sizes.flatMap((s) => s.p)) : null);
+export const loadPrice = (gid, sid, wi) => LOADS.find((g) => g.id === gid).sizes.find((s) => s.id === sid).p[wi];
 
 export const PRICE_GROUPS = [
   {
@@ -96,30 +126,6 @@ export const PRICE_GROUPS = [
       ['Selected e-waste', 'Mobile phones, TVs and LED screens', 'Free'],
       ['Paint', 'Up to 100 litres of architectural and decorative paint, in partnership with Paintback', 'Free'],
       ['Car batteries', '', 'Free'],
-    ],
-  },
-  {
-    id: 'sorted', title: 'Sorted loads', note: 'Household furniture, waste and recyclables, sorted by material.',
-    rows: [
-      ['Wheelie bin, 120 L', '0.125 m³', '$19'],
-      ['Wheelie bin, 240 L', '0.25 m³', '$29'],
-      ['Car boot', 'Standard, 0.5 m³', '$49'],
-      ['Station wagon boot', 'Standard, 0.75 m³', '$69'],
-      ['Ute or 6×4 trailer', 'Standard ute tray, 1 m³', '$99'],
-      ['Ute or 6×4 trailer, caged or heaped', '1.5 m³', '$149'],
-      ['8×5 trailer', '1.5 m³', '$149'],
-      ['8×5 trailer, caged or heaped', '2.5 m³', '$249'],
-      ['Vans, trailers and trucks', 'Per m³', '$99'],
-    ],
-  },
-  {
-    id: 'unsorted', title: 'Unsorted loads', note: 'Mixed household furniture, waste and recyclables. Double the sorted rate.',
-    rows: [
-      ['Ute or 6×4 trailer', 'Standard ute tray, 1 m³', '$199'],
-      ['Ute or 6×4 trailer, caged or heaped', '1.5 m³', '$299'],
-      ['8×5 trailer', '1.5 m³', '$299'],
-      ['8×5 trailer, caged or heaped', '2.5 m³', '$499'],
-      ['Vans, trailers and trucks', 'Per m³', '$199'],
     ],
   },
   {
@@ -145,7 +151,7 @@ export const PRICE_GROUPS = [
     id: 'gas', title: 'Gas bottles and fire extinguishers', note: 'Priced each.',
     rows: [
       ['Gas bottle, under 9 kg', '', '$15'],
-      ['Gas bottle, over 9 kg', 'Call ahead before bringing large cylinders', '$25'],
+      ['Gas bottle, over 9 kg', '', '$25'],
       ['Fire extinguisher, under 3 kg', '', '$10'],
       ['Fire extinguisher, over 3 kg', '', '$15'],
       ['Nitrous canister, under 0.5 kg / 2 L', '', '$10'],
@@ -155,9 +161,10 @@ export const PRICE_GROUPS = [
   {
     id: 'other', title: 'Other items', note: '',
     rows: [
-      ['Green waste', 'Per m³. One m³ is a 6×4 trailer or a standard ute load', '$79'],
+      ['Clothing', 'Per 240 L wheelie bin', '$29'],
+      ['Glass', 'Per 240 L wheelie bin', '$39'],
       ['Solar panels', 'Each', '$39'],
-      ['Oily rags', 'Per 34 L bag (standard kitchen bin)', '$30'],
+      ['Oily rags', 'Per 34 L bag (standard kitchen bag)', '$30'],
       ['Oil filter, small', 'Each', '$2'],
       ['Oil filter, large', 'Each', '$3'],
     ],
@@ -165,7 +172,7 @@ export const PRICE_GROUPS = [
   {
     id: 'building', title: 'Building materials', note: 'Sorted loads only.',
     rows: [
-      ['Sorted building materials', 'Clean bricks, concrete, timber, tiles, PVC pipe, AC ducts, carpet, underlay, treated or laminated timber, broken furniture, roof and porcelain tiles', '$199 per m³'],
+      ['Sorted building materials', 'Clean bricks, concrete, timber, tiles, carpet and underlay, broken home or office furniture, roof tiles and porcelain tiles', '$199 per m³'],
       ['Mixed construction waste', 'Not accepted. Take unsorted C&D loads to Sycle at Fyansford', 'Not accepted'],
     ],
   },
@@ -181,8 +188,12 @@ export const EXTRAS = [
   { id: 'tOff', label: 'Car tyre, off rim', price: 19, group: 'Tyres' },
   { id: 'tOn', label: 'Car tyre, on rim', price: 25, group: 'Tyres' },
   { id: 'tLt', label: 'Light truck tyre', price: 44, group: 'Tyres' },
+  { id: 'tHt', label: 'Heavy truck tyre', price: 59, group: 'Tyres' },
   { id: 'gSmall', label: 'Gas bottle, under 9 kg', price: 15, group: 'Other items' },
+  { id: 'gLarge', label: 'Gas bottle, over 9 kg', price: 25, group: 'Other items' },
   { id: 'fSmall', label: 'Fire extinguisher, under 3 kg', price: 10, group: 'Other items' },
+  { id: 'clothing', label: 'Clothing, 240 L bin', price: 29, group: 'Other items' },
+  { id: 'glass', label: 'Glass, 240 L bin', price: 39, group: 'Other items' },
   { id: 'solar', label: 'Solar panel', price: 39, group: 'Other items' },
 ];
 
@@ -227,7 +238,7 @@ export const ITEMS = [
   { n: 'Cardboard', aka: ['boxes', 'carton', 'moving boxes'], s: 'free', p: 'Free to 0.5 m³', note: 'Clean, dry and free of polystyrene. Over 0.5 m³ is $69 per m³.', st: 'cardboard', c: 'Packaging' },
   { n: 'Polystyrene', aka: ['styrofoam', 'eps', 'foam packaging', 'styro'], s: 'free', p: 'Free to 0.5 m³', note: 'Clean expanded polystyrene only, no food. Over 0.5 m³ is $69 per m³.', st: 'poly', c: 'Packaging' },
   { n: 'Paper', aka: ['newspaper', 'magazines', 'office paper'], s: 'cond', p: 'By load size', note: 'Bring it sorted with your load.', st: 'cardboard', c: 'Packaging' },
-  { n: 'Bottles, cans and glass', aka: ['glass', 'jars', 'bottles', 'cans'], s: 'cond', p: 'By load size', note: 'Household quantities.', st: 'general', c: 'Packaging' },
+  { n: 'Glass bottles and jars', aka: ['glass', 'jars', 'bottles', 'wine bottles'], s: 'paid', p: '$39 per 240 L bin', st: 'general', c: 'Packaging' },
   { n: 'Plastic pellets', aka: ['plastic', 'nurdles'], s: 'cond', p: 'By load size', st: 'general', c: 'Packaging' },
   // e-waste
   { n: 'TV', aka: ['television', 'led tv', 'plasma', 'lcd'], s: 'free', p: 'Free', st: 'ewaste', c: 'E-waste' },
@@ -249,19 +260,19 @@ export const ITEMS = [
   { n: 'Household batteries', aka: ['batteries', 'aa', 'lithium battery', 'power tool battery'], s: 'cond', p: 'Ask at the gate', note: 'Call ahead to check before bringing household or lithium batteries. Never put them in your general load.', st: 'battery', c: 'Batteries' },
   { n: 'Electric vehicle battery', aka: ['ev battery'], s: 'no', p: 'Not accepted', st: 'none', c: 'Batteries' },
   // furniture + household
-  { n: 'Couches', aka: ['sofa', 'lounge', 'couch', 'sofa bed', 'recliner', 'armchair'], s: 'paid', p: 'By load size', note: 'Priced with your load. Sort your load and pay half the unsorted rate.', st: 'furniture', c: 'Furniture' },
+  { n: 'Couches', aka: ['sofa', 'lounge', 'couch', 'sofa bed', 'recliner', 'armchair'], s: 'paid', p: 'By load size', note: 'Priced with your load.', st: 'furniture', c: 'Furniture' },
   { n: 'Table and chairs', aka: ['dining table', 'chair', 'desk', 'outdoor furniture'], s: 'paid', p: 'By load size', st: 'furniture', c: 'Furniture' },
   { n: 'Wardrobe or drawers', aka: ['cupboard', 'chest of drawers', 'cabinet', 'bookshelf'], s: 'paid', p: 'By load size', st: 'furniture', c: 'Furniture' },
   { n: 'Office furniture', aka: ['filing cabinet', 'office chair', 'office desk'], s: 'paid', p: 'By load size', st: 'furniture', c: 'Furniture' },
   { n: 'Bed base', aka: ['ensemble base', 'bed frame', 'slat base'], s: 'paid', p: 'Ask at the gate', st: 'furniture', c: 'Furniture' },
   { n: 'Mattress', aka: ['mattresses', 'queen mattress', 'single mattress', 'king mattress'], s: 'paid', p: 'From $10', note: 'Cot $10, single $29, double or queen $39, king $49, latex $69.', st: 'mattress', c: 'Mattresses' },
-  { n: 'Clothing and fabric', aka: ['clothes', 'textiles', 'linen', 'shoes', 'bedding', 'pillows'], s: 'cond', p: 'By load size', note: 'There is a clothing bin and a fabric cage in the unloading area.', st: 'textiles', c: 'Household' },
+  { n: 'Clothing and fabric', aka: ['clothes', 'textiles', 'linen', 'shoes', 'bedding', 'pillows'], s: 'paid', p: '$29 per 240 L bin', note: 'There is a clothing bin and a fabric cage in the unloading area.', st: 'textiles', c: 'Household' },
   { n: 'Homewares', aka: ['kitchenware', 'crockery', 'toys', 'books'], s: 'paid', p: 'By load size', st: 'furniture', c: 'Household' },
   { n: 'Musical instruments', aka: ['piano', 'guitar', 'keyboard instrument'], s: 'paid', p: 'By load size', st: 'furniture', c: 'Household' },
-  { n: 'General household rubbish', aka: ['rubbish', 'junk', 'household waste', 'garage clean out'], s: 'paid', p: 'From $19', note: 'Priced by load size. Sorted loads are half the unsorted rate.', st: 'general', c: 'Household' },
-  { n: 'Deceased estate load', aka: ['estate', 'deceased estate', 'house clean out'], s: 'paid', p: 'By load size', note: 'Mixed car and truck loads of furniture, whitegoods, mattresses, books and homewares are accepted.', st: 'furniture', c: 'Household' },
+  { n: 'General household rubbish', aka: ['rubbish', 'junk', 'household waste', 'garage clean out'], s: 'paid', p: 'From $10', note: 'Priced by load size, from $10 for a 30 litre bag to $99 for a level ute or small trailer.', st: 'general', c: 'Household' },
+  { n: 'Deceased estate load', aka: ['estate', 'deceased estate', 'house clean out'], s: 'paid', p: 'By load size', note: 'Furniture, whitegoods, mattresses, books and homewares are all accepted, each unloaded at its own bay. For a whole house, book a collection.', st: 'furniture', c: 'Household' },
   // garden
-  { n: 'Green waste', aka: ['garden waste', 'branches', 'grass clippings', 'leaves', 'prunings', 'weeds'], s: 'paid', p: '$79 per m³', note: 'Utes, trailers and tip trucks.', st: 'green', c: 'Garden' },
+  { n: 'Green waste', aka: ['garden waste', 'branches', 'grass clippings', 'leaves', 'prunings', 'weeds'], s: 'paid', p: 'From $5', note: 'Priced by load size, from $5 for a 30 litre bag to $79 for a level ute or small trailer.', st: 'green', c: 'Garden' },
   { n: 'Garden rocks', aka: ['rocks', 'stones'], s: 'cond', p: 'By load size', st: 'building', c: 'Garden' },
   { n: 'Soil', aka: ['dirt', 'fill', 'contaminated soil'], s: 'no', p: 'Not accepted', note: 'Soil and contaminated or untested soil are not accepted.', st: 'none', c: 'Garden' },
   // building
@@ -273,6 +284,7 @@ export const ITEMS = [
   { n: 'Carpet and underlay', aka: ['carpet', 'underlay', 'rugs'], s: 'cond', p: '$199 per m³', note: 'Sorted loads only.', st: 'building', c: 'Building' },
   { n: 'PVC pipe and ducting', aka: ['pvc', 'ducts', 'ac ducts'], s: 'cond', p: '$199 per m³', note: 'Sorted loads only.', st: 'building', c: 'Building' },
   { n: 'Mixed building waste', aka: ['c&d', 'construction waste', 'demolition waste', 'renovation waste', 'mixed c&d'], s: 'no', p: 'Not accepted', note: 'Unsorted construction and demolition loads go to Sycle at Fyansford.', st: 'none', c: 'Building' },
+  { n: 'Unsorted mixed load', aka: ['mixed load', 'unsorted', 'mixed rubbish', 'mixed waste', 'unsorted load'], s: 'no', p: 'Not accepted', note: 'Everything is unloaded by material at its own bay, so sort as you load. Bagged household rubbish counts as general waste.', st: 'none', c: 'Not accepted' },
   { n: 'Asbestos', aka: ['fibro', 'asbestos sheeting', 'suspected asbestos'], s: 'no', p: 'Not accepted', note: 'Asbestos and suspected asbestos are never accepted. Use a licensed asbestos removalist.', st: 'none', c: 'Building' },
   // liquids, gas, trade
   { n: 'Paint', aka: ['house paint', 'paint tins', 'decorative paint'], s: 'free', p: 'Free to 100 L', note: 'Architectural and decorative paint, sealed. Over 100 L is $1 per litre. Industrial and automotive paint is $2 per litre.', st: 'paint', c: 'Liquids' },
@@ -283,7 +295,7 @@ export const ITEMS = [
   { n: 'Oil filters', aka: ['oil filter'], s: 'paid', p: '$2–$3 each', st: 'metal', c: 'Liquids' },
   { n: 'Oily rags', aka: ['workshop rags', 'rags'], s: 'paid', p: '$30 per bag', note: 'Per 34 L bag, about a standard kitchen bin.', st: 'general', c: 'Liquids' },
   { n: 'Aerosol cans', aka: ['spray cans', 'aerosols'], s: 'paid', p: '$1', st: 'gas', c: 'Gas' },
-  { n: 'Gas bottle', aka: ['lpg', 'bbq gas bottle', 'gas cylinder'], s: 'paid', p: 'From $15', note: 'Under 9 kg $15. Over 9 kg $25: call ahead before bringing large cylinders.', st: 'gas', c: 'Gas' },
+  { n: 'Gas bottle', aka: ['lpg', 'bbq gas bottle', 'gas cylinder'], s: 'paid', p: 'From $15', note: 'Under 9 kg $15, over 9 kg $25.', st: 'gas', c: 'Gas' },
   { n: 'Fire extinguisher', aka: ['extinguisher'], s: 'paid', p: 'From $10', note: 'Under 3 kg $10, over 3 kg $15.', st: 'gas', c: 'Gas' },
   { n: 'Nitrous canisters', aka: ['nos', 'nangs', 'cream chargers', 'nitrous oxide'], s: 'paid', p: 'From $10', note: 'Under 0.5 kg or 2 L $10, over $20.', st: 'gas', c: 'Gas' },
   { n: 'Tyres', aka: ['tyre', 'tire', 'wheels'], s: 'paid', p: 'From $12', note: 'Motorbike $12, car off rim $19, car on rim $25, light truck $44, heavy truck $59, tractor on application.', st: 'tyres', c: 'Tyres' },

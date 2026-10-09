@@ -1,4 +1,4 @@
-import { SITE, HOURS, LOADS, EXTRAS, POPULAR, FREECYCLE } from './data/site.js';
+import { SITE, HOURS, LOADS, WASTE, EXTRAS, POPULAR, FREECYCLE, loadFrom, loadPrice } from './data/site.js';
 import { u, img, icon, bay, esc } from './lib.js';
 
 // ---------------------------------------------------------------- finder
@@ -28,10 +28,15 @@ export function finder({ id = 'finder', heading = true, n = '01' } = {}) {
 }
 
 // ---------------------------------------------------------------- estimator
+export const EST_DEFAULT = { load: 'car', size: 'uteLevel', waste: 0 };
 export function estimator({ id = 'cost', n = '02' } = {}) {
-  const loads = LOADS.map((l, i) => `<button type="button" class="load" data-load="${l.id}" aria-pressed="${i === 4}">
-      ${icon(l.icon)}<span class="n">${l.name}</span><span class="s">${l.sub}</span><span class="v">${l.m3 ? `${l.m3} m³ · from $${l.sorted}` : `$${l.sorted} per m³ sorted`}</span>
+  const loads = LOADS.map((l) => `<button type="button" class="load" data-load="${l.id}" aria-pressed="${l.id === EST_DEFAULT.load}">
+      ${icon(l.icon)}<span class="n">${l.name}</span><span class="s">${l.sub}</span><span class="v">${l.sizes ? `from $${loadFrom(l)}` : 'Call ahead'}</span>
     </button>`).join('');
+  const sizes = LOADS.filter((l) => l.sizes).map((l) => `<div class="sizes" data-sizes="${l.id}" role="group" aria-label="${l.name}: how full?"${l.id === EST_DEFAULT.load ? '' : ' hidden'}>
+      ${l.sizes.map((s) => `<button type="button" class="size" data-size="${s.id}" aria-pressed="${l.id === EST_DEFAULT.load && s.id === EST_DEFAULT.size}">${s.name}</button>`).join('')}
+    </div>`).join('');
+  const waste = WASTE.map((w, i) => `<button type="button" data-waste="${i}" aria-pressed="${i === EST_DEFAULT.waste}">${w.short}</button>`).join('');
   const groups = [...new Set(EXTRAS.map((e) => e.group))];
   const extras = groups.map((g) => EXTRAS.filter((e) => e.group === g).map((e) => `<div class="extra">
       <span>${e.label}<small>$${e.price}</small></span>
@@ -42,26 +47,21 @@ export function estimator({ id = 'cost', n = '02' } = {}) {
     ${bay(n)}
     <div class="sec-head split">
       <div class="hang"><h2 id="${id}-h">Price your load in <span class="g nw">10 seconds</span></h2></div>
-      <p class="lede">Sort it at home and pay half. Locals get another 10% off.</p>
+      <p class="lede">Pick your vehicle, how full it is and what's in it. Locals get another 10% off.</p>
     </div>
     <div class="est" data-estimator>
       <div>
         <div class="est-step">
           <div class="lab"><b>A</b> How are you bringing it in?</div>
           <div class="loads">${loads}</div>
-          <div class="m3-row" hidden>
-            <span class="small">How many cubic metres?</span>
-            <span class="stepper"><button type="button" data-m3="-0.5" aria-label="Less">${icon('minus')}</button><output data-m3-out>2</output><button type="button" data-m3="0.5" aria-label="More">${icon('plus')}</button></span>
-            <span class="small">m³</span>
-          </div>
+          ${sizes}
+          <p class="small truck-note" data-truck-note hidden>Vans and trucks are priced at the gate. Call <a href="${SITE.phoneHref}">${SITE.phone}</a> for a price before you come.</p>
         </div>
         <div class="est-step">
-          <div class="lab"><b>B</b> Is it sorted?</div>
-          <div class="seg" role="group" aria-label="Sorted or unsorted">
-            <button type="button" data-sort="sorted" aria-pressed="true">Sorted</button>
-            <button type="button" data-sort="unsorted" aria-pressed="false">Mixed / unsorted</button>
-          </div>
-          <p class="small" style="margin-top:10px">Sorted means grouped by material before you arrive: green waste, metal, e-waste and general rubbish kept apart. <a href="${u('unsorted-loads/')}">How to sort</a></p>
+          <div class="lab"><b>B</b> What's in it?</div>
+          <div class="seg" role="group" aria-label="Type of waste">${waste}</div>
+          <p class="small" style="margin-top:10px" data-waste-hint>${WASTE[EST_DEFAULT.waste].hint}</p>
+          <p class="small">Everything is unloaded by material at its own bay, and unsorted mixed loads aren't accepted. <a href="${u('unsorted-loads/')}">How to sort your load</a></p>
         </div>
         <div class="est-step">
           <details class="more">
@@ -76,9 +76,8 @@ export function estimator({ id = 'cost', n = '02' } = {}) {
       <aside class="receipt" aria-live="polite">
         <h3>Your estimate</h3>
         <ul data-lines></ul>
-        <div class="tot"><span>Total</span><b data-total>$99</b></div>
+        <div class="tot"><span>Total</span><b data-total>$${loadPrice(EST_DEFAULT.load, EST_DEFAULT.size, EST_DEFAULT.waste)}</b></div>
         <div class="disc" data-disc></div>
-        <div class="save" data-save hidden>${icon('sort')}<span data-save-text></span></div>
         <p class="fine">Estimate only, based on our published prices. Your final price is set at the gate from what you actually bring. Free items like whitegoods, scrap metal and car batteries cost nothing. <a href="${u('price-list/')}">Full price list</a></p>
       </aside>
     </div>
@@ -210,7 +209,7 @@ export function journey({ n = '05', intro = true } = {}) {
 export function visitSteps({ n = '06' } = {}) {
   // [title, text, photo, short silent loop of the same spot (public/video), photo focus to match the loop's framing]
   const S = [
-    ['Sort it at home', `Keep green waste, metal, e-waste and general rubbish apart as you load. It's quicker at the bays and halves the rate.`, 'bins-small-items', 'step-1-sort', '50% 45%'],
+    ['Sort it at home', `Keep green waste, metal, e-waste and general rubbish apart as you load. Everything comes off at its own bay, so you're in and out.`, 'bins-small-items', 'step-1-sort', '50% 45%'],
     ['Drive in under cover', `Head to ${SITE.address.line1}, behind Coates Hire. Follow the hanging signs to the right bay.`, 'drive-in', 'step-2-drive', '50% 36%'],
     ['Unload by material', 'Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.', 'aerosols-paint', 'step-3-unload', '50% 13%'],
     ['We take it from there', `${SITE.facility.streams} material streams, each with somewhere to go that isn't landfill.`, 'rubbish-bays-arrow', 'step-4-handled', '50% 50%'],
