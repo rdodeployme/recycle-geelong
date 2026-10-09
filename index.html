@@ -93,44 +93,43 @@
     <div class="bay" aria-hidden="true"><b>02</b><span></span></div>
     <div class="sec-head split">
       <div class="hang"><h2 id="cost-h" class="fit-two" style="--w:12.00">Price your load in <span class="g nw">10 seconds</span></h2></div>
-      <p class="lede">Sort it at home and pay half. Locals get another 10% off.</p>
+      <p class="lede">Pick your vehicle, how full it is and what's in it. Locals get another 10% off.</p>
     </div>
     <div class="est" data-estimator>
       <div>
         <div class="est-step">
           <div class="lab"><b>A</b> How are you bringing it in?</div>
-          <div class="loads"><button type="button" class="load" data-load="bin120" aria-pressed="false">
-      <svg class="ic" aria-hidden="true"><use href="#i-bin"/></svg><span class="n">Wheelie bin</span><span class="s">120 litre</span><span class="v">0.125 m³ · from $19</span>
-    </button><button type="button" class="load" data-load="bin240" aria-pressed="false">
-      <svg class="ic" aria-hidden="true"><use href="#i-bin"/></svg><span class="n">Wheelie bin</span><span class="s">240 litre</span><span class="v">0.25 m³ · from $29</span>
-    </button><button type="button" class="load" data-load="boot" aria-pressed="false">
-      <svg class="ic" aria-hidden="true"><use href="#i-car"/></svg><span class="n">Car boot</span><span class="s">Standard boot</span><span class="v">0.5 m³ · from $49</span>
-    </button><button type="button" class="load" data-load="wagon" aria-pressed="false">
-      <svg class="ic" aria-hidden="true"><use href="#i-wagon"/></svg><span class="n">Station wagon</span><span class="s">Wagon boot</span><span class="v">0.75 m³ · from $69</span>
-    </button><button type="button" class="load" data-load="ute" aria-pressed="true">
-      <svg class="ic" aria-hidden="true"><use href="#i-ute"/></svg><span class="n">Ute or 6×4 trailer</span><span class="s">Level load</span><span class="v">1 m³ · from $99</span>
-    </button><button type="button" class="load" data-load="uteHeaped" aria-pressed="false">
-      <svg class="ic" aria-hidden="true"><use href="#i-trailer"/></svg><span class="n">Ute or 6×4 trailer</span><span class="s">Caged or heaped</span><span class="v">1.5 m³ · from $149</span>
+          <div class="loads"><button type="button" class="load" data-load="bins" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-bin"/></svg><span class="n">Bins or bags</span><span class="s">30 to 240 litres</span><span class="v">from $5</span>
+    </button><button type="button" class="load" data-load="car" aria-pressed="true">
+      <svg class="ic" aria-hidden="true"><use href="#i-ute"/></svg><span class="n">Car, SUV or ute</span><span class="s">Boot to heaped tray</span><span class="v">from $39</span>
+    </button><button type="button" class="load" data-load="small" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-trailer"/></svg><span class="n">Small trailer</span><span class="s">6×4 ft · 1.8 × 1.2 m</span><span class="v">from $79</span>
+    </button><button type="button" class="load" data-load="medium" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-trailer"/></svg><span class="n">Medium trailer</span><span class="s">7×5 ft · 2.4 × 1.5 m</span><span class="v">from $109</span>
     </button><button type="button" class="load" data-load="large" aria-pressed="false">
-      <svg class="ic" aria-hidden="true"><use href="#i-trailer"/></svg><span class="n">8×5 trailer</span><span class="s">Level load</span><span class="v">1.5 m³ · from $149</span>
-    </button><button type="button" class="load" data-load="largeHeaped" aria-pressed="false">
-      <svg class="ic" aria-hidden="true"><use href="#i-trailer"/></svg><span class="n">8×5 trailer</span><span class="s">Caged or heaped</span><span class="v">2.5 m³ · from $249</span>
-    </button><button type="button" class="load" data-load="m3" aria-pressed="false">
-      <svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg><span class="n">Van, truck or bigger</span><span class="s">Charged per m³</span><span class="v">$99 per m³ sorted</span>
+      <svg class="ic" aria-hidden="true"><use href="#i-trailer"/></svg><span class="n">Large trailer</span><span class="s">10×6 ft · 3 × 1.8 m</span><span class="v">from $139</span>
+    </button><button type="button" class="load" data-load="truck" aria-pressed="false">
+      <svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg><span class="n">Van or truck</span><span class="s">Priced at the gate</span><span class="v">Call ahead</span>
     </button></div>
-          <div class="m3-row" hidden>
-            <span class="small">How many cubic metres?</span>
-            <span class="stepper"><button type="button" data-m3="-0.5" aria-label="Less"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-m3-out>2</output><button type="button" data-m3="0.5" aria-label="More"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
-            <span class="small">m³</span>
-          </div>
+          <div class="sizes" data-sizes="bins" role="group" aria-label="Bins or bags: how full?" hidden>
+      <button type="button" class="size" data-size="30" aria-pressed="false">30 L</button><button type="button" class="size" data-size="60" aria-pressed="false">60 L</button><button type="button" class="size" data-size="100" aria-pressed="false">100 L</button><button type="button" class="size" data-size="160" aria-pressed="false">160 L</button><button type="button" class="size" data-size="240" aria-pressed="false">240 L</button>
+    </div><div class="sizes" data-sizes="car" role="group" aria-label="Car, SUV or ute: how full?">
+      <button type="button" class="size" data-size="boot" aria-pressed="false">Car boot</button><button type="button" class="size" data-size="wagon" aria-pressed="false">SUV boot or station wagon, level</button><button type="button" class="size" data-size="uteLevel" aria-pressed="true">SUV full or ute, level</button><button type="button" class="size" data-size="uteHeaped" aria-pressed="false">Ute, heaped</button>
+    </div><div class="sizes" data-sizes="small" role="group" aria-label="Small trailer: how full?" hidden>
+      <button type="button" class="size" data-size="level" aria-pressed="false">Level</button><button type="button" class="size" data-size="heaped" aria-pressed="false">Caged, heaped</button><button type="button" class="size" data-size="full" aria-pressed="false">Caged, full</button>
+    </div><div class="sizes" data-sizes="medium" role="group" aria-label="Medium trailer: how full?" hidden>
+      <button type="button" class="size" data-size="level" aria-pressed="false">Level</button><button type="button" class="size" data-size="heaped" aria-pressed="false">Caged, heaped</button><button type="button" class="size" data-size="full" aria-pressed="false">Caged, full</button>
+    </div><div class="sizes" data-sizes="large" role="group" aria-label="Large trailer: how full?" hidden>
+      <button type="button" class="size" data-size="level" aria-pressed="false">Level</button><button type="button" class="size" data-size="heaped" aria-pressed="false">Caged, heaped</button><button type="button" class="size" data-size="full" aria-pressed="false">Caged, full</button>
+    </div>
+          <p class="small truck-note" data-truck-note hidden>Vans and trucks are priced at the gate. Call <a href="tel:0460555222">0460 555 222</a> for a price before you come.</p>
         </div>
         <div class="est-step">
-          <div class="lab"><b>B</b> Is it sorted?</div>
-          <div class="seg" role="group" aria-label="Sorted or unsorted">
-            <button type="button" data-sort="sorted" aria-pressed="true">Sorted</button>
-            <button type="button" data-sort="unsorted" aria-pressed="false">Mixed / unsorted</button>
-          </div>
-          <p class="small" style="margin-top:10px">Sorted means grouped by material before you arrive: green waste, metal, e-waste and general rubbish kept apart. <a href="/recycle-geelong/unsorted-loads/">How to sort</a></p>
+          <div class="lab"><b>B</b> What's in it?</div>
+          <div class="seg" role="group" aria-label="Type of waste"><button type="button" data-waste="0" aria-pressed="true">General</button><button type="button" data-waste="1" aria-pressed="false">Building</button><button type="button" data-waste="2" aria-pressed="false">Green</button></div>
+          <p class="small" style="margin-top:10px" data-waste-hint>Household rubbish, unloaded at the general rubbish bays.</p>
+          <p class="small">Everything is unloaded by material at its own bay, and unsorted mixed loads aren't accepted. <a href="/recycle-geelong/unsorted-loads/">How to sort your load</a></p>
         </div>
         <div class="est-step">
           <details class="more">
@@ -163,11 +162,23 @@
       <span>Light truck tyre<small>$44</small></span>
       <span class="stepper"><button type="button" data-extra="tLt" data-d="-1" aria-label="Remove one Light truck tyre"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="tLt">0</output><button type="button" data-extra="tLt" data-d="1" aria-label="Add one Light truck tyre"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
     </div><div class="extra">
+      <span>Heavy truck tyre<small>$59</small></span>
+      <span class="stepper"><button type="button" data-extra="tHt" data-d="-1" aria-label="Remove one Heavy truck tyre"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="tHt">0</output><button type="button" data-extra="tHt" data-d="1" aria-label="Add one Heavy truck tyre"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
       <span>Gas bottle, under 9 kg<small>$15</small></span>
       <span class="stepper"><button type="button" data-extra="gSmall" data-d="-1" aria-label="Remove one Gas bottle, under 9 kg"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="gSmall">0</output><button type="button" data-extra="gSmall" data-d="1" aria-label="Add one Gas bottle, under 9 kg"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
     </div><div class="extra">
+      <span>Gas bottle, over 9 kg<small>$25</small></span>
+      <span class="stepper"><button type="button" data-extra="gLarge" data-d="-1" aria-label="Remove one Gas bottle, over 9 kg"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="gLarge">0</output><button type="button" data-extra="gLarge" data-d="1" aria-label="Add one Gas bottle, over 9 kg"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
       <span>Fire extinguisher, under 3 kg<small>$10</small></span>
       <span class="stepper"><button type="button" data-extra="fSmall" data-d="-1" aria-label="Remove one Fire extinguisher, under 3 kg"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="fSmall">0</output><button type="button" data-extra="fSmall" data-d="1" aria-label="Add one Fire extinguisher, under 3 kg"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Clothing, 240 L bin<small>$29</small></span>
+      <span class="stepper"><button type="button" data-extra="clothing" data-d="-1" aria-label="Remove one Clothing, 240 L bin"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="clothing">0</output><button type="button" data-extra="clothing" data-d="1" aria-label="Add one Clothing, 240 L bin"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
+    </div><div class="extra">
+      <span>Glass, 240 L bin<small>$39</small></span>
+      <span class="stepper"><button type="button" data-extra="glass" data-d="-1" aria-label="Remove one Glass, 240 L bin"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="glass">0</output><button type="button" data-extra="glass" data-d="1" aria-label="Add one Glass, 240 L bin"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
     </div><div class="extra">
       <span>Solar panel<small>$39</small></span>
       <span class="stepper"><button type="button" data-extra="solar" data-d="-1" aria-label="Remove one Solar panel"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output data-extra-count="solar">0</output><button type="button" data-extra="solar" data-d="1" aria-label="Add one Solar panel"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>
@@ -183,7 +194,6 @@
         <ul data-lines></ul>
         <div class="tot"><span>Total</span><b data-total>$99</b></div>
         <div class="disc" data-disc></div>
-        <div class="save" data-save hidden><svg class="ic" aria-hidden="true"><use href="#i-sort"/></svg><span data-save-text></span></div>
         <p class="fine">Estimate only, based on our published prices. Your final price is set at the gate from what you actually bring. Free items like whitegoods, scrap metal and car batteries cost nothing. <a href="/recycle-geelong/price-list/">Full price list</a></p>
       </aside>
     </div>
@@ -212,7 +222,7 @@
       </div>
     </div>
     <div class="steps">
-      <div class="step rv"><span class="num">01</span><h3>Sort it at home</h3><p>Keep green waste, metal, e-waste and general rubbish apart as you load. It's quicker at the bays and halves the rate.</p><div class="step-photo"><img src="/recycle-geelong/img/bins-small-items-480.webp" srcset="/recycle-geelong/img/bins-small-items-480.webp 480w" sizes="(max-width: 900px) 90vw, 22vw" width="480" height="640" alt="Wheelie bins for food waste, aerosol cans and e-waste" style="object-position:50% 45%" loading="lazy" decoding="async"><video class="step-vid" data-src="/recycle-geelong/video/step-1-sort.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video></div></div><div class="step rv"><span class="num">02</span><h3>Drive in under cover</h3><p>Head to 116 Furner Avenue, behind Coates Hire. Follow the hanging signs to the right bay.</p><div class="step-photo"><img src="/recycle-geelong/img/drive-in-480.webp" srcset="/recycle-geelong/img/drive-in-480.webp 480w" sizes="(max-width: 900px) 90vw, 22vw" width="480" height="640" alt="A car towing a trailer and a van driving into the hall" style="object-position:50% 36%" loading="lazy" decoding="async"><video class="step-vid" data-src="/recycle-geelong/video/step-2-drive.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video></div></div><div class="step rv"><span class="num">03</span><h3>Unload by material</h3><p>Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.</p><div class="step-photo"><img src="/recycle-geelong/img/aerosols-paint-480.webp" srcset="/recycle-geelong/img/aerosols-paint-480.webp 480w" sizes="(max-width: 900px) 90vw, 22vw" width="480" height="640" alt="The aerosols, paint cans and hazards area, with paint cages" style="object-position:50% 13%" loading="lazy" decoding="async"><video class="step-vid" data-src="/recycle-geelong/video/step-3-unload.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video></div></div><div class="step rv"><span class="num">04</span><h3>We take it from there</h3><p>90+ material streams, each with somewhere to go that isn't landfill.</p><div class="step-photo"><img src="/recycle-geelong/img/rubbish-bays-arrow-640.webp" srcset="/recycle-geelong/img/rubbish-bays-arrow-640.webp 640w" sizes="(max-width: 900px) 90vw, 22vw" width="640" height="480" alt="General rubbish bays, with a floor arrow showing the way through" style="object-position:50% 50%" loading="lazy" decoding="async"><video class="step-vid" data-src="/recycle-geelong/video/step-4-handled.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video></div></div>
+      <div class="step rv"><span class="num">01</span><h3>Sort it at home</h3><p>Keep green waste, metal, e-waste and general rubbish apart as you load. Everything comes off at its own bay, so you're in and out.</p><div class="step-photo"><img src="/recycle-geelong/img/bins-small-items-480.webp" srcset="/recycle-geelong/img/bins-small-items-480.webp 480w" sizes="(max-width: 900px) 90vw, 22vw" width="480" height="640" alt="Wheelie bins for food waste, aerosol cans and e-waste" style="object-position:50% 45%" loading="lazy" decoding="async"><video class="step-vid" data-src="/recycle-geelong/video/step-1-sort.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video></div></div><div class="step rv"><span class="num">02</span><h3>Drive in under cover</h3><p>Head to 116 Furner Avenue, behind Coates Hire. Follow the hanging signs to the right bay.</p><div class="step-photo"><img src="/recycle-geelong/img/drive-in-480.webp" srcset="/recycle-geelong/img/drive-in-480.webp 480w" sizes="(max-width: 900px) 90vw, 22vw" width="480" height="640" alt="A car towing a trailer and a van driving into the hall" style="object-position:50% 36%" loading="lazy" decoding="async"><video class="step-vid" data-src="/recycle-geelong/video/step-2-drive.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video></div></div><div class="step rv"><span class="num">03</span><h3>Unload by material</h3><p>Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.</p><div class="step-photo"><img src="/recycle-geelong/img/aerosols-paint-480.webp" srcset="/recycle-geelong/img/aerosols-paint-480.webp 480w" sizes="(max-width: 900px) 90vw, 22vw" width="480" height="640" alt="The aerosols, paint cans and hazards area, with paint cages" style="object-position:50% 13%" loading="lazy" decoding="async"><video class="step-vid" data-src="/recycle-geelong/video/step-3-unload.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video></div></div><div class="step rv"><span class="num">04</span><h3>We take it from there</h3><p>90+ material streams, each with somewhere to go that isn't landfill.</p><div class="step-photo"><img src="/recycle-geelong/img/rubbish-bays-arrow-640.webp" srcset="/recycle-geelong/img/rubbish-bays-arrow-640.webp 640w" sizes="(max-width: 900px) 90vw, 22vw" width="640" height="480" alt="General rubbish bays, with a floor arrow showing the way through" style="object-position:50% 50%" loading="lazy" decoding="async"><video class="step-vid" data-src="/recycle-geelong/video/step-4-handled.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video></div></div>
     </div>
   </div>
 </section>
@@ -288,7 +298,7 @@
         <h4>Explore</h4>
         <ul>
           <li><a href="/recycle-geelong/price-list/">Prices</a></li><li><a href="/recycle-geelong/what-we-take/">What we take</a></li><li><a href="/recycle-geelong/our-location/">Hours & location</a></li><li><a href="/recycle-geelong/recycling-matters/">After you tip</a></li><li><a href="/recycle-geelong/recycle-corporate-services/">Trade</a></li><li><a href="/recycle-geelong/community/">Community</a></li><li><a href="/recycle-geelong/about-us/">About</a></li>
-          <li><a href="/recycle-geelong/unsorted-loads/">Sorted vs unsorted</a></li>
+          <li><a href="/recycle-geelong/unsorted-loads/">How to sort your load</a></li>
           <li><a href="/recycle-geelong/faq/">Questions</a></li>
           <li><a href="/recycle-geelong/tip/">Areas we serve</a></li>
           <li><a href="/recycle-geelong/news/">News</a></li>
