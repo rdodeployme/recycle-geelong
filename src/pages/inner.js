@@ -219,56 +219,96 @@ ${registerBand()}`;
 
 // ---------------------------------------------------------------- trade
 export function trade() {
-  const materials = ['Cardboard and packaging, including palletised loads', 'E-waste: computers, printers, monitors, servers and telecommunications equipment', 'Mattresses and bedding', 'Plastics and plastic pellets', 'Untreated timber and wooden pallets', 'Gas bottles and nitrous oxide canisters', 'Scrap metal: steel, aluminium, copper, stainless and mixed', 'Solar panels and whitegoods'];
+  const R = SITE.discount;
+  const materials = [
+    ['cardboard-cage', 'Cardboard and packaging', 'Including palletised loads'],
+    ['ewaste-cage', 'E-waste', 'Computers, printers, monitors, servers and telecommunications equipment'],
+    ['mattresses', 'Mattresses and bedding', 'Any quantity'],
+    ['polystyrene-cages', 'Plastics and polystyrene', 'Including plastic pellets'],
+    ['excavator-bin', 'Timber and building waste', 'Untreated timber, wooden pallets and sorted building materials'],
+    ['gas-aerosols', 'Gas bottles', 'Including nitrous oxide canisters'],
+    ['metals-area', 'Scrap metal', 'Steel, aluminium, copper, stainless and mixed'],
+    ['whitegoods', 'Whitegoods and solar panels', 'Fridges, washers and panels'],
+  ];
   const sectors = ['Government and councils', 'Hospitals and healthcare', 'Schools, TAFEs and universities', 'Retail and warehousing', 'Builders and property managers', 'Offices and commercial tenancies', 'Agricultural and industrial sites', 'Waste and rubbish collectors'];
   const body = `${pageHero({
     crumbs: 'Trade and corporate', kicker: 'Recycle Trade Service', title: 'Trade and business recycling', image: 'forklift-cardboard',
-    lede: 'A recycling partner for the western region of Victoria. Scheduled collections, bins on site, or bring it in on a semi or B-double.',
-    extra: `<div class="hero-ctas"><a class="btn" href="#enquire">Tell us what you've got${icon('arrow')}</a><a class="btn ghost" href="${SITE.trade.phoneHref}">${icon('call')}${SITE.trade.contact} · ${SITE.trade.phone}</a></div>`,
+    lede: `Scheduled collections, bins on site, or bring it in on a semi or B-double. All trades and businesses save ${R.trade}% on every waste type.`,
+    extra: `<div class="hero-ctas"><a class="btn" href="#enquire">Tell us what you've got${icon('arrow')}</a><a class="btn ghost" href="${SITE.links.registerTrade}">Get ${R.trade}% off${icon('arrow')}</a><a class="btn ghost" href="${SITE.trade.phoneHref}">${icon('call')}${SITE.trade.contact} · ${SITE.trade.phone}</a></div>`,
   })}
 <section class="sec" aria-labelledby="t1-h">
   <div class="wrap">
     ${bay('01')}
-    <div class="sec-head split"><div class="hang"><h2 id="t1-h" class="lines"><span class="ln">One partner.</span><span class="ln">Every stream.</span></h2></div><p class="lede">If it's a hard-to-recycle by-product we haven't listed, ask. We'll come back with options.</p></div>
-    <div class="two">
-      <div class="box"><h3>Materials</h3><ul class="ticks">${materials.map((m) => `<li>${icon('check')}<span>${m}</span></li>`).join('')}</ul></div>
-      <div class="box"><h3>How it works for you</h3><ul class="ticks">
-        <li>${icon('check')}<span>On-site bins: 240 L, 660 L and 1,100 L, or larger skips and hook bins</span></li>
-        <li>${icon('check')}<span>Daily or weekly collections to suit your site</span></li>
-        <li>${icon('check')}<span>Or deliver direct, with forklift help to unload</span></li>
-        <li>${icon('check')}<span>Sorted, labelled bins for e-waste, paint, cardboard, green waste, plastics and general rubbish</span></li>
-        <li>${icon('check')}<span>Room for semi-trailers and B-doubles, with an internal ring road and wide bays</span></li>
-        <li>${icon('check')}<span>Full CCTV and vehicle registration recording on site</span></li>
-      </ul></div>
+    <div class="sec-head split"><div class="hang"><h2 id="t1-h" class="lines"><span class="ln">Two ways</span><span class="ln">to work with us.</span></h2></div><p class="lede">Bring it to us, or we bring the bins to you. Either way it's sorted by material and kept out of landfill.</p></div>
+    <div class="ways">
+      <div class="door">
+        ${img('forklift-bale', { sizes: '(max-width: 900px) 100vw, 50vw' })}
+        <span class="kicker">Drop-off</span>
+        <h3>Bring it in</h3>
+        <p>Room for semi-trailers and B-doubles, with an internal ring road and wide bays. Our team helps unload with a forklift.</p>
+        <ul><li>Semis and B-doubles</li><li>Forklift unloading</li><li>Under cover</li><li>Mon–Sat 7:30am–4pm</li></ul>
+      </div>
+      <div class="door">
+        ${img('skips-row', { sizes: '(max-width: 900px) 100vw, 50vw' })}
+        <span class="kicker">Collection</span>
+        <h3>We collect</h3>
+        <p>Sorted, labelled bins on your site for e-waste, paint, cardboard, green waste, plastics and general rubbish, collected daily or weekly.</p>
+        <ul><li>240 L</li><li>660 L</li><li>1,100 L</li><li>Skips and hook bins</li></ul>
+      </div>
     </div>
   </div>
 </section>
-<section class="sec on-paper" aria-labelledby="t2-h">
-  <div class="wrap">
-    ${bay('02')}
-    <div class="split">
+<section class="sec on-green" aria-labelledby="t2-h">
+  <div class="wrap trade-disc">
+    <div>
+      <b class="trade-pc" aria-hidden="true">${R.trade}%</b>
+      <h2 id="t2-h">Off for every trade and business</h2>
+      <p>On every waste type, including general waste and building materials. Register once and it applies every time you come in.</p>
+      <div class="btns"><a class="btn black" href="${SITE.links.registerTrade}">Register your business${icon('arrow')}</a></div>
+    </div>
+    <div class="partner-deal light">
+      <div class="partner-logo"><img src="${u('partners/jims-mowing.png')}" alt="Jim's Mowing" width="420" height="322" loading="lazy"></div>
       <div>
-        <div class="hang" style="margin-bottom:22px"><h2 id="t2-h">Compliant, secure, certified</h2></div>
-        <p class="lede">Electronic waste is handled to AS/NZS 5377. Hard drives are destroyed or sanitised to NIST 800-88, with certificates of destruction.</p>
-        <div class="accred" style="margin-top:24px">${SITE.accreditations.map((a) => `<div style="border-color:rgba(0,0,0,.2);background:#fff"><b>${a.code}</b><span style="color:var(--mute-ink)">${a.label}</span></div>`).join('')}</div>
+        <span class="kicker">Trade partner</span>
+        <h3 class="partner-h">Jim's Mowing</h3>
+        <p>Jim's Mowing has a deal with Recycle North Geelong for special rates. Ask for the Jim's Mowing rate at the gate.</p>
       </div>
-      <figure class="ph land" style="margin:0">${img('metals-area', { sizes: '(max-width: 900px) 100vw, 50vw' })}<figcaption class="cap">${IMAGES['metals-area'].alt}.</figcaption></figure>
     </div>
   </div>
 </section>
 <section class="sec" aria-labelledby="t3-h">
   <div class="wrap">
-    ${bay('03')}
-    <div class="sec-head"><div class="hang"><h2 id="t3-h">Sectors</h2></div></div>
-    <div class="partners" style="margin:0">${sectors.map((s) => `<span style="background:transparent;border-color:var(--line-2);color:var(--white)">${s}</span>`).join('')}</div>
+    ${bay('02')}
+    <div class="sec-head split"><div class="hang"><h2 id="t3-h" class="lines"><span class="ln">One partner.</span><span class="ln">Every stream.</span></h2></div><p class="lede">If it's a hard-to-recycle by-product we haven't listed, ask. We'll come back with options.</p></div>
+    <div class="mat-grid">${materials.map(([ph, t, d]) => `<div class="mat rv"><div class="mat-ph">${img(ph, { sizes: '(max-width: 700px) 50vw, 25vw' })}</div><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
   </div>
 </section>
-<section class="sec on-ink2" id="enquire" aria-labelledby="t4-h">
+<section class="sec on-paper" aria-labelledby="t4-h">
+  <div class="wrap">
+    ${bay('03')}
+    <div class="split" style="align-items:center">
+      <div>
+        <div class="hang" style="margin-bottom:22px"><h2 id="t4-h" class="lines"><span class="ln">Compliant, secure,</span><span class="ln">certified.</span></h2></div>
+        <p class="lede">Electronic waste is handled to AS/NZS 5377. Hard drives are destroyed or sanitised to NIST 800-88, with certificates of destruction. Full CCTV and vehicle registration recording on site.</p>
+        <div class="cert-grid">${SITE.accreditations.map((a) => `<div><b>${a.code}</b><span>${a.label}</span></div>`).join('')}</div>
+      </div>
+      <figure class="ph cert-ph" style="margin:0">${img('printers-cage', { sizes: '(max-width: 900px) 100vw, 50vw' })}</figure>
+    </div>
+  </div>
+</section>
+<section class="sec" aria-labelledby="t5-h">
   <div class="wrap">
     ${bay('04')}
+    <div class="sec-head split"><div class="hang"><h2 id="t5-h">Who we work with</h2></div><p class="lede">From a single office to multi-site operations across western Victoria.</p></div>
+    <ol class="sector-grid">${sectors.map((x, i) => `<li><span>${String(i + 1).padStart(2, '0')}</span>${x}</li>`).join('')}</ol>
+  </div>
+</section>
+<section class="sec on-ink2" id="enquire" aria-labelledby="t6-h">
+  <div class="wrap">
+    ${bay('05')}
     <div class="split" style="align-items:start">
       <div>
-        <div class="hang" style="margin-bottom:22px"><h2 id="t4-h">Tell us what you've got</h2></div>
+        <div class="hang" style="margin-bottom:22px"><h2 id="t6-h" class="lines"><span class="ln">Tell us</span><span class="ln">what you've got.</span></h2></div>
         <p class="lede">Windscreens, specialty plastics, bulky electronics or anything hard to recycle. Send the materials and rough quantities and our team will come back with a pick-up or drop-off option. No obligation.</p>
         <div class="box" style="margin-top:28px"><h3>${SITE.trade.contact}</h3><p class="small" style="margin:0 0 12px">${SITE.trade.title}</p><p style="margin:0"><a href="${SITE.trade.phoneHref}">${SITE.trade.phone}</a> · <a href="mailto:${SITE.email}">${SITE.email}</a></p></div>
       </div>
@@ -284,7 +324,7 @@ export function trade() {
     </div>
   </div>
 </section>`;
-  return { path: 'recycle-corporate-services/', title: 'Trade and corporate recycling', desc: 'Recycle Trade Service: scheduled collections, on-site bins and direct delivery for businesses, councils and industry across western Victoria. E-waste to AS/NZS 5377.', body, current: 'recycle-corporate-services/' };
+  return { path: 'recycle-corporate-services/', title: 'Trade and corporate recycling', desc: `Recycle Trade Service: scheduled collections, on-site bins and direct delivery for businesses, councils and industry across western Victoria. ${R.trade}% off for registered trades and businesses.`, body, current: 'recycle-corporate-services/' };
 }
 
 // ---------------------------------------------------------------- community
