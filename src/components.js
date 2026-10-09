@@ -225,10 +225,10 @@ export function journey({ n = '05', intro = true } = {}) {
 export function visitSteps({ n = '06' } = {}) {
   // [title, text, photo, short silent loop of the same spot (public/video), photo focus to match the loop's framing]
   const S = [
-    ['Sort it at home', `Keep green waste, metal, e-waste and general rubbish apart as you load. Everything comes off at its own bay, so you're in and out.`, 'bins-small-items', 'step-1-sort', '50% 45%'],
+    ['Sort it at home', `Keep green waste, metal, e-waste and general rubbish apart as you load. Everything comes off at its own bay, so you're in and out.`, 'unload-trailer', null, '30% 60%'],
     ['Drive in under cover', `Head to ${SITE.address.line1}, behind Coates Hire. Follow the hanging signs to the right bay.`, 'drive-in', 'step-2-drive', '50% 36%'],
-    ['Unload by material', 'Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.', 'aerosols-paint', 'step-3-unload', '50% 13%'],
-    ['We take it from there', `${SITE.facility.streams} material streams, each with somewhere to go that isn't landfill.`, 'rubbish-bays-arrow', 'step-4-handled', '50% 50%'],
+    ['Unload by material', 'Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.', 'unload-car-cardboard', null, '45% 55%'],
+    ['We take it from there', `${SITE.facility.streams} material streams, each with somewhere to go that isn't landfill.`, 'forklift-bale', null, '50% 55%'],
   ];
   return `<section class="sec on-paper" aria-labelledby="visit-h">
   <div class="wrap">
@@ -241,7 +241,7 @@ export function visitSteps({ n = '06' } = {}) {
       </div>
     </div>
     <div class="steps">
-      ${S.map(([t, d, ph, vid, pos], i) => `<div class="step rv"><span class="num">${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p><div class="step-photo">${img(ph, { sizes: '(max-width: 900px) 90vw, 22vw', style: `object-position:${pos}` })}<video class="step-vid" data-src="${u(`video/${vid}.mp4`)}" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video></div></div>`).join('')}
+      ${S.map(([t, d, ph, vid, pos], i) => `<div class="step rv"><span class="num">${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p><div class="step-photo">${img(ph, { sizes: '(max-width: 900px) 90vw, 22vw', style: `object-position:${pos}` })}${vid ? `<video class="step-vid" data-src="${u(`video/${vid}.mp4`)}" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>` : ''}</div></div>`).join('')}
     </div>
   </div>
 </section>`;

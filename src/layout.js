@@ -76,7 +76,7 @@ ${sprite}
 ${notice}
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="${u('')}" aria-label="${SITE.name} home"><img src="${u('img/logo.webp')}" width="561" height="313" alt="Recycle North Geelong"></a>
+    <a class="brand" href="${u('')}" aria-label="${SITE.name} home"><img src="${u('img/logo-text.webp')}" width="555" height="169" alt="Recycle North Geelong"></a>
     <nav class="nav" aria-label="Main">${navLinks}</nav>
     <div class="head-right">
       <span class="status" data-status><i></i><span data-status-text>${HOURS.short}</span></span>
@@ -108,7 +108,7 @@ function footer() {
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <img src="${u('img/logo.webp')}" width="561" height="313" alt="Recycle North Geelong" loading="lazy">
+        <img src="${u('img/logo-text.webp')}" width="555" height="169" alt="Recycle North Geelong" loading="lazy">
         <p>A public transfer station and recycling centre in North Geelong. Drive in under cover, drop off by material, and we take it from there.</p>
         <div class="foot-epa"><img src="${u('img/epa.webp')}" width="400" height="236" alt="EPA Victoria registration R000312600" loading="lazy"></div>
       </div>
