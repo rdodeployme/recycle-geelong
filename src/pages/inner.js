@@ -1,5 +1,6 @@
 import { SITE, HOURS, PRICE_GROUPS, ITEMS, STREAMS, VEHICLES, FREECYCLE, LOADS, WASTE } from '../data/site.js';
 import { u, img, icon, bay, esc, IMAGES } from '../lib.js';
+import { jimsPanel, dealsSection, tradieTuesday } from '../components.js';
 import { CAT_ICON } from '../icons.js';
 import { finder, estimator, registerBand, pageHero, journey, pickupList, partnersList, JOURNEY, scale, photoRun } from '../components.js';
 
@@ -234,7 +235,7 @@ export function trade() {
   const body = `${pageHero({
     crumbs: 'Trade and corporate', kicker: 'Recycle Trade Service', title: 'Trade and business recycling', image: 'forklift-cardboard',
     lede: `Scheduled collections, bins on site, or bring it in on a semi or B-double. All trades and businesses save ${R.trade}% on every waste type.`,
-    extra: `<div class="hero-ctas"><a class="btn" href="#enquire">Tell us what you've got${icon('arrow')}</a><a class="btn ghost" href="${SITE.links.registerTrade}">Get ${R.trade}% off${icon('arrow')}</a><a class="btn ghost" href="${SITE.trade.phoneHref}">${icon('call')}${SITE.trade.contact} · ${SITE.trade.phone}</a></div>`,
+    extra: `<div class="hero-ctas"><a class="btn" href="#enquire">Tell us what you've got${icon('arrow')}</a><a class="btn ghost" href="${SITE.links.registerTrade}">Register as a tradie${icon('arrow')}</a><a class="btn ghost" href="${SITE.trade.phoneHref}">${icon('call')}${SITE.trade.contact} · ${SITE.trade.phone}</a></div>`,
   })}
 <section class="sec" aria-labelledby="t1-h">
   <div class="wrap">
@@ -245,8 +246,8 @@ export function trade() {
         ${img('forklift-bale', { sizes: '(max-width: 900px) 100vw, 50vw' })}
         <span class="kicker">Drop-off</span>
         <h3>Bring it in</h3>
-        <p>Room for semi-trailers and B-doubles, with an internal ring road and wide bays. Our team helps unload with a forklift.</p>
-        <ul><li>Semis and B-doubles</li><li>Forklift unloading</li><li>Under cover</li><li>Mon–Sat 7:30am–4pm</li></ul>
+        <p>Room for semi-trailers and B-doubles, with an internal ring road and wide bays. Our crew helps you unload. Never closed for weather.</p>
+        <ul><li>Semis and B-doubles</li><li>We help you unload</li><li>Trades from ${SITE.tradeHours.early}</li><li>Late drop-offs to ${SITE.tradeHours.lateBy} by appointment</li></ul>
       </div>
       <div class="door">
         ${img('skips-row', { sizes: '(max-width: 900px) 100vw, 50vw' })}
@@ -266,14 +267,13 @@ export function trade() {
       <p>On every waste type, including general waste and building materials. Register once and it applies every time you come in.</p>
       <div class="btns"><a class="btn black" href="${SITE.links.registerTrade}">Register your business${icon('arrow')}</a></div>
     </div>
-    <div class="partner-deal light">
-      <div class="partner-logo"><img src="${u('partners/jims-mowing.png')}" alt="Jim's Mowing" width="420" height="322" loading="lazy"></div>
-      <div>
-        <span class="kicker">Trade partner</span>
-        <h3 class="partner-h">Jim's Mowing</h3>
-        <p>Jim's Mowing has a deal with Recycle North Geelong for special rates. Ask for the Jim's Mowing rate at the gate.</p>
-      </div>
-    </div>
+    ${tradieTuesday({ cls: 'dark' })}
+  </div>
+</section>
+<section class="sec" aria-labelledby="jims-t-h">
+  <div class="wrap">
+    <h2 id="jims-t-h" class="sr-only">Jim's franchise benefits</h2>
+    ${jimsPanel()}
   </div>
 </section>
 <section class="sec" aria-labelledby="t3-h">
@@ -303,9 +303,10 @@ export function trade() {
     <ol class="sector-grid">${sectors.map((x, i) => `<li><span>${String(i + 1).padStart(2, '0')}</span>${x}</li>`).join('')}</ol>
   </div>
 </section>
+${dealsSection({ n: '05' })}
 <section class="sec on-ink2" id="enquire" aria-labelledby="t6-h">
   <div class="wrap">
-    ${bay('05')}
+    ${bay('06')}
     <div class="split" style="align-items:start">
       <div>
         <div class="hang" style="margin-bottom:22px"><h2 id="t6-h" class="lines"><span class="ln">Tell us</span><span class="ln">what you've got.</span></h2></div>

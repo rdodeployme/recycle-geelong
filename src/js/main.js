@@ -196,7 +196,7 @@ function estimator(root) {
       tot.textContent = money(total);
       tot.classList.remove('gate');
       const R = SITE.discount;
-      disc.textContent = st.rate ? `Includes ${st.rate}% ${st.rate === R.trade ? 'trade' : 'resident'} discount (−${money(sum * st.rate / 100)})` : `Registered: residents pay ${money(sum * (1 - R.resident / 100))}, trades ${money(sum * (1 - R.trade / 100))}`;
+      disc.textContent = st.rate ? `Includes ${st.rate}% ${st.rate === R.tradieTuesday ? 'Tradie Tuesday' : st.rate === R.trade ? 'trade or partner' : 'resident'} discount (−${money(sum * st.rate / 100)})` : `Registered: residents pay ${money(sum * (1 - R.resident / 100))}, trades ${money(sum * (1 - R.trade / 100))}`;
     }
     hint.textContent = WASTE[st.waste].hint;
   }

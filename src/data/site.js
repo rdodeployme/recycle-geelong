@@ -46,7 +46,36 @@ export const SITE = {
     days: 'Six days',
   },
   // Registered discounts, in percent. Residents: council areas below. Trades and businesses: all waste types.
-  discount: { resident: 10, trade: 15 },
+  discount: { resident: 10, trade: 15, tradieTuesday: 15 },
+  // Trade access, Monday to Saturday.
+  tradeHours: { early: '7am', lateBy: '5pm' },
+  // 15% groups. logo: file in public/partners (without extension) or null to show the name.
+  frontline: [
+    { n: 'Nurses', logo: null, icon: 'nurse' },
+    { n: 'Victoria Police', logo: null },
+    { n: 'Fire Rescue Victoria', logo: null },
+    { n: 'CFA', logo: null },
+    { n: 'Ambulance Victoria', logo: null },
+    { n: 'VICSES', logo: null },
+  ],
+  partners: [
+    { n: 'City of Greater Geelong employees', logo: null },
+    { n: 'Powercor', logo: null },
+    { n: 'Barwon Water', logo: null },
+    { n: 'Viva Energy', logo: null },
+    { n: 'Federal Mills', logo: null },
+    { n: 'Deakin University', logo: null },
+    { n: 'Epworth', logo: null },
+    { n: 'Godfrey Hirst', logo: null },
+    { n: 'Real estate agents', logo: null, icon: 'house' },
+  ],
+  jims: [
+    { n: "Jim's Skip Bins", logo: 'jims-skipbins' },
+    { n: "Jim's Painting", logo: 'jims-painting' },
+    { n: "Jim's Trees", logo: null },
+    { n: "Jim's Cleaning", logo: null },
+    { n: "Jim's Fencing", logo: null },
+  ],
   discountCouncils: ['Greater Geelong', 'Queenscliff', 'Surf Coast', 'Golden Plains', 'Wyndham', 'Colac Otway'],
   accreditations: [
     { code: 'EPA', label: 'EPA Victoria registered', detail: 'R000312600' },

@@ -1,10 +1,11 @@
 import { SITE } from '../data/site.js';
 import { u, img, icon, bay, alt } from '../lib.js';
-import { finder, estimator, freeGrid, journey, visitSteps, registerBand, partnersList, jimsPanel, heroVideo, marquee, photoRun, scale, tourDialog } from '../components.js';
+import { finder, estimator, freeGrid, journey, visitSteps, registerBand, partnersList, jimsPanel, dealsSection, whyStrip, heroVideo, marquee, photoRun, scale, tourDialog } from '../components.js';
 
 export function home() {
   const body = `
 ${heroVideo()}
+${whyStrip()}
 ${finder({ n: '01' })}
 ${estimator({ n: '02' })}
 ${freeGrid({ n: '03' })}
@@ -32,16 +33,18 @@ ${visitSteps({ n: '05' })}
       <div>
         <span class="kicker">At-home collection</span>
         <h2 id="col-h" class="lines"><span class="ln">Can't bring it in?</span><span class="ln g">We'll come to you.</span></h2>
-        <p class="lede">Recycle North Geelong collects from your home. Bigger clean-out or heavy items? Book a collection and our crew does the lifting.</p>
+        <p class="lede">Recycle North Geelong collects from your home. Bigger clean-out or heavy items? Book a collection and our crew does the lifting and loading.</p>
         <div class="btns"><a class="btn" href="${SITE.links.bookCollection}">Book a collection${icon('arrow')}</a></div>
       </div>
       <div class="pickups">
-        <a class="pickup" href="${SITE.links.bookCollection}"><span><b>Rubbish and junk collection</b><span>We come to you and load it.</span></span>${icon('arrow')}</a>
-        <a class="pickup" href="${SITE.links.mattressPickup}" target="_blank" rel="noopener"><span><b>Mattress or bed base pickup</b><span>Through The Mattress Recycling Company.</span></span>${icon('external')}</a>
+        <a class="pickup" href="${SITE.links.bookCollection}"><span><b>Rubbish and junk collection</b><span>Our crew does the lifting and loading.</span></span>${icon('arrow')}</a>
+        <a class="pickup" href="${SITE.links.bookCollection}"><span><b>House and garage clean-outs</b><span>Bigger jobs, sorted and recycled.</span></span>${icon('arrow')}</a>
       </div>
     </div>
   </div>
 </section>
+
+${dealsSection({ n: '07' })}
 
 ${registerBand()}
 ${tourDialog()}

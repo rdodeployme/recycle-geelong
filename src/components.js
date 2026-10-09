@@ -74,7 +74,7 @@ export function estimator({ id = 'cost', n = '02' } = {}) {
           <div class="seg" role="group" aria-label="Registered discount">
             <button type="button" data-disc-rate="0" aria-pressed="true">No</button>
             <button type="button" data-disc-rate="${SITE.discount.resident}" aria-pressed="false">Resident ${SITE.discount.resident}%</button>
-            <button type="button" data-disc-rate="${SITE.discount.trade}" aria-pressed="false">Trade ${SITE.discount.trade}%</button>
+            <button type="button" data-disc-rate="${SITE.discount.trade}" aria-pressed="false">Trade or partner ${SITE.discount.trade}%</button>
           </div>
           <div class="reg-mini">
             <p><b>Not registered yet?</b> Residents and locals in ${SITE.discountCouncils.slice(0, -1).join(', ')} or ${SITE.discountCouncils.at(-1)} save ${SITE.discount.resident}%. All trades and businesses save ${SITE.discount.trade}% on every waste type, including general and building waste. Register once, save every visit.</p>
@@ -284,15 +284,59 @@ export function registerBand() {
 </section>`;
 }
 
+const logoTile = (o) => `<div class="lt${o.logo ? '' : ' txt'}">${o.logo ? `<img src="${u(`partners/${o.logo}.png`)}" alt="${o.n}" loading="lazy">` : `${o.icon ? icon(o.icon) : ''}<b>${o.n}</b>`}</div>`;
+
 export function jimsPanel({ cls = '' } = {}) {
   return `<div class="jims ${cls}">
     <div class="jims-logo"><img src="${u('partners/jims-mowing.png')}" alt="Jim's Mowing" width="420" height="322" loading="lazy"></div>
     <div class="jims-copy">
-      <span class="kicker">Trade partner</span>
-      <h3 class="jims-h">Jim's Mowing</h3>
-      <p>Jim's Mowing has a deal with Recycle North Geelong for special rates. Ask for the Jim's Mowing rate at the gate.</p>
+      <span class="kicker">Exclusive Jim's franchise benefits</span>
+      <h3 class="jims-h">Better than ${SITE.discount.trade}% for Jim's franchisees</h3>
+      <p>Participating Jim's Group franchisees get exclusive preferential disposal and recycling rates, arranged directly through Jim's Head Office. Savings go well beyond our standard ${SITE.discount.trade}% trade and service business discount, with a convenient, undercover recycling facility.</p>
     </div>
+    <div class="jims-more"><span>Jim's teams that use the site</span><div class="lt-row">${SITE.jims.map(logoTile).join('')}</div></div>
   </div>`;
+}
+
+export function tradieTuesday({ cls = '' } = {}) {
+  const D = SITE.discount, H = SITE.tradeHours;
+  return `<div class="tt ${cls}">
+      <div><span class="tt-day">Tradie Tuesdays</span><b class="tt-pc">${D.tradieTuesday}% off</b></div>
+      <div>
+        <ul class="tt-list"><li>${icon('check')}<span><b>${D.tradieTuesday}% off</b> your load</span></li><li>${icon('check')}<span>We <b>help you unload</b></span></li><li>${icon('check')}<span>A <b>sausage on us</b></span></li></ul>
+        <p class="tt-hours">Trades get early access from ${H.early}, six days a week. Late drop-offs by appointment up to ${H.lateBy}, Monday to Saturday.</p>
+        <a class="btn" href="${SITE.links.registerTrade}">Register as a tradie${icon('arrow')}</a>
+      </div>
+    </div>`;
+}
+
+export function whyStrip() {
+  return `<section class="why" aria-label="Why Recycle North Geelong">
+  <div class="wrap why-in">
+    <div>${icon('hand')}<b>We help you unload</b><span>Victoria's only transfer station and recycling centre that helps you unload.</span></div>
+    <div>${icon('umbrella')}<b>Never closed for weather</b><span>Fully undercover. No rain, no mess, no fuss.</span></div>
+    <div>${icon('tag')}<b>Half the price of landfill</b><span>As a rule. Plus 12 things you can drop off free.</span></div>
+  </div>
+</section>`;
+}
+
+export function dealsSection({ n = '07' } = {}) {
+  const D = SITE.discount;
+  return `<section class="sec on-paper" id="discounts" aria-labelledby="deals-h">
+  <div class="wrap">
+    ${bay(n)}
+    <div class="sec-head split"><div class="hang"><h2 id="deals-h" class="lines"><span class="ln">More ways</span><span class="ln">to save.</span></h2></div><p class="lede">As a rule, we're half the price of landfill. These discounts take it further. Ask at the gate; ID may be required.</p></div>
+    ${tradieTuesday()}
+    <div class="lg">
+      <div class="lg-head"><b class="lg-pc">${D.trade}%</b><div><h3>Front line</h3><p>Nurses, police, fire, ambulance and SES.</p></div></div>
+      <div class="lt-grid">${SITE.frontline.map(logoTile).join('')}</div>
+    </div>
+    <div class="lg">
+      <div class="lg-head"><b class="lg-pc">${D.trade}%</b><div><h3>Local employers and partners</h3><p>Staff of these Geelong organisations, plus real estate agents.</p></div></div>
+      <div class="lt-grid">${SITE.partners.map(logoTile).join('')}</div>
+    </div>
+  </div>
+</section>`;
 }
 
 export function sortCompare({ sizes = '100vw', cls = '' } = {}) {
@@ -301,8 +345,7 @@ export function sortCompare({ sizes = '100vw', cls = '' } = {}) {
 
 export function pickupList() {
   return `<div class="pickups">
-    <a class="pickup" href="${SITE.links.bookCollection}"><span><b>Rubbish or junk collection</b><span>We come to you and load it.</span></span>${icon('arrow')}</a>
-    <a class="pickup" href="${SITE.links.mattressPickup}" target="_blank" rel="noopener"><span><b>Mattress or bed base pickup</b><span>Through The Mattress Recycling Company.</span></span>${icon('external')}</a>
+    <a class="pickup" href="${SITE.links.bookCollection}"><span><b>Rubbish or junk collection</b><span>Our crew does the lifting and loading.</span></span>${icon('arrow')}</a>
   </div>`;
 }
 
@@ -335,9 +378,12 @@ export function heroVideo() {
   <div class="wrap hv-in">
     <div class="hv-top">
       <span class="status" data-status><i></i><span data-status-text>${HOURS.short}</span></span>
-      <span class="hv-where">${SITE.address.line1}, North Geelong</span>
+      <span class="hv-where">Drive in, drive out · No mess, no fuss · Fully undercover</span>
     </div>
-    <h1 id="hero-h" class="lines calm"><span class="ln"><span class="w">Drive in.</span></span><span class="ln"><span class="w">Drop off.</span></span><span class="ln"><span class="w g">We sort it.</span></span></h1>
+    <div class="hv-headrow">
+      <h1 id="hero-h" class="lines calm"><span class="ln"><span class="w">Drive in.</span></span><span class="ln"><span class="w">Drop off.</span></span><span class="ln"><span class="w g">Drive out.</span></span></h1>
+      <div class="assist" role="note"><span class="assist-ic">${icon('hand')}</span><b>Assisted unloading</b><span>Our staff help you unload. Victoria's only transfer station and recycling centre that does.</span></div>
+    </div>
     <p class="hv-lede"><span class="nw">Geelong's only undercover transfer station.</span> <span class="nw">Open 6 days a week, 7:30am – 4pm.</span></p>
     <div class="hero-ctas">
       <a class="btn" href="#finder">What can I bring?${icon('down')}</a>
