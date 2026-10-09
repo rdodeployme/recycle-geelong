@@ -1,6 +1,6 @@
 import { SITE } from '../data/site.js';
 import { u, img, icon, bay, alt } from '../lib.js';
-import { finder, estimator, freeGrid, journey, visitSteps, registerBand, pickupList, partnersList, heroVideo, marquee, photoRun, scale } from '../components.js';
+import { finder, estimator, freeGrid, journey, visitSteps, registerBand, pickupList, partnersList, heroVideo, marquee, photoRun, scale, tourDialog } from '../components.js';
 
 export function home() {
   const body = `
@@ -34,6 +34,7 @@ ${visitSteps({ n: '04' })}
 </section>
 
 ${registerBand()}
+${tourDialog()}
 `;
   return { path: '', title: 'Home', desc: `${SITE.name}: Geelong's undercover public transfer station and recycling centre. Free drop-off for whitegoods, scrap metal, cardboard and more. Open Monday to Saturday, 7:30am to 5pm.`, body, current: '' };
 }

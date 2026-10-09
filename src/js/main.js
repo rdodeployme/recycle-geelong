@@ -304,6 +304,49 @@ function heroVideo() {
   new IntersectionObserver((ents) => ents.forEach((e) => { if (!e.isIntersecting) v.pause(); else if (btn.getAttribute('aria-label').startsWith('Pause')) v.play().catch(() => {}); })).observe(v);
 }
 
+// ---------------------------------------------------------------- step loops: short silent clips over the step photos
+// Load when near the screen, play only while visible, fade in over the photo once playing.
+// Skipped for reduced motion and data saver, which keep the still photos.
+function stepVideos() {
+  const vids = $$('.step-vid[data-src]');
+  if (!vids.length || reduced || !('IntersectionObserver' in window)) return;
+  if (navigator.connection && navigator.connection.saveData) return;
+  vids.forEach((v) => v.addEventListener('playing', () => v.classList.add('on'), { once: true }));
+  const load = new IntersectionObserver((ents) => ents.forEach((e) => {
+    if (!e.isIntersecting) return;
+    const v = e.target; load.unobserve(v);
+    v.src = v.dataset.src; v.load();
+  }), { rootMargin: '300px 0px' });
+  const play = new IntersectionObserver((ents) => ents.forEach((e) => {
+    const v = e.target;
+    if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
+  }), { threshold: 0.35 });
+  vids.forEach((v) => { load.observe(v); play.observe(v); });
+}
+
+// ---------------------------------------------------------------- facility tour: plays only when someone asks
+function tour() {
+  const d = $('#tour');
+  const links = $$('[data-tour]');
+  if (!d || !links.length || typeof d.showModal !== 'function') return; // links fall back to the video file
+  const v = $('.tour-v', d);
+  const open = (ev) => {
+    ev.preventDefault();
+    const tall = matchMedia('(orientation: portrait) and (max-width: 760px)').matches;
+    d.classList.toggle('tall', tall);
+    const src = tall ? v.dataset.tall : v.dataset.wide;
+    if (v.dataset.cur !== src) { v.poster = tall ? v.dataset.tallPoster : v.dataset.widePoster; v.src = src; v.dataset.cur = src; }
+    d.showModal();
+    v.currentTime = 0;
+    v.play().catch(() => {});
+  };
+  const close = () => { v.pause(); if (d.open) d.close(); };
+  links.forEach((a) => a.addEventListener('click', open));
+  $('[data-tour-close]', d).addEventListener('click', close);
+  d.addEventListener('click', (e) => { if (e.target === d) close(); }); // click outside the video
+  d.addEventListener('close', () => v.pause()); // Esc
+}
+
 // ---------------------------------------------------------------- count-up numbers
 function counters() {
   const els = $$('[data-count]');
@@ -368,3 +411,5 @@ az();
 forms();
 reveal();
 journey();
+stepVideos();
+tour();

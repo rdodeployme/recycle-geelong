@@ -30,7 +30,8 @@ Decide whether these move into the new site or point at JUNK / Trash. booking.
 
 ## Content to supply
 - Full-resolution originals of the 34 floor photos (the copies received are 640 px, so they are used small).
-- The home hero is now a still photo of the hall (8 Oct). The AI-assisted hero videos are still in public/video but unused. Real footage of the site (no customers) could replace the photo later.
+- The home hero is now a still photo of the hall (8 Oct). The AI-assisted hero videos (public/video/hero-*) are unused and can be deleted.
+- Facility video (9 Oct): the four step photos on the home page play short silent loops of the same spot while on screen (public/video/step-*.mp4), and "Take a look inside" (hero and Four steps) opens the 39-second drive-through (public/video/tour-*.mp4) only when tapped. All are AI-animated from the 640 px floor photos; swap in real footage (no customers) when it exists. Reduced-motion and data-saver visitors keep the stills.
 - Public holiday hours, if they differ.
 - Trade enquiry form: confirm where submissions should go (Netlify Forms is on; set the notification email).
 

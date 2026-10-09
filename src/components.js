@@ -208,24 +208,46 @@ export function journey({ n = '05', intro = true } = {}) {
 
 // ---------------------------------------------------------------- visit steps
 export function visitSteps({ n = '06' } = {}) {
+  // [title, text, photo, short silent loop of the same spot (public/video), photo focus to match the loop's framing]
   const S = [
-    ['Sort it at home', `Keep green waste, metal, e-waste and general rubbish apart as you load. It's quicker at the bays and halves the rate.`, 'bins-small-items'],
-    ['Drive in under cover', `Head to ${SITE.address.line1}, behind Coates Hire. Follow the hanging signs to the right bay.`, 'drive-in'],
-    ['Unload by material', 'Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.', 'aerosols-paint'],
-    ['We take it from there', `${SITE.facility.streams} material streams, each with somewhere to go that isn't landfill.`, 'rubbish-bays-arrow'],
+    ['Sort it at home', `Keep green waste, metal, e-waste and general rubbish apart as you load. It's quicker at the bays and halves the rate.`, 'bins-small-items', 'step-1-sort', '50% 45%'],
+    ['Drive in under cover', `Head to ${SITE.address.line1}, behind Coates Hire. Follow the hanging signs to the right bay.`, 'drive-in', 'step-2-drive', '50% 36%'],
+    ['Unload by material', 'Each material has its own bay, cage or tank. Not sure where something goes? Ask the team on the floor.', 'aerosols-paint', 'step-3-unload', '50% 13%'],
+    ['We take it from there', `${SITE.facility.streams} material streams, each with somewhere to go that isn't landfill.`, 'rubbish-bays-arrow', 'step-4-handled', '50% 50%'],
   ];
   return `<section class="sec on-paper" aria-labelledby="visit-h">
   <div class="wrap">
     ${bay(n)}
     <div class="sec-head split">
       <div class="hang"><h2 id="visit-h" class="lines"><span class="ln">Four steps.</span><span class="ln">That's it.</span></h2></div>
-      <p class="lede">Come in any time we're open: ${HOURS.label}. Rain or shine, it's all under cover.</p>
+      <div>
+        <p class="lede">Come in any time we're open: ${HOURS.label}. Rain or shine, it's all under cover.</p>
+        ${tourLink('Watch the drive-through', 'link')}
+      </div>
     </div>
     <div class="steps">
-      ${S.map(([t, d, ph], i) => `<div class="step rv"><span class="num">${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p><div class="step-photo">${img(ph, { sizes: '(max-width: 900px) 90vw, 22vw' })}</div></div>`).join('')}
+      ${S.map(([t, d, ph, vid, pos], i) => `<div class="step rv"><span class="num">${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p><div class="step-photo">${img(ph, { sizes: '(max-width: 900px) 90vw, 22vw', style: `object-position:${pos}` })}<video class="step-vid" data-src="${u(`video/${vid}.mp4`)}" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video></div></div>`).join('')}
     </div>
   </div>
 </section>`;
+}
+
+// ---------------------------------------------------------------- facility tour (plays only when asked)
+const TOUR_SECS = 39;
+export function tourLink(label = 'Take a look inside', cls = 'hv-tour') {
+  // Without JavaScript this is a plain link to the video file.
+  return `<a class="${cls}" href="${u('video/tour-16x9.mp4')}" data-tour><span class="tour-play">${icon('play')}</span>${label}<span class="tour-len">${TOUR_SECS} sec</span></a>`;
+}
+export function tourDialog() {
+  return `<dialog class="tour" id="tour" aria-label="A drive through Recycle North Geelong">
+  <div class="tour-box">
+    <button class="tour-x" type="button" data-tour-close aria-label="Close video">${icon('close')}</button>
+    <video class="tour-v" controls playsinline muted preload="none"
+      data-wide="${u('video/tour-16x9.mp4')}" data-wide-poster="${u('video/tour-16x9-poster.jpg')}"
+      data-tall="${u('video/tour-9x16.mp4')}" data-tall-poster="${u('video/tour-9x16-poster.jpg')}"></video>
+    <p class="tour-cap">Every drop-off point in the hall, in ${TOUR_SECS} seconds. No sound.</p>
+  </div>
+</dialog>`;
 }
 
 // ---------------------------------------------------------------- register band
@@ -290,6 +312,7 @@ export function heroVideo() {
       <a class="btn ghost" href="#cost">Price my load</a>
       <a class="btn ghost" href="${SITE.address.directions}" target="_blank" rel="noopener">${icon('pin')}Directions</a>
     </div>
+    ${tourLink()}
   </div>
 </section>`;
 }
