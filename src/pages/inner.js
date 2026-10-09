@@ -32,7 +32,7 @@ export function priceList() {
   </article>`).join('');
   const body = `${pageHero({
     crumbs: 'Prices', kicker: 'Price list', title: 'Know the price before you load up', image: 'skips-row',
-    lede: 'Every price we charge, in one place. Loads are priced by size and by type of waste, and locals who register save another 10%.',
+    lede: `Every price we charge, in one place. Loads are priced by size and by type of waste. Registered locals save ${SITE.discount.resident}% and trades ${SITE.discount.trade}%.`,
     extra: `<div class="jump"><a href="#loads">Price per load</a>${PRICE_GROUPS.map((g) => `<a href="#${g.id}">${g.title}</a>`).join('')}</div>`,
   })}
 <section class="sec on-paper" id="loads" aria-labelledby="loads-h">
@@ -190,7 +190,7 @@ export function location() {
         <span class="status" data-status style="margin-bottom:18px"><i></i><span data-status-text>${HOURS.short}</span></span>
         <div class="hang" style="margin-bottom:22px"><h2 id="hrs-h">Opening hours</h2></div>
         <table class="hours-table" data-hours><tbody>
-          ${days.map(([d, n]) => `<tr data-day="${n}"><td>${d}</td><td>${HOURS.days[n] ? '7:30am – 5:00pm' : 'Closed'}</td></tr>`).join('')}
+          ${days.map(([d, n]) => `<tr data-day="${n}"><td>${d}</td><td>${HOURS.days[n] ? '7:30am – 4:00pm' : 'Closed'}</td></tr>`).join('')}
         </tbody></table>
         <p class="small" style="margin-top:18px">${HOURS.sunday}</p>
         <p class="small">Public holiday hours can change. Check our <a href="${SITE.social.facebook}" target="_blank" rel="noopener">Facebook page</a> or call ${SITE.phone} before you come.</p>
@@ -214,7 +214,7 @@ export function location() {
 </section>
 ${vehicles('03')}
 ${registerBand()}`;
-  return { path: 'our-location/', title: 'Location and opening hours', desc: 'Recycle North Geelong is at 116 Furner Avenue, North Geelong, behind Coates Hire. Open Monday to Saturday, 7:30am to 5pm.', body, current: 'our-location/' };
+  return { path: 'our-location/', title: 'Location and opening hours', desc: 'Recycle North Geelong is at 116 Furner Avenue, North Geelong, behind Coates Hire. Open Monday to Saturday, 7:30am to 4pm.', body, current: 'our-location/' };
 }
 
 // ---------------------------------------------------------------- trade
@@ -340,7 +340,7 @@ export function about() {
         <div class="hang" style="margin-bottom:22px"><h2 id="a1-h">Why we built it</h2></div>
         <p class="lede">Geelong is Victoria's second-largest city, but for years residents had few places to take rubbish and recycling that were close, open six days a week and affordable.</p>
         <p>When disposal is hard or expensive, more of it ends up dumped on roadsides. Recycle North Geelong opened to fix that: a large, undercover site where households and businesses can drop off almost anything, sorted into ${SITE.facility.streams} material streams so it can be recovered.</p>
-        <p>Up to ten categories of recyclables are free to drop off, and locals across six council areas get 10% off everything else.</p>
+        <p>Twelve kinds of recyclables are free to drop off, locals across six council areas get ${SITE.discount.resident}% off everything else, and trades and businesses ${SITE.discount.trade}%.</p>
       </div>
       <div><div class="quote-band lines"><span class="ln">Reuse.</span><span class="ln">Redistribute.</span><span class="ln">Recover.</span><span class="ln">Recycle.</span><span class="ln"><span class="g">Landfill last.</span></span></div></div>
     </div>

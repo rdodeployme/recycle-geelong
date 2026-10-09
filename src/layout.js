@@ -34,7 +34,7 @@ function jsonLd() {
     openingHoursSpecification: [{
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '07:30', closes: '17:00',
+      opens: '07:30', closes: '16:00',
     }],
     sameAs: Object.values(SITE.social),
   };
@@ -137,7 +137,7 @@ function footer() {
           <li><a href="${SITE.phoneHref}">${SITE.phone}</a></li>
           <li><a href="mailto:${SITE.email}">${SITE.email}</a></li>
           <li><a href="${SITE.links.bookCollection}">Book a collection</a></li>
-          <li><a href="${SITE.links.registerResident}">Register for 10% off</a></li>
+          <li><a href="${SITE.links.registerResident}">Register for a discount</a></li>
           <li><a href="${SITE.social.facebook}" target="_blank" rel="noopener">Facebook</a> · <a href="${SITE.social.instagram}" target="_blank" rel="noopener">Instagram</a> · <a href="${SITE.social.tiktok}" target="_blank" rel="noopener">TikTok</a></li>
         </ul>
       </div>

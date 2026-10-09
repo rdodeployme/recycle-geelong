@@ -161,7 +161,7 @@ const money = (n) => '$' + (Math.round(n * 100) % 100 ? n.toFixed(2) : String(Ma
 
 // Loads are priced by vehicle, how full it is, and waste type (general, building, green).
 function estimator(root) {
-  const st = { load: 'car', size: { car: 'uteLevel' }, waste: 0, extras: {}, discount: false };
+  const st = { load: 'car', size: { car: 'uteLevel' }, waste: 0, extras: {}, rate: 0 };
   const L = Object.fromEntries(LOADS.map((l) => [l.id, l]));
   const E = Object.fromEntries(EXTRAS.map((e) => [e.id, e]));
   const lines = $('[data-lines]', root), tot = $('[data-total]', root), disc = $('[data-disc]', root);
@@ -187,7 +187,7 @@ function estimator(root) {
       sum += n * E[id].price;
     }
     lines.innerHTML = rows.map(([a, b]) => `<li><span>${a}</span><span>${b}</span></li>`).join('');
-    const total = st.discount ? sum * 0.9 : sum;
+    const total = sum * (1 - st.rate / 100);
     if (p == null) {
       tot.textContent = 'At the gate';
       tot.classList.add('gate');
@@ -195,7 +195,8 @@ function estimator(root) {
     } else {
       tot.textContent = money(total);
       tot.classList.remove('gate');
-      disc.textContent = st.discount ? `Includes 10% local discount (−${money(sum * 0.1)})` : `Registered locals pay ${money(sum * 0.9)}`;
+      const R = SITE.discount;
+      disc.textContent = st.rate ? `Includes ${st.rate}% ${st.rate === R.trade ? 'trade' : 'resident'} discount (−${money(sum * st.rate / 100)})` : `Registered: residents pay ${money(sum * (1 - R.resident / 100))}, trades ${money(sum * (1 - R.trade / 100))}`;
     }
     hint.textContent = WASTE[st.waste].hint;
   }
@@ -224,7 +225,11 @@ function estimator(root) {
     $(`[data-extra-count="${id}"]`, root).textContent = st.extras[id];
     draw();
   }));
-  $('[data-discount]', root)?.addEventListener('change', (e) => { st.discount = e.target.checked; draw(); });
+  $$('[data-disc-rate]', root).forEach((b) => b.addEventListener('click', () => {
+    st.rate = Number(b.dataset.discRate);
+    $$('[data-disc-rate]', root).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    draw();
+  }));
   draw();
 }
 

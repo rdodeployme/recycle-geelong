@@ -35,7 +35,7 @@ export const SITE = {
     tourVideo: 'https://youtu.be/FOliqELWvxU',
   },
   trade: {
-    contact: 'Nigel Taylor',
+    contact: 'Lee',
     title: 'Director, Corporate and Trade Recycling',
     phone: '0427 888 222',
     phoneHref: 'tel:0427888222',
@@ -45,6 +45,8 @@ export const SITE = {
     streams: '90+',
     days: 'Six days',
   },
+  // Registered discounts, in percent. Residents: council areas below. Trades and businesses: all waste types.
+  discount: { resident: 10, trade: 15 },
   discountCouncils: ['Greater Geelong', 'Queenscliff', 'Surf Coast', 'Golden Plains', 'Wyndham', 'Colac Otway'],
   accreditations: [
     { code: 'EPA', label: 'EPA Victoria registered', detail: 'R000312600' },
@@ -65,9 +67,9 @@ export const SITE = {
 // Monday = 1 ... Sunday = 0. Times are local Geelong time.
 export const HOURS = {
   tz: 'Australia/Melbourne',
-  days: { 1: [7.5, 17], 2: [7.5, 17], 3: [7.5, 17], 4: [7.5, 17], 5: [7.5, 17], 6: [7.5, 17], 0: null },
-  label: 'Monday to Saturday, 7:30am – 5:00pm',
-  short: 'Mon–Sat 7:30am–5pm',
+  days: { 1: [7.5, 16], 2: [7.5, 16], 3: [7.5, 16], 4: [7.5, 16], 5: [7.5, 16], 6: [7.5, 16], 0: null },
+  label: 'Monday to Saturday, 7:30am – 4:00pm',
+  short: 'Mon–Sat 7:30am–4pm',
   sunday: 'Closed Sundays. Cardboard and polystyrene can go to the City of Greater Geelong centre at 21 Slevin Street, North Geelong, on Sundays.',
 };
 
@@ -230,9 +232,10 @@ export const ITEMS = [
   { n: 'Dishwasher', aka: [], s: 'free', p: 'Free', st: 'whitegoods', c: 'Whitegoods' },
   { n: 'Oven or stove', aka: ['cooktop', 'range', 'stove'], s: 'free', p: 'Free', st: 'whitegoods', c: 'Whitegoods' },
   { n: 'Scrap metal', aka: ['steel', 'iron', 'metal'], s: 'free', p: 'Free', note: 'All types, clean.', st: 'metal', c: 'Metal' },
-  { n: 'Aluminium and copper', aka: ['copper pipe', 'aluminium', 'cans'], s: 'free', p: 'Free', note: 'Clean and separated.', st: 'metal', c: 'Metal' },
+  { n: 'Aluminium', aka: ['aluminum', 'cans', 'aluminium cans'], s: 'free', p: 'Free', note: 'Clean and separated.', st: 'metal', c: 'Metal' },
+  { n: 'Copper', aka: ['copper pipe', 'copper wire'], s: 'free', p: 'Free', note: 'Clean and separated.', st: 'metal', c: 'Metal' },
   { n: 'Pool fencing', aka: ['aluminium fence', 'glass fence'], s: 'cond', p: 'By load size', note: 'Priced with your load.', st: 'metal', c: 'Metal' },
-  { n: 'Hot water service', aka: ['hot water system', 'hws', 'water heater'], s: 'cond', p: 'Ask at the gate', note: 'Accepted. Priced on arrival.', st: 'metal', c: 'Metal' },
+  { n: 'Hot water service', aka: ['hot water system', 'hws', 'water heater'], s: 'free', p: 'Free', st: 'metal', c: 'Metal' },
   { n: 'Air conditioner', aka: ['split system', 'aircon', 'heat pump'], s: 'cond', p: 'Ask at the gate', note: 'All types accepted. Priced on arrival.', st: 'whitegoods', c: 'Whitegoods' },
   // paper + packaging
   { n: 'Cardboard', aka: ['boxes', 'carton', 'moving boxes'], s: 'free', p: 'Free to 0.5 m³', note: 'Clean, dry and free of polystyrene. Over 0.5 m³ is $69 per m³.', st: 'cardboard', c: 'Packaging' },
@@ -245,8 +248,9 @@ export const ITEMS = [
   { n: 'LED screen', aka: ['monitor screen', 'display'], s: 'free', p: 'Free', st: 'ewaste', c: 'E-waste' },
   { n: 'Mobile phone', aka: ['phone', 'iphone', 'smartphone', 'mobile'], s: 'free', p: 'Free', st: 'ewaste', c: 'E-waste' },
   { n: 'Printer cartridges', aka: ['toner', 'ink cartridges'], s: 'free', p: 'Free', note: 'Household and office sized.', st: 'ewaste', c: 'E-waste' },
-  { n: 'Computer or laptop', aka: ['pc', 'laptop', 'desktop', 'server'], s: 'cond', p: 'Ask at the gate', note: 'Accepted. Phones, TVs and screens are free; ask about other e-waste.', st: 'ewaste', c: 'E-waste' },
-  { n: 'Monitor, tablet or keyboard', aka: ['ipad', 'tablet', 'keyboard', 'mouse'], s: 'cond', p: 'Ask at the gate', st: 'ewaste', c: 'E-waste' },
+  { n: 'Computer or laptop', aka: ['pc', 'laptop', 'desktop', 'server', 'macbook'], s: 'free', p: 'Free', st: 'ewaste', c: 'E-waste' },
+  { n: 'iPad or tablet', aka: ['ipad', 'tablet', 'android tablet'], s: 'free', p: 'Free', st: 'ewaste', c: 'E-waste' },
+  { n: 'Keyboard or mouse', aka: ['keyboard', 'mouse', 'peripherals'], s: 'cond', p: 'Ask at the gate', st: 'ewaste', c: 'E-waste' },
   { n: 'Modems, routers and cables', aka: ['cables', 'cords', 'wiring', 'router'], s: 'cond', p: 'Ask at the gate', st: 'ewaste', c: 'E-waste' },
   { n: 'Stereo and speakers', aka: ['speaker', 'hifi', 'amplifier'], s: 'cond', p: 'Ask at the gate', st: 'ewaste', c: 'E-waste' },
   { n: 'Small appliances', aka: ['toaster', 'kettle', 'microwave', 'vacuum', 'blender'], s: 'cond', p: 'By load size', st: 'ewaste', c: 'E-waste' },

@@ -8,11 +8,9 @@ ${heroVideo()}
 ${finder({ n: '01' })}
 ${estimator({ n: '02' })}
 ${freeGrid({ n: '03' })}
-${visitSteps({ n: '04' })}
-
 <section class="sec on-ink2" aria-labelledby="doors-h">
   <div class="wrap">
-    ${bay('05')}
+    ${bay('04')}
     <h2 id="doors-h" class="sr-only">Trade and collection services</h2>
     <div class="doors">
       <a class="door" href="${u('recycle-corporate-services/')}">
@@ -30,11 +28,21 @@ ${visitSteps({ n: '04' })}
         ${pickupList()}
       </div>
     </div>
+    <div class="partner-deal">
+      <div class="partner-logo"><img src="${u('partners/jims-mowing.png')}" alt="Jim's Mowing" width="420" height="322" loading="lazy"></div>
+      <div>
+        <span class="kicker">Trade partner</span>
+        <h3 class="partner-h">Jim's Mowing</h3>
+        <p>Jim's Mowing has a deal with Recycle North Geelong for special rates. Ask for the Jim's Mowing rate at the gate.</p>
+      </div>
+    </div>
   </div>
 </section>
+
+${visitSteps({ n: '05' })}
 
 ${registerBand()}
 ${tourDialog()}
 `;
-  return { path: '', title: 'Home', desc: `${SITE.name}: Geelong's undercover public transfer station and recycling centre. Free drop-off for whitegoods, scrap metal, cardboard and more. Open Monday to Saturday, 7:30am to 5pm.`, body, current: '' };
+  return { path: '', title: 'Home', desc: `${SITE.name}: Geelong's undercover public transfer station and recycling centre. Free drop-off for whitegoods, scrap metal, cardboard and more. Open Monday to Saturday, 7:30am to 4pm.`, body, current: '' };
 }

@@ -8,7 +8,7 @@ import { pageHero, registerBand } from '../components.js';
 
 const ENTITY = 'The Trustee for Recycle Group Discretionary Trust, trading as Recycle North Geelong';
 const ABN = '47 979 319 472';
-const FREE = ['whitegoods', 'scrap metal', 'cardboard and polystyrene (up to 0.5 m³ each)', 'TVs, LED screens and mobile phones', 'printer cartridges', 'up to 100 litres of decorative paint', 'car batteries'];
+const FREE = ['whitegoods', 'hot water services', 'scrap metal and aluminium', 'computers, laptops and iPads', 'TVs, LED screens and mobile phones', 'printer cartridges', 'cardboard and polystyrene (up to 0.5 m³ each)', 'up to 100 litres of decorative paint', 'car batteries'];
 const councils = SITE.discountCouncils.join(', ').replace(/, ([^,]*)$/, ' and $1');
 
 // ---------------------------------------------------------------- FAQ
@@ -27,7 +27,7 @@ export const FAQ = [
     ['What is free?', `${FREE.map((f, i) => (i === 0 ? f[0].toUpperCase() + f.slice(1) : f)).join(', ').replace(/, ([^,]*)$/, ' and $1')}. Conditions apply to some items.`],
     ['How do I pay?', 'By card only: debit, EFTPOS or credit. We don\'t accept cash. Payment is made in full at the gate, before you unload.'],
     ['How is my load checked?', 'An attendant looks over your load at the gate, confirms the price and takes payment before you unload. Declare every item that is priced separately, such as tyres, mattresses and gas bottles.'],
-    ['Is there a discount for locals?', `Yes. Residents and businesses in ${councils} can register once and get 10% off. <a href="${SITE.links.registerResident}">Register as a resident</a>. Valid identification may be required for some transactions.`],
+    ['Is there a discount for locals and trades?', `Yes. Residents and locals in ${councils} can register once and get ${SITE.discount.resident}% off. All trades and businesses can register for ${SITE.discount.trade}% off every waste type, including general and building waste. <a href="${SITE.links.registerResident}">Register as a resident</a> or <a href="${SITE.links.registerTrade}">register a trade or business</a>. Valid identification may be required for some transactions.`],
   ]],
   ['On site', [
     ['What should I wear?', 'Enclosed shoes are a must. Bare feet, thongs and sandals are not allowed. Staff may ask you to wear a high-visibility vest in some areas.'],
@@ -61,7 +61,7 @@ export function faq() {
   </div>
 </section>
 ${registerBand()}`;
-  return { path: 'faq/', title: 'Questions', desc: 'Opening hours, what we take, prices, paying by card, the 10% local discount and site rules at Recycle North Geelong.', body, current: '', ld };
+  return { path: 'faq/', title: 'Questions', desc: 'Opening hours, what we take, prices, paying by card, resident and trade discounts and site rules at Recycle North Geelong.', body, current: '', ld };
 }
 
 // ---------------------------------------------------------------- terms (ported from the published terms of entry)
@@ -172,12 +172,12 @@ export const SUBURBS = [
 const dirFrom = (name) => `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(name + ' VIC')}&destination=${encodeURIComponent(SITE.address.line1 + ' ' + SITE.address.line2)}`;
 
 export function areasIndex() {
-  const body = `${pageHero({ crumbs: 'Areas', kicker: 'Where our customers come from', title: 'Your nearest undercover tip', lede: `One site at ${SITE.address.line1}, North Geelong, open ${HOURS.short}. Locals in six council areas save 10%.` })}
+  const body = `${pageHero({ crumbs: 'Areas', kicker: 'Where our customers come from', title: 'Your nearest undercover tip', lede: `One site at ${SITE.address.line1}, North Geelong, open ${HOURS.short}. Locals in six council areas save ${SITE.discount.resident}%, trades ${SITE.discount.trade}%.` })}
 <section class="sec on-paper">
   <div class="wrap">
     ${bay('01')}
-    <div class="area-grid">${SUBURBS.map(([slug, name, c]) => `<a class="area-card" href="${u('tip/' + slug + '/')}"><b>${name}</b><span>${c} council area · 10% off for registered locals</span>${icon('arrow')}</a>`).join('')}</div>
-    <p class="small" style="margin-top:28px">Not listed? Residents and businesses anywhere in ${councils} can register for 10% off.</p>
+    <div class="area-grid">${SUBURBS.map(([slug, name, c]) => `<a class="area-card" href="${u('tip/' + slug + '/')}"><b>${name}</b><span>${c} council area · ${SITE.discount.resident}% off for registered locals</span>${icon('arrow')}</a>`).join('')}</div>
+    <p class="small" style="margin-top:28px">Not listed? Residents anywhere in ${councils} can register for ${SITE.discount.resident}% off. All trades and businesses get ${SITE.discount.trade}%.</p>
   </div>
 </section>`;
   return { path: 'tip/', title: 'Areas', desc: `Recycle North Geelong is the undercover tip and recycling centre for Geelong, the Bellarine, Surf Coast, Golden Plains and Wyndham.`, body, current: '' };
@@ -196,9 +196,9 @@ export function suburbPages() {
     ${bay('01')}
     <div class="split" style="align-items:start">
       <div>
-        <h2 class="faq-h">${name} locals save 10%</h2>
-        <p class="lede">${name} is in the ${c} council area, so residents and businesses can register once and get <b>10% off every visit</b>.</p>
-        <p><a class="btn" href="${SITE.links.registerResident}">Register for 10% off${icon('arrow')}</a></p>
+        <h2 class="faq-h">${name} locals save ${SITE.discount.resident}%</h2>
+        <p class="lede">${name} is in the ${c} council area, so residents can register once and get <b>${SITE.discount.resident}% off every visit</b>. All trades and businesses get <b>${SITE.discount.trade}% off</b> every waste type.</p>
+        <p class="btns"><a class="btn" href="${SITE.links.registerResident}">Register as a resident${icon('arrow')}</a> <a class="btn ghost" href="${SITE.links.registerTrade}">Trade or business${icon('arrow')}</a></p>
       </div>
       <div class="box">
         <h3>Before you drive over</h3>
@@ -222,6 +222,6 @@ export function suburbPages() {
   </div>
 </section>
 ${registerBand()}`;
-    return { path: `tip/${slug}/`, title: `Tip near ${name}`, desc: `Undercover tip and recycling centre near ${name}. Free whitegoods, scrap metal and cardboard; ${name} locals save 10%. Open ${HOURS.short}.`, body, current: '' };
+    return { path: `tip/${slug}/`, title: `Tip near ${name}`, desc: `Undercover tip and recycling centre near ${name}. Free whitegoods, scrap metal and cardboard; ${name} locals save ${SITE.discount.resident}%. Open ${HOURS.short}.`, body, current: '' };
   });
 }

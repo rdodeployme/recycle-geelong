@@ -47,7 +47,7 @@ export function estimator({ id = 'cost', n = '02' } = {}) {
     ${bay(n)}
     <div class="sec-head split">
       <div class="hang"><h2 id="${id}-h">Price your load in <span class="g nw">10 seconds</span></h2></div>
-      <p class="lede">Pick your vehicle, how full it is and what's in it. Locals get another 10% off.</p>
+      <p class="lede">Pick your vehicle, how full it is and what's in it. Registered locals save ${SITE.discount.resident}%, trades and businesses ${SITE.discount.trade}%.</p>
     </div>
     <div class="est" data-estimator>
       <div>
@@ -70,7 +70,19 @@ export function estimator({ id = 'cost', n = '02' } = {}) {
           </details>
         </div>
         <div class="est-step">
-          <label class="toggle"><input type="checkbox" data-discount><span class="sw"></span><span>I'm registered for the <b>10% local discount</b></span></label>
+          <div class="lab"><b>D</b> Registered for a discount?</div>
+          <div class="seg" role="group" aria-label="Registered discount">
+            <button type="button" data-disc-rate="0" aria-pressed="true">No</button>
+            <button type="button" data-disc-rate="${SITE.discount.resident}" aria-pressed="false">Resident ${SITE.discount.resident}%</button>
+            <button type="button" data-disc-rate="${SITE.discount.trade}" aria-pressed="false">Trade ${SITE.discount.trade}%</button>
+          </div>
+          <div class="reg-mini">
+            <p><b>Not registered yet?</b> Residents and locals in ${SITE.discountCouncils.slice(0, -1).join(', ')} or ${SITE.discountCouncils.at(-1)} save ${SITE.discount.resident}%. All trades and businesses save ${SITE.discount.trade}% on every waste type, including general and building waste. Register once, save every visit.</p>
+            <div class="reg-mini-links">
+              <a class="link" href="${SITE.links.registerResident}">Register as a resident${icon('arrow')}</a>
+              <a class="link" href="${SITE.links.registerTrade}">Trade or business${icon('arrow')}</a>
+            </div>
+          </div>
         </div>
       </div>
       <aside class="receipt" aria-live="polite">
@@ -88,13 +100,17 @@ export function estimator({ id = 'cost', n = '02' } = {}) {
 // ---------------------------------------------------------------- free items
 export const FREE = [
   ['fridge', 'Whitegoods', 'Fridges, washing machines, ovens and more.'],
+  ['heater', 'Hot&nbsp;water services', 'Old units, dropped off free.'],
   ['metal', 'Scrap metal', 'All types, as long as it is clean.'],
+  ['can', 'Aluminium', 'Clean and separated from other metals.'],
+  ['laptop', 'Computers and iPads', 'Desktops, laptops and iPads.'],
+  ['tv', 'TVs and screens', 'TVs and LED screens.'],
+  ['phone', 'Mobile phones', 'Old mobiles and smartphones.'],
+  ['layers', 'Ink cartridges', 'Printer cartridges, household and office sized.'],
   ['box', 'Cardboard', 'Up to 0.5 m³, clean, dry, no polystyrene.'],
   ['poly', 'Polystyrene', 'Up to 0.5 m³ of clean EPS packaging.'],
-  ['tv', 'TVs and screens', 'Plus mobile phones.'],
   ['paint', 'Paint', 'Up to 100 L of decorative paint, through Paintback.'],
   ['battery', 'Car batteries', 'Straight to the battery station.'],
-  ['layers', 'Ink cartridges', 'Printer cartridges, household and office sized.'],
 ];
 
 export function freeGrid({ n = '03' } = {}) {
@@ -102,7 +118,7 @@ export function freeGrid({ n = '03' } = {}) {
   <div class="wrap">
     ${bay(n)}
     <div class="sec-head split">
-      <div class="hang"><h2 id="free-h">Eight things, free</h2></div>
+      <div class="hang"><h2 id="free-h">Twelve things, free</h2></div>
       <p class="lede">Doing the right thing shouldn't cost you. Bring these on their own or with a paid load.</p>
     </div>
     <div class="free-grid">
@@ -253,13 +269,15 @@ export function tourDialog() {
 export function registerBand() {
   return `<section class="sec on-green" id="register" aria-labelledby="reg-h">
   <div class="wrap register">
-    <div><h2 id="reg-h" class="lines"><span class="ln">10% off.</span><span class="ln">Every visit.</span></h2></div>
+    <div><h2 id="reg-h" class="lines"><span class="ln">Register once.</span><span class="ln">Save every visit.</span></h2></div>
     <div>
-      <p style="font-size:19px;font-weight:600;margin:0">Residents and businesses in these council areas can register once and save 10%:</p>
-      <div class="councils">${SITE.discountCouncils.map((c) => `<span>${c}</span>`).join('')}</div>
+      <div class="reg-tiers">
+        <div><b class="reg-pc">${SITE.discount.resident}%</b><p><b>Residents and locals</b> in these council areas:</p><div class="councils">${SITE.discountCouncils.map((c) => `<span>${c}</span>`).join('')}</div></div>
+        <div><b class="reg-pc">${SITE.discount.trade}%</b><p><b>All trades and businesses</b>, on every waste type, including general and building waste.</p></div>
+      </div>
       <div class="btns">
         <a class="btn black" href="${SITE.links.registerResident}">Register as a resident${icon('arrow')}</a>
-        <a class="btn ghost" style="--fg:var(--ink);border-color:var(--ink)" href="${SITE.links.registerTrade}">Trade or business${icon('arrow')}</a>
+        <a class="btn ghost" style="--fg:var(--ink);border-color:var(--ink)" href="${SITE.links.registerTrade}">Register a trade or business${icon('arrow')}</a>
       </div>
     </div>
   </div>
@@ -305,7 +323,7 @@ export function heroVideo() {
       <span class="hv-where">${SITE.address.line1}, North Geelong</span>
     </div>
     <h1 id="hero-h" class="lines calm"><span class="ln"><span class="w">Drive in.</span></span><span class="ln"><span class="w">Drop off.</span></span><span class="ln"><span class="w g">We sort it.</span></span></h1>
-    <p class="hv-lede">Geelong's undercover tip and recycling centre. Open six days.</p>
+    <p class="hv-lede"><span class="nw">Geelong's only undercover transfer station.</span> <span class="nw">Open 6 days a week, 7:30am – 4pm.</span></p>
     <div class="hero-ctas">
       <a class="btn" href="#finder">What can I bring?${icon('down')}</a>
       <a class="btn ghost" href="#cost">Price my load</a>
