@@ -73,7 +73,7 @@ export const SITE = {
     { n: "Jim's Skip Bins", logo: 'jims-skipbins' },
     { n: "Jim's Painting", logo: 'jims-painting' },
     { n: "Jim's Trees", logo: 'jims-trees' },
-    { n: "Jim's Cleaning", logo: null },
+    { n: "Jim's Cleaning", logo: 'jims-cleaning' },
     { n: "Jim's Fencing", logo: 'jims-fencing' },
   ],
   discountCouncils: ['Greater Geelong', 'Queenscliff', 'Surf Coast', 'Golden Plains', 'Wyndham', 'Colac Otway'],
