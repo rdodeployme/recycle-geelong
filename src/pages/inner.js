@@ -223,6 +223,12 @@ ${registerBand()}`;
 // ---------------------------------------------------------------- trade
 export function trade() {
   const R = SITE.discount;
+  const VEH = [['ute', 'Utes'], ['trailer', 'Trailers'], ['truck', 'Tray trucks'], ['truck', 'Tautliners'], ['trailer', 'Tipping trailers'], ['truck', 'Tip trucks'], ['truck', 'Skip bin trucks'], ['truck', 'Hook bin trucks']];
+  const EQUIP = [
+    ['forklift-bale', 'Forklift-assisted unloading', 'Palletised and bulky loads', 'Experienced operators unload palletised and bulky commercial loads with a forklift.'],
+    ['excavator-bin', 'Excavator unloading', 'Green waste and bulk', 'Our excavators unload large volumes of green waste and other suitable bulk materials.'],
+    ['trailer-area', 'Dedicated trade areas', 'Back on the road sooner', 'Contractors, builders, landscapers, transport operators and commercial businesses unload in dedicated trade areas, so there\'s less downtime.'],
+  ];
   const materials = [
     ['cardboard-cage', 'Cardboard and packaging', 'Including palletised loads'],
     ['ewaste-cage', 'E-waste', 'Computers, printers, monitors, servers and telecommunications equipment'],
@@ -235,20 +241,33 @@ export function trade() {
   ];
   const sectors = ['Government and councils', 'Hospitals and healthcare', 'Schools, TAFEs and universities', 'Retail and warehousing', 'Builders and property managers', 'Offices and commercial tenancies', 'Agricultural and industrial sites', 'Waste and rubbish collectors'];
   const body = `${pageHero({
-    crumbs: 'Trade and corporate', kicker: 'Recycle Trade Service', title: 'Trade and business recycling', image: 'forklift-cardboard',
-    lede: `Scheduled collections, bins on site, or bring it in on a semi or B-double. All trades and businesses save ${R.trade}% on every waste type.`,
-    extra: `<div class="hero-ctas"><a class="btn" href="#enquire">Tell us what you've got${icon('arrow')}</a><a class="btn ghost" href="${SITE.links.registerTrade}">Register as a tradie${icon('arrow')}</a><a class="btn ghost" href="${SITE.trade.phoneHref}">${icon('call')}${SITE.trade.contact} · ${SITE.trade.phone}</a></div>`,
+    crumbs: 'Trade and commercial', kicker: 'Trade & Commercial Services', title: 'Built for trade. Equipped for business.', image: 'forklift-cardboard',
+    lede: `A dedicated trade and commercial recycling service: ${R.trade}% off standard rates, assisted unloading and purpose-built facilities that make recycling faster, easier and more cost-effective.`,
+    extra: `<ul class="trade-pills"><li>${icon('tag')}${R.trade}% trade discount</li><li>${icon('hand')}Assisted unloading</li><li>${icon('truck')}Commercial vehicle access</li></ul><div class="hero-ctas"><a class="btn" href="#enquire">Tell us what you've got${icon('arrow')}</a><a class="btn ghost" href="${SITE.links.registerTrade}">Register as a tradie${icon('arrow')}</a><a class="btn ghost" href="${SITE.trade.phoneHref}">${icon('call')}${SITE.trade.contact} · ${SITE.trade.phone}</a></div>`,
   })}
-<section class="sec" aria-labelledby="t1-h">
+<section class="sec" aria-labelledby="bt-h">
   <div class="wrap">
     ${bay('01')}
+    <div class="sec-head split"><div class="hang"><h2 id="bt-h" class="bt-h">Drive in. Unload.<br><span class="g">Recycle. Drive&nbsp;out.</span></h2></div><p class="lede">Our undercover, all-weather facility takes a wide range of commercial vehicles, with experienced operators and specialised equipment on site.</p></div>
+    <div class="veh">
+      <span class="veh-lab">Vehicles we take</span>
+      <ul>${VEH.map(([ic, n]) => `<li>${icon(ic)}<span>${n}</span></li>`).join('')}</ul>
+    </div>
+    <div class="equip">
+      ${EQUIP.map(([ph, k, h, d]) => `<div class="eq rv"><div class="eq-ph">${img(ph, { sizes: '(max-width: 900px) 100vw, 33vw' })}</div><span class="kicker">${k}</span><h3>${h}</h3><p>${d}</p></div>`).join('')}
+    </div>
+  </div>
+</section>
+<section class="sec" aria-labelledby="t1-h">
+  <div class="wrap">
+    ${bay('02')}
     <div class="sec-head split"><div class="hang"><h2 id="t1-h" class="lines"><span class="ln">Two ways</span><span class="ln">to work with us.</span></h2></div><p class="lede">Bring it to us, or we bring the bins to you. Either way it's sorted by material and kept out of landfill.</p></div>
     <div class="ways">
       <div class="door">
-        ${img('forklift-bale', { sizes: '(max-width: 900px) 100vw, 50vw' })}
+        ${img('forklift-cardboard', { sizes: '(max-width: 900px) 100vw, 50vw' })}
         <span class="kicker">Drop-off</span>
         <h3>Bring it in</h3>
-        <p>Room for semi-trailers and B-doubles, with an internal ring road and wide bays. Our crew helps you unload. Never closed for weather.</p>
+        <p>Room for semi-trailers and B-doubles, with an internal ring road and wide bays. Forklift and excavator unloading, under cover and never closed for weather.</p>
         <ul><li>Semis and B-doubles</li><li>We help you unload</li><li>Trades from ${SITE.tradeHours.early}</li><li>Late drop-offs to ${SITE.tradeHours.lateBy} by appointment</li></ul>
       </div>
       <div class="door">
@@ -280,14 +299,14 @@ export function trade() {
 </section>
 <section class="sec" aria-labelledby="t3-h">
   <div class="wrap">
-    ${bay('02')}
+    ${bay('03')}
     <div class="sec-head split"><div class="hang"><h2 id="t3-h" class="lines"><span class="ln">One partner.</span><span class="ln">Every stream.</span></h2></div><p class="lede">If it's a hard-to-recycle by-product we haven't listed, ask. We'll come back with options.</p></div>
     <div class="mat-grid">${materials.map(([ph, t, d]) => `<div class="mat rv"><div class="mat-ph">${img(ph, { sizes: '(max-width: 700px) 50vw, 25vw' })}</div><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
   </div>
 </section>
 <section class="sec on-paper" aria-labelledby="t4-h">
   <div class="wrap">
-    ${bay('03')}
+    ${bay('04')}
     <div class="split" style="align-items:center">
       <div>
         <div class="hang" style="margin-bottom:22px"><h2 id="t4-h" class="lines"><span class="ln">Compliant, secure,</span><span class="ln">certified.</span></h2></div>
@@ -300,15 +319,15 @@ export function trade() {
 </section>
 <section class="sec" aria-labelledby="t5-h">
   <div class="wrap">
-    ${bay('04')}
+    ${bay('05')}
     <div class="sec-head split"><div class="hang"><h2 id="t5-h">Who we work with</h2></div><p class="lede">From a single office to multi-site operations across western Victoria.</p></div>
     <ol class="sector-grid">${sectors.map((x, i) => `<li><span>${String(i + 1).padStart(2, '0')}</span>${x}</li>`).join('')}</ol>
   </div>
 </section>
-${dealsSection({ n: '05', tt: false })}
+${dealsSection({ n: '06', tt: false })}
 <section class="sec on-ink2" id="enquire" aria-labelledby="t6-h">
   <div class="wrap">
-    ${bay('06')}
+    ${bay('07')}
     <div class="split" style="align-items:start">
       <div>
         <div class="hang" style="margin-bottom:22px"><h2 id="t6-h" class="lines"><span class="ln">Tell us</span><span class="ln">what you've got.</span></h2></div>
@@ -327,7 +346,7 @@ ${dealsSection({ n: '05', tt: false })}
     </div>
   </div>
 </section>`;
-  return { path: 'recycle-corporate-services/', title: 'Trade and corporate recycling', desc: `Recycle Trade Service: scheduled collections, on-site bins and direct delivery for businesses, councils and industry across western Victoria. ${R.trade}% off for registered trades and businesses.`, body, current: 'recycle-corporate-services/' };
+  return { path: 'recycle-corporate-services/', title: 'Trade and commercial services', desc: `Recycle Trade Service: scheduled collections, on-site bins and direct delivery for businesses, councils and industry across western Victoria. ${R.trade}% off for registered trades and businesses.`, body, current: 'recycle-corporate-services/' };
 }
 
 // ---------------------------------------------------------------- community

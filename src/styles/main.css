@@ -1299,3 +1299,26 @@ h1.fit-two, h2.fit-two, h3.fit-two { font-size: clamp(var(--fs-min, 22px), calc(
 .hv-lede .hv-l2 { color: var(--green); font-weight: 600; margin: 2px 0; }
 @media (max-width: 520px) { .hv-lede .hv-l1, .hv-lede .hv-l3 { white-space: normal; } }
 .why-in > div { align-content: start; }
+
+/* trade page: built for trade (10 Oct) */
+.trade-pills { list-style: none; margin: 4px 0 22px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.trade-pills li { display: inline-flex; align-items: center; gap: 8px; background: rgba(5,5,5,.55); border: 1px solid var(--green); color: var(--white); border-radius: 99px; padding: 8px 14px; font-weight: 700; font-size: 14px; }
+.trade-pills .ic { width: 18px; height: 18px; color: var(--green); }
+.veh { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px 28px; align-items: center; border-top: 2px solid var(--line-2); border-bottom: 2px solid var(--line-2); padding: 20px 0; margin-bottom: 28px; }
+.veh-lab { font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 13px; color: var(--green); }
+.veh ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 20px; }
+.veh li { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; }
+.veh li .ic { width: 28px; height: 28px; color: var(--green); flex: none; }
+@media (max-width: 900px) { .veh { grid-template-columns: minmax(0, 1fr); } .veh ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.equip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 900px) { .equip { grid-template-columns: minmax(0, 1fr); } }
+.eq-ph { aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; margin-bottom: 16px; background: var(--ink-3); }
+.eq-ph img { width: 100%; height: 100%; object-fit: cover; }
+.eq .kicker { color: var(--green); }
+.eq h3 { margin: 8px 0 6px; font-size: clamp(20px, 1.8vw, 26px); }
+.eq p { margin: 0; color: var(--mute); font-size: 16px; max-width: 42ch; }
+.bt-h { font-stretch: 125%; font-weight: 900; text-transform: uppercase; line-height: .95; font-size: clamp(30px, 3.8vw, 58px) !important; }
+@media (max-width: 560px) { .bt-h { font-size: clamp(26px, 7.6vw, 36px) !important; } }
+h2.bt-h, h2.bt-h.fit-two, h2.bt-h.fit-lines { font-size: clamp(30px, 3.8vw, 58px) !important; }
+h2.col-h, h2.col-h.fit-two, h2.col-h.fit-lines { font-size: clamp(30px, 3.6vw, 52px) !important; }
+@media (max-width: 560px) { h2.bt-h, h2.bt-h.fit-two { font-size: clamp(26px, 7.6vw, 36px) !important; } h2.col-h, h2.col-h.fit-two { font-size: clamp(24px, 7.2vw, 34px) !important; } }
