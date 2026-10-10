@@ -12,14 +12,24 @@ ${freeGrid({ n: '03' })}
 <section class="sec on-ink2" aria-labelledby="biz-h">
   <div class="wrap">
     ${bay('04')}
-    <a class="door biz-door" href="${u('recycle-corporate-services/')}">
+    <div class="door biz-door">
       ${img('forklift-bale', { sizes: '100vw' })}
-      <span class="kicker">Trade and corporate</span>
-      <h2 id="biz-h" class="h2l">Recycling for business</h2>
-      <p>Scheduled collections and on-site bins, or bring it in on a semi. E-waste to AS/NZS 5377. All trades and businesses save ${SITE.discount.trade}% on every waste type.</p>
-      <ul><li>Cardboard</li><li>E-waste</li><li>Mattresses</li><li>Scrap metal</li><li>Pallets</li><li>Gas bottles</li></ul>
-      <span class="link">Trade services${icon('arrow')}</span>
-    </a>
+      <div class="biz-in">
+        <div class="biz-l">
+          <span class="kicker">Built for trade. Equipped for business.</span>
+          <h2 id="biz-h">Trade &amp;<br>Commercial<br>Services</h2>
+          <ul class="trade-pills"><li>${icon('tag')}${SITE.discount.trade}% trade discount</li><li>${icon('hand')}Assisted unloading</li><li>${icon('truck')}Commercial vehicle access</li></ul>
+          <p class="biz-strap">Drive in. Unload. Recycle. Drive out.</p>
+          <a class="btn" href="${u('recycle-corporate-services/')}">Trade &amp; commercial services${icon('arrow')}</a>
+        </div>
+        <div class="biz-r">
+          <p>Recycle North Geelong offers a dedicated Trade &amp; Commercial Recycling Service, providing trade customers with a ${SITE.discount.trade}% discount on standard rates, assisted unloading and purpose-built facilities designed to make recycling faster, easier and more cost-effective.</p>
+          <p>Our undercover, all-weather facility accommodates a wide range of commercial vehicles, including utes, trailers, tray trucks, tautliners, tipping trailers, tip trucks, skip bin trucks and hook bin trucks.</p>
+          <p>With experienced operators and specialised equipment on site, we provide forklift-assisted unloading for palletised and bulky commercial loads, while our excavators can efficiently unload large volumes of green waste and other suitable bulk materials.</p>
+          <p>Our dedicated trade unloading areas allow contractors, builders, landscapers, transport operators and commercial businesses to unload efficiently, minimising downtime and getting vehicles back on the road sooner.</p>
+        </div>
+      </div>
+    </div>
     ${jimsPanel()}
   </div>
 </section>

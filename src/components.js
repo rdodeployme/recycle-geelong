@@ -6,10 +6,7 @@ export function finder({ id = 'finder', heading = true, n = '01' } = {}) {
   return `<section class="sec on-paper" id="${id}" aria-labelledby="${id}-h">
   <div class="wrap">
     ${bay(n)}
-    ${heading ? `<div class="sec-head split">
-      <div class="hang"><h2 id="${id}-h">What have you got?</h2></div>
-      <p class="lede">Type anything. See if we take it, what it costs and where it goes next.</p>
-    </div>` : `<h2 id="${id}-h" class="sr-only">Search what we take</h2>`}
+    ${heading ? `<div class="finder-row"><div class="finder-head"><h2 id="${id}-h">What have you got?</h2><p>Type anything. See if we take it, what it costs and where it goes next.</p></div>` : `<h2 id="${id}-h" class="sr-only">Search what we take</h2>`}
     <div class="finder-box" data-finder>
       <div class="finder-input">
         ${icon('search')}
@@ -22,7 +19,7 @@ export function finder({ id = 'finder', heading = true, n = '01' } = {}) {
       <div class="no-match" hidden>
         <p style="margin:0"><b>Not sure about that one.</b> Call us on <a href="${SITE.phoneHref}">${SITE.phone}</a> and we'll tell you before you load up, or see the <a href="${u('what-we-take/')}">full list of what we take</a>.</p>
       </div>
-    </div>
+    </div>${heading ? '</div>' : ''}
   </div>
 </section>`;
 }
@@ -272,8 +269,8 @@ export function registerBand() {
     <div><h2 id="reg-h" class="lines"><span class="ln">Register once.</span><span class="ln">Save every visit.</span></h2></div>
     <div>
       <div class="reg-tiers">
-        <div><b class="reg-pc">${SITE.discount.resident}%</b><p><b>Residents and locals</b> in these council areas:</p><div class="councils">${SITE.discountCouncils.map((c) => `<span>${c}</span>`).join('')}</div></div>
-        <div><b class="reg-pc">${SITE.discount.trade}%</b><p><b>All trades and businesses</b>, on every waste type, including general and building waste.</p></div>
+        <div class="tier"><div class="tier-ph">${img('unload-car-cardboard', { sizes: '(max-width: 700px) 100vw, 25vw', alt: 'Residents unloading boxes from their car boots at the cardboard bays', style: 'object-position:30% 70%' })}<span class="tier-tag">Residents</span></div><b class="reg-pc">${SITE.discount.resident}%</b><p><b>Residents and locals</b> in these council areas:</p><div class="councils">${SITE.discountCouncils.map((c) => `<span>${c}</span>`).join('')}</div></div>
+        <div class="tier"><div class="tier-ph">${img('trailer-skip', { sizes: '(max-width: 700px) 100vw, 25vw', alt: 'A tradie unloading into a skip in the tipping truck and trailer area, with a staff member helping', style: 'object-position:55% 45%' })}<span class="tier-tag">Tradies</span></div><b class="reg-pc">${SITE.discount.trade}%</b><p><b>All trades and businesses</b>, on every waste type, including general and building waste.</p></div>
       </div>
       <div class="btns">
         <a class="btn black" href="${SITE.links.registerResident}">Register as a resident${icon('arrow')}</a>
@@ -396,7 +393,7 @@ export function heroVideo() {
       <h1 id="hero-h" class="lines calm"><span class="ln"><span class="w">Drive in.</span></span><span class="ln"><span class="w">Drop off.</span></span><span class="ln"><span class="w g">Drive out.</span></span></h1>
       <div class="assist" role="note"><span class="assist-ic">${icon('hand')}</span><b>Assisted unloading</b><span>Our staff help you unload. Victoria's only transfer station and recycling centre that does.</span></div>
     </div>
-    <p class="hv-lede"><span class="hv-l1">Geelong's only undercover transfer station.</span> <span class="hv-l2">Accepting cardboard, plastics, green waste, metal, e-waste, mattresses and more.</span> <span class="hv-l3 nw">Open Monday to Saturday, 7:30am – 4pm.</span></p>
+    <p class="hv-lede"><span class="hv-l1">Geelong's only undercover transfer station.</span> <span class="hv-l2">Accepting general and household rubbish, green waste, whitegoods, demolition waste, cardboard, plastics, metal, e-waste, mattresses and more.</span> <span class="hv-l3 nw">Open Monday to Saturday, 7:30am – 4pm.</span></p>
     <div class="hero-ctas">
       <a class="btn" href="#finder">What can I bring?${icon('down')}</a>
       <a class="btn ghost" href="#cost">Price my load</a>
