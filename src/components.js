@@ -298,15 +298,24 @@ export function jimsPanel({ cls = '' } = {}) {
   </div>`;
 }
 
-export function tradieTuesday({ cls = '' } = {}) {
+export function tradieTuesday({ cls = '', photo = true } = {}) {
   const D = SITE.discount, H = SITE.tradeHours;
-  return `<div class="tt ${cls}">
-      <div><span class="tt-day">Tradie Tuesdays</span><b class="tt-pc">${D.tradieTuesday}% off</b></div>
-      <div>
-        <ul class="tt-list"><li>${icon('check')}<span><b>${D.tradieTuesday}% off</b> your load</span></li><li>${icon('check')}<span>We <b>help you unload</b></span></li><li>${icon('check')}<span>A <b>sausage on us</b></span></li></ul>
-        <p class="tt-hours">Trades get early access from ${H.early}, six days a week. Late drop-offs by appointment up to ${H.lateBy}, Monday to Saturday.</p>
-        <a class="btn" href="${SITE.links.registerTrade}">Register as a tradie${icon('arrow')}</a>
+  return `<div class="tt2 ${cls}${photo ? ' has-ph' : ''}">
+      <div class="tt2-body">
+        <span class="tt2-day">${icon('calendar')}Every Tuesday</span>
+        <h3 class="tt2-h">Tradie Tuesdays</h3>
+        <b class="tt2-pc">${D.tradieTuesday}<span>% off</span></b>
+        <ul class="tt2-perks">
+          <li>${icon('tag')}<span><b>${D.tradieTuesday}% off</b> your load</span></li>
+          <li>${icon('hand')}<span>We <b>help you unload</b></span></li>
+          <li>${icon('sausage')}<span>A <b>sausage on us</b></span></li>
+        </ul>
+        <div class="tt2-foot">
+          <a class="btn" href="${SITE.links.registerTrade}">Register as a tradie${icon('arrow')}</a>
+          <p>Trades: early access from ${H.early}, six days a week. Late drop&#8209;offs by appointment up to ${H.lateBy}, Monday to Saturday.</p>
+        </div>
       </div>
+      ${photo ? `<div class="tt2-ph">${img('unload-trailer', { sizes: '(max-width: 900px) 100vw, 40vw', alt: 'A Recycle North Geelong staff member helping a customer unload a trailer' })}<span class="tt2-badge">We help you unload</span></div>` : ''}
     </div>`;
 }
 
@@ -322,18 +331,21 @@ export function whyStrip() {
 
 export function dealsSection({ n = '07', tt = true } = {}) {
   const D = SITE.discount;
+  const partners = SITE.partners.filter((o) => o.logo);
+  const extra = SITE.partners.filter((o) => !o.logo);
   return `<section class="sec on-paper" id="discounts" aria-labelledby="deals-h">
   <div class="wrap">
     ${bay(n)}
     <div class="sec-head split"><div class="hang"><h2 id="deals-h" class="lines"><span class="ln">More ways</span><span class="ln">to save.</span></h2></div><p class="lede">As a rule, we're half the price of landfill. These discounts take it further. Ask at the gate; ID may be required.</p></div>
     ${tt ? tradieTuesday() : ''}
-    <div class="lg">
-      <div class="lg-head"><b class="lg-pc">${D.trade}%</b><div><h3>Front line</h3><p>Nurses, police, fire, ambulance and SES.</p></div></div>
-      <div class="lt-grid">${SITE.frontline.map(logoTile).join('')}</div>
+    <div class="grp">
+      <div class="grp-head"><span class="pc-badge">${D.trade}%<small>off</small></span><div><h3>Front line</h3><p>Nurses, police, fire, ambulance and SES.</p></div></div>
+      <div class="lt-grid lt-6">${SITE.frontline.map(logoTile).join('')}</div>
     </div>
-    <div class="lg">
-      <div class="lg-head"><b class="lg-pc">${D.trade}%</b><div><h3>Local employers and partners</h3><p>Staff of these Geelong organisations, plus real estate agents.</p></div></div>
-      <div class="lt-grid">${SITE.partners.map(logoTile).join('')}</div>
+    <div class="grp">
+      <div class="grp-head"><span class="pc-badge">${D.trade}%<small>off</small></span><div><h3>Local employers and partners</h3><p>Staff of these Geelong organisations.</p></div></div>
+      <div class="lt-grid lt-4">${partners.map(logoTile).join('')}</div>
+      ${extra.length ? `<p class="grp-extra">${extra.map((o) => `${o.icon ? icon(o.icon) : ''}<span><b>${o.n}</b> get ${D.trade}% off too.</span>`).join('')}</p>` : ''}
     </div>
   </div>
 </section>`;

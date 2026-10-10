@@ -269,7 +269,7 @@ export function trade() {
       <p>On every waste type, including general waste and building materials. Register once and it applies every time you come in.</p>
       <div class="btns"><a class="btn black" href="${SITE.links.registerTrade}">Register your business${icon('arrow')}</a></div>
     </div>
-    ${tradieTuesday({ cls: 'dark' })}
+    ${tradieTuesday({ cls: 'dark', photo: false })}
   </div>
 </section>
 <section class="sec" aria-labelledby="jims-t-h">

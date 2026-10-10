@@ -18,6 +18,8 @@ const I = {
   nurse: '<path d="M12 3v6M9 6h6"/><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M12 14v4M10 16h4"/>',
   house: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
   umbrella: '<path d="M3 12a9 9 0 0118 0z"/><path d="M12 12v7a2 2 0 01-4 0"/>',
+  calendar: '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  sausage: '<rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M7 11.2c1.2.9 2.3.9 3.5 0M13.5 12.8c1.2-.9 2.3-.9 3.5 0"/>',
   phone: '<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/>',
   tyre: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 3.5v4.5M12 16v4.5M3.5 12H8M16 12h4.5"/>',
   gas: '<path d="M8 8a4 4 0 0 1 8 0v12H8z"/><path d="M10 4h4M12 2.5V4"/><path d="M8 12h8"/>',
