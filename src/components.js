@@ -241,7 +241,7 @@ export function visitSteps({ n = '06' } = {}) {
       </div>
     </div>
     <div class="steps">
-      ${S.map(([t, d, ph, vid, pos], i) => `<div class="step rv"><span class="num">${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p><div class="step-photo${ph === 'sort-compare' ? ' sortcmp' : ''}">${img(ph, { sizes: '(max-width: 900px) 90vw, 22vw', style: `object-position:${pos}` })}${ph === 'sort-compare' ? '<span class="sc-tag bad">Unsorted</span><span class="sc-tag good">Sorted</span>' : ''}${vid ? `<video class="step-vid" data-src="${u(`video/${vid}.mp4`)}" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>` : ''}</div></div>`).join('')}
+      ${S.map(([t, d, ph, vid, pos], i) => `<div class="step rv"><span class="num">${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p><div class="step-photo${ph === 'sort-compare' ? ' sortcmp' : ''}">${img(ph, { sizes: '(max-width: 900px) 90vw, 22vw', style: `object-position:${pos}` })}${ph === 'sort-compare' ? '<span class="sc-tag bad">Unsorted</span><span class="sc-tag good">Sorted &amp; saved</span>' : ''}${vid ? `<video class="step-vid" data-src="${u(`video/${vid}.mp4`)}" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>` : ''}</div></div>`).join('')}
     </div>
   </div>
 </section>`;
@@ -352,7 +352,7 @@ export function dealsSection({ n = '07', tt = true } = {}) {
 }
 
 export function sortCompare({ sizes = '100vw', cls = '' } = {}) {
-  return `<figure class="sortcmp ${cls}">${img('sort-compare', { sizes })}<span class="sc-tag bad">Unsorted</span><span class="sc-tag good">Sorted</span></figure>`;
+  return `<figure class="sortcmp ${cls}">${img('sort-compare', { sizes })}<span class="sc-tag bad">Unsorted</span><span class="sc-tag good">Sorted &amp; saved</span></figure>`;
 }
 
 export function pickupList() {

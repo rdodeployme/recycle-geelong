@@ -1,6 +1,8 @@
 import { SITE, HOURS } from './data/site.js';
 import { sprite } from './icons.js';
 import { u, esc, icon } from './lib.js';
+// Changes every build so browsers fetch the new CSS/JS instead of a cached copy.
+const BUILD_V = Date.now().toString(36);
 
 export const NAV = [
   ['price-list/', 'Prices'],
@@ -65,7 +67,7 @@ ${INDEX ? '' : '<meta name="robots" content="noindex, nofollow">'}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${u('img/favicon.png')}" type="image/png">
 <link rel="preload" href="${u('fonts/archivo.woff2')}" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${u('assets/main.css')}">
+<link rel="stylesheet" href="${u('assets/main.css')}?v=${BUILD_V}">
 <script>document.documentElement.classList.replace('no-js','js');window.__BASE=${JSON.stringify(u(''))};</script>
 <script type="application/ld+json">${JSON.stringify(jsonLd())}</script>
 ${ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : ''}
@@ -97,7 +99,7 @@ ${notice}
 ${body}
 </main>
 ${footer()}
-<script type="module" src="${u('assets/main.js')}"></script>
+<script type="module" src="${u('assets/main.js')}?v=${BUILD_V}"></script>
 ${journey ? '' : ''}
 </body>
 </html>`;

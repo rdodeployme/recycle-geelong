@@ -1292,3 +1292,5 @@ h1.fit-two, h2.fit-two, h3.fit-two { font-size: clamp(var(--fs-min, 22px), calc(
 .grp .lt img[src*="powercor"], .grp .lt img[src*="deakin"], .grp .lt img[src*="epworth"], .grp .lt img[src*="victoria-police"], .grp .lt img[src*="cfa"], .grp .lt img[src*="vicses"] { height: 88px; }
 .grp .lt-4 .lt { height: 140px; }
 @media (max-width: 560px) { .grp .lt-6 .lt img, .grp .lt-4 .lt img { height: 56px; } .grp .lt img[src*="powercor"], .grp .lt img[src*="deakin"], .grp .lt img[src*="epworth"], .grp .lt img[src*="victoria-police"], .grp .lt img[src*="cfa"], .grp .lt img[src*="vicses"] { height: 64px; } .grp .lt-4 .lt { height: 104px; } }
+.step-photo.sortcmp .sc-tag { font-size: 11px; padding: 5px 8px; }
+.step-photo.sortcmp .sc-tag.good { top: auto; bottom: 10px; right: 10px; }
