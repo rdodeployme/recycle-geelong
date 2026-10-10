@@ -1294,3 +1294,7 @@ h1.fit-two, h2.fit-two, h3.fit-two { font-size: clamp(var(--fs-min, 22px), calc(
 @media (max-width: 560px) { .grp .lt-6 .lt img, .grp .lt-4 .lt img { height: 56px; } .grp .lt img[src*="powercor"], .grp .lt img[src*="deakin"], .grp .lt img[src*="epworth"], .grp .lt img[src*="victoria-police"], .grp .lt img[src*="cfa"], .grp .lt img[src*="vicses"] { height: 64px; } .grp .lt-4 .lt { height: 104px; } }
 .step-photo.sortcmp .sc-tag { font-size: 11px; padding: 5px 8px; }
 .step-photo.sortcmp .sc-tag.good { top: auto; bottom: 10px; right: 10px; }
+.hv-lede .hv-l1, .hv-lede .hv-l2, .hv-lede .hv-l3 { display: block; }
+.hv-lede .hv-l1 { white-space: nowrap; }
+.hv-lede .hv-l2 { color: var(--green); font-weight: 600; margin: 2px 0; }
+@media (max-width: 520px) { .hv-lede .hv-l1, .hv-lede .hv-l3 { white-space: normal; } }

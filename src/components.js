@@ -396,7 +396,7 @@ export function heroVideo() {
       <h1 id="hero-h" class="lines calm"><span class="ln"><span class="w">Drive in.</span></span><span class="ln"><span class="w">Drop off.</span></span><span class="ln"><span class="w g">Drive out.</span></span></h1>
       <div class="assist" role="note"><span class="assist-ic">${icon('hand')}</span><b>Assisted unloading</b><span>Our staff help you unload. Victoria's only transfer station and recycling centre that does.</span></div>
     </div>
-    <p class="hv-lede"><span class="nw">Geelong's only undercover transfer station.</span> <span class="nw">Open Monday to Saturday, 7:30am – 4pm.</span></p>
+    <p class="hv-lede"><span class="hv-l1">Geelong's only undercover transfer station.</span> <span class="hv-l2">Accepting cardboard, plastics, green waste, metal, e-waste, mattresses and more.</span> <span class="hv-l3 nw">Open Monday to Saturday, 7:30am – 4pm.</span></p>
     <div class="hero-ctas">
       <a class="btn" href="#finder">What can I bring?${icon('down')}</a>
       <a class="btn ghost" href="#cost">Price my load</a>
