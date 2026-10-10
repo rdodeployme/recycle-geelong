@@ -1298,3 +1298,4 @@ h1.fit-two, h2.fit-two, h3.fit-two { font-size: clamp(var(--fs-min, 22px), calc(
 .hv-lede .hv-l1 { white-space: nowrap; }
 .hv-lede .hv-l2 { color: var(--green); font-weight: 600; margin: 2px 0; }
 @media (max-width: 520px) { .hv-lede .hv-l1, .hv-lede .hv-l3 { white-space: normal; } }
+.why-in > div { align-content: start; }

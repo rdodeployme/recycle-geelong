@@ -324,7 +324,7 @@ export function whyStrip() {
   <div class="wrap why-in">
     <div>${icon('hand')}<b>We help you unload</b><span>Victoria's only transfer station and recycling centre that helps you unload.</span></div>
     <div>${icon('umbrella')}<b>Never closed for weather</b><span>Fully undercover. No rain, no mess, no fuss.</span></div>
-    <div>${icon('tag')}<b>Half the price of landfill</b><span>As a rule. Plus 12 things you can drop off free.</span></div>
+    <div>${icon('tag')}<b>Sort &amp; save</b><span>As a general rule, recycling costs about 50% of landfill in Victoria. Sort your load and save.</span></div>
   </div>
 </section>`;
 }
