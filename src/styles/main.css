@@ -1231,3 +1231,12 @@ h1.fit-two, h2.fit-two, h3.fit-two { font-size: clamp(var(--fs-min, 22px), calc(
 @media (max-width: 560px) { .col-h { font-size: clamp(24px, 7.2vw, 34px) !important; } }
 .jims-h { font-size: clamp(24px, 2.5vw, 38px) !important; font-stretch: 112%; }
 @media (max-width: 560px) { .jims-h { font-size: clamp(20px, 6vw, 26px) !important; } }
+
+/* steps: equal columns, rows aligned across steps so the photos sit in one line (10 Oct) */
+@media (min-width: 901px) {
+  .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; column-gap: 0; }
+  .step { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; align-content: start; padding: 28px 20px 30px !important; }
+  .step .num { margin-bottom: 18px; }
+  .step h3 { align-self: start; }
+  .step-photo { align-self: end; margin-top: 18px; }
+}
