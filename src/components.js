@@ -326,6 +326,30 @@ export function whyStrip() {
 </section>`;
 }
 
+export function notATip() {
+  return `<section class="nat" aria-labelledby="nat-h">
+  ${img('hall-hero', { sizes: '100vw', cls: 'nat-bg', alt: '' })}
+  <div class="wrap nat-in">
+    <div class="nat-l">
+      <h2 id="nat-h" class="nat-h">Not a tip.<br><span class="g">A recovery<br>centre.</span></h2>
+      <p class="nat-sub">It's a transfer station.</p>
+    </div>
+    <div class="nat-r">
+      <ul class="nat-like">
+        <li>Looks like a tip.</li>
+        <li>Works like a tip.</li>
+        <li class="nope">Doesn't smell like a tip.</li>
+      </ul>
+      <ul class="nat-pts">
+        <li>${icon('check')}No punctures</li>
+        <li>${icon('umbrella')}Open regardless of the weather</li>
+        <li>${icon('hand')}We help you unload</li>
+      </ul>
+    </div>
+  </div>
+</section>`;
+}
+
 export function dealsSection({ n = '07', tt = true } = {}) {
   const D = SITE.discount;
   const partners = SITE.partners.filter((o) => o.logo);

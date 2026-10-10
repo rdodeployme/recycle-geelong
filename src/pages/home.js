@@ -1,11 +1,12 @@
 import { SITE } from '../data/site.js';
 import { u, img, icon, bay, alt } from '../lib.js';
-import { finder, estimator, freeGrid, journey, visitSteps, registerBand, partnersList, jimsPanel, dealsSection, whyStrip, heroVideo, marquee, photoRun, scale, tourDialog } from '../components.js';
+import { finder, estimator, freeGrid, journey, visitSteps, registerBand, partnersList, jimsPanel, dealsSection, whyStrip, notATip, heroVideo, marquee, photoRun, scale, tourDialog } from '../components.js';
 
 export function home() {
   const body = `
 ${heroVideo()}
 ${whyStrip()}
+${notATip()}
 ${finder({ n: '01' })}
 ${estimator({ n: '02' })}
 ${freeGrid({ n: '03' })}
