@@ -37,6 +37,11 @@ const index = process.env.INDEX === '1';
 fs.writeFileSync(path.join(OUT, 'robots.txt'), index ? `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n` : 'User-agent: *\nDisallow: /\n');
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.filter((p) => !p.file).map((p) => `  <url><loc>${SITE.url}/${p.path}</loc></url>`).join('\n')}\n</urlset>\n`);
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
+// Production: drop the staging noindex header from the Netlify config.
+if (index && fs.existsSync(path.join(OUT, 'netlify.toml'))) {
+  const toml = path.join(OUT, 'netlify.toml');
+  fs.writeFileSync(toml, fs.readFileSync(toml, 'utf8').replace(/^\s*X-Robots-Tag = .*\n/m, ''));
+}
 
 const size = (d) => fs.readdirSync(d, { withFileTypes: true }).reduce((s, e) => s + (e.isDirectory() ? size(path.join(d, e.name)) : fs.statSync(path.join(d, e.name)).size), 0);
 console.log(`built ${pages.length} pages · ${(size(OUT) / 1e6).toFixed(1)} MB`);
