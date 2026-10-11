@@ -1,0 +1,605 @@
+{
+ "hall-hero": {
+  "alt": "The undercover hall at Recycle North Geelong, with the gas bottle, fire extinguisher and car battery cages under hanging signs",
+  "w": 2560,
+  "h": 1920,
+  "sizes": {
+   "2400": "img/hall-hero-2400.webp",
+   "1280": "img/hall-hero-1280.webp"
+  },
+  "small": false
+ },
+ "waste-oil-station": {
+  "alt": "The waste oil station with bays for paint, motor oil, hydraulic oil and engine oils",
+  "w": 2560,
+  "h": 1920,
+  "sizes": {
+   "1920": "img/waste-oil-station-1920.webp",
+   "960": "img/waste-oil-station-960.webp"
+  },
+  "small": false
+ },
+ "forklift-cardboard": {
+  "alt": "A forklift carrying a bale of cardboard past the cardboard and polystyrene bays",
+  "w": 2560,
+  "h": 1920,
+  "sizes": {
+   "1920": "img/forklift-cardboard-1920.webp",
+   "960": "img/forklift-cardboard-960.webp"
+  },
+  "small": false
+ },
+ "forklift-bale": {
+  "alt": "A forklift moving a baled block of cardboard down the hall",
+  "w": 1920,
+  "h": 2560,
+  "sizes": {
+   "1200": "img/forklift-bale-1200.webp",
+   "600": "img/forklift-bale-600.webp"
+  },
+  "small": false
+ },
+ "car-sedan-bays": {
+  "alt": "Marked car and sedan unloading bays beside a row of general rubbish skips",
+  "w": 1821,
+  "h": 1366,
+  "sizes": {
+   "1821": "img/car-sedan-bays-1821.webp",
+   "960": "img/car-sedan-bays-960.webp"
+  },
+  "small": false
+ },
+ "skips-row": {
+  "alt": "A long row of skips and cages under cover along the hall",
+  "w": 1821,
+  "h": 1366,
+  "sizes": {
+   "1821": "img/skips-row-1821.webp",
+   "960": "img/skips-row-960.webp"
+  },
+  "small": false
+ },
+ "green-bins": {
+  "alt": "Rows of wheelie bins and cages at the recycling stations",
+  "w": 1821,
+  "h": 1366,
+  "sizes": {
+   "1821": "img/green-bins-1821.webp",
+   "960": "img/green-bins-960.webp"
+  },
+  "small": false
+ },
+ "tyres-bay": {
+  "alt": "The tyres bay inside the hall",
+  "w": 1821,
+  "h": 1366,
+  "sizes": {
+   "1821": "img/tyres-bay-1821.webp",
+   "960": "img/tyres-bay-960.webp"
+  },
+  "small": false
+ },
+ "paint-wide": {
+  "alt": "The paint drop-off and wheelie bins along the hall",
+  "w": 1821,
+  "h": 1366,
+  "sizes": {
+   "1821": "img/paint-wide-1821.webp",
+   "960": "img/paint-wide-960.webp"
+  },
+  "small": false
+ },
+ "cardboard-cage": {
+  "alt": "Flattened cardboard in a cage under a cardboard sign",
+  "w": 1920,
+  "h": 2560,
+  "sizes": {
+   "1200": "img/cardboard-cage-1200.webp",
+   "600": "img/cardboard-cage-600.webp"
+  },
+  "small": false
+ },
+ "mattresses": {
+  "alt": "Mattresses stacked at the mattress recycling area",
+  "w": 1915,
+  "h": 2560,
+  "sizes": {
+   "1200": "img/mattresses-1200.webp",
+   "600": "img/mattresses-600.webp"
+  },
+  "small": false
+ },
+ "bedding": {
+  "alt": "A cage of bedding and pillows",
+  "w": 1915,
+  "h": 2560,
+  "sizes": {
+   "1200": "img/bedding-1200.webp",
+   "600": "img/bedding-600.webp"
+  },
+  "small": false
+ },
+ "excluded-board": {
+  "alt": "The excluded items board at the entry, next to a numbered bay sign",
+  "w": 1920,
+  "h": 2560,
+  "sizes": {
+   "1200": "img/excluded-board-1200.webp",
+   "600": "img/excluded-board-600.webp"
+  },
+  "small": false
+ },
+ "hydraulic-oil": {
+  "alt": "The hydraulic oil tank behind a safety rail",
+  "w": 1920,
+  "h": 2560,
+  "sizes": {
+   "1200": "img/hydraulic-oil-1200.webp",
+   "600": "img/hydraulic-oil-600.webp"
+  },
+  "small": false
+ },
+ "polystyrene-cages": {
+  "alt": "Cages of clean polystyrene packaging",
+  "w": 1920,
+  "h": 2560,
+  "sizes": {
+   "1200": "img/polystyrene-cages-1200.webp",
+   "600": "img/polystyrene-cages-600.webp"
+  },
+  "small": false
+ },
+ "motor-oils": {
+  "alt": "The motor oil drop-off tray",
+  "w": 1920,
+  "h": 2560,
+  "sizes": {
+   "1200": "img/motor-oils-1200.webp",
+   "600": "img/motor-oils-600.webp"
+  },
+  "small": false
+ },
+ "fabric-clothing": {
+  "alt": "Fabric cage and clothing donation bin in the car and sedan unloading area",
+  "w": 1920,
+  "h": 2560,
+  "sizes": {
+   "1200": "img/fabric-clothing-1200.webp",
+   "600": "img/fabric-clothing-600.webp"
+  },
+  "small": false
+ },
+ "whitegoods": {
+  "alt": "Fridges and washing machines lined up under the whitegoods sign",
+  "w": 1915,
+  "h": 2560,
+  "sizes": {
+   "1200": "img/whitegoods-1200.webp",
+   "600": "img/whitegoods-600.webp"
+  },
+  "small": false
+ },
+ "unload-car-cardboard": {
+  "alt": "A customer unloading boxes from a car at the cardboard bays",
+  "w": 481,
+  "h": 640,
+  "sizes": {
+   "481": "img/unload-car-cardboard-481.webp"
+  },
+  "small": true
+ },
+ "unload-car": {
+  "alt": "A car parked in an unloading bay inside the hall",
+  "w": 481,
+  "h": 640,
+  "sizes": {
+   "481": "img/unload-car-481.webp"
+  },
+  "small": true
+ },
+ "unload-ute": {
+  "alt": "A ute in the car and sedan unloading area",
+  "w": 481,
+  "h": 640,
+  "sizes": {
+   "481": "img/unload-ute-481.webp"
+  },
+  "small": true
+ },
+ "unload-trailer": {
+  "alt": "A customer unloading a trailer beside the cardboard bays",
+  "w": 481,
+  "h": 640,
+  "sizes": {
+   "481": "img/unload-trailer-481.webp"
+  },
+  "small": true
+ },
+ "green-waste": {
+  "alt": "Customers unloading green waste into a skip",
+  "w": 481,
+  "h": 640,
+  "sizes": {
+   "481": "img/green-waste-481.webp"
+  },
+  "small": true
+ },
+ "trailer-skip": {
+  "alt": "Unloading a trailer into a skip at the materials area",
+  "w": 481,
+  "h": 640,
+  "sizes": {
+   "481": "img/trailer-skip-481.webp"
+  },
+  "small": true
+ },
+ "excavator-bin": {
+  "alt": "An excavator loading a hook bin inside the hall",
+  "w": 481,
+  "h": 640,
+  "sizes": {
+   "481": "img/excavator-bin-481.webp"
+  },
+  "small": true
+ },
+ "gas-aerosols": {
+  "alt": "Gas bottles, fire extinguishers and aerosol cans brought in for recycling",
+  "w": 640,
+  "h": 481,
+  "sizes": {
+   "640": "img/gas-aerosols-640.webp"
+  },
+  "small": true
+ },
+ "paint-tins": {
+  "alt": "Paint tins under the paint sign",
+  "w": 481,
+  "h": 640,
+  "sizes": {
+   "481": "img/paint-tins-481.webp"
+  },
+  "small": true
+ },
+ "general-rubbish": {
+  "alt": "General rubbish skips along marked bays",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/general-rubbish-640.webp"
+  },
+  "small": true
+ },
+ "car-sedan-sign": {
+  "alt": "The car and sedan unloading area sign over a row of skips",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/car-sedan-sign-640.webp"
+  },
+  "small": true
+ },
+ "car-batteries": {
+  "alt": "Cages for car batteries in the unloading area",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/car-batteries-640.webp"
+  },
+  "small": true
+ },
+ "cardboard-row": {
+  "alt": "The row of cardboard cages under the cardboard signs",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/cardboard-row-640.webp"
+  },
+  "small": true
+ },
+ "bins-small-items": {
+  "alt": "Wheelie bins for food waste, aerosol cans and e-waste",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/bins-small-items-480.webp"
+  },
+  "small": true
+ },
+ "car-sedan-wide": {
+  "alt": "The car and sedan unloading area, with general rubbish skips along marked bays",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/car-sedan-wide-640.webp"
+  },
+  "small": true
+ },
+ "trailer-area": {
+  "alt": "The tipping truck and trailer area, with its own lane for commercial vehicles",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/trailer-area-640.webp"
+  },
+  "small": true
+ },
+ "building-materials": {
+  "alt": "Skips for sorted building materials",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/building-materials-640.webp"
+  },
+  "small": true
+ },
+ "scrap-steel-aisle": {
+  "alt": "The aisle past the scrap steel and car parts bins",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/scrap-steel-aisle-640.webp"
+  },
+  "small": true
+ },
+ "metals-area": {
+  "alt": "The recycled metals area, with bins for scrap steel",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/metals-area-640.webp"
+  },
+  "small": true
+ },
+ "small-items-row": {
+  "alt": "A row of wheelie bins for smaller recyclables near the exit",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/small-items-row-640.webp"
+  },
+  "small": true
+ },
+ "rubbish-bays-tall": {
+  "alt": "General rubbish skips along the marked unloading bays",
+  "w": 294,
+  "h": 640,
+  "sizes": {
+   "294": "img/rubbish-bays-tall-294.webp"
+  },
+  "small": true
+ },
+ "hall-long": {
+  "alt": "Looking down the length of the hall",
+  "w": 382,
+  "h": 640,
+  "sizes": {
+   "382": "img/hall-long-382.webp"
+  },
+  "small": true
+ },
+ "cardboard-row-2": {
+  "alt": "Cardboard cages under the hanging cardboard signs",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/cardboard-row-2-640.webp"
+  },
+  "small": true
+ },
+ "ewaste-cages": {
+  "alt": "E-waste and TV cages along the unloading area",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/ewaste-cages-480.webp"
+  },
+  "small": true
+ },
+ "cardboard-signs": {
+  "alt": "Cardboard cages, with the polystyrene bays further along",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/cardboard-signs-480.webp"
+  },
+  "small": true
+ },
+ "gas-arrow": {
+  "alt": "A floor arrow leading to the gas bottle and tyre bays",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/gas-arrow-480.webp"
+  },
+  "small": true
+ },
+ "oil-station-tall": {
+  "alt": "The oil station drop-off, with the paint cages beside it",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/oil-station-tall-480.webp"
+  },
+  "small": true
+ },
+ "skip-single": {
+  "alt": "A general rubbish skip in front of the polystyrene and paper cages",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/skip-single-480.webp"
+  },
+  "small": true
+ },
+ "oil-station": {
+  "alt": "The oil station drop-off sign beside the paint cages and waste oil tanks",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/oil-station-640.webp"
+  },
+  "small": true
+ },
+ "oil-containers": {
+  "alt": "Oil container and oil filter cages at the oil station",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/oil-containers-480.webp"
+  },
+  "small": true
+ },
+ "tyres-cages": {
+  "alt": "The tyres bay, with separate cages for car tyres",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/tyres-cages-480.webp"
+  },
+  "small": true
+ },
+ "furniture-dropoff": {
+  "alt": "Furniture set down at the furniture drop-off sign",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/furniture-dropoff-480.webp"
+  },
+  "small": true
+ },
+ "clothing-hub": {
+  "alt": "The clothing donation hub in the unloading area",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/clothing-hub-480.webp"
+  },
+  "small": true
+ },
+ "printers-cage": {
+  "alt": "The printers cage",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/printers-cage-480.webp"
+  },
+  "small": true
+ },
+ "ewaste-cage": {
+  "alt": "An e-waste cage",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/ewaste-cage-480.webp"
+  },
+  "small": true
+ },
+ "oil-station-wide": {
+  "alt": "The waste oil station, seen from the end of the hall",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/oil-station-wide-640.webp"
+  },
+  "small": true
+ },
+ "gas-cages": {
+  "alt": "Gas bottle and gas canister cages beside a sign asking that pets stay in the vehicle",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/gas-cages-640.webp"
+  },
+  "small": true
+ },
+ "aerosols-paint": {
+  "alt": "The aerosols, paint cans and hazards area, with paint cages",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/aerosols-paint-480.webp"
+  },
+  "small": true
+ },
+ "paint-dropoff": {
+  "alt": "A customer carrying paint from a ute to the paint cages",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/paint-dropoff-480.webp"
+  },
+  "small": true
+ },
+ "trailer-cardboard": {
+  "alt": "A customer unloading cardboard from a trailer at the cardboard cages",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/trailer-cardboard-480.webp"
+  },
+  "small": true
+ },
+ "drive-in": {
+  "alt": "A car towing a trailer and a van driving into the hall",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/drive-in-480.webp"
+  },
+  "small": true
+ },
+ "car-gas-bay": {
+  "alt": "A car parked beside the gas bottle cages under the hanging signs",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/car-gas-bay-480.webp"
+  },
+  "small": true
+ },
+ "rubbish-bays-arrow": {
+  "alt": "General rubbish bays, with a floor arrow showing the way through",
+  "w": 640,
+  "h": 480,
+  "sizes": {
+   "640": "img/rubbish-bays-arrow-640.webp"
+  },
+  "small": true
+ },
+ "cooking-oil": {
+  "alt": "The cooking oil drop-off tray at the oil station",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/cooking-oil-480.webp"
+  },
+  "small": true
+ },
+ "coolant": {
+  "alt": "The coolant tank at the oil station",
+  "w": 480,
+  "h": 640,
+  "sizes": {
+   "480": "img/coolant-480.webp"
+  },
+  "small": true
+ },
+ "rubbish-panorama": {
+  "alt": "The row of general rubbish skips in the car and sedan unloading area",
+  "w": 640,
+  "h": 338,
+  "sizes": {
+   "640": "img/rubbish-panorama-640.webp"
+  },
+  "small": true
+ },
+ "sort-compare": {
+  "w": 2048,
+  "h": 1360,
+  "alt": "Two trailers side by side on a driveway: on the left an unsorted, mixed-up load; on the right the same kinds of rubbish sorted into cardboard, green waste, metal and bagged rubbish",
+  "sizes": {
+   "1920": "img/sort-compare-1920.webp",
+   "960": "img/sort-compare-960.webp"
+  }
+ }
+}

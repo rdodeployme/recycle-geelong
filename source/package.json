@@ -1,0 +1,19 @@
+{
+  "name": "rng",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@gltf-transform/cli": "^4.5.1",
+    "esbuild": "^0.25.12",
+    "three": "^0.170.0"
+  },
+  "type": "module"
+}
