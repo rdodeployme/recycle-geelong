@@ -536,6 +536,11 @@ export function scrapBinPanel({ cls = '' } = {}) {
       <p class="scrapbin-free"><b>Free</b><span>bin drop-off<br>for scrap metal</span></p>
       <h3 class="scrapbin-h">We drop a bin.<br>You fill it.<br><span class="g">We take it away.</span></h3>
       <p class="scrapbin-lede">Too much metal for a ute or trailer? We’ll drop a bin off to you for free, leave it while you load it up, then come back and collect it.</p>
+      <a class="scrapbin-self" href="${SITE.address.directions}" target="_blank" rel="noopener">
+        <b class="scrapbin-self-tag">Free</b>
+        <span><b>Bringing it in yourself?</b> Scrap metal is free to drop off at ${SITE.address.line1}, North Geelong. Drive in, unload and drive out, ${HOURS.short}.</span>
+        ${icon('arrow')}
+      </a>
       <ol class="scrapbin-steps">
         ${steps.map(([t, d], i) => `<li><b class="scrapbin-n">0${i + 1}</b><span><b>${t}</b>${d}</span></li>`).join('')}
       </ol>
