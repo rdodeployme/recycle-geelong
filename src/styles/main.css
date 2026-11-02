@@ -1375,47 +1375,55 @@ h2.nat-h, h2.nat-h.fit-two, h2.nat-h.fit-lines { font-size: clamp(36px, 5vw, 72p
 .nat-like li { font-size: clamp(20px, 2.2vw, 32px); }
 @media (max-width: 900px) { h2.nat-h, h2.nat-h.fit-two { font-size: clamp(32px, 9.5vw, 48px) !important; } }
 
-/* scrap metal bin service panel (homepage 06) */
-.scrapbin { margin-top: clamp(40px, 6vw, 72px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); background: var(--ink-3); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
-.scrapbin > * { min-width: 0; }
-.scrapbin-ph { position: relative; min-height: 360px; background: var(--ink); }
-.scrapbin-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.scrapbin-tag { position: absolute; left: 16px; top: 16px; display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: var(--ink); font-weight: 900; font-stretch: 112%; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; padding: 8px 12px; border-radius: 2px; }
-.scrapbin-tag .ic { width: 18px; height: 18px; }
-.scrapbin-body { padding: clamp(24px, 4vw, 56px); }
-.scrapbin .kicker { color: var(--green); white-space: normal; }
-.scrapbin-h { font-stretch: 125%; font-weight: 900; text-transform: uppercase; line-height: .95; font-size: clamp(28px, 3.2vw, 46px); margin: 12px 0 16px; }
-.scrapbin-h .g { color: var(--green); }
-.scrapbin-lede { font-size: clamp(17px, 1.4vw, 20px); color: #d6d6d1; max-width: 46ch; margin: 0 0 22px; }
-.scrapbin-steps { list-style: none; margin: 0 0 20px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.scrapbin-steps li { background: var(--ink-2); padding: 16px; display: grid; gap: 10px; align-content: start; }
-.scrapbin-n { font-stretch: 125%; font-weight: 900; font-size: 34px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--green); }
-.scrapbin-steps span { font-size: 14px; color: var(--mute); line-height: 1.45; }
-.scrapbin-steps span b { display: block; color: var(--white); font-stretch: 112%; font-weight: 800; text-transform: uppercase; font-size: 15px; margin-bottom: 4px; }
-.scrapbin-good { font-size: 15px; color: #d6d6d1; margin: 0 0 22px; max-width: 56ch; }
-.scrapbin-good b { color: var(--green); text-transform: uppercase; font-size: 13px; letter-spacing: .08em; margin-right: 6px; }
-.scrapbin .btns { display: flex; flex-wrap: wrap; gap: 10px; }
-.scrapbin-note { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--mute); margin: 18px 0 0; }
-.scrapbin-note .ic { width: 18px; height: 18px; flex: none; color: var(--green); }
-@media (max-width: 900px) {
-  .scrapbin { grid-template-columns: minmax(0, 1fr); }
-  .scrapbin-ph { min-height: 0; aspect-ratio: 4 / 3; }
+/* scrap metal panel (homepage 06): generated from src/scrap-metal.js css */
+.collect + .rngsm { margin-top: clamp(40px, 6vw, 72px); }
+.rngsm, .rngsm * { box-sizing: border-box; }
+.rngsm { --g: #39ff13; --ink: #050505; --ink2: #0d0d0d; --ink3: #161616; --line: rgba(255,255,255,.14); --mute: #a7a7a2; --soft: #d6d6d1;
+  container-type: inline-size; font-family: 'Archivo', 'Arial Narrow', Arial, sans-serif; color: #fff; line-height: 1.5; -webkit-font-smoothing: antialiased; margin: 0 auto; max-width: 1320px; scroll-margin-top: 110px; }
+.rngsm p { margin: 0; }
+.rngsm-card { background: var(--ink3); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.rngsm-top { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: stretch; }
+.rngsm-top > * { min-width: 0; }
+.rngsm-intro { padding: clamp(24px, 5cqi, 56px) clamp(24px, 5cqi, 56px) clamp(20px, 3cqi, 36px); align-self: center; }
+.rngsm-kicker { display: flex; align-items: center; gap: .6em; color: var(--g); font-stretch: 110%; font-weight: 800; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+.rngsm-kicker::before { content: ''; width: 22px; height: 3px; background: currentColor; flex: none; }
+.rngsm-h { font-family: inherit; color: #fff; font-stretch: 125%; font-weight: 900; text-transform: uppercase; line-height: .95; letter-spacing: 0; font-size: clamp(30px, 4.6cqi, 56px); margin: 14px 0 16px; padding: 0; }
+.rngsm-h span { color: var(--g); }
+.rngsm-lede { font-size: clamp(17px, 1.9cqi, 20px); color: var(--soft); max-width: 44ch; }
+.rngsm-ph { position: relative; min-height: 300px; background: var(--ink); margin: 0; }
+.rngsm-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 72%; display: block; max-width: none; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+.rngsm-opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 0 clamp(16px, 3cqi, 32px) clamp(16px, 3cqi, 32px); margin-top: clamp(16px, 3cqi, 32px); }
+.rngsm-opt { display: flex; flex-direction: column; background: var(--ink2); border: 2px solid var(--g); border-radius: 4px; padding: clamp(20px, 3cqi, 32px); min-width: 0; }
+.rngsm-opt-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.rngsm-opt-no { font-stretch: 110%; font-weight: 800; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+.rngsm-opt-ic { width: 44px; height: 44px; border-radius: 4px; background: var(--ink3); border: 1px solid var(--line); display: grid; place-items: center; color: var(--g); flex: none; }
+.rngsm-opt-ic .rngsm-ic { width: 26px; height: 26px; }
+.rngsm-free { display: inline-block; align-self: flex-start; background: var(--g); color: var(--ink); font-stretch: 125%; font-weight: 900; text-transform: uppercase; font-size: clamp(26px, 3.4cqi, 38px); line-height: 1; padding: 7px 12px 5px; border-radius: 2px; }
+.rngsm-opt-h { font-family: inherit; color: #fff; font-stretch: 125%; font-weight: 900; text-transform: uppercase; line-height: 1; font-size: clamp(22px, 2.8cqi, 30px); margin: 14px 0 10px; padding: 0; letter-spacing: 0; }
+.rngsm-opt-sub { font-stretch: 112%; font-weight: 800; text-transform: uppercase; font-size: 13px; letter-spacing: .08em; color: var(--g); margin-bottom: 12px !important; }
+.rngsm-opt p.rngsm-opt-txt { font-size: 16px; color: var(--soft); margin-bottom: 16px; }
+.rngsm-list { list-style: none !important; margin: 0 0 20px !important; padding: 0 !important; display: grid; gap: 10px; }
+.rngsm-list li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 15px; color: var(--soft); margin: 0; list-style: none; line-height: 1.45; }
+.rngsm-list li::before, .rngsm-list li::marker { content: none; }
+.rngsm-list li b { color: #fff; }
+.rngsm-list .rngsm-ic { width: 22px; height: 22px; color: var(--g); margin-top: 1px; }
+.rngsm-n { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--g); color: var(--g); display: grid; place-items: center; font-weight: 900; font-size: 13px; line-height: 1; }
+.rngsm-opt-foot { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; }
+.rngsm-btn { display: inline-flex; align-items: center; justify-content: center; gap: .6em; min-height: 52px; padding: 0 22px; background: var(--g); color: var(--ink) !important; border: 2px solid var(--g); border-radius: 4px; font-stretch: 112%; font-weight: 800; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none !important; transition: transform .2s; line-height: 1.2; text-align: center; }
+.rngsm-btn:hover { transform: translateY(-2px); }
+.rngsm-btn.ghost { background: transparent; color: #fff !important; border-color: rgba(255,255,255,.3); }
+.rngsm-btn.ghost:hover { border-color: #fff; }
+.rngsm-btn .rngsm-ic { width: 20px; height: 20px; }
+.rngsm-note { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--mute); padding: 0 clamp(16px, 3cqi, 32px) clamp(18px, 3cqi, 28px); }
+.rngsm-note .rngsm-ic { width: 18px; height: 18px; flex: none; color: var(--g); }
+.rngsm-ic { display: block; flex: none; }
+@container (max-width: 820px) {
+  .rngsm-top { grid-template-columns: minmax(0, 1fr); }
+  .rngsm-ph { min-height: 0; aspect-ratio: 16 / 9; order: -1; }
+  .rngsm-opts { grid-template-columns: minmax(0, 1fr); }
+  .rngsm-h { font-size: clamp(28px, 8cqi, 52px); }
 }
-@media (max-width: 560px) {
-  .scrapbin-steps { grid-template-columns: minmax(0, 1fr); }
-  .scrapbin-steps li { grid-template-columns: 48px minmax(0, 1fr); align-items: start; }
-  .scrapbin-n { font-size: 28px; }
+@container (max-width: 480px) {
+  .rngsm-btn { flex: 1 1 100%; white-space: normal; }
+  .rngsm-free { font-size: 30px; }
 }
-.scrapbin-ph img { object-position: center 72%; }
-@media (max-width: 560px) { .scrapbin .btns .btn { flex: 1 1 100%; justify-content: center; } }
-.scrapbin-free { display: flex; align-items: center; gap: 14px; margin: 18px 0 4px; }
-.scrapbin-free b { background: var(--green); color: var(--ink); font-stretch: 125%; font-weight: 900; text-transform: uppercase; font-size: clamp(34px, 3.6vw, 52px); line-height: 1; padding: 8px 14px 6px; border-radius: 2px; }
-.scrapbin-free span { font-stretch: 112%; font-weight: 800; text-transform: uppercase; font-size: 15px; line-height: 1.2; letter-spacing: .04em; }
-.scrapbin-free { margin: 18px 0 18px; } .scrapbin-free + .scrapbin-h { margin-top: 0; }
-.scrapbin-self { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; margin: 0 0 22px; padding: 14px 16px; border: 2px solid var(--green); border-radius: var(--radius); text-decoration: none; color: var(--white); transition: background .2s; }
-.scrapbin-self:hover { background: rgba(57, 255, 19, .08); }
-.scrapbin-self-tag { background: var(--green); color: var(--ink); font-stretch: 125%; font-weight: 900; text-transform: uppercase; font-size: 15px; letter-spacing: .06em; padding: 6px 10px 5px; border-radius: 2px; }
-.scrapbin-self span { font-size: 15px; line-height: 1.45; color: #d6d6d1; }
-.scrapbin-self span b { color: var(--white); }
-.scrapbin-self .ic { color: var(--green); width: 22px; height: 22px; }
-@media (max-width: 560px) { .scrapbin-self { grid-template-columns: minmax(0, 1fr) auto; } .scrapbin-self-tag { grid-column: 1 / -1; justify-self: start; } }

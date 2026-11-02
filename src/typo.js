@@ -66,7 +66,7 @@ const textOf = (h) => h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 function sizeHeadings(html) {
   const fn = (m, tag, attrs = '', inner) => {
     const cls = (attrs.match(/class="([^"]*)"/) || [, ''])[1];
-    if (/\bsr-only\b/.test(cls)) return m;
+    if (/\bsr-only\b|\bno-fit\b/.test(cls)) return m;
     let kind = null, w = 0;
     if (/\blines\b/.test(cls)) {
       const lines = [...inner.matchAll(/<span class="ln">([\s\S]*?)<\/span>(?=<span class="ln">|$)/g)].map((x) => textOf(x[1]));

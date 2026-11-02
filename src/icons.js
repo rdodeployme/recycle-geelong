@@ -68,3 +68,4 @@ export const CAT_ICON = {
   Furniture: 'sofa', Mattresses: 'mattress', Household: 'bin', Garden: 'leaf', Building: 'brick',
   Liquids: 'oil', Gas: 'gas', Tyres: 'tyre', 'Not accepted': 'ban',
 };
+export { I as ICONS };

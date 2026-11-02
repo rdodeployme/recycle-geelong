@@ -1,5 +1,6 @@
 import { SITE, HOURS, LOADS, WASTE, EXTRAS, POPULAR, FREECYCLE, loadFrom, loadPrice } from './data/site.js';
 import { u, img, icon, bay, esc } from './lib.js';
+import { markup as scrapMarkup } from './scrap-metal.js';
 
 // ---------------------------------------------------------------- finder
 export function finder({ id = 'finder', heading = true, n = '01' } = {}) {
@@ -503,53 +504,7 @@ export function scale({ n = '07' } = {}) {
 </section>`;
 }
 
-// Scrap metal bin service: we drop a bin, the customer fills it, we collect it.
-// Bin sizes, service area and any charge are not confirmed yet (see OPEN_ITEMS.md),
-// so the panel asks people to call rather than quoting them.
-export function scrapBinPanel({ cls = '' } = {}) {
-  const subject = 'Free scrap metal bin request';
-  const bodyText = [
-    'Hi Recycle North Geelong,',
-    '',
-    "I'd like a scrap metal bin dropped off.",
-    '',
-    'Name:',
-    'Phone:',
-    'Drop-off address:',
-    'What metal, and roughly how much:',
-    'Preferred drop-off date:',
-    'Anything about access (gate, driveway, power lines):',
-  ].join('\n');
-  const mail = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
-  const steps = [
-    ['We drop off a bin, free', 'Tell us what you’ve got and where. We bring a bin to your home, farm, workshop or job site.'],
-    ['You fill it', 'Load it at your own pace. Scrap metal only, so it can all go straight to recycling.'],
-    ['We collect it', 'Call us when it’s full. We pick it up and the metal is sent for recycling.'],
-  ];
-  return `<div class="scrapbin ${cls}" id="scrap-metal-bin">
-    <div class="scrapbin-ph">
-      ${img('metals-area', { sizes: '(max-width: 900px) 100vw, 45vw', alt: 'Scrap steel bins in the recycled metals area at Recycle North Geelong' })}
-      <span class="scrapbin-tag">${icon('metal')}Free bin drop-off</span>
-    </div>
-    <div class="scrapbin-body">
-      <span class="kicker">Got a big load of scrap metal?</span>
-      <p class="scrapbin-free"><b>Free</b><span>bin drop-off<br>for scrap metal</span></p>
-      <h3 class="scrapbin-h">We drop a bin.<br>You fill it.<br><span class="g">We take it away.</span></h3>
-      <p class="scrapbin-lede">Too much metal for a ute or trailer? We’ll drop a bin off to you for free, leave it while you load it up, then come back and collect it.</p>
-      <a class="scrapbin-self" href="${SITE.address.directions}" target="_blank" rel="noopener">
-        <b class="scrapbin-self-tag">Free</b>
-        <span><b>Bringing it in yourself?</b> Scrap metal is free to drop off at ${SITE.address.line1}, North Geelong. Drive in, unload and drive out, ${HOURS.short}.</span>
-        ${icon('arrow')}
-      </a>
-      <ol class="scrapbin-steps">
-        ${steps.map(([t, d], i) => `<li><b class="scrapbin-n">0${i + 1}</b><span><b>${t}</b>${d}</span></li>`).join('')}
-      </ol>
-      <p class="scrapbin-good"><b>Good for</b> shed and farm clean-ups, old machinery, fencing and roofing iron, workshops, and demolition or renovation jobs.</p>
-      <div class="btns">
-        <a class="btn" href="${SITE.phoneHref}">${icon('call')}Call ${SITE.phone}</a>
-        <a class="btn ghost" href="${mail}">Request a free bin by email${icon('arrow')}</a>
-      </div>
-      <p class="scrapbin-note">${icon('info')}<span>Free drop-off. Scrap metal only. We’ll confirm bin size and timing when you get in touch.</span></p>
-    </div>
-  </div>`;
+// Scrap metal panel (homepage 06). Markup and CSS live in scrap-metal.js.
+export function scrapBinPanel() {
+  return scrapMarkup(img('metals-area', { sizes: '(max-width: 820px) 100vw, 45vw', alt: 'Scrap steel bins in the recycled metals area at Recycle North Geelong' }));
 }
