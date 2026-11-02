@@ -507,7 +507,7 @@ export function scale({ n = '07' } = {}) {
 // Bin sizes, service area and any charge are not confirmed yet (see OPEN_ITEMS.md),
 // so the panel asks people to call rather than quoting them.
 export function scrapBinPanel({ cls = '' } = {}) {
-  const subject = 'Scrap metal bin request';
+  const subject = 'Free scrap metal bin request';
   const bodyText = [
     'Hi Recycle North Geelong,',
     '',
@@ -522,28 +522,29 @@ export function scrapBinPanel({ cls = '' } = {}) {
   ].join('\n');
   const mail = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
   const steps = [
-    ['We drop off a bin', 'Tell us what you’ve got and where. We bring a bin to your home, farm, workshop or job site.'],
+    ['We drop off a bin, free', 'Tell us what you’ve got and where. We bring a bin to your home, farm, workshop or job site.'],
     ['You fill it', 'Load it at your own pace. Scrap metal only, so it can all go straight to recycling.'],
     ['We collect it', 'Call us when it’s full. We pick it up and the metal is sent for recycling.'],
   ];
   return `<div class="scrapbin ${cls}" id="scrap-metal-bin">
     <div class="scrapbin-ph">
       ${img('metals-area', { sizes: '(max-width: 900px) 100vw, 45vw', alt: 'Scrap steel bins in the recycled metals area at Recycle North Geelong' })}
-      <span class="scrapbin-tag">${icon('metal')}Scrap metal bin service</span>
+      <span class="scrapbin-tag">${icon('metal')}Free bin drop-off</span>
     </div>
     <div class="scrapbin-body">
       <span class="kicker">Got a big load of scrap metal?</span>
+      <p class="scrapbin-free"><b>Free</b><span>bin drop-off<br>for scrap metal</span></p>
       <h3 class="scrapbin-h">We drop a bin.<br>You fill it.<br><span class="g">We take it away.</span></h3>
-      <p class="scrapbin-lede">Too much metal for a ute or trailer? We’ll bring a bin to you, leave it while you load it up, then come back and collect it.</p>
+      <p class="scrapbin-lede">Too much metal for a ute or trailer? We’ll drop a bin off to you for free, leave it while you load it up, then come back and collect it.</p>
       <ol class="scrapbin-steps">
         ${steps.map(([t, d], i) => `<li><b class="scrapbin-n">0${i + 1}</b><span><b>${t}</b>${d}</span></li>`).join('')}
       </ol>
       <p class="scrapbin-good"><b>Good for</b> shed and farm clean-ups, old machinery, fencing and roofing iron, workshops, and demolition or renovation jobs.</p>
       <div class="btns">
         <a class="btn" href="${SITE.phoneHref}">${icon('call')}Call ${SITE.phone}</a>
-        <a class="btn ghost" href="${mail}">Request a bin by email${icon('arrow')}</a>
+        <a class="btn ghost" href="${mail}">Request a free bin by email${icon('arrow')}</a>
       </div>
-      <p class="scrapbin-note">${icon('info')}<span>Scrap metal only. We’ll confirm bin size, timing and any charge when you get in touch.</span></p>
+      <p class="scrapbin-note">${icon('info')}<span>Free drop-off. Scrap metal only. We’ll confirm bin size and timing when you get in touch.</span></p>
     </div>
   </div>`;
 }

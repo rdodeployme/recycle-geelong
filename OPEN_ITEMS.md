@@ -39,7 +39,7 @@ Content still to confirm with Recycle North Geelong. None of these block the bui
 ## Scrap metal bin service (added 2 Nov)
 Homepage section 06 has a new "We drop a bin. You fill it. We take it away." panel, plus a link to it in the collection list. Calls go to the main number; "Request a bin by email" opens a prefilled email to info@recycle.net.au. Needs confirming before it can say more:
 - Bin sizes on offer, and a minimum load.
-- Charge for drop-off and collection (or free, or paid for the metal).
+- Drop-off is free (confirmed 2 Nov). Still to confirm: is collection free too, or paid for the metal?
 - Service area, and how long a bin can stay on site.
 - What can go in (whitegoods, hot water services, car bodies, gas bottles?).
 - Who takes the bookings, and whether it gets its own booking form.
