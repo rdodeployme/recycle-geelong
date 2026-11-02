@@ -601,5 +601,41 @@
    "1920": "img/sort-compare-1920.webp",
    "960": "img/sort-compare-960.webp"
   }
+ },
+ "scrap-steel-offcuts": {
+  "alt": "Scrap steel offcuts: pipe, box section and angle iron on a shed floor",
+  "w": 1024,
+  "h": 1024,
+  "sizes": {
+   "480": "img/scrap-steel-offcuts-480.webp",
+   "960": "img/scrap-steel-offcuts-960.webp"
+  }
+ },
+ "scrap-roofing-fencing": {
+  "alt": "Old corrugated roofing iron, rolled fencing wire and steel posts beside a farm shed",
+  "w": 1024,
+  "h": 1024,
+  "sizes": {
+   "480": "img/scrap-roofing-fencing-480.webp",
+   "960": "img/scrap-roofing-fencing-960.webp"
+  }
+ },
+ "scrap-machinery": {
+  "alt": "Old machinery scrap: an engine block, steel wheel rims, a gearbox and a mower deck",
+  "w": 1024,
+  "h": 1024,
+  "sizes": {
+   "480": "img/scrap-machinery-480.webp",
+   "960": "img/scrap-machinery-960.webp"
+  }
+ },
+ "scrap-nonferrous": {
+  "alt": "Copper pipe and wire, aluminium offcuts and brass taps",
+  "w": 1024,
+  "h": 1024,
+  "sizes": {
+   "480": "img/scrap-nonferrous-480.webp",
+   "960": "img/scrap-nonferrous-960.webp"
+  }
  }
 }

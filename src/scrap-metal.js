@@ -21,8 +21,11 @@ export const css = `
 .rngsm-h { font-family: inherit; color: #fff; font-stretch: 125%; font-weight: 900; text-transform: uppercase; line-height: .95; letter-spacing: 0; font-size: clamp(30px, 4.6cqi, 56px); margin: 14px 0 16px; padding: 0; }
 .rngsm-h span { color: var(--g); }
 .rngsm-lede { font-size: clamp(17px, 1.9cqi, 20px); color: var(--soft); max-width: 44ch; }
-.rngsm-ph { position: relative; min-height: 300px; background: var(--ink); margin: 0; }
-.rngsm-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 72%; display: block; max-width: none; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+.rngsm-gal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; background: var(--ink); margin: 0; align-self: stretch; }
+.rngsm-tile { position: relative; margin: 0; overflow: hidden; aspect-ratio: 4 / 3; background: var(--ink); }
+.rngsm-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; max-width: none; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+.rngsm-tile figcaption { position: absolute; left: 10px; bottom: 10px; right: 10px; display: flex; }
+.rngsm-tile figcaption span { background: rgba(5,5,5,.86); color: #fff; font-stretch: 112%; font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: .06em; line-height: 1.25; padding: 6px 9px; border-radius: 2px; border-left: 3px solid var(--g); }
 .rngsm-opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 0 clamp(16px, 3cqi, 32px) clamp(16px, 3cqi, 32px); margin-top: clamp(16px, 3cqi, 32px); }
 .rngsm-opt { display: flex; flex-direction: column; background: var(--ink2); border: 2px solid var(--g); border-radius: 4px; padding: clamp(20px, 3cqi, 32px); min-width: 0; }
 .rngsm-opt-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
@@ -50,16 +53,27 @@ export const css = `
 .rngsm-ic { display: block; flex: none; }
 @container (max-width: 820px) {
   .rngsm-top { grid-template-columns: minmax(0, 1fr); }
-  .rngsm-ph { min-height: 0; aspect-ratio: 16 / 9; order: -1; }
+  .rngsm-gal { order: -1; }
   .rngsm-opts { grid-template-columns: minmax(0, 1fr); }
   .rngsm-h { font-size: clamp(28px, 8cqi, 52px); }
 }
 @container (max-width: 480px) {
   .rngsm-btn { flex: 1 1 100%; white-space: normal; }
   .rngsm-free { font-size: 30px; }
+  .rngsm-tile figcaption { left: 6px; right: 6px; bottom: 6px; }
+  .rngsm-tile figcaption span { font-size: 10px; padding: 4px 7px; letter-spacing: .04em; }
 }`.trim();
 
-export function markup(imgTag) {
+export const SCRAP_EXAMPLES = [
+  ['scrap-steel-offcuts', 'Steel and iron offcuts'],
+  ['scrap-roofing-fencing', 'Roofing iron and fencing'],
+  ['scrap-machinery', 'Old machinery and car parts'],
+  ['scrap-nonferrous', 'Copper, brass and aluminium'],
+];
+
+// imgFor(name) returns an <img> tag for one example photo.
+export function markup(imgFor) {
+  const tiles = SCRAP_EXAMPLES.map(([n, label]) => `<figure class="rngsm-tile">${imgFor(n)}<figcaption><span>${label}</span></figcaption></figure>`).join('');
   return `<section class="rngsm" id="scrap-metal" aria-labelledby="rngsm-h">
   <div class="rngsm-card">
     <div class="rngsm-top">
@@ -68,7 +82,7 @@ export function markup(imgTag) {
         <h2 class="rngsm-h no-fit" id="rngsm-h">Got scrap metal?<br><span>It's free.<br>Two ways.</span></h2>
         <p class="rngsm-lede">Bring it to us and drop it off for free. Or, if you've got too much for a ute or trailer, we'll drop a bin off to you for free.</p>
       </div>
-      <figure class="rngsm-ph">${imgTag}</figure>
+      <div class="rngsm-gal">${tiles}</div>
     </div>
     <div class="rngsm-opts">
       <div class="rngsm-opt">

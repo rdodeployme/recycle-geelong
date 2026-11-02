@@ -506,5 +506,5 @@ export function scale({ n = '07' } = {}) {
 
 // Scrap metal panel (homepage 06). Markup and CSS live in scrap-metal.js.
 export function scrapBinPanel() {
-  return scrapMarkup(img('metals-area', { sizes: '(max-width: 820px) 100vw, 45vw', alt: 'Scrap steel bins in the recycled metals area at Recycle North Geelong' }));
+  return scrapMarkup((n) => img(n, { sizes: '(max-width: 820px) 50vw, 22vw' }));
 }
