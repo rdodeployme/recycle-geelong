@@ -1374,3 +1374,37 @@ h2.nat-h, h2.nat-h.fit-two, h2.nat-h.fit-lines { font-size: clamp(40px, 6vw, 92p
 h2.nat-h, h2.nat-h.fit-two, h2.nat-h.fit-lines { font-size: clamp(36px, 5vw, 72px) !important; }
 .nat-like li { font-size: clamp(20px, 2.2vw, 32px); }
 @media (max-width: 900px) { h2.nat-h, h2.nat-h.fit-two { font-size: clamp(32px, 9.5vw, 48px) !important; } }
+
+/* scrap metal bin service panel (homepage 06) */
+.scrapbin { margin-top: clamp(40px, 6vw, 72px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); background: var(--ink-3); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
+.scrapbin > * { min-width: 0; }
+.scrapbin-ph { position: relative; min-height: 360px; background: var(--ink); }
+.scrapbin-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scrapbin-tag { position: absolute; left: 16px; top: 16px; display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: var(--ink); font-weight: 900; font-stretch: 112%; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; padding: 8px 12px; border-radius: 2px; }
+.scrapbin-tag .ic { width: 18px; height: 18px; }
+.scrapbin-body { padding: clamp(24px, 4vw, 56px); }
+.scrapbin .kicker { color: var(--green); white-space: normal; }
+.scrapbin-h { font-stretch: 125%; font-weight: 900; text-transform: uppercase; line-height: .95; font-size: clamp(28px, 3.2vw, 46px); margin: 12px 0 16px; }
+.scrapbin-h .g { color: var(--green); }
+.scrapbin-lede { font-size: clamp(17px, 1.4vw, 20px); color: #d6d6d1; max-width: 46ch; margin: 0 0 22px; }
+.scrapbin-steps { list-style: none; margin: 0 0 20px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.scrapbin-steps li { background: var(--ink-2); padding: 16px; display: grid; gap: 10px; align-content: start; }
+.scrapbin-n { font-stretch: 125%; font-weight: 900; font-size: 34px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--green); }
+.scrapbin-steps span { font-size: 14px; color: var(--mute); line-height: 1.45; }
+.scrapbin-steps span b { display: block; color: var(--white); font-stretch: 112%; font-weight: 800; text-transform: uppercase; font-size: 15px; margin-bottom: 4px; }
+.scrapbin-good { font-size: 15px; color: #d6d6d1; margin: 0 0 22px; max-width: 56ch; }
+.scrapbin-good b { color: var(--green); text-transform: uppercase; font-size: 13px; letter-spacing: .08em; margin-right: 6px; }
+.scrapbin .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.scrapbin-note { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--mute); margin: 18px 0 0; }
+.scrapbin-note .ic { width: 18px; height: 18px; flex: none; color: var(--green); }
+@media (max-width: 900px) {
+  .scrapbin { grid-template-columns: minmax(0, 1fr); }
+  .scrapbin-ph { min-height: 0; aspect-ratio: 4 / 3; }
+}
+@media (max-width: 560px) {
+  .scrapbin-steps { grid-template-columns: minmax(0, 1fr); }
+  .scrapbin-steps li { grid-template-columns: 48px minmax(0, 1fr); align-items: start; }
+  .scrapbin-n { font-size: 28px; }
+}
+.scrapbin-ph img { object-position: center 72%; }
+@media (max-width: 560px) { .scrapbin .btns .btn { flex: 1 1 100%; justify-content: center; } }

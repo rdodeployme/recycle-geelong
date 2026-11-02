@@ -1,6 +1,6 @@
 import { SITE } from '../data/site.js';
 import { u, img, icon, bay, alt } from '../lib.js';
-import { finder, estimator, freeGrid, journey, visitSteps, registerBand, partnersList, jimsPanel, dealsSection, whyStrip, notATip, heroVideo, marquee, photoRun, scale, tourDialog } from '../components.js';
+import { finder, estimator, freeGrid, journey, visitSteps, registerBand, partnersList, jimsPanel, dealsSection, whyStrip, notATip, heroVideo, marquee, photoRun, scale, tourDialog, scrapBinPanel } from '../components.js';
 
 export function home() {
   const body = `
@@ -50,8 +50,10 @@ ${visitSteps({ n: '05' })}
       <div class="pickups">
         <a class="pickup" href="${SITE.links.bookCollection}"><span><b>Rubbish and junk collection</b><span>Our crew does the lifting and loading.</span></span>${icon('arrow')}</a>
         <a class="pickup" href="${SITE.links.bookCollection}"><span><b>House and garage clean-outs</b><span>Bigger jobs, sorted and recycled.</span></span>${icon('arrow')}</a>
+        <a class="pickup" href="#scrap-metal-bin"><span><b>Scrap metal bin drop-off</b><span>Lots of metal? We drop a bin and collect it.</span></span>${icon('arrow')}</a>
       </div>
     </div>
+    ${scrapBinPanel()}
   </div>
 </section>
 
